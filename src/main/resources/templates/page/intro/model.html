@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<div id="breadcrumb">
+  <div class="container">
+    <nav>
+      <ul>
+        <li>홈</li>
+        <li>플랫폼소개</li>
+        <li aria-current="page">교통복지 플랫폼 모델별</li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main id="contents">
+  <section class="section">
+    <div class="container">
+      <div class="page-wrap">
+        <div class="page-header">
+          <h2 class="section-title">교통복지 플랫폼 모델별</h2>
+        </div>
+        <div class="grid-box">
+          <div class="line-box">
+            <div class="title-box">
+              <h3><span class="color-primary">All-in-One</span>형</h3>
+              <p>홈페이지 구축, 데이터 정산, 고객센터 운영 모두 포함된 <strong>통합형 서비스 모델</strong></p>
+            </div>
+            <div class="content-box">
+              <h4>지자체 혜택</h4>
+              <ul class="list-type check primary">
+                <li>지자체의 행정부담을 최소화하고 사업 전 과정의 효율적인 관리 가능</li>
+                <li>신청&middot;지급&middot;민원응대 전 과정 통합 관리 가능</li>
+                <li>지자체 행정 부담 최소화 혜택 제공</li>
+              </ul>
+            </div>
+          </div>
+          <div class="line-box">
+            <div class="title-box">
+              <h3><span class="color-secondary">Standard-A</span>형</h3>
+              <p>홈페이지 구축 및 데이터 정산 서비스가 포함된 <strong>표준형 모델</strong></p>
+            </div>
+            <div class="content-box">
+              <h4>지자체 혜택</h4>
+              <ul class="list-type check secondary">
+                <li>홈페이지 구축과 DATA 정산 서비스 제공</li>
+                <li>신청&middot;지원금 지급 등 일반 서비스 가능</li>
+                <li>기존 민원응대 시스템 보유 지자체에 적합</li>
+              </ul>
+            </div>
+          </div>
+          <div class="line-box">
+            <div class="title-box">
+              <h3><span class="color-secondary">Standard-B</span>형</h3>
+              <p>고객센터 운영 및 데이터 정산 서비스가 포함된 <strong>표준형 모델</strong></p>
+            </div>
+            <div class="content-box">
+              <h4>지자체 혜택</h4>
+              <ul class="list-type check secondary">
+                <li>홈페이지 구축과 DATA 정산 서비스 제공</li>
+                <li>신청&middot;지원금 지급 등 일반 서비스 가능</li>
+                <li>기존 민원응대 시스템 보유 지자체에 적합</li>
+              </ul>
+            </div>
+          </div>
+          <div class="line-box">
+            <div class="title-box">
+              <h3><span class="color-point">Lite</span>형</h3>
+              <p>정책에 필요한 데이터만 제공하는 <strong>경량형 모델</strong></p>
+            </div>
+            <div class="content-box">
+              <h4>지자체 혜택</h4>
+              <ul class="list-type check point">
+                <li>정책에 필요한 DATA 제공(또는 정산)</li>
+                <li>자체 시스템·홈페이지 운영 중인 지자체에 적합</li>
+                <li>DATA 정산만 필요한 경우 선택 가능</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+</body>
+</html>

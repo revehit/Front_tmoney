@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/intro.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<main id="contents">
+  <section class="section section1">
+    <div class="container fluid">
+      <div class="text-box">
+        <h2>전국 어디서나, 지자체 맞춤 <br/>
+        교통비 지원을 <span class="color-secondary">하나의 플랫폼에서</span></h2>
+      </div>
+      <img src="/images/sub/bg-intro-section1.jpg" alt="">
+    </div>
+  </section>
+  <section class="section section2">
+    <div class="container">
+      <div class="flex">
+        <div class="text-box">
+          <h2>모든 지자체가,<br/>
+          <span class="color-primary">자신만의 기준으로 교통복지</span>를<br/>
+          실현할 수 있도록</h2>
+          <p>주민의 일상에 더 가까이 다가가는 따뜻한 교통복지! <br/>
+          교통비지원 통합포털에서 지금 함께 만나보세요.</p>
+        </div>
+        <div class="img-box">
+          <img src="/images/sub/img-intro-section2.png" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section3">
+    <div class="container">
+      <div class="title-box">
+        <h2>지자체 전용 홈페이지 및 관리자 페이지 구축</h2>
+      </div>
+      <div class="img-box">
+        <img src="/images/sub/img-intro-section3.png" alt="">
+      </div>
+    </div>
+  </section>
+  <section class="section section4">
+    <div class="container">
+      <div class="title-box">
+        <h2>지원금 지급 유형</h2>
+        <p>지자체 교통 복지 정책별(연령기준·지원금액·신청 기간 등) 지원금 정산 설정 가능<br/>
+        교통 이용 내역과 정책 기준을 연결해 투명하고 정확하게 지원금을 지급합니다.</p>
+      </div>
+      <div class="box-wrap">
+        <div class="box"
+            data-aos="fade-up"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-sine">
+          <div class="img-box">
+            <img src="/images/sub/img-people1.png" alt="어린이 이미지">
+          </div>
+          <h3>어린이</h3>
+          <div>만 6세 이상</div>
+        </div>
+        <div class="box"
+            data-aos="fade-up"
+            data-aos-duration="600"
+            data-aos-easing="ease-in-sine">
+          <div class="img-box">
+            <img src="/images/sub/img-people2.png" alt="청소년 이미지">
+          </div>
+          <h3>청소년</h3>
+          <div>만 13~18세</div>
+        </div>
+        <div class="box"
+            data-aos="fade-up"
+            data-aos-duration="700"
+            data-aos-easing="ease-in-sine">
+          <div class="img-box">
+            <img src="/images/sub/img-people3.png" alt="청년 이미지">
+          </div>
+          <h3>청년</h3>
+          <div>만 19세 이상</div>
+        </div>
+        <div class="box"
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-easing="ease-in-sine">
+          <div class="img-box">
+            <img src="/images/sub/img-people4.png" alt="어르신 이미지">
+          </div>
+          <h3>어르신</h3>
+          <div>만 65세 이상</div>
+        </div>
+        <div class="box"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-in-sine">
+          <div class="img-box">
+            <img src="/images/sub/img-people5.png" alt="지역주민 이미지">
+          </div>
+          <h3>지역주민</h3>
+          <div>지자체 지정 대상자</div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-text">
+      <img src="/images/sub/img-sectiont4-bgtext.png" alt="">
+    </div>
+  </section>
+  <section class="section section5">
+    <div class="container">
+      <div class="title-box">
+        <h2>전용 고객센터 구축으로<br/>
+        신속하고 정확한 민원응대 가능</h2>
+        <p>전문인력 배치  및 상시 지원인력 운영</p>
+      </div>
+      <div class="flex">
+        <div class="box"
+          data-aos="fade-right"
+          data-aos-duration="500"
+          data-aos-easing="ease-in-sine">
+          <div class="img-box">
+            <img src="/images/sub/img-headset.png" alt="헤드셋 이미지">
+            <h3>전담 운영 인력</h3>
+          </div>
+          <div class="text-box"
+            >
+            <ul>
+              <li>관리자 1명</li>
+              <li>상담사 1명</li>
+              <li>장기 근속율 81% (3년 이상)</li>
+              <li>수시 업무 숙지 교육 진행</li>
+            </ul>
+          </div>
+        </div>
+        <div class="box"
+          data-aos="fade-left"
+          data-aos-duration="500"
+          data-aos-easing="ease-in-sine">
+          <div class="img-box">
+            <img src="/images/sub/img-clock.png" alt="시계 이미지">
+            <h3>탄력적 운용</h3>
+          </div>
+          <div class="text-box">
+            <ul>
+              <li><b>평상시</b></li>
+              <li>관리자 1명, 상담사 1명</li>
+              <li><b>지원금 지급 시기</b></li>
+              <li>최대 상담사 8명까지 탄력 배치</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section6">
+    <div class="container">
+      <div class="title-box">
+        <h2>지원금 지급 대상 교통수단</h2>
+      </div>
+      <div class="flex">
+        <div class="box"
+            data-aos="fade-up"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-sine">
+          <h3>버스</h3>
+          <img src="/images/sub/img-bus.png" alt="버스 이미지">
+          <p>BUS</p>
+        </div>
+        <div class="box"
+            data-aos="fade-up"
+            data-aos-duration="700"
+            data-aos-easing="ease-in-sine">
+          <h3>지하철</h3>
+          <img src="/images/sub/img-subway.png" alt="지하철 이미지">
+          <p>SUBWAY</p>
+        </div>
+        <div class="box"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-in-sine">
+          <h3>택시</h3>
+          <img src="/images/sub/img-taxi.png" alt="택시 이미지">
+          <p>TAXI</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section7">
+    <div class="container">
+      <div class="title-box">
+        <h2>지원금 지급 시기</h2>
+      </div>
+      <h3>분기별 정산</h3>
+      <div class="table-wrap type-rowcol">
+        <table>
+          <caption class="sr-only">분기별 산출기간과 지급시기</caption>
+          <colgroup>
+            <col style="width:160px"><col><col><col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">구분</th>
+              <th scope="col">1분기</th>
+              <th scope="col">2분기</th>
+              <th scope="col">3분기</th>
+              <th scope="col">4분기</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">산출기간</th>
+              <td>전년도 12월~2월 사용한 교통비</td>
+              <td>3월~5월 사용한 교통비</td>
+              <td>6월~8월 사용한 교통비</td>
+              <td>9월~11월 사용한 교통비</td>
+            </tr>
+            <tr>
+              <th scope="row">지급시기</th>
+              <td>3월 말</td>
+              <td>6월 말</td>
+              <td>9월 말</td>
+              <td>12월 말</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="section section8">
+    <div class="container">
+      <div class="title-box">
+        <h2>교통복지 시스템 구축 사례</h2>
+      </div>
+      <div class="card-wrap">
+        <div class="card-item"
+            data-aos="fade-up"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-sine">
+          <div class="img-box">
+            <p><span>J</span>ONGRO GU</p>
+            <img src="/images/sub/img-jn.jpg" alt="종로구 이미지">
+          </div>
+          <h3>종로구 교통비 지원사업</h3>
+        </div>
+        <div class="card-item"
+            data-aos="fade-up"
+            data-aos-duration="700"
+            data-aos-easing="ease-in-sine">
+          <div class="img-box">
+            <p><span>G</span>ANGNAM GU</p>
+            <img src="/images/sub/img-gn.jpg" alt="강남구 이미지">
+          </div>
+          <h3>강남구 교통비 지원사업</h3>
+        </div>
+        <div class="card-item"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-in-sine">
+          <div class="img-box">
+            <p><span>G</span>YUNGGI DO</p>
+            <img src="/images/sub/img-gg.jpg" alt="경기도 이미지">
+          </div>
+          <h3>경기도 어린이 청소년<br/>교통비 지원사업</h3>
+        </div>
+      </div>
+    </div>
+    <div class="vertical-text marquee">
+      <div class="track">
+        <div class="con" aria-hidden="true">
+          <span>TRANSPORTATION</span>
+          <span>SUBSIDY</span>
+          <span>PORTAL</span>
+        </div>
+        <div class="con" aria-hidden="true">
+          <span>TRANSPORTATION</span>
+          <span>SUBSIDY</span>
+          <span>PORTAL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+</body>
+</html>
