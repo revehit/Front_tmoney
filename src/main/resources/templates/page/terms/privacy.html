@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<div id="breadcrumb">
+  <div class="container">
+    <nav>
+      <ul>
+        <li>홈</li>
+        <li aria-current="page">개인정보처리방침</li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main id="contents">
+  <section class="section">
+    <div class="container">
+      <div class="title-wrap">
+        <h2 class="section-title">개인정보처리방침</h2>
+      </div>
+
+      <div class="terms-wrap">
+        <div>
+          <p>
+            (주)티머니(이하 ‘회사’라고 합니다)는 정보주체의 자유와 권리 보호를 위해 「개인정보 보호법」 및 관계 법령이 정한 바를  준수하여, 적법하게 개인정보를 처리하고 안전하게 관리하고 있습니다. 이에 「개인정보 보호법」 제30조에 따라 정보주체에게 개인정보의 처리와 보호에 관한  절차 및 기준을 안내하고, 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
+          </p>
+          <p class="guide-text">
+            본 방침은 2024년 7월 8일부터 시행됩니다.
+          </p>
+        </div>
+        <div class="labeling-box">
+          <div class="top-box">
+            [주요 개인정보 처리 표시(라벨링)]
+          </div>
+          <div class="bot-box">
+            <a href="#terms1" class="box">
+              <div class="img-box"></div>
+              <p>개인정보의 처리목적</p>
+            </a>
+            <a href="#terms2" class="box">
+              <div class="img-box"></div>
+              <p>처리하는 개인정보의 항목</p>
+            </a>
+            <a href="#terms3" class="box">
+              <div class="img-box"></div>
+              <p>14세 미만 아동의 개인정보 처리에 관한 사항</p>
+            </a>
+            <a href="#terms4" class="box">
+              <div class="img-box"></div>
+              <p>개인정보의 처리 및 보유 기간</p>
+            </a>
+            <a href="#terms5" class="box">
+              <div class="img-box"></div>
+              <p>개인정보의 파기 절차 및 방법에 관한 사항</p>
+            </a>
+            <a href="#terms6" class="box">
+              <div class="img-box"></div>
+              <p>개인정보의 제3자 제공에 관한 사항</p>
+            </a>
+            <a href="#terms7" class="box">
+              <div class="img-box"></div>
+              <p>개인정보 처리업무의 위탁에 관한 사항</p>
+            </a>
+            <a href="#terms8" class="box">
+              <div class="img-box"></div>
+              <p>개인정보의 안전성 확보조치에 관한 사항</p>
+            </a>
+            <a href="#terms9" class="box">
+              <div class="img-box"></div>
+              <p>개인정보 자동 수집 장치의 설치&middot;운영 및 그 거부에 관한 사항</p>
+            </a>
+            <a href="#terms10" class="box">
+              <div class="img-box"></div>
+              <p>정보주체와 법정대리인의 권리&middot;의무 및 그 행사방법에 관한 사항</p>
+            </a>
+            <a href="#terms11" class="box">
+              <div class="img-box"></div>
+              <p>개인정보 보호책임자에 관한 사항</p>
+            </a>
+            <a href="#terms12" class="box">
+              <div class="img-box"></div>
+              <p>정보주체의 권익침해에 대한 구제방법</p>
+            </a>
+            <a href="#terms13" class="box">
+              <div class="img-box"></div>
+              <p>개인정보 처리방침의 변경에 관한 사항</p>
+            </a>
+          </div>
+        </div>
+        <div class="line-box">
+          <p>&lt;목차&gt;</p>
+          <br/>
+          <p>제1조(개인정보의 처리목적)</p>
+          <p>제2조(처리하는 개인정보의 항목)</p>
+          <p>제3조(14세 미만 아동의 개인정보 처리에 관한 사항)</p>
+          <p>제4조(개인정보의 처리 및 보유 기간)</p>
+          <p>제5조(개인정보의 파기 절차 및 방법에 관한 사항)</p>
+          <p>제6조(개인정보의 제3자 제공에 관한 사항)</p>
+          <p>제7조(개인정보 처리업무의 위탁에 관한 사항)</p>
+          <p>제8조(개인정보의 안전성 확보조치에 관한 사항)</p>
+          <p>제9조(개인정보 자동 수집 장치의 설치&middot;운영 및 그 거부에 관한 사항)</p>
+          <p>제10조(정보주체와 법정대리인의 권리&middot;의무 및 그 행사방법에 관한 사항)</p>
+          <p>제11조(개인정보 보호책임자에 관한 사항)</p>
+          <p>제12조(정보주체의 권익침해에 대한 구제방법)</p>
+          <p>제13조(개인정보 처리방침의 변경에 관한 사항)</p>
+        </div>
+        <div class="line-box" id="terms1">
+          <h3>제1조(개인정보의 처리목적)</h3>
+          <p>회사는 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며,  이용 목적이 변경되는 경우에는 개인정보 보호법 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
+          <div class="depth">
+            <ul class="list-type">
+              <li>1. 지원금 지급대상(영종 거주) 여부 확인</li>
+              <li>2. 대중교통 이용(등록 교통카드) 내역 확인</li>
+              <li>3. 지원금 지급(등록 계좌)</li>
+              <li>4. 지원금 정산 및 통계 작성, 정책 분석</li>
+            </ul>
+          </div>
+        </div>
+        <div class="line-box" id="terms2">
+          <h3>제4조(개인정보의 처리 및 보유 기간)</h3>
+          <p>① 회사는 법령에 따른 개인정보 보유·이용 기간 또는 정보주체로부터 개인정보를 수집 시 동의 받은 개인정보 보유·이용기간 내에서 개인정보를 처리합니다.</p>
+          <p>② 개인정보 처리 및 보유기간은 다음과 같습니다.</p>
+          <div class="table-wrap type-col">
+            <table>
+              <caption class="blind">개인정보에 대한 내용과 보유기간, 보유목적 테이블</caption>
+              <colgroup>
+                <col><col><col>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>개인정보</th>
+                  <th>보유기간</th>
+                  <th>보유목적</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>행정동코드, 생년월일, 성별, 전출일</td>
+                  <td>사업기간</td>
+                  <td>지원금 지급 통계</td>
+                </tr>
+                <tr>
+                  <td>주민등록번호, 외국인등록번호</td>
+                  <td>거주지 인증 후 즉시 파기</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>아이디, 이름, 환급계좌정보</td>
+                  <td>회원 탈퇴 후 5년</td>
+                  <td>지원금 개인별 지급 내역 조회</td>
+                </tr>
+                <tr>
+                  <td>주소, 휴대폰, 교통카드정보, CI값, 이메일</td>
+                  <td>회원 탈퇴 후 즉시 파기</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="line-box" id="terms3">
+          <h3>제13조(개인정보 처리방침의 변경에 관한 사항)</h3>
+          <p>이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 수시로 변경될 수 있으며, 주요내용(개인정보 처리 목적, 항목, 제3자 제공 등)의 변경이 있는 경우, 변경사항의 시행 1일 전부터 홈페이지를 통해 공지할 것입니다.</p>
+          <div class="table-wrap type-col">
+            <table>
+              <caption class="blind">개인정보에 대한 내용과 보유기간, 보유목적 테이블</caption>
+              <colgroup>
+                <col><col><col>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>구분</th>
+                  <th>변경내용</th>
+                  <th>이전내용보기</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2025-09-09</td>
+                  <td>제11조(개인정보 보호책임자에 관한 사항) 담당자 변경</td>
+                  <td>
+                    <a href="" class="btn btn-primary size-md">이전내용보기</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2025-07-26</td>
+                  <td>제11조(개인정보 보호책임자에 관한 사항) 담당자 변경</td>
+                  <td>
+                    <a href="" class="btn btn-primary size-md">이전내용보기</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2025-07-01</td>
+                  <td>영종지역 주민 대중교통비 지원 포털 Open</td>
+                  <td>
+                    <a href="" class="btn btn-primary size-md">이전내용보기</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+</body>
+</html>
