@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<main id="contents">
+  <section class="section">
+    <div class="container fluid">
+      <div class="join-wrap">
+        <div class="join-header">
+          <h2 class="section-title">지원 사업 가입하기</h2>
+          <ol class="step-box col3" role="list" aria-label="지원사업 가입 단계">
+            <li aria-current="step" class="active">
+              <div class="circle" aria-hidden="true">
+                <span>1</span>
+                <i class="icon home"></i>
+              </div>
+              <p>거주지인증 <span class="sr-only">(현재 단계)</span></p>
+            </li>
+            <li>
+              <div class="circle" aria-hidden="true">
+                <span>2</span>
+                <i class="icon filter"></i>
+              </div>
+              <p>인증 및 유형 선택</p>
+            </li>
+            <li>
+              <div class="circle" aria-hidden="true">
+                <span>3</span>
+                <i class="icon check"></i>
+              </div>
+              <p>가입완료</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="container size-xsm">
+      <div class="join-wrap">
+        <div class="causion-text">
+          <strong>
+            <span class="color-secondary">종로구 지역 주민</span>
+            <span>만 신청할 수 있습니다.</span>
+          </strong>
+          <p class="guide-text">※ 행정안전부 행정정보공동이용센터와 연계한 인증으로 이용자가 많을 경우 약 5분 정도 소요됩니다.</p>
+        </div>
+        <div class="form-box">
+          <form action="" method="post" novalidate>
+            <fieldset>
+              <p class="field-title">주민등록번호</p>
+              <legend class="sr-only">주민등록번호</legend>
+              <div class="sr-only" id="rrnHelp">앞 6자리(생년월일)와 뒤 7자리를 순서대로 입력하세요.</div>
+
+              <div class="flex align-center gap8" role="group" aria-describedby="rrnHelp rrnErr">
+                <label for="rrn1" class="sr-only">앞 6자리</label>
+                <input id="rrn1" name="rrn1" type="text" class="text-field size-lg"
+                      placeholder="YYMMDD"
+                      inputmode="numeric" autocomplete="off"
+                      required aria-required="true"
+                      minlength="6" maxlength="6" pattern="^\d{6}$"
+                      aria-describedby="rrnHelp rrnErr">
+
+                <span class="flex-bar" aria-hidden="true">-</span>
+
+                <label for="rrn2" class="sr-only">뒤 7자리</label>
+                <input id="rrn2" name="rrn2" type="password" class="text-field size-lg"
+                      placeholder="*******"
+                      inputmode="numeric" autocomplete="off"
+                      required aria-required="true"
+                      minlength="7" maxlength="7" pattern="^[1-8]\d{6}$"
+                      aria-describedby="rrnHelp rrnErr">
+              </div>
+            </fieldset>
+
+            <button type="button" class="btn btn-primary btn-icon-right size-lg" id="btnVerify">
+              <i class="icon icon-finish" aria-hidden="true"></i>
+              거주지 인증
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<!-- Modal -->
+<div class="modal" id="alert-1"
+     role="alertdialog" aria-modal="true"
+     aria-labelledby="alert-1-title" aria-describedby="alert-1-desc"
+     aria-hidden="true">
+  <div class="modal-overlay" data-modal-close></div>
+
+  <div class="modal-container" role="document" tabindex="-1">
+    <header class="modal-header">
+      <h2 id="alert-1-title" class="modal-title">행정정보공동이용 사전동의(필수)</h2>
+      <button type="button" class="modal-close" aria-label="닫기" data-modal-close></button>
+    </header>
+
+    <section class="modal-body">
+      <div class="gray-box scrol-y">
+        <h3>개인정보 제공 동의(필수)</h3>
+        <p>관련근거</p>
+        <ul class="list-type">
+          <li>전자정부법 제36조(구비서류의 전자적 확인 등)</li>
+          <li>전자정부법 제20조(민원인에 의하지 아니하는 민원처리)</li>
+          <li>전자정부법 제21조(행정기관 등의 전자적 행정업무 수행)</li>
+          <li>전자정부법 제36조(행정정보의 공동이용)</li>
+          <li>전자정부법 제37조(행정정보 공동이용의 위탁 등)</li>
+          <li>
+            개인정보보호법 제18조(개인정보의 목적 외 이용·제공 제한)
+            <ul class="list-type dot depth2">
+              <li>수집기관: 자격확인 서비스 정보 보유기관 (행정안전부, 법무부)</li>
+              <li>수집항목: 이름, 주민등록번호(외국인등록번호)</li>
+              <li>보유기간: 자격확인 후 즉시 폐기</li>
+              <li>본인은 위 정보로 행정정보공동이용을 통한 자격확인을 위하여 <br/>개인정보보호법 제18조 제3항에 의거 개인정보 및 자격정보의 활용·처리에 동의합니다.</li>
+            </ul>
+          </li>
+        </ul>
+        <p class="color-secondary guide-text">본인이 동의를 하지 않을 경우, 회원가입이 불가합니다.</p>
+      </div>
+    </section>
+
+    <footer class="modal-footer">
+      <button type="button" class="btn btn-primary btn-icon-right size-lg" data-modal-close data-modal-default>
+        <i class="icon icon-finish"></i>완료
+      </button>
+    </footer>
+  </div>
+</div>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+<script>
+(function () {
+  'use strict';
+
+  const MODAL_ID = 'alert-1';
+  const FOCUSABLE =
+    'a[href],area[href],button:not([disabled]),input:not([disabled]):not([type="hidden"]),'+
+    'select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+
+  let modal = null;
+  let lastFocused = null;
+
+  function openNow() {
+    // modal.js가 있으면 우선 사용
+    if (window.AppModal && typeof window.AppModal.open === 'function') {
+      window.AppModal.open(MODAL_ID);
+      return;
+    }
+    // 폴백: aria 토글 + 스크롤 잠금 + 포커스
+    modal = document.getElementById(MODAL_ID);
+    if (!modal) return;
+
+    lastFocused = document.activeElement;
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('body-lock');
+
+    const first =
+      modal.querySelector('[data-modal-default]') ||
+      modal.querySelector(FOCUSABLE) ||
+      modal.querySelector('.modal-container');
+
+    first && first.focus();
+  }
+
+  function closeNow() {
+    // modal.js가 있으면 우선 사용
+    if (window.AppModal && typeof window.AppModal.close === 'function') {
+      window.AppModal.close(MODAL_ID);
+      return;
+    }
+    // 폴백: aria 토글 + 스크롤 해제 + 포커스 복귀
+    modal = modal || document.getElementById(MODAL_ID);
+    if (!modal) return;
+
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('body-lock');
+
+    if (lastFocused && typeof lastFocused.focus === 'function') {
+      lastFocused.focus();
+    }
+    lastFocused = null;
+  }
+
+  // 로드 후 1회 자동 오픈
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', openNow, { once: true });
+  } else {
+    openNow();
+  }
+
+  // 닫기: (1) 닫기 버튼(data-modal-close), (2) 백드롭 클릭, (3) ESC
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('[data-modal-close]')) { e.preventDefault(); closeNow(); }
+    else if (e.target.classList.contains('modal-overlay')) { closeNow(); }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNow();
+  });
+})();
+</script>
+
+</body>
+</html>

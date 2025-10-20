@@ -1,0 +1,23 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 74px;
+  height: 48px;
+  border-radius: 8px;
+  padding: 0 20px;
+  @include body-1;
+
+  &.badge-notice {
+    background-color: var(--color-primary);
+    color: #fff;
+  }
+  &.primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+  &.secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+  }
+}

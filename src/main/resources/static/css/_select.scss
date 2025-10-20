@@ -1,0 +1,153 @@
+/* dropdown */
+.dropdown {
+  position: relative;
+  width: 100%;
+
+  &_button {
+    width: 100%;
+    height: 40px;
+    padding: 0 40px 0 12px; // 오른쪽 아이콘 공간
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--border-darken);
+    background: var(--color-white);      /* light: #fff, dark: #121212 */
+    color: var(--color-darken);          /* light: #3a3a3a, dark: #f5f5f5 */
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+
+    // 화살표 아이콘
+    &::after {
+      content: "";
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      width: 24px;
+      height: 24px;
+      background: url("/images/icon/icon-arrow-down.svg") no-repeat center / 24px 24px;
+      transform: translateY(-50%) rotate(0deg);
+      transition: transform 0.2s ease;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    &:hover,
+    &:focus { border-color: var(--color-primary); }
+  }
+
+  &_value {
+    color: var(--color-darken);
+    line-height: 1;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &_list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 4px);         /* 기본은 아래로 */
+    background: var(--color-white); /* 다크에서는 차콜 */
+    border: 1px solid var(--border-darken);
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0,0,0,.12);
+    max-height: 220px;              /* JS에서 동적으로 갱신 */
+    overflow: auto;
+    padding: 6px 0;
+    display: none;
+    z-index: 9999;
+  }
+
+  /* 공간 부족 시 위로 펼치기 */
+  &.is-above {
+    .dropdown_list {
+      top: auto;
+      bottom: calc(100% + 4px);
+      box-shadow: 0 -6px 16px rgba(0,0,0,.12);
+    }
+  }
+
+  /* 열림 상태 */
+  &[aria-open="true"] {
+    .dropdown_button::after { transform: translateY(-50%) rotate(180deg); }
+    .dropdown_list { display: block; }
+  }
+
+  &_option {
+    padding: 10px 12px;
+    cursor: pointer;
+    line-height: 1.4;
+    user-select: none;
+    color: var(--color-darken);
+    transition: background-color .15s ease, color .15s ease;
+
+    /* hover & active */
+    &:hover { background: var(--gray-200); }
+    &.is-active { background: var(--gray-300); }
+
+    /* 선택 상태: 배경과 글자 강조 */
+    &[aria-selected="true"] {
+      background: var(--gray-300);
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+  }
+
+  /* 에러 상태 */
+  &.error {
+    .dropdown_button {
+      border-color: var(--color-error);
+      &:hover,
+      &:focus { border-color: var(--color-error); }
+      &::after { opacity: 1; } /* 필요 시 아이콘 교체 */
+    }
+  }
+
+  /* 비활성 */
+  &.disabled {
+    .dropdown_button {
+      background-color: var(--bg-disabled);
+      border-color: var(--border-disabled);
+      color: var(--border-disabled);
+      cursor: not-allowed;
+      &:hover,
+      &:focus { border-color: var(--border-disabled); }
+      &::after { opacity: .5; }
+    }
+    .dropdown_value { color: var(--border-disabled); }
+  }
+
+  /* 플레이스홀더 상태 */
+  &.is-placeholder {
+    .dropdown_value { color: var(--gray-900); } /* 다크에서 중간톤 보조 텍스트 */
+  }
+
+  /* 선택 반영: data-selected=true 일 때 value 색상 포인트 */
+  &[data-selected="true"] {
+    .dropdown_value { color: var(--color-primary); }
+  }
+
+  /* size */
+  &.size-lg {
+    button {
+      height: 80px;
+      @include body-1;
+    }
+  }
+  &.size-md {
+    button {
+      height: 56px;
+      @include body-1;
+    }
+  }
+  &.size-sm {
+    button {
+      height: 48px;
+      @include body-2;
+    }
+  }
+}

@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<!-- 헤더에 header-jn 클래스 추가할 것 -->
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<div id="breadcrumb">
+  <div class="container">
+    <nav>
+      <ul>
+        <li>홈</li>
+        <li>소식</li>
+        <li aria-current="page">자주묻는질문</li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main id="contents">
+  <section class="section">
+    <div class="container">
+      <div class="title-wrap">
+        <div class="flex justify-space-between">
+          <h2 class="section-title">자주묻는질문</h2>
+          <div id="search-box">
+            <form id="searchbar" role="search" action="/search" method="get">
+              <input
+                class="text-field size-lg"
+                name="q"
+                placeholder="검색어를 입력해주세요."
+                aria-label="검색어"
+                autocomplete="off"
+                enterkeyhint="search">
+              <button class="btn icon-only size-lg" type="submit" aria-label="검색">
+                <i class="icon icon-search" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <nav class="tabs" aria-label="페이지 이동">
+        <a class="tab is-active" href="#" aria-current="page">전체</a>
+        <a class="tab" href="#" >지원금</a>
+        <a class="tab" href="#" >정책</a>
+        <a class="tab" href="#" >신청</a>
+        <a class="tab" href="#" >홈페이지</a>
+      </nav>
+
+      <div class="accordion" id="faqAccordion" data-behavior="single">
+        <!-- item 1 (open) -->
+        <div class="acc-item is-open">
+          <h3 class="acc-header">
+            <button type="button"
+                    class="acc-trigger"
+                    aria-expanded="true"
+                    aria-controls="acc-panel-1"
+                    id="acc-trigger-1">
+              <span class="acc-badge" aria-hidden="true">Q</span>
+              <span class="acc-title">지원대상은 누구인가요?</span>
+              <span class="acc-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="acc-panel" id="acc-panel-1" role="region" aria-labelledby="acc-trigger-1">
+            <div class="acc-panel-inner">
+              <span class="acc-badge" aria-hidden="true">A</span>
+              <span class="acc-content">대한민국 국적이 아닌 자(외국인, 외국국적동포 등)는 지원 대상에서 제외됩니다.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 2 -->
+        <div class="acc-item">
+          <h3 class="acc-header">
+            <button type="button"
+                    class="acc-trigger"
+                    aria-expanded="false"
+                    aria-controls="acc-panel-2"
+                    id="acc-trigger-2">
+              <span class="acc-badge" aria-hidden="true">Q</span>
+              <span class="acc-title">서울 종로구에 거주하는 외국인도 지원 받을 수 있나요?</span>
+              <span class="acc-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="acc-panel" id="acc-panel-2" role="region" aria-labelledby="acc-trigger-2" hidden>
+            <div class="acc-panel-inner">
+              <span class="acc-badge" aria-hidden="true">A</span>
+              <span class="acc-content">답변이 들어갑니다.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 3 -->
+        <div class="acc-item">
+          <h3 class="acc-header">
+            <button type="button"
+                    class="acc-trigger"
+                    aria-expanded="false"
+                    aria-controls="acc-panel-3"
+                    id="acc-trigger-3">
+              <span class="acc-badge" aria-hidden="true">Q</span>
+              <span class="acc-title">지원금액은 얼마인가요?</span>
+              <span class="acc-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="acc-panel" id="acc-panel-3" role="region" aria-labelledby="acc-trigger-3" hidden>
+            <div class="acc-panel-inner">
+              <span class="acc-badge" aria-hidden="true">A</span>
+              <span class="acc-content">답변이 들어갑니다.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 4 -->
+        <div class="acc-item">
+          <h3 class="acc-header">
+            <button type="button"
+                    class="acc-trigger"
+                    aria-expanded="false"
+                    aria-controls="acc-panel-4"
+                    id="acc-trigger-4">
+              <span class="acc-badge" aria-hidden="true">Q</span>
+              <span class="acc-title">신청하면 교통비는 언제, 어떻게 지원 받나요?</span>
+              <span class="acc-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="acc-panel" id="acc-panel-4" role="region" aria-labelledby="acc-trigger-4" hidden>
+            <div class="acc-panel-inner">
+              <span class="acc-badge" aria-hidden="true">A</span>
+              <span class="acc-content">답변이 들어갑니다.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 5 -->
+        <div class="acc-item">
+          <h3 class="acc-header">
+            <button type="button"
+                    class="acc-trigger"
+                    aria-expanded="false"
+                    aria-controls="acc-panel-5"
+                    id="acc-trigger-5">
+              <span class="acc-badge" aria-hidden="true">Q</span>
+              <span class="acc-title">현금으로 지급하나요?</span>
+              <span class="acc-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="acc-panel" id="acc-panel-5" role="region" aria-labelledby="acc-trigger-5" hidden>
+            <div class="acc-panel-inner">
+              <span class="acc-badge" aria-hidden="true">A</span>
+              <span class="acc-content">답변이 들어갑니다.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 6 -->
+        <div class="acc-item">
+          <h3 class="acc-header">
+            <button type="button"
+                    class="acc-trigger"
+                    aria-expanded="false"
+                    aria-controls="acc-panel-6"
+                    id="acc-trigger-6">
+              <span class="acc-badge" aria-hidden="true">Q</span>
+              <span class="acc-title">시흥시에 거주하는 외국인도 지원 받을 수 있나요?</span>
+              <span class="acc-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="acc-panel" id="acc-panel-6" role="region" aria-labelledby="acc-trigger-6" hidden>
+            <div class="acc-panel-inner">
+              <span class="acc-badge" aria-hidden="true">A</span>
+              <span class="acc-content">답변이 들어갑니다.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 7 -->
+        <div class="acc-item">
+          <h3 class="acc-header">
+            <button type="button"
+                    class="acc-trigger"
+                    aria-expanded="false"
+                    aria-controls="acc-panel-7"
+                    id="acc-trigger-7">
+              <span class="acc-badge" aria-hidden="true">Q</span>
+              <span class="acc-title">카드 신청이 가능한가요?</span>
+              <span class="acc-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="acc-panel" id="acc-panel-7" role="region" aria-labelledby="acc-trigger-7" hidden>
+            <div class="acc-panel-inner">
+              <span class="acc-badge" aria-hidden="true">A</span>
+              <span class="acc-content">답변이 들어갑니다.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 8 -->
+        <div class="acc-item">
+          <h3 class="acc-header">
+            <button type="button"
+                    class="acc-trigger"
+                    aria-expanded="false"
+                    aria-controls="acc-panel-8"
+                    id="acc-trigger-8">
+              <span class="acc-badge" aria-hidden="true">Q</span>
+              <span class="acc-title">지원 방법은 어떻게 되나요?</span>
+              <span class="acc-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="acc-panel" id="acc-panel-8" role="region" aria-labelledby="acc-trigger-8" hidden>
+            <div class="acc-panel-inner">
+              <span class="acc-badge" aria-hidden="true">A</span>
+              <span class="acc-content">답변이 들어갑니다.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 9 -->
+        <div class="acc-item">
+          <h3 class="acc-header">
+            <button type="button"
+                    class="acc-trigger"
+                    aria-expanded="false"
+                    aria-controls="acc-panel-9"
+                    id="acc-trigger-9">
+              <span class="acc-badge" aria-hidden="true">Q</span>
+              <span class="acc-title">가족 대신에 신청 가능한가요?</span>
+              <span class="acc-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="acc-panel" id="acc-panel-9" role="region" aria-labelledby="acc-trigger-9" hidden>
+            <div class="acc-panel-inner">
+              <span class="acc-badge" aria-hidden="true">A</span>
+              <span class="acc-content">답변이 들어갑니다.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 10 -->
+        <div class="acc-item">
+          <h3 class="acc-header">
+            <button type="button"
+                    class="acc-trigger"
+                    aria-expanded="false"
+                    aria-controls="acc-panel-10"
+                    id="acc-trigger-10">
+              <span class="acc-badge" aria-hidden="true">Q</span>
+              <span class="acc-title">중복 신청 가능한가요?</span>
+              <span class="acc-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="acc-panel" id="acc-panel-10" role="region" aria-labelledby="acc-trigger-10" hidden>
+            <div class="acc-panel-inner">
+              <span class="acc-badge" aria-hidden="true">A</span>
+              <span class="acc-content">답변이 들어갑니다.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <nav class="pagination" aria-label="페이지네이션" th:fragment="pagination">
+        <ul class="pagination-list" role="list">
+          <!-- 처음/이전 (1페이지 기준 비활성) -->
+          <li class="page-ctrl">
+            <a class="page-btn" href="" aria-label="첫 페이지" aria-disabled="true" tabindex="-1">
+              <i class="icon icon-arrow-left-end"></i>
+            </a>
+          </li>
+          <li class="page-ctrl">
+            <a class="page-btn" href="" aria-label="이전 페이지" aria-disabled="true" tabindex="-1">
+              <i class="icon icon-arrow-left"></i>
+            </a>
+          </li>
+
+          <!-- 숫자 -->
+          <li class="page-num is-current">
+            <span aria-current="page">1</span>
+          </li>
+          <li class="page-num"><a href="" aria-label="2페이지">2</a></li>
+          <li class="page-num"><a href="" aria-label="3페이지">3</a></li>
+          <li class="page-num"><a href="" aria-label="4페이지">4</a></li>
+          <li class="page-num"><a href="" aria-label="5페이지">5</a></li>
+
+          <!-- 다음/마지막 -->
+          <li class="page-ctrl">
+            <a class="page-btn" href="" aria-label="다음 페이지">
+              <i class="icon icon-arrow-right"></i>
+            </a>
+          </li>
+          <li class="page-ctrl">
+            <a class="page-btn" href="" aria-label="마지막 페이지">
+              <i class="icon icon-arrow-right-end"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+</body>
+</html>

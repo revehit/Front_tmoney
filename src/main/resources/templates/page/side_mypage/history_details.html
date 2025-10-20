@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<!-- 헤더에 header-jn 클래스 추가할 것 -->
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<div class="mypage-nav">
+  <div class="container fluid">
+    <nav>
+      <ul>
+        <li><a href="#">개명처리</a></li>
+        <li><a href="#">나의지자체</a></li>
+        <li><a href="#">지원금 신청결과</a></li>
+        <li ><a href="#" >지원금 내역 조회</a></li>
+        <li class="active"><a href="#" aria-current="page">이용내역 조회</a></li>
+        <li><a href="#">카드관리</a></li>
+        <li><a href="#">계좌관리</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main id="contents">
+  <section class="section">
+    <div class="container">
+      <div class="mypage-wrap">
+        <div class="mypage-header">
+          <h2 class="section-title">이용내역 조회</h2>
+        </div>
+        <div class="mng-wrap">
+          <div class="date-filter">
+            <div class="flex align-center gap24">
+              <h3>조회기간</h3>
+              <div class="flex align-canter gap8">
+                <!-- ✅ 년도 드롭다운 -->
+                <div class="dropdown size-lg" role="group" aria-labelledby="yearDropdownLabel">
+                  <span id="yearDropdownLabel" class="sr-only">년도 선택</span>
+                  <button type="button"
+                    id="yearDropdownBtn"
+                    class="dropdown_button"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-controls="yearDropdownList"
+                    aria-label="년도 선택 드롭다운">
+                    <span class="dropdown_value" data-placeholder="년도 선택">2025</span>
+                  </button>
+                  <ul class="dropdown_list"
+                      id="yearDropdownList"
+                      role="listbox"
+                      tabindex="-1"
+                      aria-labelledby="yearDropdownBtn">
+                    <li id="yearOpt2025" role="option" class="dropdown_option" data-value="2025" aria-selected="true">2025</li>
+                    <li id="yearOpt2024" role="option" class="dropdown_option" data-value="2024" aria-selected="false">2024</li>
+                    <li id="yearOpt2023" role="option" class="dropdown_option" data-value="2023" aria-selected="false">2023</li>
+                  </ul>
+                  <input type="hidden" name="year" value="2025">
+                </div>
+                <span class="flex-bar"></span>
+                <!-- ✅ 월 드롭다운 -->
+                <div class="dropdown size-lg" role="group" aria-labelledby="monthDropdownLabel">
+                  <span id="monthDropdownLabel" class="sr-only">월 선택</span>
+                  <button type="button"
+                    id="monthDropdownBtn"
+                    class="dropdown_button"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-controls="monthDropdownList"
+                    aria-label="월 선택 드롭다운">
+                    <span class="dropdown_value" data-placeholder="월 선택">10월</span>
+                  </button>
+                  <ul class="dropdown_list"
+                      id="monthDropdownList"
+                      role="listbox"
+                      tabindex="-1"
+                      aria-labelledby="monthDropdownBtn">
+                    <li id="monthOpt01" role="option" class="dropdown_option" data-value="01" aria-selected="false">1월</li>
+                    <li id="monthOpt02" role="option" class="dropdown_option" data-value="02" aria-selected="false">2월</li>
+                    <li id="monthOpt03" role="option" class="dropdown_option" data-value="03" aria-selected="false">3월</li>
+                    <li id="monthOpt04" role="option" class="dropdown_option" data-value="04" aria-selected="false">4월</li>
+                    <li id="monthOpt05" role="option" class="dropdown_option" data-value="05" aria-selected="false">5월</li>
+                    <li id="monthOpt06" role="option" class="dropdown_option" data-value="06" aria-selected="false">6월</li>
+                    <li id="monthOpt07" role="option" class="dropdown_option" data-value="07" aria-selected="false">7월</li>
+                    <li id="monthOpt08" role="option" class="dropdown_option" data-value="08" aria-selected="false">8월</li>
+                    <li id="monthOpt09" role="option" class="dropdown_option" data-value="09" aria-selected="false">9월</li>
+                    <li id="monthOpt10" role="option" class="dropdown_option" data-value="10" aria-selected="true">10월</li>
+                    <li id="monthOpt11" role="option" class="dropdown_option" data-value="11" aria-selected="true">11월</li>
+                    <li id="monthOpt12" role="option" class="dropdown_option" data-value="12" aria-selected="true">12월</li>
+                  </ul>
+  
+                  <input type="hidden" name="month" value="10">
+                </div>
+  
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary size-lg btn-icon-right">
+              <i class="icon icon-search"></i>
+              조회
+            </button>
+          </div>
+          <div class="table-wrap type-col">
+            <table>
+              <caption class="sr-only">이용 내역 테이블</caption>
+              <colgroup>
+                <col style="width:120px">
+                <col style="width:160px">
+                <col style="width:160px">
+                <col>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col">순번</th>
+                  <th scope="col">지급년월</th>
+                  <th scope="col">이용일자</th>
+                  <th scope="col">정산금액</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>10</td>
+                  <td>2025.10</td>
+                  <td>2025-9-31</td>
+                  <td>20,000원</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>2025.10</td>
+                  <td>2025-9-31</td>
+                  <td>20,000원</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>2025.10</td>
+                  <td>2025-9-31</td>
+                  <td>20,000원</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>2025.10</td>
+                  <td>2025-9-31</td>
+                  <td>20,000원</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>2025.10</td>
+                  <td>2025-9-31</td>
+                  <td>20,000원</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>2025.10</td>
+                  <td>2025-9-31</td>
+                  <td>20,000원</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>2025.10</td>
+                  <td>2025-9-31</td>
+                  <td>20,000원</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>2025.10</td>
+                  <td>2025-9-31</td>
+                  <td>20,000원</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2025.10</td>
+                  <td>2025-9-31</td>
+                  <td>20,000원</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>2025.10</td>
+                  <td>2025-9-31</td>
+                  <td>20,000원</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <nav class="pagination" aria-label="페이지네이션" th:fragment="pagination">
+            <ul class="pagination-list" role="list">
+              <!-- 처음/이전 (1페이지 기준 비활성) -->
+              <li class="page-ctrl">
+                <a class="page-btn" href="" aria-label="첫 페이지" aria-disabled="true" tabindex="-1">
+                  <i class="icon icon-arrow-left-end"></i>
+                </a>
+              </li>
+              <li class="page-ctrl">
+                <a class="page-btn" href="" aria-label="이전 페이지" aria-disabled="true" tabindex="-1">
+                  <i class="icon icon-arrow-left"></i>
+                </a>
+              </li>
+  
+              <!-- 숫자 -->
+              <li class="page-num is-current">
+                <span aria-current="page">1</span>
+              </li>
+              <li class="page-num"><a href="" aria-label="2페이지">2</a></li>
+              <li class="page-num"><a href="" aria-label="3페이지">3</a></li>
+              <li class="page-num"><a href="" aria-label="4페이지">4</a></li>
+              <li class="page-num"><a href="" aria-label="5페이지">5</a></li>
+  
+              <!-- 다음/마지막 -->
+              <li class="page-ctrl">
+                <a class="page-btn" href="" aria-label="다음 페이지">
+                  <i class="icon icon-arrow-right"></i>
+                </a>
+              </li>
+              <li class="page-ctrl">
+                <a class="page-btn" href="" aria-label="마지막 페이지">
+                  <i class="icon icon-arrow-right-end"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+</body>
+</html>

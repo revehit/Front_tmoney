@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<div id="breadcrumb">
+  <div class="container">
+    <nav>
+      <ul>
+        <li>홈</li>
+        <li>소식</li>
+        <li aria-current="page">공지사항</li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main id="contents">
+  <section class="section">
+    <div class="container">
+      <div class="title-wrap">
+        <div class="flex justify-space-between">
+          <h2 class="section-title">공지사항</h2>
+        </div>
+      </div>
+
+      <div class="board-detail">
+        <div class="title-box">
+          <span class="col-num">
+            <span class="badge badge-notice">공지</span>
+          </span>
+          <span class="col-title">개인정보처리방침 개정 안내</span>
+          <div class="data">
+            <span class="col-view">
+              <i class="icon icon-view"></i>
+              354
+            </span>
+            <span class="col-date">2025-02-14</span>
+          </div>
+        </div>
+        <div class="content-box">
+          <p>게시글 내용이 들어갑니다.</p>
+        </div>
+        <!-- 첨부파일 있을 경우 -->
+        <div class="attachment-box" >
+          <div class="attachment-top">
+            <span class="col col-title">
+              <i class="icon icon-attachment" aria-hidden="true"></i>
+              첨부파일
+            </span>
+            <a href="" class="btn-down" download aria-label="첨부파일 전체 다운로드">
+              전체 다운로드 
+              <i class="icon icon-download" aria-hidden="true"></i> 
+            </a>
+          </div>
+          <div class="attachment-list">
+            <ul>
+            <li class="file-item">
+              <i class="file-icon pdf" aria-hidden="true"></i>
+              <span class="file-name">test-file.pdf</span>
+              <div>
+                <span class="file-size">1.2MB</span>
+                <a class="btn btn-down btn-icon-only" download aria-label="test-file.pdf(1.2MB)">
+                  <i class="icon icon-download" aria-hidden="true"></i>
+                </a>
+              </div>
+            </li>
+            <li class="file-item">
+              <i class="file-icon xls" aria-hidden="true"></i>
+              <span class="file-name">test-file.xls</span>
+              <div>
+                <span class="file-size">500KB</span>
+                <a class="btn btn-down btn-icon-only" download aria-label="test-file.xls(500KB)">
+                  <i class="icon icon-download" aria-hidden="true"></i>
+                </a>
+              </div>
+            </li>
+            <li class="file-item">
+              <i class="file-icon doc" aria-hidden="true"></i>
+              <span class="file-name">test-file.docx</span>
+              <div>
+                <span class="file-size">500KB</span>
+                <a class="btn btn-down btn-icon-only" download aria-label="test-file.docx(500KB)">
+                  <i class="icon icon-download" aria-hidden="true"></i>
+                </a>
+              </div>
+            </li>
+            <li class="file-item">
+              <i class="file-icon jpg" aria-hidden="true"></i>
+              <span class="file-name">test-image.jpg</span>
+              <div>
+                <span class="file-size">2.3MB</span>
+                <a class="btn btn-down btn-icon-only" download aria-label="test-image.jpg(2.3MB)">
+                  <i class="icon icon-download" aria-hidden="true"></i>
+                </a>
+              </div>
+            </li>
+            <li class="file-item">
+              <i class="file-icon png" aria-hidden="true"></i>
+              <span class="file-name">test-image.png</span>
+              <div>
+                <span class="file-size">2.3MB</span>
+                <a class="btn btn-down btn-icon-only" download aria-label="test-image.png(2.3MB)">
+                  <i class="icon icon-download" aria-hidden="true"></i>
+                </a>
+              </div>
+            </li>
+            <li class="file-item">
+              <i class="file-icon hwp" aria-hidden="true"></i>
+              <span class="file-name">test-archive.hwp</span>
+              <div>
+                <span class="file-size">3.5MB</span>
+                <a class="btn btn-down btn-icon-only" download aria-label="test-archive.hwp(3.5MB)">
+                  <i class="icon icon-download" aria-hidden="true"></i>
+                </a>
+              </div>
+            </li>
+            <li class="file-item">
+              <i class="file-icon zip" aria-hidden="true"></i>
+              <span class="file-name">test-archive.zip</span>
+              <div>
+                <span class="file-size">3.5MB</span>
+                <a class="btn btn-down btn-icon-only" download aria-label="test-archive.zip(3.5MB)">
+                  <i class="icon icon-download" aria-hidden="true"></i>
+                </a>
+              </div>
+            </li>
+          </ul>
+          </div>
+        </div>
+
+        <!-- 게시글 하단 네비게이션 -->
+        <nav class="post-navigation" aria-label="게시글 탐색">
+          <ul class="post-nav-grid" role="list">
+            <!-- 이전글 -->
+            <li class="post-nav-item prev">
+              <a class="post-nav-link" href="" aria-label="이전 글 보기: (공지)서비스 이용약관 개정 안내">
+                <div class="flex">
+                  <i class="icon icon-arrow-left" aria-hidden="true"></i>
+                  <span class="post-nav-kicker">PREV</span>
+                </div>
+                <span class="post-nav-title">(공지)두 줄일 때 케이스 예시 입니다. 두 줄일 때 케이스 예시 입니다. 두 줄일 때 케이스 예시 입니다. 두 줄일 때 케이스 예시 입니다.</span>
+              </a>
+            </li>
+
+            <!-- 목록 -->
+            <li class="post-nav-item list">
+              <a class="btn btn-darken-line size-lg" href="" aria-label="목록으로 이동">
+                목록
+              </a>
+            </li>
+
+            <!-- 다음글 (없을 때 is-disabled + aria-disabled="true" + tabindex="-1") -->
+            <li class="post-nav-item next">
+              <a class="post-nav-link is-disabled" href="" aria-disabled="true" tabindex="-1">
+                <div class="flex">
+                  <span class="post-nav-kicker">NEXT</span>
+                  <i class="icon icon-arrow-right" aria-hidden="true"></i>
+                </div>
+                <span class="post-nav-title">다음글이 없습니다.</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<div id="breadcrumb">
+  <div class="container">
+    <nav>
+      <ul>
+        <li>홈</li>
+        <li>마이페이지</li>
+        <li aria-current="page">회원탈퇴</li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main id="contents">
+  <section class="section">
+    <div class="container size-sm">
+      <div class="mypage-wrap">
+        <div class="mypage-header">
+          <h2 class="section-title">회원탈퇴</h2>
+        </div>
+        <div class="gray-outer">
+          <ul class="list-type dot">
+            <li class="color-red">
+              회원 탈퇴 시 당월 재가입 불가하며 익월 1일부터 가입 가능합니다.
+            </li>
+            <li class="color-red">지급 전 탈퇴 시 지원금 신청에 대한 지원금이 지급되지 않습니다. </li>
+            <li> 탈퇴 후 재가입 하는 경우 탈퇴 전의 회원정보와 지급내역 정보는 복구되지 않습니다.</li>
+            <li>동일 ID로 본인 또는 타인이 재가입 할 수 없습니다.</li>
+            <li>회원 탈퇴 시 해당 계정의 이용 기록은 모두 삭제되며, 삭제된 데이터는 복구가 불가능합니다.</li>
+            <li>민원처리를 위한 회원정보 보유 : 탈퇴일로부터 1년</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container size-xsm">
+      <div class="form-box">
+        <form action="" method="post" novalidate>
+          <fieldset>
+            <legend class="sr-only">회원탈퇴</legend>
+            <div>
+              <p class="field-title" id="ft-name">아이디</p>
+              <input
+                type="text" class="text-field size-lg"
+                name="name" autocomplete="name"
+                readonly aria-labelledby="ft-name"
+                value="tmoney123">
+            </div>
+            <div>
+              <p class="field-title">비밀번호</p>
+              <input
+                type="password" class="text-field size-lg"
+                name="Password"
+                placeholder="비밀번호를 입력해주세요."
+                autocomplete="password"
+                minlength="8" maxlength="20"
+                required aria-required="true"
+                aria-labelledby="ft-pw"
+                aria-describedby="pwHelp1 pwHelp2"
+                autocapitalize="off" spellcheck="false"
+                pattern="^(?=.*[A-Za-z])(?=.*(\d|[^A-Za-z0-9]))[^\s]{8,20}$">
+            </div>
+          </fieldset>
+  
+          <div class="btn-wrap" role="group" aria-label="폼 작업">
+            <button type="button" class="btn btn-darken-line size-lg">취소</button>
+            <button type="submit" class="btn btn-primary size-lg">회원탈퇴</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+</body>
+</html>

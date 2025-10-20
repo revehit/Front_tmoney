@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<main id="contents">
+  <section class="section">
+    <div class="container size-sm">
+      <div class="login-wrap">
+        <div class="login-header">
+          <h2 class="section-title">비밀번호 찾기</h2>
+          <p>가입 당시 입력된 아래의 정보를 입력해주세요.</p>
+        </div>
+        <nav class="tabs" aria-label="페이지 이동">
+          <a class="tab" href="#">아이디 찾기</a>
+          <a class="tab is-active" href="#" aria-current="page">비밀번호 찾기</a>
+        </nav>
+        <div class="gray-outer">
+          <div class="pw2-box" role="group" aria-label="본인인증 수단 선택">
+            <button type="button" class="auth-btn phone" data-method="phone">
+              <i class="icon" aria-hidden="true"></i>
+              <span>휴대폰 인증</span>
+            </button>
+  
+            <button type="button" class="auth-btn ipin" data-method="ipin">
+              <i class="icon" aria-hidden="true"></i>
+              <span>아이핀 인증</span>
+            </button>
+          </div>
+          <div class="btn-wrap">
+            <button type="button" class="btn btn-darken-line size-lg">이전</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+</body>
+</html>

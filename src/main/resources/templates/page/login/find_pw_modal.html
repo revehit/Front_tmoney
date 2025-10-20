@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<main id="contents">
+  <section class="section">
+    <div class="container size-sm">
+      <div class="login-wrap">
+        <div class="login-header">
+          <h2 class="section-title">비밀번호 찾기</h2>
+          <p>가입 당시 입력된 아래의 정보를 입력해주세요.</p>
+        </div>
+        <nav class="tabs" aria-label="페이지 이동">
+          <a class="tab" href="#">아이디 찾기</a>
+          <a class="tab is-active" href="#" aria-current="page">비밀번호 찾기</a>
+        </nav>
+        <div class="gray-outer">
+          <div class="form-box">
+            <form action="" method="post" novalidate>
+              <div>
+                <p class="field-title">아이디</p>
+                <label class="sr-only" for="userId">아이디</label>
+                <input id="userId" name="userId" type="text" class="text-field size-lg"
+                      placeholder="아이디를 입력해주세요."
+                      autocomplete="username"
+                      required aria-required="true"
+                      minlength="6" maxlength="15"
+                      pattern="^[a-z][a-z0-9._]{5,14}$"
+                      aria-describedby="userIdHelp">
+                <!-- aria-describedby가 가리키는 도움말 최소 제공 -->
+                <p id="userIdHelp" class="sr-only">영문 소문자 시작, 소문자/숫자/._ 조합 6~15자</p>
+              </div>
+              <div class="btn-wrap">
+                <button type="button" class="btn btn-darken-line size-lg">취소</button>
+                <button type="button" class="btn btn-primary size-lg" data-modal-open="alert-1">다음</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<!-- Modal -->
+<div class="modal" id="alert-1"
+     role="alertdialog" aria-modal="true"
+     aria-labelledby="alert-1-title" aria-describedby="alert-1-desc"
+     aria-hidden="true">
+  <div class="modal-overlay" data-modal-close></div>
+
+  <div class="modal-container" role="document" tabindex="-1">
+    <!-- <header class="modal-header">
+      <h2 id="alert-1-title" class="modal-title">안내</h2>
+      <button type="button" class="modal-close" aria-label="닫기" data-modal-close></button>
+    </header> -->
+
+    <section class="modal-body">
+      <div class="modal-icon" aria-hidden="true">
+        <i class="icon icon-caution"></i>
+      </div>
+      <p class="modal-desc">
+        입력하신 정보가 존재하지 않습니다.
+      </p>
+    </section>
+
+    <footer class="modal-footer">
+      <button type="button" class="btn btn-darken-line size-lg" data-modal-close data-modal-default>
+        확인
+      </button>
+    </footer>
+  </div>
+</div>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.thymeleaf.user.mapper.UserMapper">
+
+    <!-- 목록 조회 -->
+    <select id="search" resultType="com.example.thymeleaf.user.dto.UserDto">
+        select
+        id,
+        username,
+        email,
+        first_name,
+        last_name,
+        birth_date,
+        phone,
+        created_at
+        from users
+        where 1 = 1
+        <if test="req.email != null and req.email != ''">
+            and lower(email) like concat('%', lower(#{req.email}), '%')
+        </if>
+        <if test="req.firstName != null and req.firstName != ''">
+            and lower(first_name) like concat('%', lower(#{req.firstName}), '%')
+        </if>
+        <if test="req.lastName != null and req.lastName != ''">
+            and lower(last_name) like concat('%', lower(#{req.lastName}), '%')
+        </if>
+        <if test="req.username != null and req.username != ''">
+            and lower(username) like concat('%', lower(#{req.username}), '%')
+        </if>
+        <if test="req.phone != null and req.phone != ''">
+            and lower(phone) like concat('%', lower(#{req.phone}), '%')
+        </if>
+
+        order by
+        <choose>
+            <when test="sort == 'username'"> username </when>
+            <when test="sort == 'email'"> email </when>
+            <when test="sort == 'firstName'"> first_name </when>
+            <when test="sort == 'lastName'"> last_name </when>
+            <when test="sort == 'createdAt'"> created_at </when>
+            <otherwise> id </otherwise>
+        </choose>
+        <choose>
+            <when test="dir != null and (dir.toLowerCase() == 'asc' or dir.toLowerCase() == 'desc')">
+                ${dir}
+            </when>
+            <otherwise> asc </otherwise>
+        </choose>
+
+        limit #{limit} offset #{offset}
+    </select>
+
+    <!-- 카운트 -->
+    <select id="count" resultType="long">
+        select count(1)
+        from users
+        where 1 = 1
+        <if test="req.email != null and req.email != ''">
+            and lower(email) like concat('%', lower(#{req.email}), '%')
+        </if>
+        <if test="req.firstName != null and req.firstName != ''">
+            and lower(first_name) like concat('%', lower(#{req.firstName}), '%')
+        </if>
+        <if test="req.lastName != null and req.lastName != ''">
+            and lower(last_name) like concat('%', lower(#{req.lastName}), '%')
+        </if>
+        <if test="req.username != null and req.username != ''">
+            and lower(username) like concat('%', lower(#{req.username}), '%')
+        </if>
+        <if test="req.phone != null and req.phone != ''">
+            and lower(phone) like concat('%', lower(#{req.phone}), '%')
+        </if>
+    </select>
+
+    <!-- 단건 -->
+    <select id="findById" parameterType="long" resultType="com.example.thymeleaf.user.dto.UserDto">
+        select
+            id,
+            username,
+            email,
+            first_name,
+            last_name,
+            birth_date,
+            phone,
+            created_at
+        from users
+        where id = #{id}
+    </select>
+
+    <!-- insert -->
+    <insert id="insert" parameterType="com.example.thymeleaf.user.dto.UserDto"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into users (
+            username, password, email, first_name, last_name, birth_date, phone, created_at
+        ) values (
+                     #{username}, #{password}, #{email}, #{firstName}, #{lastName}, #{birthDate}, #{phone}, now()
+                 )
+    </insert>
+
+    <!-- update -->
+    <update id="update" parameterType="com.example.thymeleaf.user.dto.UserDto">
+        update users
+        <set>
+            <if test="username  != null"> username   = #{username}, </if>
+            <if test="email     != null"> email      = #{email}, </if>
+            <if test="firstName != null"> first_name = #{firstName}, </if>
+            <if test="lastName  != null"> last_name  = #{lastName}, </if>
+            <if test="birthDate != null"> birth_date = #{birthDate}, </if>
+            <if test="phone     != null"> phone      = #{phone} </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- delete -->
+    <delete id="delete" parameterType="long">
+        delete from users where id = #{id}
+    </delete>
+
+</mapper>

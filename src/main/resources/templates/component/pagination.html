@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- 그대로 include해서 쓰는 프래그먼트 -->
+<div th:fragment="pagination">
+    <div id="pagination">
+        <button class="btn-pgn first">
+            <em class="icon icon-doublearrow"></em>
+        </button>
+        <button class="btn-pgn prev">
+            <em class="icon icon-arrow-right"></em>
+        </button>
+        <ul class="num-list">
+            <li class="active"><a href="#url" class="">1</a></li>
+            <li><a href="#url" class="">2</a></li>
+            <li><a href="#url" class="">3</a></li>
+            <li><a href="#url" class="">4</a></li>
+            <li><a href="#url" class="">5</a></li>
+        </ul>
+        <button class="btn-pgn next">
+            <em class="icon icon-arrow-right"></em>
+        </button>
+        <button class="btn-pgn last">
+            <em class="icon icon-doublearrow"></em>
+        </button>
+    </div>
+
+    <script>
+        // pagination.js (vanilla JS 버전)
+        function createPagination({ container, totalItems, itemsPerPage, currentPage = 1, onPageChange }) {
+            const totalPages = Math.max(1, Math.ceil((+totalItems || 0) / (+itemsPerPage || 1)));
+            const root = (typeof container === 'string') ? document.querySelector(container) : container;
+            if (!root) return console.warn('createPagination: container not found:', container);
+
+            const numList = root.querySelector('.num-list');
+            if (!numList) return console.warn('createPagination: .num-list not found in container');
+
+            // 버튼들을 깔끔히 재바인딩하기 위해 clone 방식 사용(기존 리스너 제거 효과)
+            function resetButton(selector) {
+                const btn = root.querySelector(selector);
+                if (!btn) return null;
+                const clone = btn.cloneNode(true);
+                btn.parentNode.replaceChild(clone, btn);
+                return clone;
+            }
+
+            // 숫자 목록(ul)도 위임 한 번만 걸면 render마다 리스너 중복이 없음
+            function clearChildren(el) {
+                while (el.firstChild) el.removeChild(el.firstChild);
+            }
+
+            function render() {
+                clearChildren(numList);
+                for (let i = 1; i <= totalPages; i++) {
+                    const li = document.createElement('li');
+                    if (i === currentPage) li.classList.add('active');
+                    const a = document.createElement('a');
+                    a.setAttribute('href', '#');
+                    a.textContent = String(i);
+                    li.appendChild(a);
+                    numList.appendChild(li);
+                }
+
+                // 상단/하단 네비 버튼 리스너 재바인딩(중복 방지)
+                const first = resetButton('.first');
+                const prev  = resetButton('.prev');
+                const next  = resetButton('.next');
+                const last  = resetButton('.last');
+
+                if (first) first.addEventListener('click', () => changePage(1));
+                if (prev)  prev.addEventListener('click',  () => changePage(Math.max(1, currentPage - 1)));
+                if (next)  next.addEventListener('click',  () => changePage(Math.min(totalPages, currentPage + 1)));
+                if (last)  last.addEventListener('click',  () => changePage(totalPages));
+            }
+
+            // 숫자 클릭은 이벤트 위임(중복 리스너 방지)
+            if (!numList.__bound) {
+                numList.addEventListener('click', (e) => {
+                    const a = e.target.closest('a');
+                    if (!a) return;
+                    e.preventDefault();
+                    const li = a.closest('li');
+                    if (!li) return;
+                    const index = Array.prototype.indexOf.call(numList.children, li) + 1; // 1-based
+                    changePage(index);
+                });
+                numList.__bound = true;
+            }
+
+            function changePage(newPage) {
+                if (newPage === currentPage) return;
+                currentPage = newPage;
+                render();
+                try {
+                    if (typeof onPageChange === 'function') onPageChange(currentPage);
+                } catch (err) {
+                    console.error('onPageChange error:', err);
+                }
+            }
+
+            render(); // 초기 렌더
+        }
+    </script>
+</div>
+
+</body>
+</html>

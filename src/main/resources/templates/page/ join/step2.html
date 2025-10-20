@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<main id="contents">
+  <section class="section">
+    <div class="container fluid">
+      <div class="join-wrap">
+        <div class="join-header">
+          <h2 class="section-title">회원가입</h2>
+          <ol class="step-box" role="list" aria-label="회원가입 단계">
+            <li>
+              <div class="circle" aria-hidden="true">
+                <span>1</span>
+                <i class="icon document"></i>
+              </div>
+              <p>약관동의</p>
+            </li>
+            <li aria-current="step" class="active">
+              <div class="circle" aria-hidden="true">
+                <span>2</span>
+                <i class="icon lock"></i>
+              </div>
+              <p>본인인증 <span class="sr-only">(현재 단계)</span></p>
+            </li>
+            <li>
+              <div class="circle" aria-hidden="true">
+                <span>3</span>
+                <i class="icon write"></i>
+              </div>
+              <p>정보입력</p>
+            </li>
+            <li>
+              <div class="circle" aria-hidden="true">
+                <span>4</span>
+                <i class="icon check"></i>
+              </div>
+              <p>가입완료</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="container size-sm">
+      <div class="join-wrap">
+        <div class="gray-outer">
+          <div class="step2-box" role="group" aria-label="본인인증 수단 선택">
+            <button type="button" class="auth-btn kakao" data-method="kakao">
+              <i class="icon" aria-hidden="true"></i>
+              <span>카카오뱅크 인증</span>
+            </button>
+  
+            <button type="button" class="auth-btn toss" data-method="toss">
+              <i class="icon" aria-hidden="true"></i>
+              <span>토스 인증</span>
+            </button>
+  
+            <button type="button" class="auth-btn phone" data-method="phone">
+              <i class="icon" aria-hidden="true"></i>
+              <span>휴대폰 인증</span>
+            </button>
+  
+            <button type="button" class="auth-btn ipin" data-method="ipin">
+              <i class="icon" aria-hidden="true"></i>
+              <span>아이핀 인증</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.auth-btn');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const method = btn.dataset.method;
+      // 클릭 시 수행할 로직
+      console.log(`선택된 인증 방식: ${method}`);
+      // 예: location.href = `/auth/${method}`;
+    });
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+@import "../../css/mixin";
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--gray-400);
+
+  .tab {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include body-1;
+    color: var(--gray-700);
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--gray-400);
+    cursor: pointer;
+    transition: color .2s ease, border-color .2s ease;
+
+    &:hover,
+    &:focus {
+      color: var(--color-primary);
+    }
+
+    &.is-active {
+      color: var(--color-darken);
+      @include body-1;
+      border-color: var(--color-darken);
+    }
+
+    &:disabled {
+      color: var(--gray-700);
+      cursor: not-allowed;
+    }
+  }
+}
+
+.tab-panels {
+  margin-top: 16px;
+
+  .tab-panel {
+    display: none;
+    background: var(--color-white);
+
+    &.is-active {
+      display: block;
+    }
+  }
+}

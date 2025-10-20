@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<!-- 헤더에 header-jn 클래스 추가할 것 -->
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<div class="mypage-nav">
+  <div class="container fluid">
+    <nav>
+      <ul>
+        <li class=""><a href="#">개명처리</a></li>
+        <li class="active"><a href="#" aria-current="page">나의지자체</a></li>
+        <li><a href="#">지원금 신청결과</a></li>
+        <li><a href="#">지원금 내역 조회</a></li>
+        <li><a href="#">이용내역 조회</a></li>
+        <li><a href="#">카드관리</a></li>
+        <li><a href="#">계좌관리</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main id="contents">
+  <section class="section">
+    <div class="container size-xsm">
+      <div class="mypage-wrap">
+        <div class="mypage-header">
+          <h2 class="section-title">나의지자체</h2>
+        </div>
+        <div class="form-box">
+          <form action="" method="post" novalidate aria-describedby="formGuide">
+            <fieldset>
+              <legend class="sr-only">지자체 및 지원사업 변경</legend>
+              <!-- 지자체 변경 -->
+              <div class="form-field">
+                <p class="field-title" id="lbl-local">지자체 변경</p>
+                <div class="flex gap8">
+                  <label for="localName" class="sr-only">현재 지자체</label>
+                  <input
+                    id="localName"
+                    name="localName"
+                    type="text"
+                    class="text-field size-lg"
+                    readonly
+                    value="시흥시"
+                    aria-labelledby="lbl-local"
+                  />
+                  <button type="button" class="btn btn-darkgray size-lg">거주지 인증</button>
+                </div>
+              </div>
+
+              <!-- 가입한 지원사업 -->
+              <div class="form-field">
+                <p class="field-title" id="lbl-program">가입한 지원사업</p>
+
+                <div class="flex dir-col gap8" aria-labelledby="lbl-program">
+                  <div class="flex gap8">
+                    <label for="program1" class="sr-only">지원사업 1</label>
+                    <input
+                      id="program1"
+                      type="text"
+                      class="text-field size-lg"
+                      readonly
+                      value="시흥시 교통비지원 사업"
+                      aria-describedby="guide-program"
+                    />
+                    <a href="/programs/sh-transport" class="btn btn-darkgray size-lg" aria-label="시흥시 교통비지원 사업 페이지 바로가기">
+                      바로가기
+                    </a>
+                  </div>
+
+                  <div class="flex gap8">
+                    <label for="program2" class="sr-only">지원사업 2</label>
+                    <input
+                      id="program2"
+                      type="text"
+                      class="text-field size-lg"
+                      readonly
+                      value="시흥시 청년 교통비지원 사업"
+                      aria-describedby="guide-program"
+                    />
+                    <a href="/programs/sh-youth" class="btn btn-darkgray size-lg" aria-label="시흥시 청년 교통비지원 사업 페이지 바로가기">
+                      바로가기
+                    </a>
+                  </div>
+
+                  <div class="flex gap8">
+                    <label for="program3" class="sr-only">지원사업 3</label>
+                    <input
+                      id="program3"
+                      type="text"
+                      class="text-field size-lg"
+                      readonly
+                      value="시흥시 사업"
+                      aria-describedby="guide-program"
+                    />
+                    <a href="/programs/sh" class="btn btn-darkgray size-lg" aria-label="시흥시 사업 페이지 바로가기">
+                      바로가기
+                    </a>
+                  </div>
+                </div>
+
+                <!-- 안내문: aria-describedby 연결 대상 -->
+                <div id="guide-program" class="guide-wrap">
+                  <p class="guide-text color-red">지원사업 참여 지자체의 주민만 교통비 할인이 지원됩니다.</p>
+                  <p class="guide-text color-red">거주지 인증 갱신을 통해 나의 지자체를 변경할 수 있습니다.</p>
+                  <p class="guide-text color-red">가입한 지원사업 바로가기 버튼을 통해 해당 지원 사업 홈페이지로 이동할 수 있습니다.</p>
+                </div>
+              </div>
+            </fieldset>
+
+            <div id="formGuide" class="sr-only">지자체 및 지원사업 변경 입력 폼입니다.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+</body>
+</html>

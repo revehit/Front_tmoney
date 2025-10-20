@@ -1,0 +1,186 @@
+/* ===========================
+   Accessible, Cross-Browser Reset
+   (KOR typography + A11y + Low Specificity)
+   =========================== */
+
+/* 0) 시스템 테마 존중 (폼 기본 위젯 대비 등) */
+:root {
+  color-scheme: light dark;
+}
+
+/* 1) 박스 모델 + 축소 방지 기본값 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  min-width: 0; /* overflow 이슈 예방 */
+  min-height: 0;
+  flex-shrink: 1;
+}
+
+/* 2) HTML 기본값 */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-wrap: break-word; /* 긴 단어 자동 줄바꿈 */
+  word-break: normal;
+  box-sizing: border-box;
+  hanging-punctuation: first allow-end last; /* 가독성(지원 브라우저에서만) */
+}
+
+/* 언어별 줄바꿈 최적화 */
+:lang(ko) {
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+:lang(en) {
+  hyphens: auto; /* 영어 단어 자동 하이픈 */
+}
+
+/* 3) 기본 margin 제거 (특이성 0으로) */
+:where(body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd) { margin: 0; }
+:where(ul, ol) { margin: 0; padding: 0; list-style: none; }
+
+/* 4) 루트/바디 타이포그래피 & 렌더링 */
+body {
+  color: var(--color-darken);
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth; /* reduce-motion에서 보정됨 */
+  min-height: 100vh;
+  background: var(--color-bg, #fff);
+}
+
+/* 5) HTML5 요소 블록화 (구형 브라우저 안전장치) */
+:where(article, aside, details, figcaption, figure,
+footer, header, hgroup, main, nav, section) { display: block; }
+
+/* 6) 표/캡션 접근성 (시각숨김) */
+:where(caption, legend) {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px; height: 1px;
+  margin: -1px; overflow: hidden; padding: 0;
+  position: absolute; white-space: nowrap;
+}
+
+/* 7) 테이블 기본값: fixed로 성능/레이아웃 안정 */
+table { border-spacing: 0; table-layout: fixed; width: 100%; }
+
+/* 8) 미디어 요소: 반응형 + 표시 일관 */
+:where(img, picture, video, canvas, svg) { max-width: 100%; }
+:where(picture, video, canvas) { display: block; }
+img { vertical-align: middle; border-style: none; }
+svg { display: block; fill: currentColor; /* 아이콘 컬러 상속 */ }
+
+/* 9) 링크/인터랙션 요소 */
+a {
+  color: inherit;
+  text-decoration: none;
+  text-underline-position: under;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 10) 버튼 & 폼 컨트롤: 상식적 초기화 + 폰트 상속 */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+}
+button {
+  cursor: pointer;
+  padding: 0;
+  border-radius: 0;
+}
+button:disabled { cursor: default; }
+
+/* iOS select 화살표 제거는 appearance로 충분, IE용 ms-expand 제거(잔존 호환) */
+select::-ms-expand { display: none; }
+
+/* 11) 자동완성 배경/텍스트 보정 (WebKit) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: currentColor !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--autofill-bg, #fff) inset !important;
+  transition: background-color 9999s ease-out 0s; /* 깜빡임 완화 */
+}
+
+/* 12) 포커스 가시성: 키보드 사용자는 확실히 보이게 */
+:where(:focus) { outline: none; }
+:where(:focus-visible) {
+  outline: 3px solid var(--focus-color, rgba(0, 95, 204, 0.8));
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+  /* iOS Safari에서 fieldset이 overflow시 border clipping 방지 */
+  display: block;
+  position: relative;
+}
+legend {
+  display: table;          /* 일부 브라우저에서 height 계산 문제 해결 */
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: inherit;
+  white-space: normal;
+}
+/* 13) 스크롤바 - Firefox + WebKit 동시 대응 */
+:root {
+  /* thumb / track (Firefox) */
+  scrollbar-color: var(--scroll-thumb, #6a6a6a) var(--scroll-track, #f1f1f1);
+  scrollbar-width: thin;
+}
+html {
+  /* WebKit */
+  &::-webkit-scrollbar { width: 10px; height: 10px; background-color: var(--scroll-track, #f1f1f1); }
+  &::-webkit-scrollbar-thumb { background-color: var(--scroll-thumb, #6a6a6a); border-radius: 6px; }
+  &::-webkit-scrollbar-thumb:hover { filter: brightness(1.1); }
+}
+
+/* 14) HR 보조 클래스 */
+hr {
+  border: none;
+  border-top: 1px solid var(--hr-color, #ddd);
+}
+hr.type-dashed { border-top-style: dashed; }
+hr.type-hide { display: none; }
+
+/* 15) 접근성: 모션 민감 사용자 배려 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 16) 프린트 친화 (기본) */
+@media print {
+  /* 인쇄 최적화: 배경, 불필요 UI 숨김은 개별 프로젝트에서 확장 */
+  a { text-decoration: underline; }
+}

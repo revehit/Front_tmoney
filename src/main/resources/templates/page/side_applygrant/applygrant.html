@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<!-- 헤더에 header-jn 클래스 추가할 것 -->
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<div id="breadcrumb">
+  <div class="container">
+    <nav>
+      <ul>
+        <li>홈</li>
+        <li aria-current="page">지원금 신청</li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main id="contents">
+  <section class="section">
+    <div class="container size-xsm">
+      <div class="login-wrap">
+        <div class="login-header">
+          <h2 class="section-title">지원금 신청</h2>
+        </div>
+      </div>
+      <div class="join-wrap">
+        <div class="causion-text">
+          <strong>
+            <span class="color-secondary">종로구 지역 주민</span>
+            <span>만 신청할 수 있습니다.</span>
+          </strong>
+          <p class="guide-text">※ 행정안전부 행정정보공동이용센터와 연계한 인증으로 이용자가 많을 경우 약 5분 정도 소요됩니다.</p>
+        </div>
+        <div class="form-box">
+          <form action="" method="post" novalidate>
+            <fieldset>
+              <div>
+                <p class="field-title">주민등록번호</p>
+                <legend class="sr-only">주민등록번호</legend>
+                <div class="sr-only" id="rrnHelp">앞 6자리(생년월일)와 뒤 7자리를 순서대로 입력하세요.</div>
+                <div class="flex align-center gap8" role="group" aria-describedby="rrnHelp rrnErr">
+                  <label for="rrn1" class="sr-only">앞 6자리</label>
+                  <input id="rrn1" name="rrn1" type="text" class="text-field size-lg"
+                        placeholder="YYMMDD"
+                        inputmode="numeric" autocomplete="off"
+                        required aria-required="true"
+                        minlength="6" maxlength="6" pattern="^\d{6}$"
+                        aria-describedby="rrnHelp rrnErr">
+  
+                  <span class="flex-bar" aria-hidden="true">-</span>
+  
+                  <label for="rrn2" class="sr-only">뒤 7자리</label>
+                  <input id="rrn2" name="rrn2" type="password" class="text-field size-lg"
+                        placeholder="*******"
+                        inputmode="numeric" autocomplete="off"
+                        required aria-required="true"
+                        minlength="7" maxlength="7" pattern="^[1-8]\d{6}$"
+                        aria-describedby="rrnHelp rrnErr">
+                </div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <div>
+                <p class="field-title">증빙서류</p>
+                <p class="guide-text">장애인, 국가유공자, 저소득층, 외국인, 임산부, 다자녀일 경우 증빙서류를 첨부해주시기 바랍니다.</p>
+                <p class="guide-text">해당 유형의 확장자만 파일을 등록할 수 있습니다. (jpg, jpeg, pdf)</p>
+                <p class="guide-text">파일 1개 당 크기는 10MB를 초과할 수 없으며, 최대 3개까지 등록할 수 있습니다.</p>
+                <!-- 증빙서류 업로드 -->
+                <div class="file-box" id="evidenceUploader"
+                    data-accept=".jpg,.jpeg,.pdf"
+                    data-max-files="3"
+                    data-max-size="10485760"> <!-- 10MB -->
+
+                  <!-- 드래그앤드롭 영역 + 키보드 대체 수단 -->
+                  <div class="file-drop" role="group" aria-describedby="evidenceHelp">
+                    <input id="evidenceInput" class="file-input" type="file" hidden
+                          accept=".jpg,.jpeg,.pdf" multiple>
+                    <div class="file-drop-inner" tabindex="0" aria-label="첨부파일 드롭 영역">
+                      <p class="file-drop-msg">
+                        첨부파일을 여기에 끌어다 놓거나,<br>
+                        파일 선택 버튼을 직접 선택해주세요.
+                      </p>
+                      <button type="button" class="btn btn-darkgray size-md" data-action="browse">
+                        파일첨부
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- 업로드된 파일 리스트 -->
+                  <ul class="file-list" aria-live="polite" aria-relevant="additions removals">
+                    <!-- JS가 항목을 렌더링 -->
+                  </ul>
+
+                  <!-- 리스트 아이템 템플릿 -->
+                  <template id="fileItemTpl">
+                    <li class="file-item">
+                      <span class="file-name"></span>
+                      <button type="button" class="btn btn-red btn-icon-right"
+                              data-action="remove" aria-label="파일 삭제">
+                        <i class="icon icon-x" aria-hidden="true"></i>삭제
+                      </button>
+                    </li>
+                  </template>
+                </div>
+              </div>
+            </fieldset>
+            <button type="button" class="btn btn-primary btn-icon-right size-lg">
+              <i class="icon icon-finish" aria-hidden="true"></i>
+              거주지 인증
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+<script>
+  // 페이지 로드 후 초기화
+  document.addEventListener('DOMContentLoaded', function () {
+    const up = new FileUploader('#evidenceUploader');
+
+    // 선택: 에러/변경 콜백
+    up.on('error', (e) => {
+      const msg = e.type === 'ext'
+        ? '허용되지 않은 확장자입니다.'
+        : '파일 크기가 제한을 초과했습니다.';
+      alert(msg);
+    });
+  });
+</script>
+
+</body>
+</html>

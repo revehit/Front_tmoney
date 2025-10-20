@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/main.css}" />
+
+  <script th:src="@{/js/theme.js}"></script>
+  <script th:src="@{/js/vendor/aos.js}"></script>
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<main id="contents">
+  <section class="section section1">
+    <div class="container">
+      <div class="swiper"></div>
+      <div class="login-box"></div>
+    </div>
+  </section>
+
+  <section class="section section2">
+    <div class="container">
+      <div class="flex justify-center">
+        <div class="transform-txt" aria-hidden="true">
+          <span>교</span><span>통</span><span>비</span><span>&nbsp;</span>
+          <span>지</span><span>원</span><span>,</span><span>&nbsp;</span>
+          <span>더</span><span>&nbsp;</span><span>쉽</span><span>고</span><span>&nbsp;</span>
+          <span>빠</span><span>르</span><span>게</span><br/>
+          <span>'</span><span>교</span><span>통</span><span>비</span><span>지</span><span>원</span><span>&nbsp;</span>
+          <span>통</span><span>합</span><span>포</span><span>털</span><span>'</span><span>과</span><span></span>
+          <span>함</span><span>께</span><span></span>
+          <span>스</span><span>마</span><span>트</span><span>한</span><span></span>
+          <span>이</span><span>동</span>
+        </div>
+        <!-- 스크린리더 전용 전체 텍스트 -->
+        <p class="blind">
+          교통비지원, 더 쉽고 빠르게 '교통비지원 통합포털'과 함께 스마트한 이동
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section3">
+    <div class="container">
+      <div class="box">
+        <video th:src="@{/video/type-a-1-video.mp4}" loop autoplay class="img3"></video>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section4">
+    <div class="container">
+      <div class="flex">
+        <div class="text-box"
+          data-aos="fade-right" 
+          data-aos-offset="100" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000" 
+        >
+          <h2>누가 교통비<br/>
+            지원금을 신청<br/>
+            할 수 있나요?<br/>
+          </h2>
+          <h3>어린이부터 어르신까지 연령대에 따라<br/>
+            다양한 대상자가 지원금을 신청할 수 있어요!
+          </h3>
+          <p class="">* 지원금 신청과 입금 절차는 각 지자체별 정책에 따라 다를 수 있습니다.</p>
+          <a href="#" class="btn-link">자세히 보기 <i class="icon right"></i></a>
+        </div>
+        <div class="img-box">
+          <div class="box" 
+            data-aos="fade-up" 
+            data-aos-offset="100" 
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000" 
+          >
+            <p>어린이</p>
+            <span class="round">만 6세 이상</span>
+            <img th:src="@{/images/main/img-section4-1.png}" alt="어린이 이미지">
+          </div>
+          <div class="box"
+            data-aos="fade-up" 
+            data-aos-offset="100" 
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1500" 
+          >
+            <p>청소년</p>
+            <span class="round">만 13세~18세</span>
+            <img src="./assets/images/main/img-section4-2.png" alt="청소년 이미지">
+          </div>
+          <div class="box"
+            data-aos="fade-up" 
+            data-aos-offset="100" 
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000" 
+          >
+            <p>어르신</p>
+            <span class="round gray">만 65세 이상</span>
+            <img src="./assets/images/main/img-section4-3.png" alt="어르신 이미지">
+          </div>
+          <div class="box"
+            data-aos="fade-up" 
+            data-aos-offset="100" 
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1500" 
+          >
+            <div class="etc">해당<br/>지자체 주민</div>
+            <img src="./assets/images/main/img-section4-4.png" alt="지자체 주민 이미지">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 필요 시 공통 스크립트 -->
+<script th:src="@{/js/vendor/common.js}"></script>
+<script th:src="@{/js/theme.js}"></script>
+<script>
+/* ===== GSAP 플러그인 등록 ===== */
+gsap.registerPlugin(ScrollTrigger);
+
+/* ===== 테마 헬퍼 ===== */
+const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+const inkColor = () => isDark() ? 'rgba(255,255,255,1)' : 'rgba(0,0,0,1)';
+
+let tlTextFill; // 타임라인 전역 참조
+
+function buildTextFillTL() {
+  const root = document.querySelector('.transform-txt');
+  if (!root) return;
+
+  // 기존 타임라인 정리
+  if (tlTextFill) {
+    if (tlTextFill.scrollTrigger) tlTextFill.scrollTrigger.kill();
+    tlTextFill.kill();
+    tlTextFill = null;
+  }
+
+  // 시작색 고정 (검정 20%)
+  gsap.set('.transform-txt span', { color: 'rgba(0,0,0,.2)' });
+
+  // 새 타임라인
+  const ink = inkColor();
+  tlTextFill = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.transform-txt',
+      start: 'top bottom',
+      end: 'bottom center',
+      scrub: 3
+    }
+  });
+
+  document.querySelectorAll('.transform-txt span').forEach((span, i) => {
+    tlTextFill.to(span, { color: ink, duration: 0.5 }, i * 0.1);
+  });
+}
+
+/* ===== 비디오 자동재생(무음/인라인) ===== */
+function setupVideo() {
+  const video = document.querySelector('.img3');
+  if (!video) return;
+  // iOS/모바일 자동재생 호환
+  video.setAttribute('muted', '');
+  video.muted = true;
+  video.setAttribute('playsinline', '');
+  video.setAttribute('webkit-playsinline', '');
+  // 시도
+  const playAttempt = () => video.play().catch(err => {
+    console.log('자동재생 차단됨:', err);
+  });
+  // 네트워크idle 이전이라면 canplay 시도
+  if (video.readyState >= 2) playAttempt();
+  else video.addEventListener('canplay', playAttempt, { once: true });
+}
+
+/* ===== 헤더 메뉴 호버/나가기 (예: #header nav li) =====
+   jQuery:
+   $navLi.on('mouseenter', fn); $('#header').on('mouseleave', fn);
+*/
+function setupHeaderMenu() {
+  const header = document.querySelector('#header');
+  const navLis = document.querySelectorAll('#header nav li');
+  if (!header || navLis.length === 0) return;
+
+  navLis.forEach(li => {
+    li.addEventListener('mouseenter', () => {
+      navLis.forEach(el => el.classList.remove('on'));
+      li.classList.add('on');
+      header.classList.add('menu-on');
+    });
+  });
+
+  header.addEventListener('mouseleave', () => {
+    navLis.forEach(el => el.classList.remove('on'));
+    header.classList.remove('menu-on');
+  }, { passive: true });
+}
+
+/* ===== 토글/외부클릭 닫힘 패턴 예시 =====
+   .btn-float 클릭 ⇒ .dialog에 .on 추가, 바깥 클릭 시 제거
+*/
+function setupDialogToggle() {
+  const trigger = document.querySelector('.btn-float');
+  const dialog  = document.querySelector('.dialog');
+  if (!trigger || !dialog) return;
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dialog.classList.add('on');
+    outsideClick(trigger, dialog, () => dialog.classList.remove('on'));
+  });
+}
+
+/* ===== 테마 변경 반응 ===== */
+function setupThemeReactivity() {
+  // 커스텀 이벤트가 있을 때
+  window.addEventListener('themechange', buildTextFillTL);
+
+  // 폴백: data-theme 속성 변경 감지
+  const mo = new MutationObserver(muts => {
+    if (muts.some(m => m.attributeName === 'data-theme')) buildTextFillTL();
+  });
+  mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+}
+
+/* ===== 초기화 ===== */
+function init() {
+  setupVideo();
+  setupHeaderMenu();
+  setupDialogToggle();
+  setupThemeReactivity();
+  buildTextFillTL();
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+
+</body>
+</html>

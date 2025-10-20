@@ -1,0 +1,290 @@
+@import "mixin";
+
+/* =========================================
+   Button
+   - Filled: hover/focus/active → rgba(var(--*-rgb), α)
+   - Line  : gray 배경 + 텍스트/보더만 강조
+   - 접근성: :focus-visible 링, [aria-disabled] 대응
+========================================= */
+.btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* 텍스트+아이콘 간격 */
+  min-width: 80px;
+  padding: 0 16px;
+  @include body-2;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: var(--bg-white);
+  color: var(--color-darken);
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+
+  /* 아이콘은 currentColor 상속 (필터 제거) */
+  svg, i {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    pointer-events: none;
+  }
+
+  /* 키보드 포커스 가시화 */
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(46, 125, 255, .3);
+  }
+
+  &:hover:not(:disabled):not(.is-disabled):not([aria-disabled="true"]),
+  &:focus:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+    /* 필요 시 inset 효과 사용
+    box-shadow: inset 0 0 0 3px rgba(0,0,0,.08);
+    */
+  }
+
+  &:active:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+    /* 클릭 피드백만, 치수 변화 없음 */
+  }
+
+  &:disabled,
+  &.is-disabled,
+  &[aria-disabled="true"] {
+    opacity: .6;
+    cursor: not-allowed;
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  /* =======================
+  0) size
+  ======================= */
+  &.size-lg {
+    height: 80px;
+    @include body-1;
+  }
+  &.size-md {
+    height: 56px;
+    @include body-1;
+  }
+  &.size-sm {
+    height: 48px;
+    @include body-2;
+  }
+
+  /* =======================
+  1) Filled 타입
+  ======================= */
+  &.btn-primary {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+
+    &:hover:not(:disabled):not(.is-disabled):not([aria-disabled="true"]),
+    &:focus:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgba(var(--color-primary-rgb), .85);
+      border-color: rgba(var(--color-primary-rgb), .85);
+    }
+    &:active:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgba(var(--color-primary-rgb), .70);
+      border-color: rgba(var(--color-primary-rgb), .70);
+    }
+    .icon {
+      filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+    }
+  }
+
+  &.btn-secondary {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: var(--color-white);
+
+    &:hover:not(:disabled):not(.is-disabled):not([aria-disabled="true"]),
+    &:focus:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgba(var(--color-secondary-rgb), .85);
+      border-color: rgba(var(--color-secondary-rgb), .85);
+    }
+    &:active:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgba(var(--color-secondary-rgb), .70);
+      border-color: rgba(var(--color-secondary-rgb), .70);
+    }
+    .icon {
+      filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+    }
+  }
+
+  &.btn-red {
+    background: var(--color-red);
+    border-color: var(--color-red);
+    color: var(--color-white);
+
+    &:hover:not(:disabled):not(.is-disabled):not([aria-disabled="true"]),
+    &:focus:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgba(var(--color-red-rgb), .85);
+      border-color: rgba(var(--color-red-rgb), .85);
+    }
+    &:active:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgba(var(--color-red-rgb), .70);
+      border-color: rgba(var(--color-red-rgb), .70);
+    }
+    .icon {
+      filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+    }
+  }
+
+  &.btn-blue {
+    background: var(--color-blue);
+    border-color: var(--color-blue);
+    color: var(--color-white);
+
+    &:hover:not(:disabled):not(.is-disabled):not([aria-disabled="true"]),
+    &:focus:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgba(var(--color-blue-rgb), .85);
+      border-color: rgba(var(--color-blue-rgb), .85);
+    }
+    &:active:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgba(var(--color-blue-rgb), .70);
+      border-color: rgba(var(--color-blue-rgb), .70);
+    }
+    .icon {
+      filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+    }
+  }
+
+  &.btn-darken {
+    background: var(--bg-darken);
+    border-color: var(--color-darken);
+    color: var(--color-white);
+
+    &:hover:not(:disabled):not(.is-disabled):not([aria-disabled="true"]),
+    &:focus:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgba(var(--color-darken-rgb), .85);
+      border-color: rgba(var(--color-darken-rgb), .85);
+    }
+    &:active:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgba(var(--color-darken-rgb), .70);
+      border-color: rgba(var(--color-darken-rgb), .70);
+    }
+  }
+
+  &.btn-darkgray {
+    background: var(--gray-700);
+    border-color: var(--gray-700);
+    color: var(--color-white);
+
+    &:hover:not(:disabled):not(.is-disabled):not([aria-disabled="true"]),
+    &:focus:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgba(var(--gray-700-rgb), .85);
+      border-color: rgba(var(--gray-700-rgb), .85);
+    }
+    &:active:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgba(var(--gray-700-rgb), .70);
+      border-color: rgba(var(--gray-700-rgb), .70);
+    }
+  }
+
+  /* =======================
+  2) Outlined 타입
+  ======================= */
+  &.btn-red-line {
+    background: var(--bg-white);
+    border-color: var(--color-red);
+    color: var(--color-red);
+
+    &:hover:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgb(var(--gray-200-rgb));
+      border-color: rgba(var(--color-red-rgb), .85);
+      color: rgba(var(--color-red-rgb), .85);
+    }
+    &:active:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgb(var(--gray-300-rgb));
+      border-color: rgba(var(--color-red-rgb), .70);
+      color: rgba(var(--color-red-rgb), .70);
+    }
+  }
+
+  &.btn-blue-line {
+    background: var(--bg-white);
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+
+    &:hover:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgb(var(--gray-200-rgb));
+      border-color: rgba(var(--color-blue-rgb), .85);
+      color: rgba(var(--color-blue-rgb), .85);
+    }
+    &:active:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgb(var(--gray-300-rgb));
+      border-color: rgba(var(--color-blue-rgb), .70);
+      color: rgba(var(--color-blue-rgb), .70);
+    }
+  }
+
+  &.btn-darken-line {
+    background: var(--bg-white);
+    border-color: var(--color-darken);
+    color: var(--color-darken);
+
+    &:hover:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgb(var(--gray-200-rgb));
+      border-color: rgba(var(--color-darken-rgb), .85);
+      color: rgba(var(--color-darken-rgb), .85);
+    }
+    &:active:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgb(var(--gray-300-rgb));
+      border-color: rgba(var(--color-darken-rgb), .70);
+      color: rgba(var(--color-darken-rgb), .70);
+    }
+  }
+
+  /* =======================
+  3) 아이콘 조합
+  ======================= */
+  &.btn-icon-left { /* 방향 유틸 필요 시 사용 */
+    /* flex-direction: row; (기본) */
+  }
+
+  &.btn-icon-right {
+    flex-direction: row-reverse;
+  }
+
+  /* =======================
+  4) 아이콘만 버튼
+  ======================= */
+  &.btn-icon-only {
+    min-width: auto;
+    width: 24px; // size(s)
+    height: 24px; // size(s)
+    padding: 0;
+    border-radius: 4px;
+
+    svg, i {
+      width: 18px;
+      height: 18px;
+    }
+
+    &.size-lg {
+      width: 48px;
+      height: 48px;
+
+      svg, i {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &:hover:not(:disabled):not(.is-disabled):not([aria-disabled="true"]),
+    &:focus:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgb(var(--gray-200-rgb));
+    }
+    &:active:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgb(var(--gray-300-rgb));
+    }
+  }
+}
+
+.btn-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

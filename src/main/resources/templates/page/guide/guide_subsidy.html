@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<div id="breadcrumb">
+  <div class="container">
+    <nav>
+      <ul>
+        <li>홈</li>
+        <li>이용안내</li>
+        <li aria-current="page">지원금 신청 및 지급 안내</li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main id="contents">
+  <section class="section">
+    <div class="container">
+      <div class="page-wrap">
+        <div class="page-header">
+          <h2 class="section-title">지원금 신청 및 지급 안내</h2>
+          <p class="guide-text color-red">지자체별 세부 정책은 ‘지자체별 서비스 안내’ 를 참고해주세요.</p>
+        </div>
+        <div class="flex dir-col gap24">
+          <div class="line-box">
+            <h3>신청기간</h3>
+            <ul class="list-type">
+              <li>신청기간 : 분기별(3월, 6월, 9월, 12월) 신청 및 지급</li>
+            </ul>
+          </div>
+          <div class="line-box">
+            <h3>신청방법</h3>
+            <ul class="list-type check primary">
+              <li>온라인 :  교통비 지원 홈페이지 회원가입 후 신청</li>
+              <li>방문신청 :  주소지 동 주민센터 방문 신청</li>
+            </ul>
+          </div>
+          <div class="line-box">
+            <h3>신청요건(구비서류)</h3>
+            <ul class="list-type check primary">
+              <li>(공통): 주민센터 방문 신청 시 신분증 추가 지참</li>
+              <li>65세 이상 어르신 : 서울시 어르신 우대용 교통카드(지하철 무임승차용), 본인명의 계좌</li>
+              <li>6세~18세 어린이·청소년 : 어린이·청소년 선불 후불 교통카드, 본인명의 계좌
+                <p class="guide-text color-red">어린이·청소년 선불 교통카드는 발급 후 교통카드사 홈페이지 등에 할인 등록 (미등록 시 일반요금 적용 및 지원 제외)</p>
+              </li>
+            </ul>
+          </div>
+          <div class="line-box">
+            <h3>신청절차</h3>
+            <p class="sr-only">총 5단계 안내</p>
+            <ol class="staps">
+              <li class="step-box">
+                <div class="flex align-center">
+                  <div class="box" aria-hidden="true">STEP 1</div>
+                  <p class="sr-only">1단계</p>
+                  <ul class="list-type">
+                    <li>교통비 지원 홈페이지 회원 가입 또는 주민센터 방문 가입</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="step-box">
+                <div class="flex align-center">
+                  <div class="box" aria-hidden="true">STEP 2</div>
+                  <p class="sr-only">2단계</p>
+                  <ul class="list-type">
+                    <li>회원가입 시 등록한 교통카드로 서울시 내 시내&middot;마을버스 이용
+                      <p class="guide-text color-red">어르신들의 경우 우대용 교통카드 충전 후 사용(티머니 스티커가 부착된 편의점, 지하철 역사 등)</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="step-box">
+                <div class="flex align-center">
+                  <div class="box" aria-hidden="true">STEP 3</div>
+                  <p class="sr-only">3단계</p>
+                  <ul class="list-type">
+                    <li>분기별 신청기간 내 거주지 인증 및 교통비 지원 신청</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="step-box">
+                <div class="flex align-center">
+                  <div class="box" aria-hidden="true">STEP 4</div>
+                  <ul class="list-type">
+                    <p class="sr-only">4단계</p>
+                    <li>대상자 교통카드 데이터 정산 및 검증 실시</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="step-box">
+                <div class="flex align-center">
+                  <div class="box" aria-hidden="true">STEP 5</div>
+                  <p class="sr-only">5단계</p>
+                  <ul class="list-type">
+                    <li>회원가입 시 등록한 환급계좌로 지원금 입금</li>
+                  </ul>
+                </div>
+              </li>
+            </ol>
+          </div>
+          <div class="line-box">
+            <h3>지원금 지급 절차</h3>
+            <p>분기별(3월, 6월, 9월, 12월) 지급</p>
+            <div class="table-wrap type-rowcol">
+              <table>
+                <caption class="sr-only">분기별 산출기간과 지급시기</caption>
+                <colgroup>
+                  <col style="width:160px"><col><col><col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th scope="col">구분</th>
+                    <th scope="col">1분기</th>
+                    <th scope="col">2분기</th>
+                    <th scope="col">3분기</th>
+                    <th scope="col">4분기</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">산출기간</th>
+                    <td>전년도 12월~2월 사용한 교통비</td>
+                    <td>3월~5월 사용한 교통비</td>
+                    <td>6월~8월 사용한 교통비</td>
+                    <td>9월~11월 사용한 교통비</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">지급시기</th>
+                    <td>3월 말</td>
+                    <td>6월 말</td>
+                    <td>9월 말</td>
+                    <td>12월 말</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="line-box">
+            <h3>유의사항</h3>
+            <ul class="list-type check primary">
+              <li>1인당 1카드만 등록 및 사용이 가능하므로 버스 탑승 시 1인승 이용 결제만 버스요금 지원(다인승 불인정)</li>
+              <li>신청 시 등록한 교통카드로 서울시 버스 탑승 시 사용한 이용내역만 지원</li>
+            </ul>
+          </div>
+          <div class="line-box">
+            <h3>신청방법</h3>
+            <ul class="list-type check primary">
+              <li>다른 사람의 명의 도용 등 허위로 신청할 경우에는 『형법』 제 231조에 따라 형사고발
+                <p class="guide-text color-red">중앙부처 및 서울시에서 시행하는 다른 사업을 통하여 명시적으로 교통비를 지원 받는 경우에는 중복지원 불가</p>
+              </li>
+              <li>신청 시 등록한 교통카드로 서울시 버스 탑승 시 사용한 이용내역만 지원</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<!-- 헤더에 header-jn 클래스 추가할 것 -->
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<div class="mypage-nav">
+  <div class="container fluid">
+    <nav>
+      <ul>
+        <li><a href="#">개명처리</a></li>
+        <li><a href="#">나의지자체</a></li>
+        <li><a href="#">지원금 신청결과</a></li>
+        <li ><a href="#" >지원금 내역 조회</a></li>
+        <li><a href="#">이용내역 조회</a></li>
+        <li><a href="#" >카드관리</a></li>
+        <li class="active"><a href="#" aria-current="page">계좌관리</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main id="contents">
+  <section class="section">
+    <div class="container">
+      <div class="mypage-wrap">
+        <div class="mypage-header">
+          <h2 class="section-title">계좌관리</h2>
+        </div>
+        <div class="mng-wrap">
+          <div class="table-wrap type-row visible">
+            <div class="form-box">
+              <table>
+                <caption class="sr-only">계좌관리 테이블</caption>
+                <colgroup>
+                  <col><col><col><col>
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <!-- scope 교정 -->
+                    <th scope="row">현재 은행명</th>
+                    <td>신한은행</td>
+                    <th scope="row">현재 카드번호</th>
+                    <td>
+                      <fieldset>
+                        <legend id="bankFieldTitle" class="blind">카드번호 선택</legend>
+                        <!-- fieldset이 이름 제공하므로 aria-labelledby는 선택사항 -->
+                        <div class="dropdown size-md fluid" data-name="">
+                          <!-- aria-label 제거(시각 텍스트 사용) -->
+                          <button type="button"
+                                  id="bankDropdownBtn"
+                                  class="dropdown_button"
+                                  aria-haspopup="listbox"
+                                  aria-expanded="false"
+                                  aria-controls="bankDropdownList">
+                            <span class="dropdown_value" data-placeholder="카드선택">카드선택</span>
+                          </button>
+
+                          <!-- listbox는 키보드 포커스를 받을 수 있게 tabindex="0" 권장 -->
+                          <ul class="dropdown_list"
+                              id="bankDropdownList"
+                              role="listbox"
+                              tabindex="0"
+                              aria-labelledby="bankDropdownBtn">
+                            <li id="bankOptShinhan" role="option" class="dropdown_option"
+                                data-value="신한은행 1111-2222-3333-4444" aria-selected="false">
+                              신한은행 1111-2222-3333-4444
+                            </li>
+                            <li id="bankOptKB" role="option" class="dropdown_option"
+                                data-value="국민은행 2222-3333-4444-5555" aria-selected="false">
+                              국민은행 2222-3333-4444-5555
+                            </li>
+                          </ul>
+
+                          <!-- 의미 맞게 name 변경 권장 -->
+                          <input type="hidden" name="selectedCard" value="">
+                        </div>
+                      </fieldset>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">현재 계좌번호</th> <!-- was scope="col" -->
+                    <td>101011111111</td>
+                    <th scope="row">변경 계좌번호</th> <!-- was scope="col" -->
+                    <td>
+                      <fieldset>
+                        <!-- 중복 id 교정 -->
+                        <legend id="bankFieldAccount" class="blind">변경 계좌번호 입력</legend>
+                        <div class="flex align-center gap8">
+                          <!-- 접근 가능한 이름/힌트/입력 모드/패턴 보강 -->
+                          <label for="acctNumber" class="sr-only">변경 계좌번호</label>
+                          <input id="acctNumber" type="text" class="text-field size-md fluid"
+                                inputmode="numeric" pattern="[0-9]{6,20}"
+                                aria-describedby="acctHelp"
+                                placeholder="숫자만 입력해주세요">
+                          <button type="button" class="btn btn-darkgray size-md">계좌 인증</button>
+                        </div>
+                        <p id="acctHelp" class="sr-only">숫자만 입력, 6자리 이상 20자리 이하</p>
+                      </fieldset>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">현재 예금주명</th> <!-- was scope="col" -->
+                    <td>티머니</td>
+                    <th scope="row">변경 예금주명</th> <!-- was scope="col" -->
+                    <td>
+                      <fieldset>
+                        <!-- 중복 id 교정 -->
+                        <legend id="bankFieldHolder" class="blind">변경 예금주 입력</legend>
+                        <!-- 접근 가능한 이름 부여 -->
+                        <label for="acctHolder" class="sr-only">변경 예금주</label>
+                        <input id="acctHolder" type="text" class="text-field size-md fluid"
+                              placeholder="변경 예금주를 입력해주세요.">
+                      </fieldset>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+  
+          <div class="btn-wrap">
+            <button type="submit" class="btn btn-primary size-lg">변경</button>
+          </div>
+
+          <div>
+            <h3 class="section-sub-title">변경이력</h3>
+            <div class="table-wrap type-col">
+              <table>
+                <caption class="sr-only">계좌변경내역 테이블</caption>
+                <colgroup>
+                  <col style="width:120px">
+                  <col style="width:200px">
+                  <col style="width:200px">
+                  <col>
+                  <col style="width:200px">
+                  <col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th scope="col">순번</th>
+                    <th scope="col">변경일</th>
+                    <th scope="col">변경 후 은행명</th>
+                    <th scope="col">변경 후 계좌번호</th>
+                    <th scope="col">변경 전 은행명</th>
+                    <th scope="col">변경 전 카드번호</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>10</td>
+                    <td>2025.10.02</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td>2025.10.02</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td>2025.10.02</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td>2025.10.02</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>2025.10.02</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>2025.10.02</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>2025.10.02</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>2025.10.02</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>2025.10.02</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>2025.10.02</td>
+                    <td>신한은행</td>
+                    <td>12345678987654</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+  
+          <nav class="pagination" aria-label="페이지네이션" th:fragment="pagination">
+            <ul class="pagination-list" role="list">
+              <!-- 처음/이전 (1페이지 기준 비활성) -->
+              <li class="page-ctrl">
+                <a class="page-btn" href="" aria-label="첫 페이지" aria-disabled="true" tabindex="-1">
+                  <i class="icon icon-arrow-left-end"></i>
+                </a>
+              </li>
+              <li class="page-ctrl">
+                <a class="page-btn" href="" aria-label="이전 페이지" aria-disabled="true" tabindex="-1">
+                  <i class="icon icon-arrow-left"></i>
+                </a>
+              </li>
+  
+              <!-- 숫자 -->
+              <li class="page-num is-current">
+                <span aria-current="page">1</span>
+              </li>
+              <li class="page-num"><a href="" aria-label="2페이지">2</a></li>
+              <li class="page-num"><a href="" aria-label="3페이지">3</a></li>
+              <li class="page-num"><a href="" aria-label="4페이지">4</a></li>
+              <li class="page-num"><a href="" aria-label="5페이지">5</a></li>
+  
+              <!-- 다음/마지막 -->
+              <li class="page-ctrl">
+                <a class="page-btn" href="" aria-label="다음 페이지">
+                  <i class="icon icon-arrow-right"></i>
+                </a>
+              </li>
+              <li class="page-ctrl">
+                <a class="page-btn" href="" aria-label="마지막 페이지">
+                  <i class="icon icon-arrow-right-end"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+</body>
+</html>

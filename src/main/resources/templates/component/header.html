@@ -1,0 +1,116 @@
+<header id="header" role="banner" th:fragment="siteHeader">
+  <div class="container fluid">
+    <div class="accessibility-box" aria-label="접근성 및 보기 설정">
+      <div class="text-size" role="group" aria-label="화면 크기 조절">
+        <span id="txtSizeLabel">화면 크기</span>
+        <button type="button" class="btn-text-plus" aria-labelledby="txtSizeLabel" aria-controls="pageRoot" aria-describedby="txtSizeStatus">
+          <i class="icon icon-plus" aria-hidden="true"></i><span class="blind">화면 크게</span>
+        </button>
+        <button type="button" class="btn-text-minus" aria-labelledby="txtSizeLabel" aria-controls="pageRoot" aria-describedby="txtSizeStatus">
+          <i class="icon icon-minus" aria-hidden="true"></i><span class="blind">화면 작게</span>
+        </button>
+        <span id="txtSizeStatus" class="blind" aria-live="polite"></span>
+      </div>
+      <div class="theme-box" role="group" aria-label="테마 전환">
+        <span id="themeLabel">고대비</span>
+        <button type="button"
+                class="btn-contrast"
+                aria-labelledby="themeLabel"
+                aria-pressed="false"
+                aria-describedby="themeStatus">
+          OFF
+          <span class="blind">고대비 모드 토글</span>
+        </button>
+        <span id="themeStatus" class="blind" aria-live="polite"></span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="header-inner">
+      <h1>
+        <a th:href="@{/}" aria-label="홈으로 이동"></a>
+      </h1>
+
+      <!-- GNB -->
+      <nav id="gnb1" aria-label="주요 메뉴">
+        <ul class="gnb-list" role="menubar">
+          <li role="none" class="has-sub">
+            <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="sub-plat">플랫폼소개</button>
+            <div id="sub-plat" class="depth-box" role="group">
+              <div class="depth-inner">
+                <a role="menuitem" href="">플랫폼소개1</a>
+                <a role="menuitem" href="">플랫폼소개2</a>
+                <a role="menuitem" href="">플랫폼소개3</a>
+                <a role="menuitem" href="">플랫폼소개4</a>
+              </div>
+            </div>
+          </li>
+
+          <li role="none" class="has-sub">
+            <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="sub-svc">서비스안내</button>
+            <div id="sub-svc" class="depth-box" role="group">
+              <div class="depth-inner">
+                <a role="menuitem" href="">서비스안내1</a>
+                <a role="menuitem" href="">서비스안내2</a>
+                <a role="menuitem" href="">서비스안내3</a>
+                <a role="menuitem" href="">서비스안내4</a>
+              </div>
+            </div>
+          </li>
+
+          <li role="none" class="has-sub">
+            <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="sub-guide">이용안내</button>
+            <div id="sub-guide" class="depth-box" role="group">
+              <div class="depth-inner">
+                <a role="menuitem" href="">이용안내1</a>
+              </div>
+            </div>
+          </li>
+
+          <li role="none" class="has-sub">
+            <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="sub-news">소식</button>
+            <div id="sub-news" class="depth-box" role="group">
+              <div class="depth-inner">
+                <a role="menuitem" href="">공지사항</a>
+                <a role="menuitem" href="">소식1</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="gnb">
+        <div class="util-box" aria-label="사용자 메뉴">
+          <a href="#">로그인</a>
+          <span aria-hidden="true"></span>
+          <a th:href="@{/page/join/step1}">회원가입</a>
+        </div>
+        <!-- 사이트맵 열기 버튼 -->
+        <button type="button" class="btn-menu" aria-controls="sitemap" aria-expanded="false" aria-label="사이트맵 열기">
+          <div aria-hidden="true"></div><div aria-hidden="true"></div><div aria-hidden="true"></div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- sitemap -->
+  <div id="sitemap" class="sitemap" role="navigation" aria-label="사이트맵">
+    <div class="container">
+      <ul>
+        <li>
+          <p>Brand</p>
+          <ul class="depth2">
+            <li><a href="">Tmoney 스토리</a></li>
+            <li><a href="">인사말</a></li>
+            <li><a href="">연혁</a></li>
+            <li><a href="">비전/핵심가치</a></li>
+            <li><a href="">오시는 길</a></li>
+          </ul>
+        </li>
+        <!-- 이하 동일 -->
+      </ul>
+    </div>
+  </div>
+</header>

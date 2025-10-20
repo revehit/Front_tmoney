@@ -1,0 +1,15 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)   // 🔥 이 부분만 수정
+    repositories {
+        mavenCentral()
+    }
+}
+
+rootProject.name = "code-thymeleaf"

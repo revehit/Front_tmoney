@@ -1,0 +1,58 @@
+@import "../../css/mixin";
+
+#searchbar {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--gray-400);
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 600px;
+  &:focus-within {
+    outline: 2px solid var(--primary, #0b5fff);
+    outline-offset: 2px;
+  }
+  .text-field {
+    border: 0;
+    width: 100%;
+    &:focus { outline: none; }
+  }
+  .btn {
+    width: 50px;
+    height: 80px;
+    .icon {
+      width: 36px;
+      height: 36px;
+    }
+  }
+}
+
+#search-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  .dropdown {
+    width: 178px;
+  }
+}
+/* datepicker filter */
+.date-filter {
+  width: 100%;
+  background-color: var(--color-primary-hover);
+  padding: 16px 32px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  button {
+    margin-left: auto;
+    width: 180px
+  }
+  h3 {
+    @include heading-3;
+  }
+  .date-range {
+    .datepicker {
+      width: 180px;
+      @include body-2;
+    }
+  }
+}

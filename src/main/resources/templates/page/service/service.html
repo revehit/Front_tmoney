@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<div id="breadcrumb">
+  <div class="container">
+    <nav>
+      <ul>
+        <li>홈</li>
+        <li>소식</li>
+        <li aria-current="page">지자체별 서비스 안내</li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main id="contents">
+  <section class="section">
+    <div class="container">
+      <div class="page-wrap">
+        <div class="page-header">
+          <div class="with-img">
+            <img src="/images/sub/img-logo-jn.png" alt="종로구 로고">
+            <h2 class="section-title">종로구 교통비 지원사업 안내</h2>
+          </div>
+          <p>교통약자의 교통비 부담 경감과 대중교통 활성화를 위해 종로구에서 어르신&middot;어린이&middot;청년&middot;청소년을 대상으로 버스요금을 지원하는 사업입니다.</p>
+        </div>
+        <div class="flex dir-col gap24">
+          <div class="line-box" id="target1">
+            <h3>지원 대상</h3>
+            <ul class="list-type">
+              <li>교통약자의 교통비 부담 경감과 대중교통 활성화를 위해 종로구에서 어르신&middot;어린이&middot;청년&middot;청소년을 대상으로 버스요금을 지원하는 사업입니다.</li>
+            </ul>
+          </div>
+          <div class="line-box" id="target2">
+            <h3>지원 내용</h3>
+            <ul class="list-type">
+              <li>서울시 시내버스, 마을버스 이용요금 실비 지원</li>
+              <li class="color-primary">※경기&middot;공항&middot;광역&middot;좌석&middot;시외 버스 등 제외</li>
+            </ul>
+          </div>
+          <div class="line-box" id="target3">
+            <h3>지원 금액</h3>
+            <ul class="list-type">
+              <li>서울특별시 종로구 어르신(65세 이상)&middot;청년(19세~24세)&middot;청소년(13세~18세)&middot;어린이(6세~12세)</li>
+            </ul>
+            <div class="round-box">
+              <div class="box">
+                <h4>어린이</h4>
+                <div class="img-box">
+                  <img src="/images/sub/img-people1.png" alt="어린이 이미지">
+                </div>
+                <div>
+                  <p>연간: 240,000원</p>
+                  <p>분기별 지급상한액: 60,000원</p>
+                </div>
+              </div>
+              <div class="box">
+                <h4>청소년</h4>
+                <div class="img-box">
+                  <img src="/images/sub/img-people2.png" alt="청소년 이미지">
+                </div>
+                <div>
+                  <p>연간: 240,000원</p>
+                  <p>분기별 지급상한액: 60,000원</p>
+                </div>
+              </div>
+              <div class="box">
+                <h4>어르신</h4>
+                <div class="img-box">
+                  <img src="/images/sub/img-people4.png" alt="어르신 이미지">
+                </div>
+                <div>
+                  <p>연간: 160,000원</p>
+                  <p>분기별 지급상한액: 40,000원</p>
+                </div>
+              </div>
+              <div class="box">
+                <h4>지역주민</h4>
+                <div class="img-box">
+                  <img src="/images/sub/img-people5.png" alt="지역주민 이미지">
+                </div>
+                <div>
+                  <p>연간: 80,000원</p>
+                  <p>분기별 지급상한액: 20,000원</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="line-box" id="target4">
+            <h3>지급 시기</h3>
+            <p>분기별(3월, 6월, 9월, 12월) 지급</p>
+            <div class="table-wrap type-rowcol">
+              <table>
+                <caption class="sr-only">분기별 산출기간과 지급시기</caption>
+                <colgroup>
+                  <col style="width:160px"><col><col><col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th scope="col">구분</th>
+                    <th scope="col">1분기</th>
+                    <th scope="col">2분기</th>
+                    <th scope="col">3분기</th>
+                    <th scope="col">4분기</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">산출기간</th>
+                    <td>전년도 12월~2월 사용한 교통비</td>
+                    <td>3월~5월 사용한 교통비</td>
+                    <td>6월~8월 사용한 교통비</td>
+                    <td>9월~11월 사용한 교통비</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">지급시기</th>
+                    <td>3월 말</td>
+                    <td>6월 말</td>
+                    <td>9월 말</td>
+                    <td>12월 말</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="line-box" id="target5">
+            <h3>지원 방법</h3>
+            <ul class="list-type">
+              <li>분기별 신청자가 사용한 교통카드 비용을 정산, 검증 후 대상자 계좌 지급</li>
+            </ul>
+          </div>
+          <div class="line-box" id="target6">
+            <h3>유의 사항</h3>
+            <ul class="list-type check primary">
+              <li>승하차 정류소 기준, 서울시 외 승하차 요금은 지원금 지급 대상에서 제외됩니다.</li>
+              <li>버스 요금 단말기 태그 필수, 등록된 카드만 인정, 다인승 거래 불가합니다.</li>
+              <li>신청인의 카드를 타인에게 대여 또는 양도하거나 분실하여 부정 사용된 경우<br/>중구 어르신 교통비 지원이 중지되는 등 관련 법령에 따른 불이익이 있을 수 있습니다.</li>
+              <li>서울시 장애인 버스요금 지원대상자 및 수송시설이용지원대상 유공자는 택시 이용요금만 지원합니다.(버스 요금 중복 지원 불가)</li>
+            </ul>
+            <p class="guide-text color-red">중앙부처 및 서울시에서 시행하는 다른 사업을 통하여 명시적으로 교통비를 지원 받는 경우에는 중복지원 불가</p>
+          </div>
+          <div class="line-box" id="target7">
+            <h3>문의하기</h3>
+            <ul class="list-type">
+              <li>고객센터: 1644-8521</li>
+              <li>상담 가능시간: 평일 09시 ~ 18시(주말&middot;공휴일 휴뮤)</li>
+              <li>점심: 13시 ~ 14시</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <aside class="bookmark-nav" aria-label="페이지 목차">
+    <ul>
+      <li><a href="#target1">지원 대상</a></li>
+      <li><a href="#target2">지원 내용</a></li>
+      <li><a href="#target3">지원 금액</a></li>
+      <li><a href="#target4">지급 시기</a></li>
+      <li><a href="#target5">지원 방법</a></li>
+      <li><a href="#target6">유의 사항</a></li>
+      <li><a href="#target7">문의하기</a></li>
+    </ul>
+  </aside>
+  <div id="bookmark-stop-sentinel"></div>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+<script>
+/* =========================================================
+ * bookmark-nav.js (Vanilla JS | A11y/WCAG | Cross-Browser)
+ * - 항상 노출
+ * - #target1 도달 시: position:fixed, top: 50px
+ * - footer 겹치기 직전: position:absolute 로 정지
+ * - IntersectionObserver로 li.active 이동
+ * - 초기 로드 시 1번째 메뉴 활성화
+ * ========================================================= */
+
+/* ===== 유틸 ===== */
+function bm_getScrollTop() {
+  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+}
+function bm_getOffsetTop(el) {
+  if (!el) return 0;
+  const rect = el.getBoundingClientRect();
+  return rect.top + bm_getScrollTop();
+}
+function bm_getOffsetLeft(el) {
+  if (!el) return 0;
+  const rect = el.getBoundingClientRect();
+  return rect.left + (window.pageXOffset || document.documentElement.scrollLeft || 0);
+}
+
+/* ===== 활성 유틸 ===== */
+function bm_setActive(links, link) {
+  links.forEach(a => { a.parentElement.classList.remove('active'); a.removeAttribute('aria-current'); });
+  if (link) { link.parentElement.classList.add('active'); link.setAttribute('aria-current', 'true'); }
+}
+
+/* ===== 컨트롤러 ===== */
+function createBookmarkController({
+  navSelector = '.bookmark-nav',
+  startSelector = '#target1',
+  footerSelector = '#footer',
+  containerSelector = '.bookmark-nav',  // fixed 좌표 기준
+  fixedTop = 50,
+  baseTop = 520,
+  stopBuffer = 20,
+  headerVar = '--header-h'
+} = {}) {
+  const nav = document.querySelector(navSelector);
+  const start = document.querySelector(startSelector);
+  const footer = document.querySelector(footerSelector);
+  const container = document.querySelector(containerSelector);
+  if (!nav || !start || !footer) return;
+
+  let ticking = false;
+  let fixLeft = 0;    // fixed 시 left
+  let startY = 0;     // fixed 전환 기준
+  let stopAbsTop = 0; // stop 상태 absolute top
+
+  const links = [...nav.querySelectorAll('a')];
+  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+  function recalc() {
+    startY = bm_getOffsetTop(start);
+    fixLeft = bm_getOffsetLeft(container || nav);
+    const footerTop = bm_getOffsetTop(footer);
+    const navH = nav.offsetHeight || 0;
+    stopAbsTop = footerTop - navH - stopBuffer;
+  }
+
+  function setNormal() {
+    nav.classList.remove('is-fixed','is-stop');
+    nav.style.position = 'absolute';
+    nav.style.top = baseTop + 'px';
+    nav.style.left = '';
+  }
+  function setFixed() {
+    nav.classList.add('is-fixed'); nav.classList.remove('is-stop');
+    nav.style.position = 'fixed';
+    nav.style.top = fixedTop + 'px';
+    nav.style.left = fixLeft + 'px';
+  }
+  function setStop() {
+    nav.classList.add('is-stop'); nav.classList.remove('is-fixed');
+    nav.style.position = 'absolute';
+    nav.style.top = stopAbsTop + 'px';
+    nav.style.left = '';
+  }
+
+  function update() {
+    const y = bm_getScrollTop();
+
+    // 기본/고정 전환
+    if (y + fixedTop >= startY) setFixed(); else setNormal();
+
+    // footer 겹침 방지
+    if (nav.style.position === 'fixed') {
+      const navRect = nav.getBoundingClientRect();
+      const footerRect = footer.getBoundingClientRect();
+      if (navRect.bottom + stopBuffer >= footerRect.top) setStop();
+    }
+    ticking = false;
+  }
+  function onScroll() {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }
+
+  // 스무스 스크롤
+  links.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (!t) return;
+      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', a.getAttribute('href'));
+      bm_setActive(links, a); // 클릭 즉시 반영
+    });
+  });
+
+  // 스크롤 스파이
+  const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue(headerVar)) || 80;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = '#' + entry.target.id;
+      const link = links.find(a => a.getAttribute('href') === id);
+      if (entry.isIntersecting && link) bm_setActive(links, link);
+    });
+  }, { threshold: 0.4, rootMargin: `-${headerH + 20}px 0px -40% 0px` });
+  sections.forEach(sec => io.observe(sec));
+
+  // 초기 활성화(해시 우선, 없으면 첫 번째)
+  function setInitialActive() {
+    const byHash = links.find(a => a.getAttribute('href') === location.hash);
+    bm_setActive(links, byHash || links[0]);
+  }
+
+  function init() { recalc(); setInitialActive(); update(); }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => { recalc(); onScroll(); }, { passive: true });
+  window.addEventListener('load', init);
+}
+
+/* ===== 초기화 ===== */
+function initBookmarkUI() {
+  createBookmarkController({
+    navSelector: '.bookmark-nav',
+    startSelector: '#target1',
+    footerSelector: '#footer',
+    containerSelector: '.bookmark-nav',
+    fixedTop: 50,
+    baseTop: 520,
+    stopBuffer: 20
+  });
+}
+
+/* ===== DOM 로드 ===== */
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initBookmarkUI, { once: true });
+} else {
+  initBookmarkUI();
+}
+</script>
+
+</body>
+</html>

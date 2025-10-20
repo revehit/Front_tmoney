@@ -1,0 +1,178 @@
+.mypage-header {
+  padding-top: 120px;
+  .section-title {
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+.mypage-wrap {
+  /* 대시보드 */
+  .dsshboard-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3열 */
+    grid-template-rows: 1fr;               /* 행 하나로 시작 */
+    gap: 48px;
+    margin-top: 64px;
+    height: 890px; /* 전체 높이 기준 (화면 높이에 맞게 조정 가능) */
+    .col {
+      display: grid;
+      grid-template-rows: repeat(2, 1fr); /* 2행 (각 box 높이 50%) */
+      gap: 32px;
+      &:first-child {
+        grid-template-rows: 1fr;
+        .box {
+          height: 100%;
+          >.flex {
+            width: 100%;
+            h3 {
+              @include heading-3;
+            }
+            .btn {
+              margin-top: 0;
+              margin-left: auto;
+              max-width: 110px;
+            }
+          }
+        }
+      }
+    }
+    .box {
+      display: flex;
+      padding: 32px 48px 40px 48px;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 24px;
+      align-self: stretch;
+      border-radius: 48px;
+      border: 1px solid var(--gray-400);
+      background-color: var(--color-white);
+      &.primary {
+        border: 0;
+        background-color: var(--color-primary-hover);
+      }
+      &.secondary {
+        border: 0;
+        background-color: var(--color-secondary-hover);
+      }
+      h3 {
+        @include heading-2;
+        color: var(--gray-700);
+      }
+      .box-title {
+        width: 100%;
+        color: var(--color-darken);
+        padding-bottom: 25px;
+        border-bottom: 1px solid var(--color-darken);
+      }
+      p {
+        @include heading-3;
+        color: var(--gray-700);
+      }
+      strong {
+        @include heading-2;
+      }
+      .btn {
+        margin-top: auto;
+      }
+      .link {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        padding: 27px 48px;
+        .icon {
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          background-color: #fff;
+          &::before {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) saturate(100%) invert(58%) sepia(95%) saturate(330%) hue-rotate(349deg) brightness(90%) contrast(98%);
+          }
+        }
+        &:hover {
+          background-color: var(--color-secondary);
+          p {
+            color: var(--color-white);
+          }
+        }
+      }
+    }
+  }
+  /* 카드관리, 계좌관리 */
+  .mng-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-top: 48px;
+    .table-wrap {
+      .form-box {
+        max-width: 100%;
+        margin-top: 0;
+        .dropdown,
+        .text-field {
+          width: 180px;
+        }
+      }
+      &.type-row {
+        .form-box {
+          .dropdown,
+          .text-field {
+            & + .btn {
+              width: 120px;
+              flex-shrink: 0;
+            }
+            &.fluid {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    .section-sub-title {
+      margin-bottom: 24px;
+    }
+    .btn-wrap {
+      justify-content: center;
+      .btn {
+        max-width: 600px;
+      }
+    }
+    .pagination {
+      margin: 0;
+    }
+  }
+}
+/* 마이페이지 상단 nav */
+.mypage-nav {
+  background-color: var(--color-darken);
+  ul { 
+    max-width: 1430px;
+    margin: 0 auto;
+    display: flex; 
+    align-items: center; 
+  }
+  li {
+    width: calc(100% / 7);
+    border-left: 1px solid var(--gray-400);
+    &:last-child {
+      border-right: 1px solid var(--gray-400);
+    }
+  }
+  a {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include body-2;
+    color: var(--gray-500);
+  }
+  .active a {
+    color: var(--color-white);
+    font-weight: 700;
+  }
+}

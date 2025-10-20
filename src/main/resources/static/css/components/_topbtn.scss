@@ -1,0 +1,68 @@
+/* ===========================
+ * Go to Top
+ * =========================== */
+#goTop {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+
+  /* 초기 숨김 + 클릭 차단 */
+  opacity: 0;
+  pointer-events: none;
+
+  /* 부드러운 전환 */
+  transition: opacity .25s ease, bottom .25s ease;
+
+  img {
+    width: 100%;
+    height: auto;
+    transition: transform .3s ease-in-out;
+  }
+  em {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-image: url('/images/top-btn.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &.on {
+    opacity: 1;
+    pointer-events: auto; /* 보일 때만 클릭 허용 */
+  }
+
+  &:hover img { transform: translateY(-2px); }
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+}
+
+/* 고대비 모드(Windows) 대응 */
+@media (forced-colors: active) {
+  #goTop {
+    border: 2px solid ButtonText;
+    background: Canvas;
+  }
+  #goTop em { background: none; }
+  #footer a:focus-visible,
+  #goTop:focus-visible { outline-color: ButtonText; }
+}
+
+/* 모션 민감 사용자 배려 */
+@media (prefers-reduced-motion: reduce) {
+  #goTop,
+  #goTop img { transition: none !important; }
+}

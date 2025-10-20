@@ -1,0 +1,111 @@
+@import "../../css/mixin";
+
+.login-wrap {
+  .login-header {
+    padding-top: 120px;
+    // padding-bottom: 64px;
+    .section-title {
+      margin: 0 auto;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    p {
+      @include heading-3;
+      color: var(--gray-700);
+      text-align: center;
+    }
+  }
+  .tabs {
+    border-bottom: 0;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 32px;
+  }
+
+  .find {
+    display: flex;
+    align-items: center;
+    a {
+      @include body-1;
+      color: var(--gray-500);
+      & + a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        &::before {
+          content: '';
+          display: inline-block;
+          width: 1px;
+          height: 12px;
+          background-color: var(--gray-500);
+          margin: 0 12px;
+        }
+      }
+    }
+  }
+  .catpcha-box {
+    border: 1px solid var(--gray-400);
+    border-radius: 8px;
+    > .flex {
+      border-radius: 8px;
+    overflow: hidden;
+    }
+    img {
+      width: 400px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 0;
+      border-left: 1px solid var(--gray-400);
+      color: var(--gray-500);
+    }
+  }
+  .pw2-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 16px;
+    button {
+      width: 100%;
+      background-color: var(--color-white);
+      border: 1px solid var(--gray-400);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      padding: 46px 10px;
+      span {
+        @include heading-3;
+      }
+    }
+    .icon {
+      width: 64px;
+      height: 64px;
+    }
+    .phone {
+      .icon {
+        &::before {
+          background-image: url('/images/sub/img-phone.png');
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+    .ipin {
+      .icon {
+        &::before {
+          background-image: url('/images/sub/img-ipin.png');
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+    & + .btn-wrap {
+      margin-top: 16px;
+    }
+  }
+}

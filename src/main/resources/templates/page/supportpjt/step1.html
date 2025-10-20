@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<main id="contents">
+  <section class="section">
+    <div class="container fluid">
+      <div class="join-wrap">
+        <div class="join-header">
+          <h2 class="section-title">지원 사업 가입하기</h2>
+          <ol class="step-box" role="list" aria-label="지원사업 가입 단계">
+            <li aria-current="step" class="active">
+              <div class="circle" aria-hidden="true">
+                <span>1</span>
+                <i class="icon home"></i>
+              </div>
+              <p>거주지인증 <span class="sr-only">(현재 단계)</span></p>
+            </li>
+            <li>
+              <div class="circle" aria-hidden="true">
+                <span>2</span>
+                <i class="icon filter"></i>
+              </div>
+              <p>인증 및 유형 선택</p>
+            </li>
+            <li>
+              <div class="circle" aria-hidden="true">
+                <span>3</span>
+                <i class="icon check"></i>
+              </div>
+              <p>가입완료</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="container size-xsm">
+      <div class="join-wrap">
+        <div class="causion-text">
+          <strong>
+            <span class="color-secondary">종로구 지역 주민</span>
+            <span>만 신청할 수 있습니다.</span>
+          </strong>
+          <p class="guide-text">※ 행정안전부 행정정보공동이용센터와 연계한 인증으로 이용자가 많을 경우 약 5분 정도 소요됩니다.</p>
+        </div>
+        <div class="form-box">
+          <form action="" method="post" novalidate>
+            <fieldset>
+              <p class="field-title">주민등록번호</p>
+              <legend class="sr-only">주민등록번호</legend>
+              <div class="sr-only" id="rrnHelp">앞 6자리(생년월일)와 뒤 7자리를 순서대로 입력하세요.</div>
+
+              <div class="flex align-center gap8" role="group" aria-describedby="rrnHelp rrnErr">
+                <label for="rrn1" class="sr-only">앞 6자리</label>
+                <input id="rrn1" name="rrn1" type="text" class="text-field size-lg"
+                      placeholder="YYMMDD"
+                      inputmode="numeric" autocomplete="off"
+                      required aria-required="true"
+                      minlength="6" maxlength="6" pattern="^\d{6}$"
+                      aria-describedby="rrnHelp rrnErr">
+
+                <span class="flex-bar" aria-hidden="true">-</span>
+
+                <label for="rrn2" class="sr-only">뒤 7자리</label>
+                <input id="rrn2" name="rrn2" type="password" class="text-field size-lg"
+                      placeholder="*******"
+                      inputmode="numeric" autocomplete="off"
+                      required aria-required="true"
+                      minlength="7" maxlength="7" pattern="^[1-8]\d{6}$"
+                      aria-describedby="rrnHelp rrnErr">
+              </div>
+            </fieldset>
+
+            <button type="button" class="btn btn-primary btn-icon-right size-lg">
+              <i class="icon icon-finish" aria-hidden="true"></i>
+              거주지 인증
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+</body>
+</html>

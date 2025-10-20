@@ -1,0 +1,18 @@
+#boardsearch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .board-counter {
+  }
+  .board-searchbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    border-bottom: 1px solid var(--border-darken);
+    .text-field {
+      min-width: 300px;
+      border: 0;
+    }
+  }
+}

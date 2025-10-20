@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  max-width: 1430px;
+  margin: 0 auto;
+  &.fluid {
+    max-width: 100%;
+  }
+  &.size-sm {
+    max-width: 960px;
+  }
+  &.size-xsm {
+    max-width: 600px;
+  }
+}

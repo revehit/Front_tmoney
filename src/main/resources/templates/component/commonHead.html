@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light"
+      th:fragment="layout(content)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tmoney CMS"/>
+    <meta name="keywords" content="Tmoney CMS"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tmoney CMS" />
+    <meta property="og:description" content="Tmoney CMS" />
+
+    <title th:text="${pageTitle} ?: 'Tmoney CMS'">Tmoney CMS</title>
+
+    <!-- CSS (로컬) -->
+    <link rel="stylesheet" th:href="@{/css/vendor/jquery-ui/jquery-ui.css}"/>
+    <link rel="stylesheet" th:href="@{/css/vendor/aos.css}"/>
+    <link rel="stylesheet" th:href="@{/css/index.css}" />
+
+    <!-- JS (로컬/순서 중요: jQuery → UI → 나머지) -->
+    <script th:src="@{/js/vendor/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/vendor/jquery-ui.min.js}"></script>
+
+    <script th:src="@{/js/theme.js}"></script>
+    <script th:src="@{/js/vendor/common.js}"></script>
+    <script th:src="@{/js/vendor/aos.js}"></script>
+
+    <!-- AOS init -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.AOS && !window.__aosInited) {
+                AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+                window.__aosInited = true;
+            }
+        });
+    </script>
+</head>
+<body>
+
+<!-- 테마 적용(IIFE) -->
+<script>
+    (function() {
+        try {
+            const KEY = 'theme';
+            const stored = localStorage.getItem(KEY);
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = stored || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    })();
+</script>
+
+<div id="wrapper">
+    <!-- 공통 사이드/헤더 -->
+    <th:block th:replace="~{component/aside :: aside}"></th:block>
+    <th:block th:replace="~{component/header :: header(${session.userName})}"></th:block>
+
+    <main id="contents">
+        <div class="container">
+            <!-- 🔽 페이지에서 넘겨줄 본문 슬롯 -->
+            <th:block th:replace="${content}"></th:block>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

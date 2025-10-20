@@ -1,0 +1,51 @@
+@import "../../css/mixin";
+
+.pagination {
+  display: flex; justify-content: center; align-items: center;
+  margin: 24px 0;
+}
+
+.pagination-list {
+  display: flex; gap: 8px; align-items: center;
+  list-style: none; margin: 0; padding: 0;
+}
+
+.page-btn,
+.page-num > a,
+.page-num > span {
+  width: 56px;
+  height: 56px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  @include body-1;
+  color: var(--gray-600);
+  transition: background .15s ease, color .15s ease;
+}
+
+/* 숫자 기본 */
+.page-num > a {
+  background: var(--color-white); border: 1px solid transparent;
+}
+.page-num > a:hover { background: var(--gray-200); }
+
+/* 현재 페이지 (보라 원형, 흰색 숫자) */
+.page-num.is-current > span {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.page-ctrl .icon {
+  width: 24px;
+  height: 24px;
+}
+.page-ctrl .page-btn:hover { background: var(--gray-200); }
+
+/* 비활성 컨트롤 */
+.page-ctrl .page-btn[aria-disabled="true"] {
+  color: var(--color-disabled); 
+  background: transparent; 
+  border-color: transparent;
+  .icon {
+    filter: brightness(0) saturate(100%) invert(91%) sepia(8%) saturate(10%) hue-rotate(11deg) brightness(88%) contrast(96%);
+  }
+}

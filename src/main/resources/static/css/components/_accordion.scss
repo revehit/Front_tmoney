@@ -1,0 +1,122 @@
+.accordion{
+  background:var(--color-white);
+  overflow:hidden;
+  margin-top: 64px;
+}
+
+/* ===== header / trigger ===== */
+.acc-header{ margin:0; }
+.acc-trigger{
+  width:100%;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 24px 40px;
+  background-color: var(--color-white);
+  cursor:pointer;
+  position:relative;
+  border-bottom: 1px solid var(--gray-400);
+
+  &:focus-visible{
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 10px;
+  }
+}
+
+/* Q badge */
+.acc-badge {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:var(--color-white);
+  @include heading-2;
+  color:var(--color-primary);
+  border: 1px solid var(--gray-400);
+}
+
+/* title text */
+.acc-title{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  text-align: left;
+  @include heading-3;
+  color: var(--gray-800);
+}
+
+/* chevron icon */
+.acc-icon{
+  width:12px;height:12px;
+  border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;
+  transform:rotate(45deg);
+  opacity:.6;
+  transition:transform .22s ease, opacity .22s ease;
+  margin-left: auto;
+}
+
+/* open state visuals */
+.acc-item.is-open {
+  .acc-trigger {
+    background-color: var(--color-primary-hover);
+    border-top: 1px solid var(--color-primary);
+    .acc-badge {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+    .acc-title {
+      color: var(--color-primary);
+    }
+  }
+  .acc-icon{
+    transform:rotate(225deg);
+    opacity:1;
+  }
+}
+
+/* ===== panel ===== */
+.acc-panel{
+  overflow:hidden;
+  will-change: height;
+}
+
+/* 슬라이드/페이드 트랜지션 */
+.acc-panel-inner{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 24px 40px;
+  background-color: var(--gray-200);
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform .22s ease, opacity .22s ease;
+
+  .acc-badge {
+    background-color: var(--gray-700);
+    color: var(--color-white);
+  }
+  .acc-content { 
+    width: 100%;
+    @include body-1;
+    font-weight: 500;
+    color: var(--gray-700);
+  }
+}
+
+/* 열리는 동안(원위치+페이드인) */
+.acc-panel.is-opening .acc-panel-inner {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* 닫히는 동안(위로 -8px + 페이드아웃) */
+.acc-panel.is-closing .acc-panel-inner {
+  transform: translateY(-8px);
+  opacity: 0;
+}

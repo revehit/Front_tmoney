@@ -1,0 +1,360 @@
+#header {
+  width: 100%;
+  background-color: var(--color-white);
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
+  &::after {
+    content: '';
+    position: absolute;
+    top: 143px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: var(--bg-white) ;
+    z-index: 90;
+    transition: all 0.4s;
+  }
+  .container.fluid {
+    border-bottom: 1px solid var(--gray5);
+  }
+  .accessibility-box {
+    max-width: 1430px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 0;
+    span {
+      font-size: 14px;
+      color: var(--gray2);
+    }
+    .icon {
+      display: block;
+      width: 10px;
+      height: 10px;
+    }
+    .text-size {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+      button {
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 0.5px solid var(--line);
+        border-radius: 2px;
+      }
+    }
+    .theme-box {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      button {
+        width: 30px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 2px;
+        color: var(--color-white);
+        font-size: 14px;
+        background-color: var(--bg-secondary);
+      }
+    }
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 96px;
+    position: relative;
+  }
+  &.header-jn {
+    h1 {
+      a {
+        background-image: url('/images/logo-jn.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+  h1 {
+    flex-shrink: 0;
+    margin-right: auto;
+    a {
+      display: block;
+      width: 200px;
+      height: 75px;
+      background-image: url('/images/logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+  nav {
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 120px;
+    }
+    /* 버튼의 aria-expanded=true 일 때 보이기 (스크립트와 함께 보조) */
+    .has-sub {
+      > button[aria-expanded="true"] + .depth-box { display:block; }
+      button {
+        font-size: 24px;
+        color: var(--color-darken);
+        font-weight: 700;
+      }
+    } 
+    li {
+      position: relative;
+      &::after {
+        content: '';
+        width: 0%;
+        height: 2px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all 0.4s;
+        background-color: var(--bg-primary);
+      }
+      &.on {
+        > a {
+          color: var(--color-primary);
+        }
+        &::after {
+          width: 100%;
+        }
+        .depth-box {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+      &:last-child {
+        .depth-box {
+          .depth-inner {
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-darken);
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+  .depth-box {
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    transform: translateY(97px);
+    transition: opacity 0.3s ease;
+    visibility: hidden;
+    opacity: 0;
+    .depth-inner {
+      width: 100%;
+      //height: 70px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    a {
+      height: 100%;
+      flex-shrink: 0;
+      font-size:18px;
+      color: var(--color-gray);
+      &:hover {
+        color: var(--color-darken);
+      }
+    }
+  }
+  .gnb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 120px;
+    .util-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      a {
+        font-size: 20px;
+        color: var(--gray2);
+      }
+      span {
+        display: block;
+        width: 1px;
+        height: 16px;
+        background-color: var(--gray3);
+      }
+    }
+    .btn-member {
+      .icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
+    .btn-menu {
+      width: 23px;
+      height: 17px;
+      cursor: pointer;
+      display: none;
+      &.openmenu {
+        div {
+          &:nth-child(1) {
+            transform: rotate(45deg) translateY(10px);
+          }
+          &:nth-child(2) {
+            opacity: 0;
+          }
+          &:nth-child(3) {
+            transform: rotate(-45deg) translateY(-10px);
+          }
+        }
+      }
+      div {
+        width: 100%;
+        height: 3px;
+        margin-bottom: 4px;
+        background: var(--bg-black);
+        transition: transform 0.4s ease;
+      }
+    }
+  }
+  // 헤더 호버 시
+  &.menu-on {
+    background-color: var(--bg-white);
+    &::after {
+      height: 200px;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+    nav {
+      a {
+        color: var(--color-darken);
+      }
+    }
+    .depth-box {
+      .depth-inner {
+        a {
+          color: var(--color-darken);
+          opacity: 0.7;
+          &:hover {
+            color: var(--color-darken);
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  // 사이트맵
+  &.all {
+    .gnb {
+      .btn-menu {
+        position: absolute;
+        z-index: 999;
+        right: 0;
+        div {
+          background: var(--bg-black);
+        }
+      }
+
+    }
+    .sitemap {
+      opacity: 1;
+      height: 100vh;
+      visibility: visible;
+      li {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .sitemap {
+    width: 100%;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    transition: all 0.4s;
+    backdrop-filter: blur(15px);
+    background-color: rgba(0, 0, 0, 0.7);
+    .container {
+      width: 100%;
+      max-width: 1430px;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    ul {
+      width: 100%;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      padding: 50px 0;
+      position: relative;
+      &:after {
+        content: '';
+        width: 0%;
+        height: 1px;
+        background-color: rgba(255,255,255,0.6);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: all 3s;
+      }
+      & + li {
+        margin-top: 10px;
+      }
+      p {
+        width: 20%;
+        font-size: 50px;
+        font-weight: 700;
+        color: #fff;
+        margin-left: 50px;
+      }
+      .depth2 {
+        width: calc(80% - 50px);
+      }
+      a {
+        font-size: 20px;
+        padding: 0 10px;
+        color: #fff;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        margin-left: 50px;
+        position: relative;
+        &::after {
+          content: "";
+          display: block;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: #fff;
+          position: absolute;
+          left: -10px;
+          top: 0;
+          opacity: 0;
+        }
+        &:hover {
+          color: red;
+          &::after {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

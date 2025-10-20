@@ -1,0 +1,80 @@
+/* 라디오 (단일) — 공통 .control은 기존 것 사용 */
+.radio {
+  /* 시각 요소: 바깥 원(보더) + 안쪽 점 */
+  label::before,
+  label::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* 바깥 원 */
+  label::before {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--border-darken);
+    border-radius: 50%;
+    background: var(--color-white);
+    transition: border-color .2s, background-color .2s;
+  }
+
+  /* 안쪽 점(선택 표시) */
+  label::after {
+    left: 4px;                 /* 바깥 원 기준 안쪽 여백 */
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    opacity: 0;
+    transition: opacity .15s;
+  }
+
+  /* hover/focus 시 보더 강조 */
+  input:focus + label::before,
+  label:hover::before {
+    border-color: var(--color-primary);
+  }
+
+  /* checked 상태 */
+  input:checked + label::before {
+    border-color: var(--color-primary);
+  }
+  input:checked + label::after {
+    opacity: 1;
+  }
+
+  /* disabled 상태 */
+  &.disabled {
+    label { cursor: not-allowed; opacity: .6; }
+    label::before { background: var(--bg-disabled); border-color: var(--border-disabled); }
+    label:hover::before { border-color: var(--border-disabled); }
+    input:checked + label::after { background: var(--border-disabled); }
+  }
+}
+
+/* 라디오 그룹 */
+.radio-group {
+  border: 0;
+  padding: 0;
+
+  .field-title {
+    margin-bottom: 12px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  display: flex;
+
+  &.vertical {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &.horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;   /* 좁을 때 줄바꿈 */
+    gap: 20px;
+  }
+}

@@ -1,0 +1,122 @@
+/* -------------------------------
+공통 control (체크/라디오 공용 가능)
+---------------------------------*/
+.control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 30px;
+  position: relative;
+
+  input {
+    // 접근성 보장되는 시각적 숨김 패턴
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  label {
+    position: relative;
+    padding-left: 25px;
+    line-height: 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &.disabled label {
+    cursor: not-allowed;
+    opacity: .6;
+  }
+}
+
+/* -------------------------------
+체크박스 단일
+---------------------------------*/
+.checkbox {
+  label::before,
+  label::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  label::before {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--border-darken);
+    border-radius: 4px;
+    background: var(--color-white);
+    transition: border-color .2s, background-color .2s;
+  }
+
+  label::after {
+    width: 20px;
+    height: 20px;
+    background: url("/images/icon/icon-check.svg") no-repeat center/14px 14px;
+    opacity: 0;
+    transition: opacity .15s;
+  }
+
+  // hover, focus
+  input:focus + label::before,
+  label:hover::before {
+    border-color: var(--color-primary);
+  }
+
+  // checked
+  input:checked + label::before {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+  input:checked + label::after {
+    opacity: 1;
+    filter: invert(1) brightness(10); // 체크 아이콘을 흰색으로
+  }
+
+  // disabled
+  &.disabled label::before {
+    background: var(--bg-disabled);
+    border-color: var(--border-disabled);
+  }
+  &.disabled input:checked + label::before {
+    background: var(--border-disabled);
+    border-color: var(--border-disabled);
+  }
+}
+
+/* -------------------------------
+체크박스 그룹
+---------------------------------*/
+.checkbox-group {
+  border: 0;
+  padding: 0;
+  display: flex;
+  
+  &.vertical {
+    // 세로 정렬
+    flex-direction: column;
+    gap: 12px;
+  }
+  &.horizontal {
+    // 가로 정렬
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+  }
+  .control.checkbox {
+    // 그룹 안의 체크박스는 위 .checkbox 스타일 그대로 적용
+  }
+  .depth2 {
+    padding-left: 20px;
+    margin-top: -10px;
+  }
+}

@@ -1,0 +1,55 @@
+/* =========== =========== =========== */
+/* =========== Typhogragh =========== */
+/* =========== =========== =========== */
+@mixin heading-base {
+  //font-family: "Pretendard", "Noto Sans KR", sans-serif;
+  color: var(--color-darken);
+}
+@mixin heading-1 {
+  @include heading-base;
+  font-size: 48px;
+  font-weight: 700;
+}
+@mixin heading-2 {
+  @include heading-base;
+  font-size: 32px;
+  font-weight: 700;
+}
+@mixin heading-3 {
+  @include heading-base;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+@mixin body-base {
+  //font-family: "Pretendard", "Noto Sans KR", sans-serif;
+  color: var(--color-darken);
+}
+@mixin body-1 {
+  @include body-base;
+  font-size: 20px;
+  font-weight: 500;
+}
+@mixin body-2 {
+  @include body-base;
+  font-size: 18px;
+  font-weight: 500;
+}
+@mixin body-3 {
+  @include body-base;
+  font-size: 16px;
+  font-weight: 400;
+}
+@mixin body-4 {
+  @include body-base;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.heading-1 { @include heading-1; }
+.heading-2 { @include heading-2; }
+.heading-3 { @include heading-3; }
+.body-1 { @include body-1; }
+.body-2 { @include body-2; }
+.body-3 { @include body-3; }
+.body-4 { @include body-4; }

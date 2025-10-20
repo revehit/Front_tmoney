@@ -1,0 +1,10 @@
+import './theme.js';
+import './header.js';
+import './footer.js';
+import './dropdown.js';
+import './checkbox.js';
+import './tabs.js';
+import './modal.js';
+import './fileupload.js';
+import './datepicker.js';
+import './accordion.js';

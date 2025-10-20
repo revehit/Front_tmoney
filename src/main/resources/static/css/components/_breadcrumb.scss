@@ -1,0 +1,31 @@
+@import "../../css/mixin";
+
+#breadcrumb {
+  border-bottom: 1px solid var(--gray-400);
+  padding: 20px 0;
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+  }
+  li {
+    @include body-2;
+    color: var(--gray-700);
+    & + li {
+      display: inline-flex;
+      align-items: center;
+      &::before {
+        content: '';
+        width: 12px;
+        height: 12px;
+        display: block;
+        background-image: url('/images/icon/icon-arrow-right.svg');
+        background-size: contain;
+        margin-right: 8px;
+      }
+    }
+    &:last-child {
+      font-weight: 700;
+    }
+  }
+}

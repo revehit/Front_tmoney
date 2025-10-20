@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<main id="contents">
+  <section class="section">
+    <div class="container fluid">
+      <div class="join-wrap">
+        <div class="join-header">
+          <h2 class="section-title">회원가입</h2>
+          <ol class="step-box" role="list" aria-label="회원가입 단계">
+            <li>
+              <div class="circle" aria-hidden="true">
+                <span>1</span>
+                <i class="icon document"></i>
+              </div>
+              <p>약관동의</p>
+            </li>
+            <li>
+              <div class="circle" aria-hidden="true">
+                <span>2</span>
+                <i class="icon lock"></i>
+              </div>
+              <p>본인인증</p>
+            </li>
+            <li aria-current="step" class="active">
+              <div class="circle" aria-hidden="true">
+                <span>3</span>
+                <i class="icon write"></i>
+              </div>
+              <p>정보입력 <span class="sr-only">(현재 단계)</span></p>
+            </li>
+            <li>
+              <div class="circle" aria-hidden="true">
+                <span>4</span>
+                <i class="icon check"></i>
+              </div>
+              <p>가입완료</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="container size-xsm">
+      <div class="join-wrap">
+        <div class="form-box">
+          <form action="" method="post" novalidate>
+            <!-- 아이디 -->
+            <div>
+              <label class="field-title" for="userId">
+                아이디 <span class="color-error" aria-hidden="true">*</span>
+              </label>
+              <div class="flex gap8">
+                <input id="userId" name="userId" type="text" class="text-field size-lg"
+                      placeholder="아이디를 입력해주세요."
+                      autocomplete="username"
+                      required aria-required="true"
+                      minlength="6" maxlength="15"
+                      pattern="^[a-z][a-z0-9._]{5,14}$"
+                      aria-describedby="userIdHelp">
+                <button type="button" class="btn btn-darkgray size-lg" aria-describedby="userIdHelp">중복확인</button>
+              </div>
+              <p class="guide-text" id="userIdHelp">
+                ※ 영문소문자, 숫자, 일부 특수문자(._) 6~15자 (시작은 영문자)
+              </p>
+            </div>
+
+            <!-- 비밀번호 -->
+            <div>
+              <label class="field-title" for="password">
+                비밀번호 <span class="color-error" aria-hidden="true">*</span>
+              </label>
+              <input id="password" name="password" type="password" class="text-field size-lg"
+                    placeholder="비밀번호를 입력해주세요."
+                    autocomplete="new-password"
+                    required aria-required="true"
+                    minlength="8" maxlength="20"
+                    aria-describedby="pwdHelp1 pwdHelp2">
+              <p class="guide-text" id="pwdHelp1">※ 영문, 숫자, 특수문자 중 2가지 이상 혼합 8~20자 (영문자 필수)</p>
+              <p class="guide-text" id="pwdHelp2">※ 아이디가 포함된 비밀번호는 사용할 수 없습니다.</p>
+            </div>
+
+            <!-- 비밀번호 확인 -->
+            <div>
+              <label class="field-title" for="passwordConfirm">
+                비밀번호 확인 <span class="color-error" aria-hidden="true">*</span>
+              </label>
+              <input id="passwordConfirm" name="passwordConfirm" type="password" class="text-field size-lg"
+                    placeholder="비밀번호를 다시 입력해주세요."
+                    autocomplete="new-password"
+                    required aria-required="true">
+            </div>
+
+            <!-- 휴대전화번호 -->
+            <div>
+              <p class="field-title">휴대전화번호 <span class="color-error" aria-hidden="true">*</span></p>
+              <fieldset>
+                <legend class="sr-only">휴대전화번호 *</legend>
+                <div class="flex align-center gap8">
+                  <label for="mobile1" class="sr-only">국번</label>
+                  <input id="mobile1" name="mobile1" type="text" class="text-field size-lg"
+                        value="010" readonly aria-readonly="true"
+                        inputmode="numeric" pattern="[0-9]*">
+                  <span class="flex-bar" aria-hidden="true">-</span>
+
+                  <label for="mobile2" class="sr-only">중간번호</label>
+                  <input id="mobile2" name="mobile2" type="text" class="text-field size-lg"
+                        value="1234" readonly aria-readonly="true"
+                        inputmode="numeric" pattern="[0-9]*">
+                  <span class="flex-bar" aria-hidden="true">-</span>
+
+                  <label for="mobile3" class="sr-only">끝번호</label>
+                  <input id="mobile3" name="mobile3" type="text" class="text-field size-lg"
+                        value="5678" readonly aria-readonly="true"
+                        inputmode="numeric" pattern="[0-9]*">
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- 전화번호 -->
+            <div>
+              <p class="field-title">전화번호</p>
+              <fieldset>
+                <legend class="sr-only">전화번호</legend>
+                <div class="flex align-center gap8">
+                  <label for="tel1" class="sr-only">지역번호</label>
+                  <input id="tel1" name="tel1" type="text" class="text-field size-lg"
+                        value="010" readonly aria-readonly="true"
+                        inputmode="numeric" pattern="[0-9]*">
+                  <span class="flex-bar" aria-hidden="true">-</span>
+
+                  <label for="tel2" class="sr-only">중간번호</label>
+                  <input id="tel2" name="tel2" type="text" class="text-field size-lg"
+                        value="1234" readonly aria-readonly="true"
+                        inputmode="numeric" pattern="[0-9]*">
+                  <span class="flex-bar" aria-hidden="true">-</span>
+
+                  <label for="tel3" class="sr-only">끝번호</label>
+                  <input id="tel3" name="tel3" type="text" class="text-field size-lg"
+                        value="5678" readonly aria-readonly="true"
+                        inputmode="numeric" pattern="[0-9]*">
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- 이메일 -->
+            <div>
+              <label class="field-title" for="emailId">이메일</label>
+              <div class="flex align-center gap8">
+                <input id="emailId" name="emailId" type="text" class="text-field size-lg"
+                      placeholder="이메일 아이디를 입력해주세요."
+                      autocomplete="email" aria-describedby="emailHelp">
+                <span class="flex-bar" aria-hidden="true">@</span>
+                <input id="emailDomainManual" name="emailDomainManual" type="text" class="text-field size-lg"
+                      placeholder="직접 입력 (선택)">
+              </div>
+
+              <!-- 도메인 드롭다운 -->
+              <div class="dropdown size-lg" data-name="emailDomain">
+                <button type="button"
+                        id="emailDomainBtn"
+                        class="dropdown_button"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-controls="emailDomainList"
+                        aria-label="이메일 주소 선택 드롭다운">
+                  <span class="dropdown_value" data-placeholder="이메일주소 선택">이메일주소 선택</span>
+                </button>
+
+                <ul class="dropdown_list" id="emailDomainList" role="listbox" tabindex="-1" aria-labelledby="emailDomainBtn">
+                  <li role="option" class="dropdown_option" data-value="naver.com" aria-selected="false">naver.com</li>
+                  <li role="option" class="dropdown_option" data-value="daum.net"  aria-selected="false">daum.net</li>
+                  <li role="option" class="dropdown_option" data-value="nate.com"  aria-selected="false">nate.com</li>
+                </ul>
+
+                <input type="hidden" name="emailDomain" value="">
+              </div>
+              <p class="guide-text" id="emailHelp">도메인 선택 또는 직접 입력 중 하나를 사용하세요.</p>
+            </div>
+
+            <!-- 동의 영역 -->
+            <div>
+              <div class="control checkbox">
+                <input type="checkbox" id="check-arg-1" name="marketing-collect" value="Y">
+                <label for="check-arg-1">
+                  <span class="color-primary">[선택]</span> 마케팅 목적의 개인정보 수집 및 이용 동의
+                </label>
+              </div>
+
+              <fieldset class="control-group checkbox-group vertical">
+                <legend class="field-title">광고성 정보 수신 동의</legend>
+
+                <!-- 전체선택 -->
+                <div class="control checkbox">
+                  <input type="checkbox" id="chk-all" class="chk-all">
+                  <label for="chk-all">
+                    <span class="color-primary">[선택]</span> 광고성 정보 수신 동의
+                  </label>
+                </div>
+
+                <div class="depth2">
+                  <!-- 하위 항목 -->
+                  <div class="control checkbox">
+                    <input type="checkbox" id="chk-email" class="chk-item" name="ad-receive[]" value="email" aria-describedby="adReceiveHelp">
+                    <label for="chk-email">이메일 수신 동의</label>
+                  </div>
+
+                  <div class="control checkbox">
+                    <input type="checkbox" id="chk-sms" class="chk-item" name="ad-receive[]" value="sms" aria-describedby="adReceiveHelp">
+                    <label for="chk-sms">SMS, SNS 수신 동의</label>
+                  </div>
+                </div>
+                <p id="adReceiveHelp" class="guide-text">언제든 설정에서 수신 여부를 변경할 수 있습니다.</p>
+              </fieldset>
+            </div>
+
+            <!-- 제출 -->
+            <button type="submit" class="btn btn-primary btn-icon-right size-lg">
+              <i class="icon icon-finish" aria-hidden="true"></i>
+              완료
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+</body>
+</html>

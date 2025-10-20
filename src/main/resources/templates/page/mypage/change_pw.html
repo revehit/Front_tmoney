@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<div id="breadcrumb">
+  <div class="container">
+    <nav>
+      <ul>
+        <li>홈</li>
+        <li>마이페이지</li>
+        <li aria-current="page">비밀번호 재설정</li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main id="contents">
+  <section class="section">
+    <div class="container size-xsm">
+      <div class="mypage-wrap">
+        <div class="mypage-header">
+          <h2 class="section-title">비밀번호 재설정</h2>
+        </div>
+        <div class="form-box">
+          <form action="" method="post" novalidate>
+            <fieldset>
+              <legend class="sr-only">비밀번호 변경</legend>
+              <div>
+                <p class="field-title" id="ft-newpw">신규 비밀번호 <span class="color-red">*</span></p>
+                <input
+                  type="password" class="text-field size-lg"
+                  name="newPassword"
+                  placeholder="비밀번호를 입력해주세요."
+                  autocomplete="new-password"
+                  minlength="8" maxlength="20"
+                  required aria-required="true"
+                  aria-labelledby="ft-newpw"
+                  aria-describedby="pwHelp1 pwHelp2"
+                  autocapitalize="off" spellcheck="false"
+                  pattern="^(?=.*[A-Za-z])(?=.*(\d|[^A-Za-z0-9]))[^\s]{8,20}$">
+                <p class="guide-text" id="pwHelp1">영문은 반드시 포함하고, 숫자 또는 특수문자 중 하나 이상을 함께 사용하여 8~20자로 입력하세요.</p>
+                <p class="guide-text" id="pwHelp2">아이디가 포함된 비밀번호는 사용하실 수 없습니다.</p>
+              </div>
+
+              <div>
+                <p class="field-title" id="ft-newpw2">비밀번호 확인 <span class="color-red">*</span></p>
+                <input
+                  type="password" class="text-field size-lg"
+                  name="newPasswordConfirm"
+                  placeholder="비밀번호를 한번 더 입력해주세요."
+                  autocomplete="new-password"
+                  minlength="8" maxlength="20"
+                  required aria-required="true"
+                  aria-labelledby="ft-newpw2"
+                  aria-describedby="pwHelp1b pwHelp2b pwHelp3b pwMismatch"
+                  aria-errormessage="pwMismatch"
+                  autocapitalize="off" spellcheck="false"
+                  pattern="^(?=.*[A-Za-z])(?=.*(\d|[^A-Za-z0-9]))[^\s]{8,20}$">
+                <p class="guide-text" id="pwHelp1b">영문은 반드시 포함하고, 숫자 또는 특수문자 중 하나 이상을 함께 사용하여 8~20자로 입력하세요.</p>
+                <p class="guide-text" id="pwHelp2b">아이디가 포함된 비밀번호는 사용하실 수 없습니다.</p>
+                <p class="guide-text" id="pwHelp3b">비밀번호 기입 후 저장하면 비밀번호가 수정됩니다.</p>
+                <!-- 오류 메시지: 초깃값 hidden (로직에서 hidden 제거 + aria-invalid=true 토글) -->
+                <p class="caution-text" id="pwMismatch" role="alert" hidden>입력한 비밀번호가 일치하지 않습니다.</p>
+              </div>
+            </fieldset>
+
+            <div class="btn-wrap">
+              <button type="button" class="btn btn-darken-line size-lg">취소</button>
+              <button type="submit" class="btn btn-primary size-lg">비밀번호 변경</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+</body>
+</html>

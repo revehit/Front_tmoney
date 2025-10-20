@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<div id="breadcrumb">
+  <div class="container">
+    <nav>
+      <ul>
+        <li>홈</li>
+        <li>마이페이지</li>
+        <li aria-current="page">회원정보</li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main id="contents">
+  <section class="section">
+    <div class="container size-xsm">
+      <div class="mypage-wrap">
+        <div class="mypage-header">
+          <h2 class="section-title">회원정보</h2>
+        </div>
+        <div class="form-box">
+          <form action="" method="post" novalidate>
+            <fieldset>
+              <legend class="sr-only">개인정보</legend>
+              <h3 class="form-title">개인정보</h3>
+
+              <div>
+                <p class="field-title" id="ft-name">이름</p>
+                <input
+                  type="text" class="text-field size-lg"
+                  name="name" autocomplete="name"
+                  readonly aria-labelledby="ft-name"
+                  value="김*원">
+              </div>
+
+              <div>
+                <p class="field-title" id="ft-bday">생년월일</p>
+                <input
+                  type="text" class="text-field size-lg"
+                  name="bday" inputmode="numeric" autocomplete="bday"
+                  readonly aria-labelledby="ft-bday"
+                  value="19**-0*-0*">
+              </div>
+
+              <div>
+                <p class="field-title" id="ft-mobile">휴대전화번호</p>
+                <div class="flex align-center gap8" role="group" aria-labelledby="ft-mobile">
+                  <input
+                    type="tel" class="text-field size-lg"
+                    name="mobile" autocomplete="tel"
+                    readonly aria-labelledby="ft-mobile"
+                    value="010-9***-3***">
+                  <button type="button" class="btn btn-darkgray size-lg">
+                    수정<span class="sr-only"> - 휴대전화번호</span>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <p class="field-title" id="ft-phone">전화번호</p>
+                <div class="flex align-center gap8" role="group" aria-labelledby="ft-phone">
+                  <input
+                    type="tel" class="text-field size-lg"
+                    name="tel" autocomplete="tel"
+                    aria-labelledby="ft-phone"
+                    value="02-0000-9999">
+                  <button type="button" class="btn btn-darkgray size-lg">
+                    수정<span class="sr-only"> - 전화번호</span>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <p class="field-title" id="ft-email">이메일</p>
+                <div class="flex align-center gap8" role="group" aria-labelledby="ft-email">
+                  <input
+                    type="text" class="text-field size-lg"
+                    name="emailLocal" inputmode="email"
+                    autocapitalize="off" spellcheck="false"
+                    aria-labelledby="ft-email"
+                    value="email123">
+                  <span class="flex-bar" aria-hidden="true">@</span>
+                  <input
+                    type="text" class="text-field size-lg"
+                    name="emailDomain" inputmode="email"
+                    autocapitalize="off" spellcheck="false"
+                    aria-labelledby="ft-email"
+                    value="tmoney.co.kr">
+                  <button type="button" class="btn btn-darkgray size-lg">
+                    수정<span class="sr-only"> - 이메일</span>
+                  </button>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend class="sr-only">가입정보</legend>
+              <h3 class="form-title">가입정보</h3>
+
+              <div>
+                <p class="field-title" id="ft-uid">아이디</p>
+                <input
+                  type="text" class="text-field size-lg"
+                  name="username" autocomplete="username"
+                  readonly aria-labelledby="ft-uid"
+                  value="tmoney123">
+              </div>
+
+              <div>
+                <p class="field-title" id="ft-pw">비밀번호</p>
+                <button
+                  type="button" class="btn btn-darkgray size-lg fluid"
+                  aria-labelledby="ft-pw">
+                  비밀번호 재설정
+                </button>
+              </div>
+            </fieldset>
+
+            <div class="btn-wrap" role="group" aria-label="폼 작업">
+              <button type="button" class="btn btn-darken-line size-lg">목록</button>
+              <button type="submit" class="btn btn-primary size-lg">저장</button>
+            </div>
+
+            <div class="flex justify-end">
+              <a href="" class="color-red underline">회원탈퇴</a>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+</body>
+</html>

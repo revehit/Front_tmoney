@@ -1,0 +1,158 @@
+:root {
+  /* gray */
+  --gray-100: #fcfcfd;
+  --gray-100-rgb: 252, 252, 253;
+  --gray-200: #f5f5f5;
+  --gray-200-rgb: 245, 245, 245;
+  --gray-300: #e0e0e0;
+  --gray-300-rgb: 224, 224, 224;
+  --gray-400: #ccc;
+  --gray-400-rgb: 204, 204, 204;
+  --gray-500: #888888;
+  --gray-500-rgb: 136, 136, 136;
+  --gray-600: #666666;
+  --gray-600-rgb: 102, 102, 102;
+  --gray-700: #555555;
+  --gray-700-rgb: 85, 85, 85;
+  --gray-800: #333333;
+  --gray-800-rgb: 51, 51, 51;
+  --gray-900: #111111;
+  --gray-900-rgb: 17, 17, 17;
+
+  --gray1: #333;
+  --gray2: #555;
+  --gray3: #666;
+  --gray4: #888;
+  --gray5: #e0e0e0;
+  --gray6: #f5f5f5;
+  --line: #ccc;
+
+  /* semantic color */
+  --color-primary: #920783;
+  --color-primary-rgb: 134, 28, 127;
+  --color-primary-hover: rgba(134, 28, 127, 0.1);
+
+  --color-secondary: #F18E18;
+  --color-secondary-rgb: 227, 147, 58;
+  --color-secondary-hover: rgba(227, 147, 58, 0.1);
+
+  --color-darken: #000000;
+  --color-darken-rgb: 0, 0, 0;
+
+  --color-white: #fff;
+  --color-white-rgb: 255, 255, 255;
+
+  --color-error: #e53935;
+  --color-error-rgb: 211, 72, 62;
+
+  --color-point: #00a896;
+  --color-point-rgb: 75, 165, 150;
+
+  --color-disabled: var(--gray-500);
+  --color-disabled-rgb: var(--gray-500-rgb);
+
+  --color-red: #e53935;
+  --color-red-rgb: 211, 72, 62;
+
+  --color-blue: #1976d2;
+  --color-blue-rgb: 65, 139, 226;
+
+  /* border */
+  --border-primary: var(--color-primary);
+  --border-primary-rgb: var(--color-primary-rgb);
+
+  --border-secondary: var(--color-secondary);
+  --border-secondary-rgb: var(--color-secondary-rgb);
+
+  --border-darken: var(--color-darken);
+  --border-darken-rgb: var(--color-darken-rgb);
+
+  --border-white: var(--color-white);
+  --border-white-rgb: var(--color-white-rgb);
+
+  --border-error: var(--color-error);
+  --border-error-rgb: var(--color-error-rgb);
+
+  --border-point: var(--color-point);
+  --border-point-rgb: var(--color-point-rgb);
+
+  --border-disabled: var(--color-disabled);
+  --border-disabled-rgb: var(--color-disabled-rgb);
+
+  /* background */
+  --bg-primary: var(--color-primary);
+  --bg-primary-rgb: var(--color-primary-rgb);
+
+  --bg-secondary: var(--color-secondary);
+  --bg-secondary-rgb: var(--color-secondary-rgb);
+
+  --bg-darken: var(--color-darken);
+  --bg-darken-rgb: var(--color-darken-rgb);
+
+  --bg-white: var(--color-white);
+  --bg-white-rgb: var(--color-white-rgb);
+
+  --bg-error: var(--color-error);
+  --bg-error-rgb: var(--color-error-rgb);
+
+  --bg-point: var(--color-point);
+  --bg-point-rgb: var(--color-point-rgb);
+
+  --bg-disabled: var(--color-disabled);
+  --bg-disabled-rgb: var(--color-disabled-rgb);
+}
+
+
+/* ================================
+   Dark Theme (Charcoal baseline)
+   ================================ */
+[data-theme="dark"] {
+  /* gray scale (라이트 → 다크 톤 매핑) */
+  --gray-100: #1a1a1a;  --gray-100-rgb: 26, 26, 26;
+  --gray-200: #1e1e1e;  --gray-200-rgb: 30, 30, 30;   /* 카드/패널 기본 배경 */
+  --gray-300: #232323;  --gray-300-rgb: 35, 35, 35;
+  --gray-400: #2c2c2c;  --gray-400-rgb: 44, 44, 44;
+  --gray-500: #383838;  --gray-500-rgb: 56, 56, 56;
+  --gray-600: #444444;  --gray-600-rgb: 68, 68, 68;   /* 비활성 텍스트/아이콘 */
+  --gray-700: #555555;  --gray-700-rgb: 85, 85, 85;
+  --gray-800: #666666;  --gray-800-rgb: 102, 102, 102;
+  --gray-900: #777777;  --gray-900-rgb: 119, 119, 119; /* 보조 텍스트 */
+
+  /* semantic color (명도/채도 조정으로 대비 확보) */
+  --color-white: #121212;            --color-white-rgb: 18, 18, 18;     /* 전체 배경(페이지) */
+  --color-darken: #f5f5f5;           --color-darken-rgb: 245, 245, 245; /* 기본 본문 텍스트 */
+
+  --color-primary: #b35bb0;          --color-primary-rgb: 179, 91, 176;  /* #861c7f → 명도↑ */
+  --color-secondary: #f0ab54;        --color-secondary-rgb: 240, 171, 84;/* #e3933a → 명도↑ */
+  --color-point: #00a896;            --color-point-rgb: 255, 107, 61;    /* #ec5a29 → 명도↑ */
+
+  --color-error: #e53935;            --color-error-rgb: 255, 92, 92;
+  --color-red: #ff7070;              --color-red-rgb: 255, 112, 112;
+  --color-blue: #5ba9f5;             --color-blue-rgb: 91, 169, 245;
+
+  --color-disabled: var(--gray-600);
+  --color-disabled-rgb: var(--gray-600-rgb);
+
+  /* border (rgba(var(--*-rgb), alpha)로 반투명 활용 추천) */
+  --border-primary: var(--color-primary);   --border-primary-rgb: var(--color-primary-rgb);
+  --border-secondary: var(--color-secondary); --border-secondary-rgb: var(--color-secondary-rgb);
+  --border-darken: var(--color-darken);     --border-darken-rgb: var(--color-darken-rgb);
+  --border-white: var(--color-white);       --border-white-rgb: var(--color-white-rgb);
+  --border-error: var(--color-error);       --border-error-rgb: var(--color-error-rgb);
+  --border-point: var(--color-point);       --border-point-rgb: var(--color-point-rgb);
+  --border-disabled: var(--color-disabled); --border-disabled-rgb: var(--color-disabled-rgb);
+
+  /* background (컴포넌트/상태별 용도 매핑) */
+  --bg-white: var(--color-white);           --bg-white-rgb: var(--color-white-rgb);     /* 페이지 루트 배경 */
+  --bg-darken: var(--color-darken);         --bg-darken-rgb: var(--color-darken-rgb);   /* 반전(라이트) 배경용 */
+  --bg-primary: var(--color-primary);       --bg-primary-rgb: var(--color-primary-rgb);
+  --bg-secondary: var(--color-secondary);   --bg-secondary-rgb: var(--color-secondary-rgb);
+  --bg-error: var(--color-error);           --bg-error-rgb: var(--color-error-rgb);
+  --bg-point: var(--color-point);           --bg-point-rgb: var(--color-point-rgb);
+  --bg-disabled: #2a2a2a;                   --bg-disabled-rgb: 42, 42, 42;
+
+  /* 보너스: 자주 쓰는 overlay/헤어라인 */
+  --overlay-01: rgba(0, 0, 0, .3);
+  --overlay-02: rgba(0, 0, 0, .6);
+  --hairline: rgba(var(--border-white-rgb), .08); /* 어두운 배경 위 1px 경계 */
+}

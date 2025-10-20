@@ -1,0 +1,249 @@
+@import "../../css/mixin";
+
+/* =========================================================
+   DatePicker (.text-field.datepicker)
+   ========================================================= */
+.datepicker {
+  position: relative;
+  padding-right: 44px; /* 버튼 자리 확보 */
+  &.is-open { overflow: visible; }
+
+  .dp-input {
+    height: 100%;
+    width: 100%;
+    background: transparent;
+  }
+
+  .dp-btn {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    background-image: url('/images/icon/icon-calendar.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-color .15s ease, box-shadow .15s ease, opacity .15s ease;
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary), #fff 70%);
+    }
+  }
+
+  &:hover .dp-btn,
+  &:focus-within .dp-btn {
+    background-color: color-mix(in srgb, var(--color-primary), #fff 85%);
+  }
+
+  /* 버튼 활성 강조 */
+  [data-dp-toggle][aria-expanded="true"] {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary), #fff 60%);
+  }
+
+  /* 에러/비활성 상태 */
+  &.error .dp-btn {
+    opacity: .55;
+    pointer-events: none;
+  }
+  &:disabled .dp-btn {
+    opacity: .4;
+    pointer-events: none;
+  }
+
+  /* size 연동 */
+  &.size-lg {
+    padding-right: 56px;
+
+    .dp-btn {
+      width: 36px;
+      height: 36px;
+      right: 12px;
+    }
+    // .dp-input {
+    //   font-size: 24px;
+    //   font-weight: 700;
+    // }
+  }
+
+  &.size-md {
+    .dp-btn {
+      width: 32px;
+      height: 32px;
+      right: 10px;
+    }
+    .dp-input {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+
+  &.size-sm {
+    .dp-btn {
+      width: 28px;
+      height: 28px;
+      right: 8px;
+    }
+    .dp-input {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}
+
+/* =========================================================
+   ========== DatePicker Popup (전역/분리 영역) ==========
+   ========================================================= */
+
+/* 팝업 박스 */
+.dp-pop {
+  position: fixed; /* 래퍼 내부에 넣는다면 absolute로 변경 */
+  z-index: 9999;
+  width: 328px;
+  padding: 10px;
+  background: var(--color-white);
+  border: 1px solid var(--border-darken);
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
+  animation: dp-fade .12s ease-out;
+}
+
+/* 위로 펼칠 때 */
+.dp-pop.flipY {
+  transform-origin: bottom center;
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+
+/* 등장 애니메이션 */
+@keyframes dp-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 헤더 */
+.dp-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+
+  .title {
+    font: 600 14px/1.2 system-ui;
+    color: var(--color-darken);
+  }
+
+  .nav {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--border-darken);
+    background: var(--color-white);
+    cursor: pointer;
+    transition: background-color .12s ease, border-color .12s ease;
+
+    &:hover {
+      background: var(--gray-200);
+      border-color: var(--color-primary);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary), #fff 70%);
+    }
+  }
+}
+
+/* 요일 행 */
+.dp-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin: 6px 0 4px;
+
+  span {
+    font: 600 12px/1 system-ui;
+    color: var(--gray-600);
+    text-align: center;
+  }
+}
+
+/* 날짜 그리드 */
+.dp-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+/* 날짜 셀 */
+.dp-day {
+  height: 38px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font: 600 13px/1 system-ui;
+  color: var(--color-darken);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  transition: background-color .12s ease, color .12s ease;
+
+  &:hover {
+    background: var(--gray-200);
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary), #fff 70%);
+  }
+
+  &[data-out="1"] {
+    color: var(--gray-500);
+  }
+}
+
+/* 선택 & 범위 */
+.dp-day.is-selected {
+  background: var(--color-primary);
+  color: #fff;
+}
+.dp-day.in-range {
+  background: color-mix(in srgb, var(--color-primary), #fff 85%);
+}
+.dp-day.range-start {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.dp-day.range-end {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* 다크 모드 */
+[data-theme="dark"] .dp-pop {
+  background: #121212;
+  border-color: rgba(255, 255, 255, .12);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .6);
+}
+[data-theme="dark"] .dp-week span {
+  color: #a9adc0;
+}
+[data-theme="dark"] .dp-day {
+  color: #e6e8f0;
+}
+[data-theme="dark"] .dp-day:hover {
+  background: rgba(255, 255, 255, .06);
+}
+[data-theme="dark"] .dp-day.in-range {
+  background: rgba(108, 124, 255, .18);
+}

@@ -1,0 +1,160 @@
+/* type은 3가지 */
+/* type-rowcol, type-col, type-row */
+
+/* ===============================
+   📘 Table Base Style
+   =============================== */
+.table-wrap {
+  overflow-x: auto;
+  &.visible {
+    overflow: visible;
+  }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border: 1px solid var(--gray-400);
+    border-radius: 12px;
+    overflow: hidden;
+    border-left: 0;
+
+    th,
+    td {
+      padding: 14px 16px;
+      //text-align: left;
+      vertical-align: middle;
+      word-break: break-word;
+      border-right: 1px solid var(--gray-400);
+      border-bottom: 1px solid var(--gray-400);
+    }
+
+    thead th {
+      background: var(--gray-300);
+      @include heading-3;
+      font-weight: 700;
+      border-bottom: 1px solid var(--gray-400);
+    }
+    tbody th {
+      @include body-1;
+      color: var(--color-darken);
+      font-weight: 500;
+    }
+    tbody td {
+      @include body-1;
+      color: var(--gray-700);
+      font-weight: 500;
+    }
+
+    /* 상단 라운드 */
+    thead tr:first-child {
+      th:first-child {
+        border-top-left-radius: 12px;
+      }
+      th:last-child {
+        border-top-right-radius: 12px;
+        border-right: 0;
+      }
+    }
+
+    /* 모든 테이블에서 마지막 td는 라운드 제거 */
+    tbody tr:last-child td:last-child {
+      border-bottom-right-radius: 0;
+    }
+    tbody tr:last-child td:first-child {
+      border-bottom-left-radius: 0;
+    }
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+    tbody tr td:last-child {
+      border-right: 0;
+    }
+  }
+
+  caption {
+    text-align: left;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+}
+
+/* ===============================
+   📗 Type: Row & Column Table
+   =============================== */
+.table-wrap.type-rowcol {
+  table {
+    border-radius: 12px 12px 0 0;
+    
+    thead th,
+    thead td {
+      text-align: center;
+    }
+    tbody th,
+    tbody td {
+      text-align: center;
+    }
+    tbody td:first-child,
+    tbody th:first-child {
+      background: var(--gray-200);
+      font-weight: 700;
+      width: 160px;
+      border-left: 0; /* 왼쪽선 제거 */
+    }
+    tbody tr:last-child th:first-child{
+      border-bottom: 0;
+    }
+  }
+}
+
+/* ===============================
+   📙 Type: Column Header Table
+   =============================== */
+.table-wrap.type-col {
+  table {
+    border-radius: 12px 12px 0 0;
+    thead th,
+    tbody td {
+      text-align: center;
+    }
+    thead th {
+      background: var(--gray-300);
+    }
+    tbody tr:last-child th:first-child{
+      border-bottom: 0;
+    }
+  }
+}
+
+/* ===============================
+   📕 Type: Row Table
+   =============================== */
+.table-wrap.type-row {
+  table {
+    border-radius: 12px 0 0 12px;
+    tbody td:first-child,
+    tbody th:first-child {
+      background: var(--gray-300);
+      font-weight: 700;
+      width: 220px;
+      border-left: 0; /* 왼쪽선 제거 */
+    }
+    tbody th {
+      background: var(--gray-300);
+      font-weight: 700;
+    }
+    tbody tr:last-child th:first-child{
+      border-bottom: 0;
+    }
+  }
+}
+
+/* ===============================
+   📱 Responsive
+   =============================== */
+@media (max-width: 768px) {
+  .table-wrap table th,
+  .table-wrap table td {
+    padding: 12px;
+  }
+}

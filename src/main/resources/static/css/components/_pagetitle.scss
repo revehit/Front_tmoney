@@ -1,0 +1,31 @@
+.section-title {
+  font-size: 48px;
+  font-weight: 700;
+}
+.section-sub-title {
+  @include heading-2;
+}
+
+/* title-wrap */
+.title-wrap {
+  padding-top: 100px;
+  padding-bottom: 64px;
+}
+
+.page-header {
+  padding-top: 120px;
+  padding-bottom: 64px;
+  .section-title { margin: 0 auto; }
+  .with-img {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 24px;
+    img {
+      flex-shrink: 0;
+      width: auto;
+    }
+    .section-title { 
+      margin: 0; 
+    }
+  }
+}

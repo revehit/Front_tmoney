@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<div id="breadcrumb">
+  <div class="container">
+    <nav>
+      <ul>
+        <li>홈</li>
+        <li>이용안내</li>
+        <li aria-current="page">회원가입안내</li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main id="contents">
+  <section class="section">
+    <div class="container">
+      <div class="page-wrap">
+        <div class="page-header">
+          <h2 class="section-title">회원가입안내</h2>
+        </div>
+        <div class="flex dir-col gap24">
+          <div class="line-box" aria-labelledby="join-steps">
+            <h3>회원가입 절차</h3>
+            <p class="sr-only">총 4단계 안내</p>
+            <ol class="steps">
+              <li class="step-box">
+                <div class="flex">
+                  <div class="box size-lg" aria-hidden="true">STEP 1</div>
+                  <div>
+                    <p class="sr-only">1단계</p>
+                    <h4>약관동의</h4>
+                    <ul class="list-type check primary">
+                      <li>개인정보 수집/이용에 관한 약관</li>
+                      <li>홈페이지 이용 약관</li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="step-box">
+                <div class="flex">
+                  <div class="box size-lg" aria-hidden="true">STEP 2</div>
+                  <div>
+                    <p class="sr-only">2단계</p>
+                    <h4>본인인증</h4>
+                    <ul class="list-type check primary">
+                      <li>[인증방법]<br/>본인명의 휴대폰 및 아이핀, 카카오톡, 토스 인증 서비스 제공</li>
+                      <li>[만 14세 미만 가입자]<br/>개인정보보호법에 따라 만 14세 미만 아동의 개인정보를 처리하기 위해서는 법정대리인의 동의를 받아야 합니다.
+                        <span class="guide-text color-red">14세 미만 가입자가 본인 명의의 휴대폰이 없을 경우 아이핀 인증</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="step-box">
+                <div class="flex">
+                  <div class="box size-lg" aria-hidden="true">STEP 3</div>
+                  <div>
+                    <p class="sr-only">3단계</p>
+                    <h4>회원정보 입력</h4>
+                    <ul class="list-type check primary">
+                      <li>이름, 아이디, 비밀번호, 휴대폰번호, 전화번호, 이메일 주소 입력</li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="step-box">
+                <div class="flex">
+                  <div class="box size-lg" aria-hidden="true">STEP 4</div>
+                  <div>
+                    <p class="sr-only">4단계</p>
+                    <h4>가입 완료</h4>
+                    <ul class="list-type check primary">
+                      <li>가입 완료 후 <strong class="color-primary">지원 사업 가입하기 진행</strong></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+          <div class="line-box" aria-labelledby="card-examples">
+            <h3>교통 카드 번호 예시</h3>
+            <div class="flex dir-col gap24">
+              <ul class="list-type check primary">
+                <li>
+                  <div class="flex dir-col gap24">
+                    앞면은 일반 카드번호, 뒷면은 교통 카드번호가 기재된 경우
+                    <figure class="figure">
+                      <img src="/images/sub/img-sub-guide1.png" 
+                      alt="카드 앞면에는 일반 카드번호, 뒷면에는 교통카드번호가 표시된 위치 예시" 
+                      loading="lazy" decoding="async" />
+                      <figcaption class="sr-only">예시 1: 앞면 일반번호 / 뒷면 교통카드번호</figcaption>
+                    </figure>
+                  </div>
+                </li>
+              </ul>
+              <ul class="list-type check primary">
+                <li>
+                  <div class="flex dir-col gap24">
+                    뒷면에 일반 카드번호 및 교통 카드번호가 기재된 경우
+                    <figure class="figure">
+                      <img
+                        src="/images/sub/img-sub-guide2.png"
+                        alt="카드 뒷면에 일반 카드번호와 교통카드번호가 함께 표시된 위치 예시"
+                        loading="lazy" decoding="async">
+                      <figcaption class="sr-only">예시 2: 뒷면 일반번호+교통카드번호 동시 표기</figcaption>
+                    </figure>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+
+</body>
+</html>

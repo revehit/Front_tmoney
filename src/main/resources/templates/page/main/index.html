@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/main.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<main id="contents">
+  <section class="section section1">
+    <div class="container">
+      <div class="swiper"></div>
+      <div class="login-box"></div>
+    </div>
+  </section>
+
+  <section class="section section2">
+    <div class="container">
+      <div class="flex justify-center">
+        <div class="transform-txt" aria-hidden="true">
+          <span>교</span><span>통</span><span>비</span><span>&nbsp;</span>
+          <span>지</span><span>원</span><span>,</span><span>&nbsp;</span>
+          <span>더</span><span>&nbsp;</span><span>쉽</span><span>고</span><span>&nbsp;</span>
+          <span>빠</span><span>르</span><span>게</span><br/>
+          <span>'</span><span>교</span><span>통</span><span>비</span><span>지</span><span>원</span><span>&nbsp;</span>
+          <span>통</span><span>합</span><span>포</span><span>털</span><span>'</span><span>과</span><span></span>
+          <span>함</span><span>께</span><span></span>
+          <span>스</span><span>마</span><span>트</span><span>한</span><span></span>
+          <span>이</span><span>동</span>
+        </div>
+        <!-- 스크린리더 전용 전체 텍스트 -->
+        <p class="blind">
+          교통비지원, 더 쉽고 빠르게 '교통비지원 통합포털'과 함께 스마트한 이동
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section3">
+    <div class="container">
+      <div class="box">
+        <video th:src="@{/video/type-a-1-video.mp4}" loop autoplay class="img3"></video>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section4">
+    <div class="container">
+      <div class="flex">
+        <div class="text-box"
+          data-aos="fade-right" 
+          data-aos-offset="100" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000" 
+        >
+          <h2>누가 교통비<br/>
+            지원금을 신청<br/>
+            할 수 있나요?<br/>
+          </h2>
+          <h3>어린이부터 어르신까지 연령대에 따라<br/>
+            다양한 대상자가 지원금을 신청할 수 있어요!
+          </h3>
+          <p class="">* 지원금 신청과 입금 절차는 각 지자체별 정책에 따라 다를 수 있습니다.</p>
+          <a href="#" class="btn-link">자세히 보기 <i class="icon right"></i></a>
+        </div>
+        <div class="img-box">
+          <div class="box" 
+            data-aos="fade-up" 
+            data-aos-offset="100" 
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000" 
+          >
+            <p>어린이</p>
+            <span class="round">만 6세 이상</span>
+            <img th:src="@{/images/main/img-section4-1.png}" alt="어린이 이미지">
+          </div>
+          <div class="box"
+            data-aos="fade-up" 
+            data-aos-offset="100" 
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1500" 
+          >
+            <p>청소년</p>
+            <span class="round">만 13세~18세</span>
+            <img th:src="@{/images/main/img-section4-2.png}" alt="어린이 이미지">
+          </div>
+          <div class="box"
+            data-aos="fade-up" 
+            data-aos-offset="100" 
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000" 
+          >
+            <p>어르신</p>
+            <span class="round gray">만 65세 이상</span>
+            <img th:src="@{/images/main/img-section4-3.png}" alt="어린이 이미지">
+
+          </div>
+          <div class="box"
+            data-aos="fade-up" 
+            data-aos-offset="100" 
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1500" 
+          >
+            <div class="etc">해당<br/>지자체 주민</div>
+            <img th:src="@{/images/main/img-section4-4.png}" alt="어린이 이미지">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section5">
+    <div class="container">
+      <div class="flex">
+        <div class="img-box"
+          data-aos="fade-right" 
+          data-aos-offset="100" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000" 
+        >
+          <img th:src="@{/images/main/img-section5-1.jpg}" alt="">
+        </div>
+        <div class="text-box"
+          data-aos="fade-left" 
+          data-aos-offset="100" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000" 
+        >
+          <h2>어떻게 교통비<br/>
+            지원금을 받을 수<br/>
+            있나요?<br/>
+          </h2>
+          <h3>회원가입 후 교통카드를 등록하고, 대중교통을 이용해 주세요!</h3>
+          <p class="">* 지원금 신청과 입금 절차는 각 지자체별 정책에 따라 다를 수 있습니다.</p>
+          <div class="step-box">
+            <div>
+              <p>회원가입</p>
+              <span>(온/오프라인)</span>
+            </div>
+            <i class="icon"></i>
+            <div>
+              <p>대중교통 이용</p>
+            </div>
+            <i class="icon"></i>
+            <div>
+              <p>지원금 신청</p>
+              <span>(분기별)</span>
+            </div>
+            <i class="icon"></i>
+            <div>
+              <p>지원금 입금</p>
+              <span>(분기별)</span>
+            </div>
+          </div>
+          <a href="#" class="btn-link">자세히 보기 <i class="icon right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section6">
+    <div class="container">
+      <div class="inner">
+        <div class="filter-box">
+          <p>지자체별 교통복지 서비스</p>
+          <div class="filter">
+            <button type="button" class="active">서울</button>
+            <button type="button">경기</button>
+            <button type="button">인천</button>
+            <button type="button">충남</button>
+            <button type="button">전북</button>
+            <button type="button">경남</button>
+            <button type="button">강원</button>
+            <button type="button">제주</button>
+          </div>
+        </div>
+        <div class="swiper">
+          <!-- 네비게이션 & 페이지네이션 -->
+          <div class="swiper-controls">
+            <div class="swiper-pagination section6-pagination"></div>
+            <div class="swiper-button-prev section6-prev"></div>
+            <div class="swiper-button-next section6-next"></div>
+          </div>
+          <div class="swiper-wrapper">
+            <a href="#" class="swiper-slide">
+              <div class="img-box">
+                <img th:src="@{/images/main/img-section6-ys.jpg}" alt="">
+              </div>
+              <p class="title">YONGSAN GU</p>
+              <h3>용산구</h3>
+              <ul>
+                <li>어린이 교통비</li>
+                <li>청년 교통복지카드</li>
+              </ul>
+            </a>
+            <a href="#" class="swiper-slide">
+              <div class="img-box">
+                <img th:src="@{/images/main/img-section6-jn.jpg}" alt="">
+              </div>
+              <p class="title">JONGNO GU</p>
+              <h3>종로구</h3>
+              <ul>
+                <li>어린이 교통비</li>
+                <li>청년 교통복지카드</li>
+              </ul>
+            </a>
+            <a href="#" class="swiper-slide">
+              <div class="img-box">
+                <img th:src="@{/images/main/img-section6-gn.jpg}" alt="">
+
+              </div>
+              <p class="title">GANGNAM GU</p>
+              <h3>강남구</h3>
+              <ul>
+                <li>8세 이상 어린이</li>
+                <li>강남구 직장인 복지혜택</li>
+                <li>65세 이상 어르신</li>
+              </ul>
+            </a>
+            <a href="#" class="swiper-slide">
+              <div class="img-box">
+                <img th:src="@{/images/main/img-section6-ys.jpg}" alt="">
+              </div>
+              <p class="title">YONGSAN GU</p>
+              <h3>용산구</h3>
+              <ul>
+                <li>어린이 교통비</li>
+                <li>청년 교통복지카드</li>
+              </ul>
+            </a>
+            <a href="#" class="swiper-slide">
+              <div class="img-box">
+                <img th:src="@{/images/main/img-section6-jn.jpg}" alt="">
+              </div>
+              <p class="title">JONGNO GU</p>
+              <h3>종로구</h3>
+              <ul>
+                <li>어린이 교통비</li>
+                <li>청년 교통복지카드</li>
+              </ul>
+            </a>
+            <a href="#" class="swiper-slide">
+              <div class="img-box">
+                <img th:src="@{/images/main/img-section6-gn.jpg}" alt="">
+              </div>
+              <p class="title">GANGNAM GU</p>
+              <h3>강남구</h3>
+              <ul>
+                <li>8세 이상 어린이</li>
+                <li>강남구 직장인 복지혜택</li>
+                <li>65세 이상 어르신</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section7">
+    <div class="container">
+      <div class="title-box">
+        <h2>공지사항</h2>
+        <a href="#" class="btn-link">자세히 보기 <i class="icon right"></i></a>
+      </div>
+      <div class="list-box">
+        <a href="#" class="list-item"
+          data-aos="fade-up" 
+          data-aos-offset="100" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000" 
+        >
+          <span class="badge primary">종로구</span>
+          <span class="title">2025년 8월 교통비 신청</span>
+          <span class="date">2025.07.29</span>
+        </a>
+        <a href="#" class="list-item"
+          data-aos="fade-up" 
+          data-aos-offset="100" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000" 
+        >
+          <span class="badge secondary">김해시</span>
+          <span class="title">시스템 점검 안내(8/1~8/3)</span>
+          <span class="date">2025.07.16</span>
+        </a>
+        <a href="#" class="list-item"
+          data-aos="fade-up" 
+          data-aos-offset="100" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000" 
+        >
+          <span class="badge primary">종로구</span>
+          <span class="title">2025년 7월 교통비 신청</span>
+          <span class="date">2025.06.29</span>
+        </a>
+        <a href="#" class="list-item"
+          data-aos="fade-up" 
+          data-aos-offset="100" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000" 
+        >
+          <span class="badge primary">종로구</span>
+          <span class="title">2025년 6월 교통비 신청</span>
+          <span class="date">2025.05.29</span>
+        </a>
+        <a href="#" class="list-item"
+          data-aos="fade-up" 
+          data-aos-offset="100" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000" 
+        >
+          <span class="badge primary">종로구</span>
+          <span class="title">2025년 5월 교통비 신청</span>
+          <span class="date">2025.04.29</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

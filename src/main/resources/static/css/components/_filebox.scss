@@ -1,0 +1,104 @@
+/* ===============================
+   File Uploader
+   markup: .file-box → .file-drop + .file-list
+   =============================== */
+
+.file-box {
+  display: grid;
+  gap: 16px;
+
+  /* 안내문 */
+  .guide-text {
+    color: var(--gray-600);
+    line-height: 1.6;
+  }
+
+  /* ----- 드래그앤드롭 영역 ----- */
+  .file-drop {
+    border: 1px solid var(--gray-300);
+    border-radius: 14px;
+    background: var(--gray-200);
+    padding: 32px;
+    min-height: 220px;
+
+    /* 중앙 정렬 컨테이너 */
+    .file-drop-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 18px;
+      text-align: center;
+      outline: none;
+
+      .file-drop-msg {
+        margin: 0;
+        color: var(--gray-700);
+        font-size: clamp(14px, 2vw, 22px);
+        line-height: 1.6;
+      }
+    }
+
+    /* 포커스/호버/드래그 상태 */
+    &:hover { border-color: var(--gray-400); }
+    .file-drop-inner:focus-visible {
+      box-shadow: 0 0 0 3px rgba(0,0,0,.08);
+    }
+    &.is-dragover {
+      background: var(--gray-100);
+      border-style: dashed;
+      border-color: var(--gray-500);
+    }
+  }
+
+  /* ----- 업로드 리스트 ----- */
+  .file-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+
+    .file-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      background: #fff;
+      border: 1px solid var(--gray-300);
+      border-radius: 14px;
+
+      .file-name {
+        color: var(--gray-700);
+        word-break: break-all;
+      }
+      .btn {
+        max-width: 80px;
+        height: 30px;
+        .icon {
+          width: 16px;
+          height: 16px;
+          flex-shrink: 0;
+        }
+      }
+
+      /* 삭제 버튼 위치/정렬 */
+      [data-action="remove"] {
+        margin-left: auto;
+        white-space: nowrap;
+        flex-direction: row-reverse;
+        gap: 5px;
+      }
+    }
+  }
+}
+
+/* ----- 반응형 ----- */
+@media (max-width: 768px) {
+  .file-box {
+    .file-drop { padding: 24px; min-height: 180px; }
+    .file-list .file-item { padding: 14px 16px; }
+  }
+}
