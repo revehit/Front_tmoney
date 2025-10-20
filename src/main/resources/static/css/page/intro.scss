@@ -3,6 +3,9 @@
 #footer {
   margin-top: 200px;
 }
+#contents {
+  overflow: hidden;
+}
 .section {
   margin-top: 160px;
 }
@@ -244,6 +247,7 @@
 }
 .section8 {
   position: relative;
+  height: 100vh !important;
   .title-box {
     h2 { text-align: left; }
   }
@@ -251,8 +255,15 @@
     margin-top: 64px; 
     display: flex;
     gap: 56px;
+    will-change: left;
+    position: relative;
+    left: 30%;
   }
   .card-item {
+    flex: 0 0 420px;
+    backface-visibility: hidden;
+    will-change: transform; 
+    transform-style: preserve-3d; 
     .img-box {
       width: 420px;
       height: 420px;
@@ -287,7 +298,7 @@
   .vertical-text {
     overflow: hidden;
     position: absolute;
-    bottom: -100px;
+    bottom: 100px;
     z-index: -1;
     .con {
       display: flex;
