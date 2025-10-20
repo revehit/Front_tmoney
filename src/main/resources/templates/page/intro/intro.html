@@ -263,7 +263,7 @@
       <div class="card-wrap">
         <div class="card-item"
             data-aos="fade-up"
-            data-aos-duration="500"
+            data-aos-duration="300"
             data-aos-easing="ease-in-sine">
           <div class="img-box">
             <p><span>J</span>ONGRO GU</p>
@@ -273,7 +273,7 @@
         </div>
         <div class="card-item"
             data-aos="fade-up"
-            data-aos-duration="700"
+            data-aos-duration="500"
             data-aos-easing="ease-in-sine">
           <div class="img-box">
             <p><span>G</span>ANGNAM GU</p>
@@ -283,13 +283,23 @@
         </div>
         <div class="card-item"
             data-aos="fade-up"
-            data-aos-duration="900"
+            data-aos-duration="700"
             data-aos-easing="ease-in-sine">
           <div class="img-box">
             <p><span>G</span>YUNGGI DO</p>
             <img src="/images/sub/img-gg.jpg" alt="경기도 이미지">
           </div>
           <h3>경기도 어린이 청소년<br/>교통비 지원사업</h3>
+        </div>
+        <div class="card-item"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-in-sine">
+          <div class="img-box">
+            <p><span>G</span>IMHAE SI</p>
+            <img src="/images/sub/img-gh.jpg" alt="김해시 이미지">
+          </div>
+          <h3>김해시 <br/>교통비 지원사업</h3>
         </div>
       </div>
     </div>
@@ -320,6 +330,66 @@
 <script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
 
 <script type="module" th:src="@{/js/common.js}"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', async function(){
+  gsap.registerPlugin(ScrollTrigger);
+
+  const sec  = document.querySelector('.section8');
+  const cont = sec?.querySelector('.container') || sec;
+  const wrap = sec?.querySelector('.card-wrap');
+  if (!sec || !cont || !wrap) return;
+
+  // 이미지/폰트 로딩 대기
+  await imagesReady(wrap);
+  if (document.fonts && document.fonts.ready) { try { await document.fonts.ready; } catch(e){} }
+
+  const viewW = cont.clientWidth;
+  const wrapW = wrap.scrollWidth;
+  if (wrapW <= viewW) return; // 수평 이동 불필요 시 종료
+
+  // 실제 이동 거리 계산
+  const startLeftPx = Math.round(viewW * 0.30);   // left:30%
+  const endLeftPx   = -Math.max(0, wrapW - viewW);
+  const distancePx  = startLeftPx - endLeftPx;
+
+  // 초기 left px 세팅
+  gsap.set(wrap, { left: startLeftPx });
+
+  // 💡 card-item 효과 제거: wrap 이동만 남김
+  gsap.to(wrap, {
+    left: endLeftPx,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: sec,
+      start: 'top-=20%',
+      end: '+=' + distancePx,
+      pin: true,
+      pinType: ScrollTrigger.isTouch ? 'transform' : 'fixed',
+      scrub: 1,
+      anticipatePin: 1,
+      invalidateOnRefresh: true
+      // markers: true
+    }
+  });
+
+  // 리사이즈 대응
+  window.addEventListener('resize', () => setTimeout(() => ScrollTrigger.refresh(), 60));
+
+  // 이미지 로딩 유틸
+  function imagesReady(root){
+    const imgs = Array.from(root.querySelectorAll('img'));
+    if (!imgs.length) return Promise.resolve();
+    return Promise.allSettled(imgs.map(img => {
+      if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+      return new Promise(res => {
+        img.addEventListener('load', res, { once:true });
+        img.addEventListener('error', res, { once:true });
+      });
+    }));
+  }
+});
+</script>
 
 </body>
 </html>
