@@ -38,8 +38,58 @@
 <main id="contents">
   <section class="section section1">
     <div class="container">
-      <div class="swiper"></div>
-      <div class="login-box"></div>
+      <h2 class="sr-only">메인 비주얼</h2>
+
+      <div class="swiper"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="메인 비주얼 배너">
+        <div class="swiper-wrapper">
+          <!-- ★ 슬라이드에 고유 id 부여 (불릿 aria-controls와 일치해야 함) -->
+          <div class="swiper-slide" id="section1-slide-1" role="group" aria-label="1 / 2" aria-labelledby="slide1-text1">
+            <img src="../../../static/images/main/img-visual1.jpg" alt="" />
+            <p id="slide1-text1" class="blind">전국 어디서나, 지자체 맞춤 교통비 지원을, '교통비지원 통합포털'에서</p>
+          </div>
+          <div class="swiper-slide" id="section1-slide-2" role="group" aria-label="2 / 2" aria-labelledby="slide1-text2">
+            <img src="../../../static/images/main/img-visual1.jpg" alt="" />
+            <p id="slide1-text2" class="blind">전국 어디서나, 지자체 맞춤 교통비 지원을, '교통비지원 통합포털'에서</p>
+          </div>
+        </div>
+
+        <div class="section1-controls" role="group" aria-label="배너 컨트롤">
+          <div class="capsule">
+            <div class="dots" role="tablist" aria-label="슬라이드 인디케이터"></div>
+
+            <button type="button" class="toggle" aria-pressed="false" aria-label="자동재생 일시정지">
+              <span class="icon icon-slider-pause" aria-hidden="true"></span>
+              <span class="icon icon-slider-play" aria-hidden="true"></span>
+            </button>
+
+            <span class="sr-only" id="section1-status" aria-live="polite">배너 로딩</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="login-box" aria-labelledby="login-title">
+        <h3 id="login-title" class="sr-only">로그인 영역</h3>
+        <div>
+          <div class="img-box">
+            <img src="../../../static/images/main/img-login-people.png" alt="로그인 환영 일러스트">
+          </div>
+          <p>반갑습니다!</p>
+        </div>
+
+        <a href="#" class="btn btn-primary btn-icon-right">
+          <i class="icon icon-arrow-right" aria-hidden="true"></i>
+          로그인
+        </a>
+
+        <div class="link-wrap" aria-label="회원 계정 관련 링크">
+          <a href="#">회원가입</a>
+          <span class="bar" aria-hidden="true"></span>
+          <a href="#">아이디/비밀번호찾기</a>
+        </div>
+      </div>
     </div>
   </section>
 
