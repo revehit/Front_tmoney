@@ -80,7 +80,7 @@
                         <fieldset>
                           <legend id="bankFieldTitle" class="blind">은행/자릿수 선택 및 카드번호 입력</legend>
                           <div class="flex align-center gap8" role="group" aria-labelledby="bankFieldTitle">
-                            <div class="dropdown size-lg" data-name="">
+                            <div class="dropdown size-md" data-name="">
                               <!-- 버튼: 고유 id, 상태 토글 -->
                               <button type="button"
                                       id="bankDropdownBtn"
@@ -114,22 +114,22 @@
                             <div>
                               <label for="card-1" class="sr-only">카드번호 4자리씩 입력</label>
                               <div class="flex align-center gap8" id="cardgroup" aria-describedby="cardHelp">
-                                <input id="card-1" name="card_1" class="text-field size-lg"
+                                <input id="card-1" name="card_1" class="text-field size-md"
                                       inputmode="numeric" pattern="\d{4}" maxlength="4" required
                                       autocomplete="cc-number" aria-label="카드번호 첫 4자리">
                                 <span class="flex-bar" aria-hidden="true">-</span>
-                                <input id="card-2" name="card_2" class="text-field size-lg"
+                                <input id="card-2" name="card_2" class="text-field size-md"
                                       inputmode="numeric" pattern="\d{4}" maxlength="4" required
                                       aria-label="카드번호 둘째 4자리">
                                 <span class="flex-bar" aria-hidden="true">-</span>
-                                <input id="card-3" name="card_3" class="text-field size-lg"
+                                <input id="card-3" name="card_3" class="text-field size-md"
                                       inputmode="numeric" pattern="\d{4}" maxlength="4" required
                                       aria-label="카드번호 셋째 4자리">
                                 <span class="flex-bar" aria-hidden="true">-</span>
-                                <input id="card-4" name="card_4" class="text-field size-lg"
+                                <input id="card-4" name="card_4" class="text-field size-md"
                                       inputmode="numeric" pattern="\d{4}" maxlength="4" required
                                       aria-label="카드번호 마지막 4자리">
-                                <button type="button" class="btn btn-darkgray size-lg">
+                                <button type="button" class="btn btn-darkgray size-md">
                                   카드인증
                                 </button>
                                 <!-- 유효성 오류일 시 아래 버튼 사용 -->
@@ -287,7 +287,7 @@
   </section>
 </main>
 
-<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/footer :: siteFooterJn}"></th:block>
 <th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
 
 <script th:src="@{/js/vendor/aos.js}"></script>
