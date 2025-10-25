@@ -49,3 +49,25 @@
     filter: brightness(0) saturate(100%) invert(91%) sepia(8%) saturate(10%) hue-rotate(11deg) brightness(88%) contrast(96%);
   }
 }
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .page-btn, 
+  .page-num > a, 
+  .page-num > span {
+    width: 42px;
+    height: 42px;
+    @include body-2;
+    color: var(--gray-600);
+  }
+  .page-num.is-current > span {
+    color: #fff;
+  }
+  .page-ctrl .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {}

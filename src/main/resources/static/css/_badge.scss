@@ -21,3 +21,29 @@
     color: var(--color-white);
   }
 }
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .badge {
+    width: 60px;
+    height: 36px;
+    @include body-2;
+  }
+}
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .badge {
+    width: 50px;
+    height: 30px;
+    @include body-3;
+  }
+}
+
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  .badge {
+    width: 40px;
+    height: 30px;
+  }
+}

@@ -64,68 +64,70 @@
             <div class="flex align-center gap24">
               <h3>조회기간</h3>
               <!-- 날짜 범위 선택 -->
-              <div class="date-range flex align-center gap8" data-dp="range" data-dp-group="booking">
-                <!-- 시작일 -->
-                <div class="text-field datepicker size-lg">
-                  <label for="startDate" class="sr-only">시작일</label>
-                  <input
-                    id="startDate"
-                    type="text"
-                    class="dp-input"
-                    placeholder="YYYY-MM-DD"
-                    inputmode="numeric"
-                    pattern="\d{4}-\d{2}-\d{2}"
-                    autocomplete="off"
-                    data-role="start"
-                    data-dp-group="booking"
-                    aria-describedby="startDateHelp"
-                  />
-                  <button
-                    type="button"
-                    class="dp-btn"
-                    data-dp-toggle
-                    aria-label="달력 열기"
-                    aria-haspopup="dialog"
-                    aria-expanded="false"
-                    aria-controls="dp-pop"
-                  ></button>
-                  <span id="startDateHelp" class="sr-only">형식: YYYY-MM-DD. 예: 2025-10-12</span>
+              <div class="flex">
+                <div class="date-range flex align-center gap8" data-dp="range" data-dp-group="booking">
+                  <!-- 시작일 -->
+                  <div class="text-field datepicker size-lg">
+                    <label for="startDate" class="sr-only">시작일</label>
+                    <input
+                      id="startDate"
+                      type="text"
+                      class="dp-input"
+                      placeholder="YYYY-MM-DD"
+                      inputmode="numeric"
+                      pattern="\d{4}-\d{2}-\d{2}"
+                      autocomplete="off"
+                      data-role="start"
+                      data-dp-group="booking"
+                      aria-describedby="startDateHelp"
+                    />
+                    <button
+                      type="button"
+                      class="dp-btn"
+                      data-dp-toggle
+                      aria-label="달력 열기"
+                      aria-haspopup="dialog"
+                      aria-expanded="false"
+                      aria-controls="dp-pop"
+                    ></button>
+                    <span id="startDateHelp" class="sr-only">형식: YYYY-MM-DD. 예: 2025-10-12</span>
+                  </div>
+                  <span class="flex-bar" aria-hidden="true">–</span>
+                  <!-- 종료일 -->
+                  <div class="text-field datepicker size-lg">
+                    <label for="endDate" class="sr-only">종료일</label>
+                    <input
+                      id="endDate"
+                      type="text"
+                      class="dp-input"
+                      placeholder="YYYY-MM-DD"
+                      inputmode="numeric"
+                      pattern="\d{4}-\d{2}-\d{2}"
+                      autocomplete="off"
+                      data-role="end"
+                      data-dp-group="booking"
+                      aria-describedby="endDateHelp"
+                    />
+                    <button
+                      type="button"
+                      class="dp-btn"
+                      data-dp-toggle
+                      aria-label="달력 열기"
+                      aria-haspopup="dialog"
+                      aria-expanded="false"
+                      aria-controls="dp-pop"
+                    ></button>
+                    <span id="endDateHelp" class="sr-only">형식: YYYY-MM-DD. 예: 2025-10-12</span>
+                  </div>
                 </div>
-                <span class="flex-bar" aria-hidden="true">–</span>
-                <!-- 종료일 -->
-                <div class="text-field datepicker size-lg">
-                  <label for="endDate" class="sr-only">종료일</label>
-                  <input
-                    id="endDate"
-                    type="text"
-                    class="dp-input"
-                    placeholder="YYYY-MM-DD"
-                    inputmode="numeric"
-                    pattern="\d{4}-\d{2}-\d{2}"
-                    autocomplete="off"
-                    data-role="end"
-                    data-dp-group="booking"
-                    aria-describedby="endDateHelp"
-                  />
-                  <button
-                    type="button"
-                    class="dp-btn"
-                    data-dp-toggle
-                    aria-label="달력 열기"
-                    aria-haspopup="dialog"
-                    aria-expanded="false"
-                    aria-controls="dp-pop"
-                  ></button>
-                  <span id="endDateHelp" class="sr-only">형식: YYYY-MM-DD. 예: 2025-10-12</span>
-                </div>
+                <button type="button" class="btn btn-primary size-lg btn-icon-right">
+                  <i class="icon icon-search"></i>
+                  조회
+                </button>
               </div>
             </div>
-            <button type="button" class="btn btn-primary size-lg btn-icon-right">
-              <i class="icon icon-search"></i>
-              조회
-            </button>
           </div>
-          <div class="table-wrap type-col">
+          <div class="table-wrap type-col scroll-x">
             <table>
               <caption class="sr-only">지원금 내역 테이블</caption>
               <colgroup>

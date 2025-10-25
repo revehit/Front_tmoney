@@ -132,3 +132,42 @@ input {
 .file-list li:nth-child(odd) {
   background: var(--color-white);
 }
+
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .text-field {
+    &.size-lg {
+      height: 56px;
+      @include body-2;
+      padding: 0 5px;
+    }
+    &.size-md {
+      height: 48px;
+      @include body-2;
+      padding: 0 5px;
+    }
+    &.size-sm {
+      height: 36px;
+      @include body-3;
+      padding: 0 5px;
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  .text-field {
+    &.size-lg {
+      height: 48px;
+      @include body-3;
+    }
+    &.size-md {
+      height: 36px;
+      @include body-3;
+    }
+    &.size-sm {
+      height: 30px;
+    }
+  }
+}

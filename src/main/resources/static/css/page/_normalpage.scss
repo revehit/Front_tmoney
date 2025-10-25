@@ -302,3 +302,176 @@
 /* 본문 앵커 보정 */
 .line-box { scroll-margin-top: calc(var(--header-h, 80px) + 16px); }
 
+/* ===== 세번째 분기: 1430px ===== */
+@media (max-width: 1430px) {
+  .page-wrap {
+    .grid-box {
+      .title-box {
+        height: 170px;
+      }
+    }
+    .process-box {
+      .process {
+        gap: 24px;
+      }
+    }
+    .bg-box {
+      height: 200px;
+    }
+    .bg-text {
+      font-size: 10vw;
+      top: 0;
+    }
+  }
+}
+/* ===== 두번째 분기: 1200px ===== */
+@media (max-width: 1200px) {
+  .page-wrap {
+    .process-box {
+      .process {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .bg-box {
+      height: 100px;
+    }
+    .bg-text {
+      top: auto;
+      bottom: 0;
+    }
+  }
+}
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .page-wrap {
+    .line-box  {
+      padding: 20px;
+    }
+    .step-box {
+      padding: 20px;
+    }
+    .grid-box {
+      gap: 20px 20px;
+      .title-box {
+        padding: 20px;
+        h3 {
+          @include heading-3;
+        }
+      }
+      .content-box {
+        padding: 20px;
+        h4 {
+          @include body-1;
+        }
+      }
+    }
+    .visual-box {
+      p {
+        @include heading-3;
+        color: var(--color-white);
+      }
+    }
+    .process-box {
+      margin-top: 50px;
+    }
+  }
+}
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .page-wrap {
+    .line-box  {
+      h3 {
+        @include heading-3;
+      }
+      h4 {
+        @include body-2;
+      }
+    }
+    .step-box {
+      margin-top: 10px;
+      padding: 10px;
+      > .flex {
+        gap: 20px;
+      }
+      .box {
+        width: 90px;
+        min-height: 48px;
+        @include body-2;
+        color: var(--color-white);
+        &.big {
+          min-height: 90px;
+        }
+      }
+    }
+    .list-type {
+      &.check {
+        li {
+          padding-left: 25px;
+          &::before {
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+          }
+        }
+      }
+      li {
+        @include body-3;
+      }
+    }
+    .grid-box {
+      grid-template-columns: repeat(1, 1fr);
+      .title-box {
+        height: auto;
+      }
+    }
+    .visual-box {
+      height: 300px;
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+      p {
+        @include heading-3;
+        color: var(--color-white);
+        padding: 0 40px;
+        br {
+          display: none;
+        }
+      }
+    }
+    .process-box {
+      .process {
+        .box {
+          padding: 20px 15px;
+          strong {
+            @include body-2;
+          }
+          div {
+            margin: 0 20px;
+          }
+        }
+      }
+    }
+    .bg-text {
+      font-size: 9vw;
+      letter-spacing: -5px;
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  .page-wrap {
+    .process-box {
+      .process {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+    .bg-box {
+      display: none;
+    }
+  }
+}

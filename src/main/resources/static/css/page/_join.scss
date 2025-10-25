@@ -273,3 +273,103 @@
     }
   }
 }
+
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .join-wrap {
+    .join-header {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .causion-text {
+      margin-top: 50px;
+    }
+  }
+}
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .join-wrap {
+    .join-header {
+      .step-box {
+        gap: 36px;
+        .circle {
+          width: 60px;
+          height: 60px;
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+    .line-box-wrap {
+      margin-top: 50px;
+      gap: 36px;
+    }
+    .line-box {
+      .top-box {
+        padding: 10px 20px;
+        @include body-2;
+      }
+      .bot-box {
+        padding: 20px;
+      }
+    }
+    .btn-wrap {
+      gap: 10px;
+    }
+    .finish {
+      margin-top: 50px;
+    }
+    .causion-text {
+      strong {
+        @include heading-3;
+        color: var(--gray-700);
+      }
+    }
+    .form-box {
+      form {
+        .cardbox {
+          display: grid;
+          grid-template-columns: repeat(7, auto);
+          .text-field + button {
+            width: 100%;
+            grid-column: 1 / -1;
+          }
+        }
+        .bankbox {
+          display: grid;
+          grid-template-columns: repeat(2, auto);
+          .text-field + button {
+            width: 100%;
+            grid-column: 1 / -1;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  .join-wrap {
+    .join-header {
+      .step-box {
+        p {
+          @include body-3;
+        }
+      }
+    }
+    .finish {
+      margin-top: 36px;
+    }
+    .step2-box {
+      button {
+        span {
+          @include body-2;
+        }
+      }
+    }
+  }
+}

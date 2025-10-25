@@ -147,3 +147,37 @@
 @media (prefers-reduced-motion: reduce){
   .modal .modal-container{ transition: none; transform: none; opacity: 1; }
 }
+
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .modal {
+    .modal-container {
+      padding: 20px;
+    }
+    .modal-header {
+      .modal-title {
+        @include heading-3;
+      }
+    }
+    .modal-body {
+      .modal-icon {
+        margin-bottom: 30px;
+      }
+      .modal-desc {
+        @include body-1;
+      }
+      .gray-box {
+        h3 {
+          @include body-2;
+        }
+        .list-type {
+          @include body-3;
+        }
+      }
+    }
+    .modal-footer {
+      margin-top: 24px;
+    }
+  }
+}

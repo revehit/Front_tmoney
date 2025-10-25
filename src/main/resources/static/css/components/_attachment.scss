@@ -1,25 +1,25 @@
 .attachment-box {
-  margin-top: 50px;
   border-top: 1px solid var(--border-darken);
-  .attachment-header {
+}
+.attachment-top {
+  display: flex;
+  padding: 26px 32px;
+  background-color: var(--gray-200);
+  .col-title {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 20px;
-    .attachment-title {
-      font-size: 20px;
+    gap: 10px;
+    .icon {
+      width: 24px;
+      height: 24px;
     }
-    .icon-box {
-      .icon {
-        &::before {
-          content: '';
-          width: 24px;
-          height: 24px;
-        }
-      }
-    }
-    .btn-down {
-      gap: 10px;
+  }
+  .btn-down {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+    .icon {
+      width: 24px;
+      height: 24px;
     }
   }
 }
@@ -56,7 +56,7 @@
       }
       &.pdf {
         &:before {
-          background-image: url(../../images/icon/icon-pdf.svg);
+          background-image: url(../../static/images/icon/icon-pdf.svg);
           background-repeat: no-repeat;
           background-size: contain;
           background-position: center;
@@ -64,7 +64,7 @@
       }
       &.xls {
         &:before {
-          background-image: url(../../images/icon/icon-xls.svg);
+          background-image: url(../../static/images/icon/icon-xls.svg);
           background-repeat: no-repeat;
           background-size: contain;
           background-position: center;
@@ -72,7 +72,7 @@
       }
       &.doc {
         &:before {
-          background-image: url(../../images/icon/icon-doc.svg);
+          background-image: url(../../static/images/icon/icon-doc.svg);
           background-repeat: no-repeat;
           background-size: contain;
           background-position: center;
@@ -80,7 +80,7 @@
       }
       &.jpg {
         &:before {
-          background-image: url(../../images/icon/icon-jpg.svg);
+          background-image: url(../../static/images/icon/icon-jpg.svg);
           background-repeat: no-repeat;
           background-size: contain;
           background-position: center;
@@ -88,7 +88,7 @@
       }
       &.png {
         &:before {
-          background-image: url(../../images/icon/icon-png.svg);
+          background-image: url(../../static/images/icon/icon-png.svg);
           background-repeat: no-repeat;
           background-size: contain;
           background-position: center;
@@ -96,7 +96,7 @@
       }
       &.hwp {
         &:before {
-          background-image: url(../../images/icon/icon-hwp.svg);
+          background-image: url(../../static/images/icon/icon-hwp.svg);
           background-repeat: no-repeat;
           background-size: contain;
           background-position: center;
@@ -104,7 +104,7 @@
       }
       &.zip {
         &:before {
-          background-image: url(../../images/icon/icon-zip.svg);
+          background-image: url(../../static/images/icon/icon-zip.svg);
           background-repeat: no-repeat;
           background-size: contain;
           background-position: center;
@@ -112,12 +112,12 @@
       }
     }
     .file-name {
-      font-size: 18px;
+      @include body-3;
       overflow: hidden;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 1;
-      color: #adadad;
+      color: var(--gray-500);
       max-width: calc(100% - 140px);
     }
     div {
@@ -127,8 +127,22 @@
       gap: 10px;
     }
     .file-size {
-      font-size: 16px;
-      color: #adadad;
+      @include body-3;
+      color: var(--gray-500);
+    }
+  }
+}
+
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .attachment-top {
+    padding: 20px;
+  }
+  .attachment-list {
+    margin-top: 10px;
+    ul {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 }

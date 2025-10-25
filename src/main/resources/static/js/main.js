@@ -375,7 +375,8 @@ function initSection6Swiper() {
   if (!container || typeof Swiper === "undefined") return;
 
   const swiper = new Swiper(container, {
-    slidesPerView: 3,
+    //slidesPerView: 3,
+    slidesPerView: 'auto',
     spaceBetween: 56,
     loop: false,
     watchOverflow: true,
@@ -394,9 +395,10 @@ function initSection6Swiper() {
       `,
     },
     breakpoints: {
-      480: { slidesPerView: 1, spaceBetween: 16 },
-      768: { slidesPerView: 2, spaceBetween: 32 },
-      1024: { slidesPerView: 3, spaceBetween: 56 },
+      480: { slidesPerView: 'auto', spaceBetween: 20 },
+      768: { slidesPerView: 'auto', spaceBetween: 20 },
+      1024: { slidesPerView: 'auto', spaceBetween: 20 },
+      1430: { slidesPerView: 'auto', spaceBetween: 40 },
     },
   });
 
@@ -435,6 +437,7 @@ function initMain() {
   initDialogToggle();
   initThemeReactivity();
   initTextFillAnimation();
+  initSection1Swiper();
   initSection6Swiper();
 }
 

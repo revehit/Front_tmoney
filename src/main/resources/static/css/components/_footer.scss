@@ -78,3 +78,55 @@
   overflow: hidden;
   white-space: nowrap;
 }
+
+/* ===== 첫 분기: 1430px ===== */
+@media (max-width: 1430px) {}
+
+/* ===== 두번째 분기: 1200px ===== */
+@media (max-width: 1200px) {}
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  #footer {
+    margin-top: 100px;
+    .flex {
+      padding: 50px 0 100px;
+    }
+  }
+}
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  #footer {
+    .address-box {
+      b {
+        font-size: 18px;
+      }
+      address {
+        span {
+          display : block;
+          font-size: 16px;
+        }
+      }
+      ul {
+        max-width: 300px;
+        flex-wrap: wrap;
+        li:nth-child(3) {
+          &:before {display:none;}
+        }
+        a {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  #footer {
+    .flex {
+      padding: 50px 0;
+    }
+  }
+}
