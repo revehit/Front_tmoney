@@ -149,10 +149,121 @@
   }
 }
 
-/* ===============================
-   📱 Responsive
-   =============================== */
+
+
+/* ===== 세번째 분기: 1430px ===== */
+@media (max-width: 1430px) {
+  .table-wrap.scroll-x {
+    overflow-x: scroll;
+    table {
+      width: 1430px;
+    }
+  }
+  .table-wrap.type-row {
+    table {
+      table-layout: auto;
+      colgroup { display: none; }
+      tbody {
+        display: grid;
+        grid-template-columns: 20% 1fr;  /* 라벨 고정, 값 가변 */
+        width: 100%;
+      }
+      tr {
+        display: contents;
+        > th {
+          grid-column: 1;
+          background: var(--gray-300);
+          font-weight: 700;
+          color: var(--color-darken);
+          text-align: left;
+          height: 100%;
+        }
+        > td {
+          grid-column: 2;
+          color: var(--gray-700);
+          font-weight: 500;
+          text-align: left;
+          border-right: 0;
+        }
+        td:first-child,
+        th:first-child {
+          width: 100%;
+        }
+        &:last-child td {
+          border-bottom: 1px solid var(--gray-400);
+        }
+      }
+      th,
+      td {
+        padding: 14px 16px;
+        border-right: 1px solid var(--gray-400);
+        border-bottom: 1px solid var(--gray-400);
+        width: 100%;
+        display: block;
+      }
+    }
+
+    // td .flex.align-center.gap8 {
+    //   display: flex;
+    //   align-items: center;
+    //   gap: 8px;
+    //   .text-field,
+    //   .text-field.fluid,
+    //   input[type="text"] {
+    //     flex: 1 1 auto;
+    //     min-width: 0;
+    //   }
+    //   .btn {
+    //     flex: 0 0 120px;
+    //     height: 44px;
+    //   }
+    // }
+
+    // .dropdown.fluid {
+    //   width: 100%;
+    // }
+
+    // tbody tr:first-child > th:first-of-type {
+    //   border-top-left-radius: 12px;
+    // }
+    // tbody tr:first-child > td:last-of-type {
+    //   border-top-right-radius: 12px;
+    // }
+  }
+}
+
+/* ===== 세번째 분기: 1200px ===== */
+@media (max-width: 1200px) {
+  .table-wrap.scroll-x {
+    table {
+      width: 1200px;
+    }
+  }
+}
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .table-wrap.scroll-x {
+    table {
+      width: 1024px;
+    }
+  }
+}
+
+/* ===== 네번째 분기: 768px ===== */
 @media (max-width: 768px) {
+  .table-wrap {
+    table {
+      thead th {
+        @include body-2;
+      }
+      tbody th,
+      tbody td {
+        @include body-3;
+      }
+    }
+  }
+  
   .table-wrap table th,
   .table-wrap table td {
     padding: 12px;

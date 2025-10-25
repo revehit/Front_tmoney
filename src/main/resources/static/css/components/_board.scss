@@ -234,3 +234,279 @@
   //   .post-nav-btn { width: 48px; height: 48px; border-radius: 10px; }
   // }
 }
+
+
+/* ===== 두번째 분기: 1200px ===== */
+@media (max-width: 1200px) {
+  .board-detail {
+    .title-box {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      grid-template-rows: auto auto;
+      row-gap: 10px;
+      .col-num {
+        width: 50px;
+        grid-row: 1;
+      }
+      .col-title {
+        grid-column: 2;
+        grid-row: 1;
+      }
+      .data {
+        grid-column: 1/-1;
+        grid-row: 2;
+        width: 100%;
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .board-list {
+    .board-head {
+      padding: 15px 24px;
+      grid-template-columns: 60px 1fr 150px;
+      .col {
+        &.col-num,
+        &.col-title,
+        &.col-date { 
+          @include body-2;
+          font-weight: 500;
+        }
+        &.col-date {
+          padding-left: 40px;
+        }
+      }
+    }
+    .board-item {
+      padding: 15px 24px;
+      grid-template-columns: 60px 1fr 150px;
+      .col {
+        &.col-num,
+        &.col-date { 
+          @include body-2;
+          font-weight: 500;
+        }
+        &.col-title {
+          @include body-2;
+          margin-left: 40px;
+        }
+        &.col-date {
+          padding-left: 40px;
+          &::before {
+            height: 30px;
+          }
+        }
+      }
+    }
+    .board-row {
+      &.is-notice { 
+        background: var(--gray-200); 
+        .col {
+          &.col-num,
+          &.col-date { 
+            @include body-2;
+            font-weight: 600;
+          }
+          &.col-title {
+            @include body-2;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+  .board-detail {
+    .title-box {
+      .col-title {
+        @include heading-3;
+        padding-left: 20px;
+      }
+      .col-date {
+        @include body-2;
+        color: var(--gray-600);
+        padding-left: 20px;
+      }
+      .col-view {
+        @include body-2;
+        color: var(--gray-600);
+        .icon {
+          width: 20px;
+          height: 20px;
+        }
+      }
+      .data {
+        gap: 20px;
+      }
+    }
+  }
+}
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .board-list {
+    .board-head {
+      padding: 15px;
+      grid-template-columns: 50px 1fr 100px;
+      .col {
+        &.col-num,
+        &.col-title,
+        &.col-date { 
+          @include body-3;
+        }
+        &.col-date {
+          padding-left: 20px;
+        }
+      }
+    }
+    .board-item {
+      padding: 15px;
+      grid-template-columns: 50px 1fr 100px;
+      .col {
+        &.col-num,
+        &.col-date { 
+          @include body-3;
+        }
+        &.col-title {
+          @include body-3;
+          margin-left: 20px;
+        }
+        &.col-date {
+          padding-left: 20px;
+          &::before {
+            height: 30px;
+          }
+        }
+      }
+    }
+    .board-row {
+      &.is-notice { 
+        .col {
+          &.col-num,
+          &.col-date { 
+            @include body-3;
+          }
+          &.col-title {
+            @include body-3;
+          }
+        }
+      }
+    }
+  }
+  .board-detail {
+    .title-box {
+      padding: 20px 0;
+      grid-template-columns: 50px 1fr;
+      .col-title {
+        @include body-2;
+        padding-left: 10px;
+        margin-top: 2px;
+      }
+      .col-date {
+        @include body-3;
+        color: var(--gray-600);
+        padding-left: 10px;
+      }
+      .col-view {
+        @include body-3;
+        color: var(--gray-600);
+        .icon {
+          width: 16px;
+          height: 16px;
+        }
+      }
+      .data {
+        gap: 10px;
+      }
+    }
+    .content-box {
+      padding: 40px;
+    }
+  }
+  .post-navigation {
+    padding-top: 36px;
+    .post-nav-grid {
+      grid-template-columns: 1fr 1fr;            /* 50% / 50% */
+      grid-template-areas:
+        "prev next"
+        "list list";                             /* 목록은 100% */
+      column-gap: 24px;
+      row-gap: 16px;
+      align-items: start;
+    }
+    .prev { 
+      grid-area: prev; 
+      .post-nav-link { justify-self: start; }
+    }
+    .list { 
+      grid-area: list; 
+      text-align: center;
+      .btn {
+        max-width: 300px;
+      }
+    }
+    .next { 
+      grid-area: next; 
+      .post-nav-link { justify-self: end; }
+    }
+    
+    .post-nav-link {
+      .flex {
+        gap: 10px;
+      }
+      .icon {
+        width: 40px;
+        height: 40px;
+      }
+      .post-nav-kicker {
+        @include heading-3;
+      }
+      .post-nav-title {
+        @include body-2;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  .board-list {
+    .board-head {
+      padding: 15px 5px;
+      .col {
+        &.col-date {
+          padding-left: 15px;
+        }
+      }
+    }
+    .board-item {
+      padding: 15px 5px;
+      .col {
+        &.col-title {
+          margin-left: 15px;
+        }
+        &.col-date {
+          padding-left: 15px;
+          &::before {
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+  .board-detail {
+    .content-box {
+      padding: 20px;
+    }
+  }
+  .post-navigation {
+    .post-nav-link {
+      .post-nav-title {
+        @include body-3;
+      }
+    }
+  }
+}

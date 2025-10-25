@@ -108,3 +108,58 @@
     }
   }
 }
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .gray-outer {
+    padding: 50px;
+    margin-top: 50px;
+  }
+  .form-box {
+    margin-top: 50px;
+  }
+}
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .gray-outer {
+    padding: 50px 20px;
+  }
+  .form-box {
+    form {
+      gap: 10px;
+      fieldset {
+        .btn {
+          flex-direction: row;
+          gap: 10px;
+        }
+      }
+      .form-title {
+        @include body-1;
+        padding-bottom: 10px;
+      }
+    }
+    .field-title {
+      @include body-2;
+    }
+    .guide-text {
+      font-size: 14px;
+    }
+  }
+  .fin-box {
+    strong {
+      @include body-1;
+    }
+    span {
+      @include body-2;
+    }
+    .btn-wrap {
+      margin-top: 20px;
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  
+}

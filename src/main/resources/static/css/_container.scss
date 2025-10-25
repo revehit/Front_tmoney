@@ -11,4 +11,26 @@
   &.size-xsm {
     max-width: 600px;
   }
+
+  
+/* ===== 첫 분기: 1430px ===== */
+@media (max-width: 1430px) {
+  .container {
+    max-width: 100%;
+    padding: 0 50px;
+  }
+}
+
+/* ===== 두번째 분기: 1200px ===== */
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 30px;
+  }
+}
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 20px;
+  }
 }

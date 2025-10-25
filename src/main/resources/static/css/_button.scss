@@ -288,3 +288,65 @@
   align-items: center;
   gap: 16px;
 }
+
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .btn {
+    // size
+    &.size-lg {
+      height: 56px;
+      @include body-2;
+    }
+    &.size-md {
+      height: 48px;
+      @include body-2;
+    }
+    &.size-sm {
+      height: 36px;
+      @include body-3;
+    }
+    &.btn-primary,
+    &.btn-secondary,
+    &.btn-red,
+    &.btn-blue,
+    &.btn-darken,
+    &.btn-darkgray {
+      color: var(--color-white);
+    }
+    &.btn-red-line {color: var(--color-red);}
+    &.btn-blue-line {color: var(--color-blue);}
+    &.btn-darken-line {color: var(--color-darken);}
+  }
+  .btn-wrap {gap: 10px;}
+}
+
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  .btn {
+    // size
+    &.size-lg {
+      height: 48px;
+      @include body-3;
+    }
+    &.size-md {
+      height: 36px;
+      @include body-3;
+    }
+    &.size-sm {
+      height: 30px;
+    }
+    &.btn-primary,
+    &.btn-secondary,
+    &.btn-red,
+    &.btn-blue,
+    &.btn-darken,
+    &.btn-darkgray {
+      color: var(--color-white);
+    }
+    &.btn-red-line {color: var(--color-red);}
+    &.btn-blue-line {color: var(--color-blue);}
+    &.btn-darken-line {color: var(--color-darken);}
+  }
+  .btn-wrap {gap: 8px;}
+}

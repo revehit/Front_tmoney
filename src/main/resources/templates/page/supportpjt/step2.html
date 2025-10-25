@@ -41,20 +41,20 @@
       <div class="join-wrap">
         <div class="join-header">
           <h2 class="section-title">지원 사업 가입하기</h2>
-          <ol class="step-box" role="list" aria-label="지원사업 가입 단계">
-            <li aria-current="step" class="active">
+          <ol class="step-box col3" role="list" aria-label="지원사업 가입 단계">
+            <li>
               <div class="circle" aria-hidden="true">
                 <span>1</span>
                 <i class="icon home"></i>
               </div>
-              <p>거주지인증 <span class="sr-only">(현재 단계)</span></p>
+              <p>거주지인증</p>
             </li>
-            <li>
+            <li aria-current="step" class="active">
               <div class="circle" aria-hidden="true">
                 <span>2</span>
                 <i class="icon filter"></i>
               </div>
-              <p>인증 및 유형 선택</p>
+              <p>인증 및 유형 선택 <span class="sr-only">(현재 단계)</span></p>
             </li>
             <li>
               <div class="circle" aria-hidden="true">
@@ -79,38 +79,199 @@
         <div class="form-box">
           <form action="" method="post" novalidate>
             <fieldset>
-              <p class="field-title">주민등록번호</p>
-              <legend class="sr-only">주민등록번호</legend>
-              <div class="sr-only" id="rrnHelp">앞 6자리(생년월일)와 뒤 7자리를 순서대로 입력하세요.</div>
+              <h3 class="form-title">개인정보</h3>
+              <div>
+                <p class="field-title">카드번호 <span class="color-red">*</span></p>
+                <label for="card-1" class="sr-only">카드번호 4자리씩 입력</label>
+                <div class="flex align-center gap8 cardbox" id="cardgroup" aria-describedby="cardHelp">
+                  <input id="card-1" name="card_1" class="text-field size-lg"
+                        inputmode="numeric" pattern="\d{4}" maxlength="4" required
+                        autocomplete="cc-number" aria-label="카드번호 첫 4자리">
+                  <span class="flex-bar" aria-hidden="true">-</span>
+                  <input id="card-2" name="card_2" class="text-field size-lg"
+                        inputmode="numeric" pattern="\d{4}" maxlength="4" required
+                        aria-label="카드번호 둘째 4자리">
+                  <span class="flex-bar" aria-hidden="true">-</span>
+                  <input id="card-3" name="card_3" class="text-field size-lg"
+                        inputmode="numeric" pattern="\d{4}" maxlength="4" required
+                        aria-label="카드번호 셋째 4자리">
+                  <span class="flex-bar" aria-hidden="true">-</span>
+                  <input id="card-4" name="card_4" class="text-field size-lg"
+                        inputmode="numeric" pattern="\d{4}" maxlength="4" required
+                        aria-label="카드번호 마지막 4자리">
+                  <button type="button" class="btn btn-darkgray size-lg">
+                    유효성체크
+                  </button>
+                  <!-- 유효성 오류일 시 아래 버튼 사용 -->
+                  <!-- <button class="btn btn-red size-lg" type="button" id="btn-acct-verify">
+                    <i class="icon icon-caution"></i>
+                    유효성체크
+                  </button> -->
+                </div>
+              </div>
+              <div>
+                <p class="field-title" id="bankFieldTitle">지원금 받을 계좌 <span class="color-red">*</span></p>
+                <div class="flex align-center gap8 bankbox" role="group" aria-labelledby="bankFieldTitle">
+                  <div class="dropdown size-lg" data-name="">
+                    <!-- 버튼: 고유 id, 상태 토글 -->
+                    <button type="button"
+                            id="bankDropdownBtn"
+                            class="dropdown_button"
+                            aria-haspopup="listbox"
+                            aria-expanded="false"
+                            aria-controls="bankDropdownList"
+                            aria-label="은행 선택 드롭다운">
+                      <span class="dropdown_value" data-placeholder="은행 선택">은행선택</span>
+                    </button>
 
-              <div class="flex align-center gap8" role="group" aria-describedby="rrnHelp rrnErr">
-                <label for="rrn1" class="sr-only">앞 6자리</label>
-                <input id="rrn1" name="rrn1" type="text" class="text-field size-lg"
-                      placeholder="YYMMDD"
-                      inputmode="numeric" autocomplete="off"
-                      required aria-required="true"
-                      minlength="6" maxlength="6" pattern="^\d{6}$"
-                      aria-describedby="rrnHelp rrnErr">
+                    <!-- 목록: 고유 id, 버튼에 라벨 연결 -->
+                    <ul class="dropdown_list"
+                        id="bankDropdownList"
+                        role="listbox"
+                        tabindex="-1"
+                        aria-labelledby="bankDropdownBtn">
+                      <!-- 각 옵션에 고유 id 필수 -->
+                      <li id="bankOptShinhan" role="option" class="dropdown_option"
+                          data-value="신한은행" aria-selected="false">신한은행</li>
+                      <li id="bankOptKB" role="option" class="dropdown_option"
+                          data-value="국민은행" aria-selected="false">국민은행</li>
+                      <li id="bankOptHana" role="option" class="dropdown_option"
+                          data-value="하나은행" aria-selected="false">하나은행</li>
+                      <li id="bankOptIBK" role="option" class="dropdown_option"
+                          data-value="기업은행" aria-selected="false">기업은행</li>
+                    </ul>
 
-                <span class="flex-bar" aria-hidden="true">-</span>
+                    <!-- 히든 값: 서버 전송용 -->
+                    <input type="hidden" name="bank" value="">
+                  </div>
 
-                <label for="rrn2" class="sr-only">뒤 7자리</label>
-                <input id="rrn2" name="rrn2" type="password" class="text-field size-lg"
-                      placeholder="*******"
-                      inputmode="numeric" autocomplete="off"
-                      required aria-required="true"
-                      minlength="7" maxlength="7" pattern="^[1-8]\d{6}$"
-                      aria-describedby="rrnHelp rrnErr">
+                  <!-- 계좌번호 입력: 숫자 키패드 및 가이드 연결(선택) -->
+                  <input type="text" class="text-field size-lg"
+                        inputmode="numeric" aria-describedby="acctHelp" autocomplete="off">
+                  <button class="btn btn-darkgray size-lg" type="button" id="btn-acct-verify">계좌인증</button>
+                  <!-- 유효성 오류일 시 아래 버튼 사용 -->
+                  <!-- <button class="btn btn-red size-lg" type="button" id="btn-acct-verify">
+                    <i class="icon icon-caution"></i>
+                    계좌인증
+                  </button> -->
+                </div>
+              </div>
+              <div>
+                <p class="field-title" id="supportTypeTitle">지원유형 <span class="color-red">*</span></p>
+                <div class="dropdown size-lg" data-name="" role="group" aria-labelledby="supportTypeTitle">
+                  <button type="button"
+                          id="supportTypeDropdownBtn"
+                          class="dropdown_button"
+                          aria-haspopup="listbox"
+                          aria-expanded="false"
+                          aria-controls="supportTypeDropdownList"
+                          aria-label="지원유형 선택 드롭다운">
+                    <!-- placeholder 텍스트는 의미 명확히 -->
+                    <span class="dropdown_value" data-placeholder="지원유형 선택">유형을 선택해주세요.</span>
+                  </button>
+
+                  <ul class="dropdown_list"
+                      id="supportTypeDropdownList"
+                      role="listbox"
+                      tabindex="-1"
+                      aria-labelledby="supportTypeDropdownBtn">
+                    <!-- 각 option은 고유 id + aria-selected 하나만 true -->
+                    <li id="supportTypeOptChild" role="option" class="dropdown_option"
+                        data-value="어린이" aria-selected="false">어린이</li>
+                    <li id="supportTypeOptTeen" role="option" class="dropdown_option"
+                        data-value="청소년" aria-selected="false">청소년</li>
+                    <li id="supportTypeOptSenior" role="option" class="dropdown_option"
+                        data-value="어르신" aria-selected="false">어르신</li>
+                    <li id="supportTypeOptEtc" role="option" class="dropdown_option"
+                        data-value="기타" aria-selected="false">기타</li>
+                  </ul>
+
+                  <!-- 서버 전송용 이름을 의미 있게 -->
+                  <input type="hidden" name="supportType" value="">
+                </div>
               </div>
             </fieldset>
+            <h3 class="form-title">지원유형 기준</h3>
+            <div class="table-wrap type-rowcol">
+              <table>
+                <caption class="blind">교통복지플랫폼 지원유형 및 연령 기준</caption>
+                <colgroup>
+                  <col style="width:160px"><col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th scope="col">유형</th>
+                    <th scope="col">기준</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>어린이</td><td>만 6세 이상</td></tr>
+                  <tr><td>어르신</td><td>만 65세 이상</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <fieldset>
+              <h3 class="form-title">증빙서류</h3>
+              <div>
+                <p class="guide-text">장애인, 국가유공자, 저소득층, 외국인, 임산부, 다자녀일 경우 증빙서류를 첨부해주시기 바랍니다.</p>
+                <p class="guide-text">해당 유형의 확장자만 파일을 등록할 수 있습니다. (jpg, jpeg, pdf)</p>
+                <p class="guide-text">파일 1개 당 크기는 10MB를 초과할 수 없으며, 최대 3개까지 등록할 수 있습니다.</p>
+                <!-- 증빙서류 업로드 -->
+                <div class="file-box" id="evidenceUploader"
+                    data-accept=".jpg,.jpeg,.pdf"
+                    data-max-files="3"
+                    data-max-size="10485760"> <!-- 10MB -->
 
-            <button type="button" class="btn btn-primary btn-icon-right size-lg">
-              <i class="icon icon-finish" aria-hidden="true"></i>
-              거주지 인증
-            </button>
+                  <!-- 드래그앤드롭 영역 + 키보드 대체 수단 -->
+                  <div class="file-drop" role="group" aria-describedby="evidenceHelp">
+                    <input id="evidenceInput" class="file-input" type="file" hidden
+                          accept=".jpg,.jpeg,.pdf" multiple>
+                    <div class="file-drop-inner" tabindex="0" aria-label="첨부파일 드롭 영역">
+                      <p class="file-drop-msg">
+                        첨부파일을 여기에 끌어다 놓거나,<br>
+                        파일 선택 버튼을 직접 선택해주세요.
+                      </p>
+                      <button type="button" class="btn btn-darkgray size-md" data-action="browse">
+                        파일첨부
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- 업로드된 파일 리스트 -->
+                  <ul class="file-list" aria-live="polite" aria-relevant="additions removals">
+                    <!-- JS가 항목을 렌더링 -->
+                  </ul>
+
+                  <!-- 리스트 아이템 템플릿 -->
+                  <template id="fileItemTpl">
+                    <li class="file-item">
+                      <span class="file-name"></span>
+                      <button type="button" class="btn btn-red btn-icon-right"
+                              data-action="remove" aria-label="파일 삭제">
+                        <i class="icon icon-x" aria-hidden="true"></i>삭제
+                      </button>
+                    </li>
+                  </template>
+                </div>
+
+              </div>
+              <p class="guide-text">
+                <span>해당 홈페이지를 이용하는 동안 원활한 운영을 위하여 개인정보가 해당 지자체 사업의 관리자에게 공개됩니다. 본 동의를 거부하실 수 있으며,</span>
+                <b class="color-darken">거부 시 홈페이지 이용이 불가능</b>
+                <span>합니다.</span>
+              </p>
+            </fieldset>
+
+            <div class="btn-wrap">
+              <button type="button" class="btn btn-darken-line size-lg">
+                동의하지 않음
+              </button>
+              <button type="button" class="btn btn-primary size-lg">
+                유의사항확인
+              </button>
+            </div>
           </form>
         </div>
-
       </div>
     </div>
   </section>
@@ -126,5 +287,21 @@
 <script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
 
 <script type="module" th:src="@{/js/common.js}"></script>
+
+<script>
+  // 페이지 로드 후 초기화
+  document.addEventListener('DOMContentLoaded', function () {
+    const up = new FileUploader('#evidenceUploader');
+
+    // 선택: 에러/변경 콜백
+    up.on('error', (e) => {
+      const msg = e.type === 'ext'
+        ? '허용되지 않은 확장자입니다.'
+        : '파일 크기가 제한을 초과했습니다.';
+      alert(msg);
+    });
+  });
+</script>
+
 </body>
 </html>

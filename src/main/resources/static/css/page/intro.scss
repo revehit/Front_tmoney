@@ -1,7 +1,7 @@
 @import "../../css/mixin";
 
 #footer {
-  margin-top: 200px;
+  margin-top: 100px;
 }
 #contents {
   overflow: hidden;
@@ -9,6 +9,7 @@
 .section {
   margin-top: 160px;
 }
+
 .title-box {
   h2 {
     font-size: 48px;
@@ -146,6 +147,7 @@
   }
 }
 .section5 {
+  margin-top: 0;
   .title-box {
     h2,
     p {
@@ -341,8 +343,285 @@
   to   { transform: translateX(-50%); } // ★ 트랙이 2개이므로 정확히 절반 이동
 }
 
-/* 선택: 가장자리 페이드(자연스러움 업) */
-// .marquee {
-//   -webkit-mask-image: linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%);
-//   mask-image: linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%);
-// }
+/* ===== 첫 분기: 1430px ===== */
+@media (max-width: 1430px) {
+  .section1 {
+    .container {
+      padding: 0;
+      height: 100%;
+    }
+    .text-box {
+      margin-top: 100px;
+      h2 {font-size: 48px;}
+    }
+  }
+  .section2 .text-box h2 {font-size: 48px;}
+  .section4 {
+    .box-wrap {gap: 24px;}
+    .box {
+      padding: 30px 10px;
+      h3 {font-size: 32px;}
+      div {
+        width: 100%;
+        height: auto;
+        padding: 10px 20px;
+        font-size: 18px;
+      }
+      .img-box {
+        width: 140px;
+        height: 140px;
+      }
+    }
+  }
+  .section5 {
+    .flex {gap: 24px;}
+    .box {
+      .img-box {
+        padding: 10px  24px;
+      }
+      .text-box {
+        padding: 10px 24px;
+        li {font-size: 20px;}
+      }
+    }
+  }
+  .section6 .flex {gap: 24px;}
+}
+
+/* ===== 두번째 분기: 1200px ===== */
+@media (max-width: 1200px) {
+  .section4 {
+    .box-wrap {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .section6 .flex {flex-direction: column;}
+}
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .section {margin-top: 100px;}
+  .title-box {
+    h2 {font-size: 36px;}
+    p {font-size: 18px;}
+  }
+  .section1 {
+    margin-top: 0;
+    .text-box {
+      margin-top: 50px;
+      h2 {
+        font-size: 40px;
+      }
+    }
+  }
+  .section2 {
+    .text-box {
+      flex-shrink: 0;
+      h2 {font-size: 40px;}
+      p {font-size: 20px;}
+    }
+    .img-box {
+      width: auto;
+      text-align: right;
+      flex-shrink: 1;
+      img {
+        width: 80%;
+      }
+    }
+  }
+  .section3 .img-box {
+    height: auto;
+    padding: 80px 20px;
+    margin-top: 50px;
+  }
+  .section4 {
+    padding: 100px 0;
+    .title-box p {font-size: 18px;}
+    .box-wrap {margin-top: 50px;}
+  }
+  .section5 {
+    margin-top: 0;
+    .flex {
+      flex-direction: column;
+      margin-top: 50px;
+    }
+    .box {
+      .img-box {
+        flex-shrink: 0;
+        width: 200px;
+      }
+    }
+  }
+  .section6 .flex {margin-top: 50px;}
+  .section7 h3 {margin-top: 50px;}
+  .section8 {
+    .card-wrap {
+      margin-top: 50px;
+      gap: 24px;
+    }
+    .card-item {
+      h3 {
+        font-size: 30px;
+        line-height: 1.2;
+        margin-top: 20px;
+      }
+      .img-box p {font-size: 36px;}
+    }
+  }
+}
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .title-box h2 {font-size: 30px;}
+  .section1 {
+    margin-top: 0;
+    .text-box {
+      margin-top: 30px;
+      h2 {
+        font-size: 30px;
+        line-height: 1.2;
+      }
+    }
+  }
+  .section2 {
+    .flex {
+      flex-direction: column-reverse;
+    }
+    .text-box {
+      h2 {
+        font-size: 30px;
+        line-height: 1.2;
+      }
+      p {
+        font-size: 18px;
+        margin-top: 10px;
+      }
+    }
+    .img-box {
+      margin: 0 auto;
+      margin-bottom: 20px;
+      text-align: center;
+      img {
+        width: 80%;
+      }
+    }
+  }
+  .section3 .img-box {
+    padding: 50px 20px;
+    margin-top: 30px;
+  }
+  .section4 {
+    .box-wrap {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 30px;
+    }
+    .box h3 {font-size: 24px;}
+  }
+  .section5 {
+    .flex {margin-top: 30px;}
+    .box {
+      .img-box {
+        width: 180px;
+        img {
+          width: 100px;
+          height: 100px;
+        }
+        h3 {font-size: 18px;}
+      }
+      .text-box {
+        li {
+          font-size: 18px;
+          & + li {margin-top: 10px;}
+        }
+      }
+    }
+  }
+  .section6 {
+    .flex {margin-top: 30px;}
+    .box {
+      height: 150px;
+      h3 {font-size: 24px;}
+      img {width: 140px;}
+    }
+  }
+  .section7 {
+    h3 {
+      font-size: 24px;
+      margin-top: 30px;
+    }
+    .table-wrap {
+      colgroup col:first-child {width: 100px !important;}
+    }
+    table thead th {font-size: 16px;}
+    table tbody th,
+    table tbody td {font-size: 14px;}
+  }
+  .section8 {
+    .card-wrap {margin-top: 30px;}
+    .card-item {
+      flex: 0 0 360px; 
+      .img-box {
+        width: 360px;
+        height: 360px;
+      }
+      h3 {
+        font-size: 24px;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  .title-box {
+    h2 {font-size: 24px;}
+    p {font-size: 16px;}
+  }
+  .section1 {
+    .text-box {
+      margin-top: 20px;
+      h2 {font-size: 24px;}
+    }
+  }
+  .section2 {
+    .text-box {
+      h2 {font-size: 24px;}
+      p {font-size: 16px;}
+    }
+    .img-box {
+      img {width: 50%;}
+    }
+  }
+  .section4 {
+    .box-wrap {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  .section5 .box {
+    flex-direction: column;
+    .img-box {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+      flex-direction: row;
+      justify-content: flex-start;
+      img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+    .text-box {
+      border-radius: 0 0 10px 10px;
+      flex: 1;
+    }
+  }
+  .section7 h3 {font-size: 20px;}
+  .section8 .card-item {
+    flex: 0 0 300px;
+    .img-box {
+      width: 300px;
+      height: 300px;
+    }
+  }
+}
