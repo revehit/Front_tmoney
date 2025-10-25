@@ -79,3 +79,33 @@
     }
   }
 }
+
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .terms-wrap {
+    .line-box {
+      padding: 20px;
+    }
+  }
+}
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .terms-wrap {
+    .line-box {
+      h3 {
+        @include heading-3;
+        color: var(--color-primary);
+      }
+      p {
+        @include body-2;
+      }
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  
+}

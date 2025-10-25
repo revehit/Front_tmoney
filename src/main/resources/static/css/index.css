@@ -783,6 +783,75 @@ hr.type-hide {
   gap: 16px;
 }
 
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .btn.size-lg {
+    height: 56px;
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .btn.size-md {
+    height: 48px;
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .btn.size-sm {
+    height: 36px;
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .btn.btn-primary, .btn.btn-secondary, .btn.btn-red, .btn.btn-blue, .btn.btn-darken, .btn.btn-darkgray {
+    color: var(--color-white);
+  }
+  .btn.btn-red-line {
+    color: var(--color-red);
+  }
+  .btn.btn-blue-line {
+    color: var(--color-blue);
+  }
+  .btn.btn-darken-line {
+    color: var(--color-darken);
+  }
+  .btn-wrap {
+    gap: 10px;
+  }
+}
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  .btn.size-lg {
+    height: 48px;
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .btn.size-md {
+    height: 36px;
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .btn.size-sm {
+    height: 30px;
+  }
+  .btn.btn-primary, .btn.btn-secondary, .btn.btn-red, .btn.btn-blue, .btn.btn-darken, .btn.btn-darkgray {
+    color: var(--color-white);
+  }
+  .btn.btn-red-line {
+    color: var(--color-red);
+  }
+  .btn.btn-blue-line {
+    color: var(--color-blue);
+  }
+  .btn.btn-darken-line {
+    color: var(--color-darken);
+  }
+  .btn-wrap {
+    gap: 8px;
+  }
+}
 /* =========================================
    [기존 공통 입력요소 스타일]
    ========================================= */
@@ -1687,6 +1756,33 @@ input[readonly] {
   color: var(--color-white);
 }
 
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .badge {
+    width: 60px;
+    height: 36px;
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .badge {
+    width: 50px;
+    height: 30px;
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  .badge {
+    width: 40px;
+    height: 30px;
+  }
+}
 /* =========== =========== =========== */
 /* =========== Typhogragh =========== */
 /* =========== =========== =========== */
@@ -1808,7 +1904,7 @@ input[readonly] {
   position: relative;
 }
 #header.header-jn h1 a {
-  background-image: url("/images/logo-jn.png");
+  background-image: url("../../static/images/logo-jn.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1818,11 +1914,12 @@ input[readonly] {
 }
 #header h1 a {
   display: block;
-  width: 200px;
+  width: 250px;
   height: 75px;
-  background-image: url("/images/logo.png");
+  background-image: url("../../static/images/logo.png");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 #header nav {
   /* 버튼의 aria-expanded=true 일 때 보이기 (스크립트와 함께 보조) */
@@ -1905,6 +2002,7 @@ input[readonly] {
   align-items: center;
   justify-content: center;
   margin-left: 120px;
+  gap: 20px;
 }
 #header .gnb .util-box {
   display: flex;
@@ -1944,7 +2042,7 @@ input[readonly] {
   width: 100%;
   height: 3px;
   margin-bottom: 4px;
-  background: var(--bg-black);
+  background: var(--color-darken);
   transition: transform 0.4s ease;
 }
 #header.menu-on {
@@ -2061,6 +2159,68 @@ input[readonly] {
   opacity: 1;
 }
 
+/* ===== 첫 분기: 1430px ===== */
+@media (max-width: 1430px) {
+  #header nav ul {
+    gap: 50px;
+  }
+  #header .gnb {
+    margin-left: 50px;
+  }
+}
+/* ===== 두번째 분기: 1200px ===== */
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  #header h1 a {
+    width: 200px;
+    height: 60px;
+  }
+  #header nav {
+    display: none;
+  }
+  #header .gnb {
+    margin-left: auto;
+  }
+  #header .gnb .btn-menu {
+    display: block;
+  }
+  #header.header-jn h1 a {
+    width: 80px;
+    height: 60px;
+  }
+}
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  #header .header-inner {
+    height: 70px;
+  }
+  #header .gnb .util-box a {
+    font-size: 16px;
+  }
+}
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  #header .header-inner {
+    height: 60px;
+  }
+  #header h1 a {
+    width: 150px;
+    height: 30px;
+  }
+  #header .gnb .util-box {
+    gap: 10px;
+  }
+  #header .gnb .util-box a {
+    font-size: 14px;
+  }
+  #header .gnb .util-box span {
+    height: 14px;
+  }
+  #header.header-jn h1 a {
+    width: 60px;
+    height: 50px;
+  }
+}
 /* =========== =========== =========== */
 /* =========== Typhogragh =========== */
 /* =========== =========== =========== */
@@ -2138,6 +2298,19 @@ input[readonly] {
   font-weight: 700;
 }
 
+/* ===== 첫 분기: 1430px ===== */
+/* ===== 두번째 분기: 1200px ===== */
+/* ===== 세번째 분기: 1024px ===== */
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  #breadcrumb {
+    padding: 10px 0;
+  }
+  #breadcrumb li {
+    font-size: 16px;
+  }
+}
+/* ===== 다섯번째 분기: 480px ===== */
 /* ===========================
  * Footer
  * =========================== */
@@ -2153,49 +2326,42 @@ input[readonly] {
 #footer .flex {
   padding: 64px 0 140px; /* px 유지 */
 }
-#footer .left h2 a {
-  display: block;
-  width: 200px;
-  height: 75px;
-  background-image: url("/images/logo.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: left center;
-  color: inherit;
-  text-decoration: none;
-}
-#footer .left h2 a:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 4px;
-}
-#footer .right {
-  margin-left: 80px;
-}
-#footer .right ul {
+#footer .address-box ul {
   display: flex;
   align-items: center;
   gap: 12px;
   list-style: none; /* 기본 여백 제거 */
   margin: 0;
   padding: 0;
+  margin-top: 40px;
 }
-#footer .right a {
+#footer .address-box ul li {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+#footer .address-box ul li + li::before {
+  content: "";
+  width: 1px;
+  height: 16px;
+  background-color: var(--color-darken);
+}
+#footer .address-box a {
   font-size: 20px;
   line-height: 1.4;
   color: inherit;
   text-decoration: none;
 }
-#footer .right a:hover, #footer .right a:focus-visible {
+#footer .address-box a:hover, #footer .address-box a:focus-visible {
   text-decoration: underline;
 }
-#footer .right b {
+#footer .address-box b {
   display: block;
   font-size: 22px;
   color: var(--gray1);
-  margin-top: 40px;
   font-weight: 700;
 }
-#footer .right address {
+#footer .address-box address {
   font-size: 22px;
   font-weight: 600;
   color: var(--gray2);
@@ -2218,6 +2384,43 @@ input[readonly] {
   white-space: nowrap;
 }
 
+/* ===== 첫 분기: 1430px ===== */
+/* ===== 두번째 분기: 1200px ===== */
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  #footer {
+    margin-top: 100px;
+  }
+  #footer .flex {
+    padding: 50px 0 100px;
+  }
+}
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  #footer .address-box b {
+    font-size: 18px;
+  }
+  #footer .address-box address span {
+    display: block;
+    font-size: 16px;
+  }
+  #footer .address-box ul {
+    max-width: 300px;
+    flex-wrap: wrap;
+  }
+  #footer .address-box ul li:nth-child(3):before {
+    display: none;
+  }
+  #footer .address-box ul a {
+    font-size: 16px;
+  }
+}
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  #footer .flex {
+    padding: 50px 0;
+  }
+}
 /* ===========================
  * Go to Top
  * =========================== */
@@ -2325,6 +2528,45 @@ input[readonly] {
   margin: 0;
 }
 
+/* ===== 첫 분기: 1430px ===== */
+/* ===== 두번째 분기: 1200px ===== */
+@media (max-width: 1200px) {
+  .title-wrap > .flex {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .page-header {
+    padding: 50px 0;
+  }
+  .title-wrap {
+    padding: 50px 0;
+  }
+}
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .section-title {
+    color: var(--color-darken);
+    font-size: 32px;
+    font-weight: 700;
+  }
+  .section-sub-title {
+    color: var(--color-darken);
+    font-size: 24px;
+    font-weight: 600;
+  }
+}
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  .page-header {
+    padding: 30px 0;
+  }
+  .title-wrap {
+    padding: 36px 0;
+  }
+}
 /* =========== =========== =========== */
 /* =========== Typhogragh =========== */
 /* =========== =========== =========== */
@@ -2555,6 +2797,38 @@ input[readonly] {
     opacity: 1;
   }
 }
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .modal .modal-container {
+    padding: 20px;
+  }
+  .modal .modal-header .modal-title {
+    color: var(--color-darken);
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .modal .modal-body .modal-icon {
+    margin-bottom: 30px;
+  }
+  .modal .modal-body .modal-desc {
+    color: var(--color-darken);
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .modal .modal-body .gray-box h3 {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .modal .modal-body .gray-box .list-type {
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .modal .modal-footer {
+    margin-top: 24px;
+  }
+}
 /* =========== =========== =========== */
 /* =========== Typhogragh =========== */
 /* =========== =========== =========== */
@@ -2605,6 +2879,7 @@ input[readonly] {
   border-bottom: 1px solid var(--gray-400);
 }
 .tabs .tab {
+  width: 100%;
   height: 48px;
   display: flex;
   align-items: center;
@@ -2645,6 +2920,43 @@ input[readonly] {
   display: block;
 }
 
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    border-bottom: 0;
+  }
+  .tabs .tab {
+    border-bottom: 0;
+    border: 1px solid var(--gray-400);
+    border-radius: 10px;
+  }
+  .tabs .tab.is-active {
+    background-color: rgba(var(--color-primary-rgb), 0.1);
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+  }
+}
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .tabs .tab {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .tabs .tab.is-active {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+}
+/* ===== 다섯번째 분기: 480px ===== */
 /* 박스 스타일 */
 .gray-outer {
   background-color: var(--gray-200);
@@ -2765,6 +3077,57 @@ input[readonly] {
   filter: brightness(0) saturate(100%) invert(36%) sepia(81%) saturate(1677%) hue-rotate(337deg) brightness(105%) contrast(84%);
 }
 
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .gray-outer {
+    padding: 50px;
+    margin-top: 50px;
+  }
+  .form-box {
+    margin-top: 50px;
+  }
+}
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .gray-outer {
+    padding: 50px 20px;
+  }
+  .form-box form {
+    gap: 10px;
+  }
+  .form-box form fieldset .btn {
+    flex-direction: row;
+    gap: 10px;
+  }
+  .form-box form .form-title {
+    color: var(--color-darken);
+    font-size: 20px;
+    font-weight: 500;
+    padding-bottom: 10px;
+  }
+  .form-box .field-title {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .form-box .guide-text {
+    font-size: 14px;
+  }
+  .fin-box strong {
+    color: var(--color-darken);
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .fin-box span {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .fin-box .btn-wrap {
+    margin-top: 20px;
+  }
+}
+/* ===== 다섯번째 분기: 480px ===== */
 /* ===============================
    File Uploader
    markup: .file-box → .file-drop + .file-list
@@ -2955,6 +3318,9 @@ input[readonly] {
   display: flex;
   align-items: center;
 }
+.date-filter .flex.align-center.gap24 {
+  width: 100%;
+}
 .date-filter button {
   margin-left: auto;
   width: 180px;
@@ -2963,6 +3329,10 @@ input[readonly] {
   color: var(--color-darken);
   font-size: 24px;
   font-weight: 600;
+  flex-shrink: 0;
+}
+.date-filter h3 + .flex {
+  width: 100%;
 }
 .date-filter .date-range .datepicker {
   width: 180px;
@@ -2971,6 +3341,86 @@ input[readonly] {
   font-weight: 500;
 }
 
+/* ===== 첫 분기: 1430px ===== */
+/* ===== 두번째 분기: 1200px ===== */
+@media (max-width: 1200px) {
+  #searchbar {
+    min-width: auto;
+    width: 100%;
+  }
+}
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  #search-box .dropdown {
+    flex-shrink: 0;
+  }
+  #searchbar .text-field {
+    width: calc(100% - 50px);
+  }
+  .date-filter {
+    flex-direction: column;
+  }
+  .date-filter .flex.align-center.gap24 {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .date-filter .flex.align-center.gap24 .date-range {
+    flex: 1; /* 가능한 공간 차지 */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .date-filter .flex.align-center.gap24 .date-range .datepicker {
+    width: 100%;
+    max-width: 180px;
+  }
+}
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  #searchbar .btn {
+    height: 56px;
+    padding: 0;
+  }
+  #searchbar .btn .icon {
+    width: 30px;
+    height: 30px;
+  }
+  #search-box {
+    gap: 10px;
+  }
+  #search-box .dropdown {
+    width: 150px;
+  }
+  .date-filter {
+    padding: 20px;
+  }
+  .date-filter h3 + .flex {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .date-filter .flex.align-center.gap24 .date-range .datepicker {
+    max-width: 100%;
+  }
+  .date-filter button {
+    width: 100%;
+  }
+}
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  #searchbar .btn {
+    height: 48px;
+  }
+  #searchbar .btn .icon {
+    width: 24px;
+    height: 24px;
+  }
+  #search-box {
+    gap: 8px;
+  }
+  #search-box .dropdown {
+    width: 100px;
+  }
+}
 /* =========== =========== =========== */
 /* =========== Typhogragh =========== */
 /* =========== =========== =========== */
@@ -3234,6 +3684,265 @@ input[readonly] {
   grid-template-columns: 1fr 56px; /* 텍스트 먼저, 버튼 오른쪽 */
 }
 
+/* ===== 두번째 분기: 1200px ===== */
+@media (max-width: 1200px) {
+  .board-detail .title-box {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 10px;
+  }
+  .board-detail .title-box .col-num {
+    width: 50px;
+    grid-row: 1;
+  }
+  .board-detail .title-box .col-title {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .board-detail .title-box .data {
+    grid-column: 1/-1;
+    grid-row: 2;
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .board-list .board-head {
+    padding: 15px 24px;
+    grid-template-columns: 60px 1fr 150px;
+  }
+  .board-list .board-head .col.col-num, .board-list .board-head .col.col-title, .board-list .board-head .col.col-date {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+    font-weight: 500;
+  }
+  .board-list .board-head .col.col-date {
+    padding-left: 40px;
+  }
+  .board-list .board-item {
+    padding: 15px 24px;
+    grid-template-columns: 60px 1fr 150px;
+  }
+  .board-list .board-item .col.col-num, .board-list .board-item .col.col-date {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+    font-weight: 500;
+  }
+  .board-list .board-item .col.col-title {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 40px;
+  }
+  .board-list .board-item .col.col-date {
+    padding-left: 40px;
+  }
+  .board-list .board-item .col.col-date::before {
+    height: 30px;
+  }
+  .board-list .board-row.is-notice {
+    background: var(--gray-200);
+  }
+  .board-list .board-row.is-notice .col.col-num, .board-list .board-row.is-notice .col.col-date {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+    font-weight: 600;
+  }
+  .board-list .board-row.is-notice .col.col-title {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+    font-weight: 600;
+  }
+  .board-detail .title-box .col-title {
+    color: var(--color-darken);
+    font-size: 24px;
+    font-weight: 600;
+    padding-left: 20px;
+  }
+  .board-detail .title-box .col-date {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gray-600);
+    padding-left: 20px;
+  }
+  .board-detail .title-box .col-view {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gray-600);
+  }
+  .board-detail .title-box .col-view .icon {
+    width: 20px;
+    height: 20px;
+  }
+  .board-detail .title-box .data {
+    gap: 20px;
+  }
+}
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .board-list .board-head {
+    padding: 15px;
+    grid-template-columns: 50px 1fr 100px;
+  }
+  .board-list .board-head .col.col-num, .board-list .board-head .col.col-title, .board-list .board-head .col.col-date {
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .board-list .board-head .col.col-date {
+    padding-left: 20px;
+  }
+  .board-list .board-item {
+    padding: 15px;
+    grid-template-columns: 50px 1fr 100px;
+  }
+  .board-list .board-item .col.col-num, .board-list .board-item .col.col-date {
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .board-list .board-item .col.col-title {
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 20px;
+  }
+  .board-list .board-item .col.col-date {
+    padding-left: 20px;
+  }
+  .board-list .board-item .col.col-date::before {
+    height: 30px;
+  }
+  .board-list .board-row.is-notice .col.col-num, .board-list .board-row.is-notice .col.col-date {
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .board-list .board-row.is-notice .col.col-title {
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .board-detail .title-box {
+    padding: 20px 0;
+    grid-template-columns: 50px 1fr;
+  }
+  .board-detail .title-box .col-title {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+    padding-left: 10px;
+    margin-top: 2px;
+  }
+  .board-detail .title-box .col-date {
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--gray-600);
+    padding-left: 10px;
+  }
+  .board-detail .title-box .col-view {
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--gray-600);
+  }
+  .board-detail .title-box .col-view .icon {
+    width: 16px;
+    height: 16px;
+  }
+  .board-detail .title-box .data {
+    gap: 10px;
+  }
+  .board-detail .content-box {
+    padding: 40px;
+  }
+  .post-navigation {
+    padding-top: 36px;
+  }
+  .post-navigation .post-nav-grid {
+    grid-template-columns: 1fr 1fr; /* 50% / 50% */
+    grid-template-areas: "prev next" "list list"; /* 목록은 100% */
+    -moz-column-gap: 24px;
+         column-gap: 24px;
+    row-gap: 16px;
+    align-items: start;
+  }
+  .post-navigation .prev {
+    grid-area: prev;
+  }
+  .post-navigation .prev .post-nav-link {
+    justify-self: start;
+  }
+  .post-navigation .list {
+    grid-area: list;
+    text-align: center;
+  }
+  .post-navigation .list .btn {
+    max-width: 300px;
+  }
+  .post-navigation .next {
+    grid-area: next;
+  }
+  .post-navigation .next .post-nav-link {
+    justify-self: end;
+  }
+  .post-navigation .post-nav-link .flex {
+    gap: 10px;
+  }
+  .post-navigation .post-nav-link .icon {
+    width: 40px;
+    height: 40px;
+  }
+  .post-navigation .post-nav-link .post-nav-kicker {
+    color: var(--color-darken);
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .post-navigation .post-nav-link .post-nav-title {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+}
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  .board-list .board-head {
+    padding: 15px 5px;
+  }
+  .board-list .board-head .col.col-date {
+    padding-left: 15px;
+  }
+  .board-list .board-item {
+    padding: 15px 5px;
+  }
+  .board-list .board-item .col.col-title {
+    margin-left: 15px;
+  }
+  .board-list .board-item .col.col-date {
+    padding-left: 15px;
+  }
+  .board-list .board-item .col.col-date::before {
+    height: 20px;
+  }
+  .board-detail .content-box {
+    padding: 20px;
+  }
+  .post-navigation .post-nav-link .post-nav-title {
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
 /* =========== =========== =========== */
 /* =========== Typhogragh =========== */
 /* =========== =========== =========== */
@@ -3346,34 +4055,60 @@ input[readonly] {
   filter: brightness(0) saturate(100%) invert(91%) sepia(8%) saturate(10%) hue-rotate(11deg) brightness(88%) contrast(96%);
 }
 
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .page-btn,
+  .page-num > a,
+  .page-num > span {
+    width: 42px;
+    height: 42px;
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gray-600);
+  }
+  .page-num.is-current > span {
+    color: #fff;
+  }
+  .page-ctrl .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+/* ===== 다섯번째 분기: 480px ===== */
 .attachment-box {
-  margin-top: 50px;
   border-top: 1px solid var(--border-darken);
 }
-.attachment-box .attachment-header {
+
+.attachment-top {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
+  padding: 26px 32px;
+  background-color: var(--gray-200);
 }
-.attachment-box .attachment-header .attachment-title {
-  font-size: 20px;
+.attachment-top .col-title {
+  display: flex;
+  gap: 10px;
 }
-.attachment-box .attachment-header .icon-box .icon::before {
-  content: "";
+.attachment-top .col-title .icon {
   width: 24px;
   height: 24px;
 }
-.attachment-box .attachment-header .btn-down {
+.attachment-top .btn-down {
+  display: flex;
   gap: 10px;
+  margin-left: auto;
+}
+.attachment-top .btn-down .icon {
+  width: 24px;
+  height: 24px;
 }
 
 .attachment-list {
   margin-top: 20px;
 }
 .attachment-list ul {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 5px;
 }
 .attachment-list .file-item {
@@ -3403,54 +4138,56 @@ input[readonly] {
   height: 100%;
 }
 .attachment-list .file-item .file-icon.pdf:before {
-  background-image: url(../../images/icon/icon-pdf.svg);
+  background-image: url(../../static/images/icon/icon-pdf.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .attachment-list .file-item .file-icon.xls:before {
-  background-image: url(../../images/icon/icon-xls.svg);
+  background-image: url(../../static/images/icon/icon-xls.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .attachment-list .file-item .file-icon.doc:before {
-  background-image: url(../../images/icon/icon-doc.svg);
+  background-image: url(../../static/images/icon/icon-doc.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .attachment-list .file-item .file-icon.jpg:before {
-  background-image: url(../../images/icon/icon-jpg.svg);
+  background-image: url(../../static/images/icon/icon-jpg.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .attachment-list .file-item .file-icon.png:before {
-  background-image: url(../../images/icon/icon-png.svg);
+  background-image: url(../../static/images/icon/icon-png.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .attachment-list .file-item .file-icon.hwp:before {
-  background-image: url(../../images/icon/icon-hwp.svg);
+  background-image: url(../../static/images/icon/icon-hwp.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .attachment-list .file-item .file-icon.zip:before {
-  background-image: url(../../images/icon/icon-zip.svg);
+  background-image: url(../../static/images/icon/icon-zip.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .attachment-list .file-item .file-name {
-  font-size: 18px;
+  color: var(--color-darken);
+  font-size: 16px;
+  font-weight: 400;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
-  color: #adadad;
+  color: var(--gray-500);
   max-width: calc(100% - 140px);
 }
 .attachment-list .file-item div {
@@ -3460,10 +4197,24 @@ input[readonly] {
   gap: 10px;
 }
 .attachment-list .file-item .file-size {
+  color: var(--color-darken);
   font-size: 16px;
-  color: #adadad;
+  font-weight: 400;
+  color: var(--gray-500);
 }
 
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .attachment-top {
+    padding: 20px;
+  }
+  .attachment-list {
+    margin-top: 10px;
+  }
+  .attachment-list ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 /* =========== =========== =========== */
 /* =========== Typhogragh =========== */
 /* =========== =========== =========== */
@@ -3868,6 +4619,76 @@ input[readonly] {
   opacity: 0;
 }
 
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .accordion {
+    margin-top: 50px;
+  }
+  .acc-trigger {
+    gap: 20px;
+    padding: 12px 20px;
+  }
+  .acc-badge {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    color: var(--color-darken);
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .acc-title {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .acc-item.is-open .acc-trigger .acc-title {
+    color: var(--color-primary);
+  }
+  .acc-panel-inner {
+    gap: 20px;
+    padding: 12px 20px;
+  }
+  .acc-panel-inner .acc-content {
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  .accordion {
+    margin-top: 36px;
+  }
+  .acc-trigger {
+    gap: 10px;
+    padding: 12px 20px 12px 10px;
+  }
+  .acc-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    color: var(--color-darken);
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .acc-title {
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .acc-item.is-open .acc-trigger .acc-title {
+    color: var(--color-primary);
+  }
+  .acc-panel-inner {
+    gap: 10px;
+    padding: 12px 20px 12px 10px;
+  }
+  .acc-panel-inner .acc-content {
+    color: var(--color-darken);
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
 /* media */
 /* Root typography */
 html {

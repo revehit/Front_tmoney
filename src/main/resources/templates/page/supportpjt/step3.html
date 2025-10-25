@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<main id="contents">
+  <section class="section">
+    <div class="container fluid">
+      <div class="join-wrap">
+        <div class="join-header">
+          <h2 class="section-title">지원 사업 가입하기</h2>
+          <ol class="step-box col3" role="list" aria-label="지원사업 가입 단계">
+            <li>
+              <div class="circle" aria-hidden="true">
+                <span>1</span>
+                <i class="icon home"></i>
+              </div>
+              <p>거주지인증</p>
+            </li>
+            <li>
+              <div class="circle" aria-hidden="true">
+                <span>2</span>
+                <i class="icon filter"></i>
+              </div>
+              <p>인증 및 유형 선택</p>
+            </li>
+            <li aria-current="step" class="active">
+              <div class="circle" aria-hidden="true">
+                <span>3</span>
+                <i class="icon check"></i>
+              </div>
+              <p>가입완료 <span class="sr-only">(현재 단계)</span></p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="container size-sm">
+      <div class="join-wrap">
+        <div class="fin-box">
+          <div class="gray-outer">
+            <div class="step4-box" role="status" aria-live="polite">
+              <p class="complete-msg">
+                <strong class="color-blue">종로구 교통비지원 사업</strong>
+                <span>가입신청이 완료되었습니다.</span>
+              </p>
+    
+              <div class="btn-wrap">
+                <a href="" class="btn btn-darken-line size-lg" id="" role="button">
+                  메인으로
+                </a>
+                <a href="" class="btn btn-primary size-lg" id="" role="button">
+                  지원금 신청
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+<script>
+  // 페이지 로드 후 초기화
+  document.addEventListener('DOMContentLoaded', function () {
+    const up = new FileUploader('#evidenceUploader');
+
+    // 선택: 에러/변경 콜백
+    up.on('error', (e) => {
+      const msg = e.type === 'ext'
+        ? '허용되지 않은 확장자입니다.'
+        : '파일 크기가 제한을 초과했습니다.';
+      alert(msg);
+    });
+  });
+</script>
+
+</body>
+</html>

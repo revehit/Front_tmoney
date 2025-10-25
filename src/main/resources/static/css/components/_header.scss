@@ -75,7 +75,7 @@
   &.header-jn {
     h1 {
       a {
-        background-image: url('/images/logo-jn.png');
+        background-image: url('../../static/images/logo-jn.png');
         background-size: contain;
         background-repeat: no-repeat;
       }
@@ -86,11 +86,12 @@
     margin-right: auto;
     a {
       display: block;
-      width: 200px;
+      width: 250px;
       height: 75px;
-      background-image: url('/images/logo.png');
+      background-image: url('../../static/images/logo.png');
       background-size: contain;
       background-repeat: no-repeat;
+      background-position: center;
     }
   }
   nav {
@@ -181,6 +182,7 @@
     align-items: center;
     justify-content: center;
     margin-left: 120px;
+    gap: 20px;
     .util-box {
       display: flex;
       align-items: center;
@@ -224,7 +226,7 @@
         width: 100%;
         height: 3px;
         margin-bottom: 4px;
-        background: var(--bg-black);
+        background: var(--color-darken);
         transition: transform 0.4s ease;
       }
     }
@@ -353,6 +355,102 @@
           &::after {
             opacity: 1;
           }
+        }
+      }
+    }
+  }
+}
+
+/* ===== 첫 분기: 1430px ===== */
+@media (max-width: 1430px) {
+  #header {
+    nav {
+      ul {
+        gap: 50px;
+      }
+    }
+    .gnb {
+      margin-left: 50px;
+    }
+  }
+}
+
+/* ===== 두번째 분기: 1200px ===== */
+@media (max-width: 1200px) {}
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  #header {
+    h1 {
+      a {
+        width: 200px;
+        height: 60px;
+      }
+    }
+    nav {
+      display: none;
+    }
+    .gnb {
+      margin-left: auto;
+      .btn-menu {
+        display: block;
+      }
+    }
+    &.header-jn {
+      h1 {
+        a {
+          width: 80px;
+          height: 60px;
+        }
+      }
+    }
+  }
+}
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  #header {
+    .header-inner {
+      height: 70px;
+    }
+    .gnb {
+      .util-box {
+        a {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  #header {
+    .header-inner {
+      height: 60px;
+    }
+    h1 {
+      a {
+        width: 150px;
+        height: 30px;
+      }
+    }
+    .gnb {
+      .util-box {
+        gap: 10px;
+        a {
+          font-size: 14px;
+        }
+        span {
+          height: 14px;
+        }
+      }
+    }
+    &.header-jn {
+      h1 {
+        a {
+          width: 60px;
+          height: 50px;
         }
       }
     }

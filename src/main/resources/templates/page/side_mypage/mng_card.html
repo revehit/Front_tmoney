@@ -64,7 +64,7 @@
             <table>
               <caption class="sr-only">카드관리 테이블</caption>
               <colgroup>
-                <col style="width:340px">
+                <col style="width:20%">
                 <col>
               </colgroup>
               <tbody>
@@ -113,7 +113,7 @@
                           <div class="flex align-center gap8">
                             <div>
                               <label for="card-1" class="sr-only">카드번호 4자리씩 입력</label>
-                              <div class="flex align-center gap8" id="cardgroup" aria-describedby="cardHelp">
+                              <div class="flex align-center gap8 cardbox" id="cardgroup" aria-describedby="cardHelp">
                                 <input id="card-1" name="card_1" class="text-field size-md"
                                       inputmode="numeric" pattern="\d{4}" maxlength="4" required
                                       autocomplete="cc-number" aria-label="카드번호 첫 4자리">
@@ -162,7 +162,7 @@
 
           <div>
             <h3 class="section-sub-title">변경이력</h3>
-            <div class="table-wrap type-col">
+            <div class="table-wrap type-col scroll-x">
               <table>
                 <caption class="sr-only">카드변경내역 테이블</caption>
                 <colgroup>

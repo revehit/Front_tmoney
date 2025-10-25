@@ -29,3 +29,23 @@
     }
   }
 }
+
+/* ===== 첫 분기: 1430px ===== */
+@media (max-width: 1430px) {}
+
+/* ===== 두번째 분기: 1200px ===== */
+@media (max-width: 1200px) {}
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {}
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  #breadcrumb {
+    padding: 10px 0;
+    li {font-size: 16px;}
+  }
+}
+
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {}
