@@ -219,9 +219,10 @@ function setupSitemapToggle() {
 /* ---------- 5) All Menu(전체메뉴) : 열기/닫기 + 스크롤락 ---------- */
 function setupAllMenu() {
   const header = document.getElementById('header');
-  const btn = document.querySelector('.btn-menu');       // 같은 버튼을 재사용하는 구조
-  const panel = document.querySelector('.allMenu');      // 전체메뉴 패널
-  if (!header || !btn || !panel) return;
+  const btn = document.querySelector('.btn-menu');
+  const panel = document.getElementById('sitemap');
+  const dimmed = document.querySelector('.sitemap-dimmed'); // dimmed 엘리먼트
+  if (!header || !btn || !panel || !dimmed) return;
 
   panel.setAttribute('role','dialog');
   panel.setAttribute('aria-modal','true');
@@ -230,39 +231,173 @@ function setupAllMenu() {
   let opened = false;
   let untrap = null;
 
-  function open() {
+  function syncUI(isOpen){
+    btn.setAttribute('aria-expanded', String(isOpen));
+    panel.classList.toggle('is-open', isOpen);
+    dimmed.classList.toggle('is-open', isOpen);
+    panel.setAttribute('aria-hidden', String(!isOpen));
+    header.classList.toggle('all', isOpen);
+    btn.classList.toggle('openmenu', isOpen);
+  }
+
+  function open(){
     if (opened) return;
-    header.classList.add('all');
-    btn.classList.add('openmenu');
-    panel.classList.add('open');
-    panel.setAttribute('aria-hidden','false');
-    const first = panel.querySelector(FOCUSABLE) || panel;
-    first.focus();
+    syncUI(true);
+    const first = panel.querySelector('a,button,input,select,textarea,[tabindex]') || panel;
+    first && first.focus();
     ScrollLock.lock();
     untrap = trapFocus(panel);
-    bindDismiss({
-      container: panel,
-      trigger: btn,
-      onClose: close
-    });
     opened = true;
   }
 
-  function close() {
+  function close(){
     if (!opened) return;
-    header.classList.remove('all');
-    btn.classList.remove('openmenu');
-    panel.classList.remove('open');
-    panel.setAttribute('aria-hidden','true');
+    syncUI(false);
     if (untrap) untrap();
     ScrollLock.unlock();
     btn.focus();
     opened = false;
   }
 
+  // 메뉴 열기 (닫기는 .btn-close 전용)
   btn.addEventListener('click', e => {
     e.preventDefault();
-    (opened ? close() : open());
+    if (!opened) open();
+  });
+
+  // 닫기 버튼 이벤트 바인딩 (비동기 대응 포함)
+  function bindCloseBtn() {
+    const closeBtn = panel.querySelector('.btn-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', e => { e.preventDefault(); close(); });
+      return true;
+    }
+    return false;
+  }
+
+  if (!bindCloseBtn()) {
+    const observer = new MutationObserver(() => { if (bindCloseBtn()) observer.disconnect(); });
+    observer.observe(panel, { childList: true, subtree: true });
+  }
+
+  // dimmed 클릭 시 닫지 않음 (원하면 닫히게 수정 가능)
+}
+
+/* ---------- 6) Sitemap Collapse (Accordion) ---------- */
+function setupSitemapCollapse() {
+  const root = document.getElementById('sitemap');
+  if (!root) return;
+
+  const items = Array.from(root.querySelectorAll('.collapse .collapse-item'));
+
+  // 높이 애니메이션 유틸
+  function openPanel(li, trigger, panel) {
+    if (li.classList.contains('is-open')) return;
+
+    // 1) 다른 모든 열린 패널 닫기 (항상 단일 열림)
+    items.forEach(sib => {
+      if (sib !== li && sib.classList.contains('is-open')) {
+        const sibTrigger = sib.querySelector('.collapse-trigger') || sib.querySelector('a');
+        const sibPanel   = sib.querySelector('.depth2');
+        sibTrigger && sibPanel && closePanel(sib, sibTrigger, sibPanel);
+      }
+    });
+
+    // 2) 열기 준비
+    trigger.setAttribute('aria-expanded', 'true');
+    li.classList.add('is-open');         // 상태 클래스
+    li.classList.add('open');            // (기존 훅과 호환)
+
+    // 숨김 해제 후 높이 측정
+    panel.hidden = false;                // display 되도록 먼저 노출
+    panel.style.display = 'block';       // 사파리 호환
+    panel.style.overflow = 'hidden';
+    panel.style.height = '0px';
+
+    const target = panel.scrollHeight;   // 자연 높이
+    // 리플로우 강제 후 애니메이션
+    panel.getBoundingClientRect();
+    panel.style.transition = 'height .24s ease';
+    panel.style.height = target + 'px';
+
+    // 종료 정리
+    function done() {
+      panel.style.height = '';
+      panel.style.overflow = '';
+      panel.style.transition = '';
+      panel.removeEventListener('transitionend', done);
+    }
+    panel.addEventListener('transitionend', done, { once: true });
+  }
+
+  function closePanel(li, trigger, panel) {
+    if (!li.classList.contains('is-open')) return;
+
+    trigger.setAttribute('aria-expanded', 'false');
+    li.classList.remove('is-open');
+    li.classList.remove('open');
+
+    // 현재 높이를 고정 → 0으로 애니메이션
+    const start = panel.scrollHeight;
+    panel.style.height = start + 'px';
+    panel.style.overflow = 'hidden';
+    panel.style.transition = 'height .24s ease';
+
+    // 리플로우 강제 후 0으로
+    panel.getBoundingClientRect();
+    panel.style.height = '0px';
+
+    function done() {
+      panel.style.transition = '';
+      panel.style.height = '';
+      panel.style.overflow = '';
+      panel.style.display = '';  // 원상복구
+      panel.hidden = true;       // 최종적으로 숨김 처리
+      panel.removeEventListener('transitionend', done);
+    }
+    panel.addEventListener('transitionend', done, { once: true });
+  }
+
+  items.forEach((li, idx) => {
+    let trigger = li.querySelector('.collapse-trigger');
+    if (!trigger) {
+      const firstChild = li.firstElementChild;
+      if (firstChild && firstChild.tagName && firstChild.tagName.toLowerCase() === 'a') {
+        trigger = firstChild;
+      }
+    }
+    const panel = li.querySelector('.depth2');
+    if (!trigger || !panel) return;
+
+    // ID/접근성
+    if (!panel.id) panel.id = `sm-panel-${idx}`;
+    trigger.setAttribute('aria-controls', panel.id);
+
+    // 초기 상태 세팅
+    const initialOpen = trigger.getAttribute('aria-expanded') === 'true' || li.classList.contains('open') || li.classList.contains('is-open');
+    if (initialOpen) {
+      trigger.setAttribute('aria-expanded', 'true');
+      li.classList.add('is-open', 'open');
+      panel.hidden = false;
+      panel.style.height = ''; // 자연 높이
+    } else {
+      trigger.setAttribute('aria-expanded', 'false');
+      li.classList.remove('is-open', 'open');
+      panel.hidden = true;
+    }
+
+    // 토글 핸들러
+    const onToggle = (e) => {
+      // a 링크일 경우 탐색 방지(토글용으로 쓰는 경우)
+      if (trigger.tagName.toLowerCase() === 'a') e.preventDefault();
+      const isOpen = li.classList.contains('is-open');
+      isOpen ? closePanel(li, trigger, panel) : openPanel(li, trigger, panel);
+    };
+
+    trigger.addEventListener('click', onToggle);
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onToggle(e); }
+    });
   });
 }
 
@@ -273,6 +408,7 @@ function initHeader() {
   setupZoom();
   setupSitemapToggle();
   setupAllMenu();
+  setupSitemapCollapse();
 }
 
 if (document.readyState === 'loading') {

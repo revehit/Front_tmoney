@@ -96,20 +96,85 @@
   </div>
 
   <!-- sitemap -->
+  <div class="sitemap-dimmed" aria-hidden="true"></div>
   <div id="sitemap" class="sitemap" role="navigation" aria-label="사이트맵">
     <div class="container">
-      <ul>
-        <li>
-          <p>Brand</p>
-          <ul class="depth2">
-            <li><a href="">Tmoney 스토리</a></li>
-            <li><a href="">인사말</a></li>
-            <li><a href="">연혁</a></li>
-            <li><a href="">비전/핵심가치</a></li>
-            <li><a href="">오시는 길</a></li>
+      <div class="info-box">
+        <div class="top">
+          <h2>마이</h2>
+          <button type="button" class="btn btn-close btn-icon-only">
+            <i class="icon icon-close"></i>
+          </button>
+        </div>
+        <div class="flex align-center">
+          <div class="img-box">
+            <img src="/images/img-people.png" alt="티머니 로그인 이미지">
+          </div>
+          <div>
+            <p>반가워요!!</p>
+            <ul>
+              <li><a href="">로그인</a></li>
+              <li><a href="">회원가입</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <ul class="collapse">
+        <li class="collapse-item">
+          <button type="button"
+                class="collapse-trigger"
+                aria-expanded="false"
+                aria-controls="sm-menu1">
+            <i class="icon icon1" aria-hidden="true"></i>
+            <span>플랫폼소개</span>
+            <i class="icon icon-arrow-down" aria-hidden="true"></i>
+          </button>
+          <ul id="sm-menu1" class="depth2" role="list" hidden>
+            <li><a href="">플랫폼 소개</a></li>
+            <li><a href="">교통복지 플랫폼 모델별</a></li>
+            <li><a href="">사업제휴문의</a></li>
           </ul>
         </li>
-        <!-- 이하 동일 -->
+        <li class="collapse-item">
+          <button type="button"
+                class="collapse-trigger"
+                aria-expanded="false"
+                aria-controls="sm-menu2">
+            <i class="icon icon2" aria-hidden="true"></i>
+            <span>서비스안내</span>
+            <i class="icon icon-arrow-down" aria-hidden="true"></i>
+          </button>
+          <ul id="sm-menu2" class="depth2" role="list" hidden>
+            <li><a href="">지자체별 서비스 안내</a></li>
+          </ul>
+        </li>
+        <li class="collapse-item">
+          <button type="button"
+                class="collapse-trigger"
+                aria-expanded="false"
+                aria-controls="sm-menu3">
+            <i class="icon icon3" aria-hidden="true"></i>
+            <span>이용안내</span>
+            <i class="icon icon-arrow-down" aria-hidden="true"></i>
+          </button>
+          <ul id="sm-menu3" class="depth2" role="list" hidden>
+            <li><a href="">회원가입 안내</a></li>
+            <li><a href="">지원금 신청 및 지급 안내</a></li>
+          </ul>
+        </li>
+        <li class="collapse-item">
+          <button type="button"
+                class="collapse-trigger"
+                aria-expanded="false"
+                aria-controls="sm-menu4">
+            <i class="icon icon4" aria-hidden="true"></i>
+            <span>소식</span>
+            <i class="icon icon-arrow-down" aria-hidden="true"></i>
+          </button>
+          <ul id="sm-menu4" class="depth2" role="list" hidden>
+            <li><a href="">공지사항</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
