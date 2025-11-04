@@ -1,3 +1,4 @@
+@import "../../css/mixin";
 #header {
   width: 100%;
   background-color: var(--color-white);
@@ -75,7 +76,7 @@
   &.header-jn {
     h1 {
       a {
-        background-image: url('../../static/images/logo-jn.png');
+        background-image: url('/images/logo-jn.png');
         background-size: contain;
         background-repeat: no-repeat;
       }
@@ -88,7 +89,7 @@
       display: block;
       width: 250px;
       height: 75px;
-      background-image: url('../../static/images/logo.png');
+      background-image: url('/images/logo.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -264,10 +265,9 @@
         z-index: 999;
         right: 0;
         div {
-          background: var(--bg-black);
+          display: none;
         }
       }
-
     }
     .sitemap {
       opacity: 1;
@@ -282,81 +282,168 @@
   }
 
   .sitemap {
-    width: 100%;
+    width: 70%;
     height: 0;
     opacity: 0;
     visibility: hidden;
     position: fixed;
     z-index: 100;
     top: 0;
+    right: 0;
+    transform:  translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
     transition: all 0.4s;
-    backdrop-filter: blur(15px);
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: var(--color-white);
+    &.is-open {
+      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
     .container {
       width: 100%;
       max-width: 1430px;
       height: 100vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      padding: 0;
     }
-    ul {
-      width: 100%;
-    }
-    li {
+    .info-box {
+      background-color: var(--color-primary);
+      padding: 36px 30px;
+      border-radius: 0 0 15px 15px;
+      .img-box {
+      width: 70px;
+      height: 70px;
       display: flex;
       align-items: center;
-      padding: 50px 0;
-      position: relative;
-      &:after {
-        content: '';
-        width: 0%;
-        height: 1px;
-        background-color: rgba(255,255,255,0.6);
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        transition: all 3s;
+      justify-content: center;
+      img {
+        object-fit: contain;
       }
-      & + li {
-        margin-top: 10px;
-      }
-      p {
-        width: 20%;
-        font-size: 50px;
-        font-weight: 700;
-        color: #fff;
-        margin-left: 50px;
-      }
-      .depth2 {
-        width: calc(80% - 50px);
-      }
-      a {
-        font-size: 20px;
-        padding: 0 10px;
-        color: #fff;
-        margin-top: 30px;
-        margin-bottom: 10px;
-        margin-left: 50px;
-        position: relative;
-        &::after {
-          content: "";
-          display: block;
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background-color: #fff;
-          position: absolute;
-          left: -10px;
-          top: 0;
-          opacity: 0;
+      & + div {
+        padding-left: 15px;
+        p {
+          @include body-1;
+          color: var(--color-white);
         }
-        &:hover {
-          color: red;
-          &::after {
-            opacity: 1;
+        ul {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          li {
+            a {
+              @include body-2;
+              color: var(--color-white);
+            }
+            & + li {
+              padding-left: 10px;
+              position: relative;
+              &::before {
+                content: '';
+                width: 1px;
+                height: 16px;
+                background-color: var(--color-white);
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+              }
+            }
           }
         }
       }
+    }
+    }
+    .top {
+      display: flex;
+      align-items: center;
+      color: var(--color-white);
+      margin-bottom: 20px;
+      .btn {margin-left: auto;}
+    }
+    .btn-close {
+      width: 24px;
+      height: 24px;
+      background-color: transparent;
+      .icon {filter: brightness(0) saturate(100%) invert(98%) sepia(8%) saturate(1034%) hue-rotate(227deg) brightness(119%) contrast(100%);}
+    }
+    .collapse {
+      padding: 20px 0;
+      .collapse-item {
+        button {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 12px 30px;
+          span {
+            @include body-1;
+            color: var(--color-darken);
+          }
+        }
+        .icon {
+          width: 24px;
+          height: 24px;
+          display: block;
+          &.icon1 {
+            &:before {
+              background-image: url(/images/icon/icon-sitemap-1.svg);
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+          }
+          &.icon2 {
+            &:before {
+              background-image: url(/images/icon/icon-sitemap-2.svg);
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+          }
+          &.icon3 {
+            &:before {
+              background-image: url(/images/icon/icon-sitemap-3.svg);
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+          }
+          &.icon4 {
+            &:before {
+              background-image: url(/images/icon/icon-sitemap-4.svg);
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+          }
+        }
+        .icon-arrow-down {margin-left: auto;}
+      }
+      .depth2 {
+        transition: all 0.4s;;
+        li a {
+          display: block;
+          @include body-2;
+          color: var(--gray-600);
+          padding: 8px 30px 8px 80px;
+        }
+      }
+    }
+  }
+  .sitemap-dimmed {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    z-index: 99; // .sitemap 보다 1단계 아래
+
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
   }
 }
@@ -419,6 +506,9 @@
           font-size: 16px;
         }
       }
+    }
+    .sitemap {
+      width: 100%;
     }
   }
 }
