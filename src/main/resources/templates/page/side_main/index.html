@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
+  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+  <link rel="stylesheet" th:href="@{/css/page/sidemain.css}" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<!-- 헤더에 header-jn 클래스 추가할 것 -->
+<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+
+<main id="contents">
+  <section class="section section1">
+    <h2 class="blind">종로구 교통비 지원사업</h2>
+    <div class="container">
+      <div class="sidemain-wrap">
+        <div class="flex top">
+          <div class="box main-box">
+            <div class="swiper"
+                role="region"
+                aria-roledescription="carousel"
+                aria-label="메인 비주얼 배너">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" id="section1-slide-1" role="group" aria-label="1 / 5">
+                  <img src="/images/main/img-slidemain-slide1.jpg" alt="종로구와 함께하는 버스 교통비 지원사업. 종로구 거주 어르신(65세 이상), 청년(19~39세), 청소년(13~18세), 어린이(6~12세)의 교통비를 지원합니다.">
+                </div>
+                <div class="swiper-slide" id="section1-slide-2" role="group" aria-label="2 / 5">
+                  <img src="/images/main/img-slidemain-slide2.jpg" alt="종로구와 함께하는 교통생활. 여러분의 매일이 편안해 지도록 종로구가 함께합니다.">
+                </div>
+                <div class="swiper-slide" id="section1-slide-3" role="group" aria-label="3 / 5">
+                  <img src="/images/main/img-slidemain-slide3.jpg" alt="종로구와 함께하는 버스 교통비 지원사업. 종로구 거주 어르신(65세 이상), 청년(19~39세), 청소년(13~18세), 어린이(6~12세)의 교통비를 지원합니다.">
+                </div>
+                <div class="swiper-slide" id="section1-slide-4" role="group" aria-label="4 / 5">
+                  <img src="/images/main/img-slidemain-slide4.jpg" alt="종로구와 함께하는 버스 교통비 지원사업. 종로구 거주 어르신(65세 이상), 청년(19~39세), 청소년(13~18세), 어린이(6~12세)의 교통비를 지원합니다.">
+                </div>
+                <div class="swiper-slide" id="section1-slide-5" role="group" aria-label="5 / 5">
+                  <img src="/images/main/img-slidemain-slide5.jpg" alt="종로구와 함께하는 교통생활">
+                </div>
+              </div>
+              <div class="section1-controls" role="group" aria-label="배너 컨트롤">
+                <div class="capsule">
+                  <div class="dots" role="tablist" aria-label="슬라이드 인디케이터"></div>
+
+                  <button type="button" class="toggle" aria-pressed="false" aria-label="자동재생 일시정지">
+                    <span class="icon icon-slider-pause" aria-hidden="true"></span>
+                    <span class="icon icon-slider-play" aria-hidden="true"></span>
+                  </button>
+
+                  <span class="sr-only" id="section1-status" aria-live="polite">배너 로딩</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="box info-box" aria-labelledby="mypage-title">
+            <div class="titlebox">
+              <h3 id="mypage-title" class="title">MY PAGE</h3>
+              <a href="#" aria-label="마이페이지로 이동">더보기 +</a>
+            </div>
+            <h4>진행중인 사업</h4>
+            <div class="gray-box">
+              <!-- case1. 신청 사업이 있을 때 -->
+              <div class="flex dir-row" >
+                <div class="flex column">
+                  <p class="pjt-title">종로구 어린이, 청소년, 임산부 교통비지원 사업</p>
+                  <p class="date">2025.09.17</p>
+                </div>
+                <!-- case1-1. 신청 진행 중(ing) -->
+                <div class="statebox ing" aria-label="신청 진행 중">신청 <br/>진행중</div>
+                <!-- case1-2. 지급대기(hold) -->
+                <!-- <div class="statebox hold" aria-label="지급 대기">지급<br/>대기</div> -->
+                <!-- case1-3. 지급완료(fin) -->
+                <!-- <div class="statebox fin" aria-label="지급 완료">지급<br/>완료</div> -->
+              </div>
+              <!-- case2. 신청 사업이 없을 때 -->
+              <div class="flex dir-row nodata" style="display:none;">
+                <div class="flex column">
+                  <p>진행 중인 사업이 없습니다.</p>
+                </div>
+              </div>
+            </div>
+            <h4>이전 지급 금액</h4>
+            <div class="gray-box" aria-labelledby="prev-amount-title">
+              <div class="flex row">
+                <p id="prev-amount-title">사용 금액</p>
+                <div>
+                  <b>1,150,000</b>
+                  <span>원</span>
+                </div>  
+              </div>
+              <div class="flex row">
+                <p>지급 금액</p>
+                <div>
+                  <b class="color-secondary">1,150,000</b>
+                  <span>원</span>
+                </div>  
+              </div>
+            </div>
+            <div class="btn-wrap">
+              <a href="" class="btn btn-secondary size-lg" aria-label="지원금 신청 페이지로 이동">지원금 신청하기</a>
+              <a href="" class="btn btn-primary size-lg" aria-label="지급내역 페이지로 이동">지급내역</a>
+            </div>
+          </div>
+        </div>
+        <div class="flex bot" aria-label="빠른 안내 영역">
+          <div class="flex left">
+            <a href="" class="box bg1" aria-label="이용안내 페이지로 이동">
+              <h3 class="title">이용안내</h3>
+              <p>쉽게 이용할 수 있도록 <br/>안내해드립니다.</p>
+              <img src="/images/main/img-sidemain-1.png" alt="이용안내에 대한 캐릭터">
+            </a>
+            <a href="" class="box bg2" aria-label="자주 묻는 질문 페이지로 이동">
+              <h3 class="title">자주 묻는 질문</h3>
+              <p>궁굼한 점을 빠르게 <br/>확인하세요.</p>
+              <img src="/images/main/img-sidemain-2.png" alt="자주 묻는 질문에 대한 캐릭터">
+            </a>
+          </div>
+          <a href="" class="box bg3">
+            <h3 class="title">문의하기</h3>
+            <h3 class="title">고객센터 <b class="color-secondary">1644-8521</b></h3>
+            <h3 class="title">상담 가능시간</h3>
+            <div class="flex badge-box">
+              <span class="badge">평일</span>
+              <div>
+                <b>09</b>시 ~ <b>18</b>시<br/>
+                <p>(주말&middot;공휴일 휴무)</p>
+              </div>
+            </div>
+            <div class="flex badge-box">
+              <span class="badge">점심</span>
+              <div>
+                <b>13</b>시 ~ <b>14</b>시
+              </div>
+            </div>
+            <img src="/images/main/img-sidemain-3.png" alt="문의하기에 대한 캐릭터">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section2">
+    <div class="container">
+      <div class="title-box">
+        <h2>새로운 공지사항을 확인하세요</h2>
+        <a href="#" class="btn-link" aria-label="공지사항 목록으로 이동">자세히 보기 <i class="icon right" aria-hidden="true"></i></a>
+      </div>
+      <div class="list-box">
+        <a href="#" class="list-item"
+          data-aos="fade-up" 
+          data-aos-offset="100" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000" 
+        >
+          <span class="title">지자체 공지사항 글입니다.</span>
+          <span class="date">2025.07.29</span>
+        </a>
+        <a href="#" class="list-item"
+          data-aos="fade-up" 
+          data-aos-offset="100" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000" 
+        >
+          <span class="title">티머니 복지카드 혜택안내</span>
+          <span class="date">2025.07.16</span>
+        </a>
+        <a href="#" class="list-item"
+          data-aos="fade-up" 
+          data-aos-offset="100" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000" 
+        >
+          <span class="title">사용하신 교통카드 사용내역을 자세히 안내해 드립니다</span>
+          <span class="date">2025.06.29</span>
+        </a>
+        <a href="#" class="list-item"
+          data-aos="fade-up" 
+          data-aos-offset="100" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000" 
+        >
+          <span class="title">지원금 신청을 자세히 안내해 드립니다.</span>
+          <span class="date">2025.05.29</span>
+        </a>
+        <a href="#" class="list-item"
+          data-aos="fade-up" 
+          data-aos-offset="100" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000" 
+        >
+          <span class="title">시각&middot;청각 장애인 이용안내</span>
+          <span class="date">2025.04.29</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <a href="" class="btn-apply">
+    <i class="icon"></i>
+    <span>지원금<br/>신청하기</span>
+  </a>
+</main>
+
+<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+
+
+<script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script>
+
+<script>
+  function initSection1Swiper() {
+    const container = document.querySelector(".main-box .swiper");
+    const controls  = document.querySelector(".main-box .section1-controls");
+    if (!container || !controls || typeof Swiper === "undefined") return;
+
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    const dotsHost   = controls.querySelector(".dots");
+    const toggleBtn  = controls.querySelector(".toggle");
+    const iconPause  = toggleBtn.querySelector(".icon-slider-pause");
+    const iconPlay   = toggleBtn.querySelector(".icon-slider-play");
+    const liveEl     = controls.querySelector("#section1-status");
+    let userPaused   = reduceMotion ? true : false;
+
+    // 캐러셀 ARIA
+    container.setAttribute("role", "region");
+    container.setAttribute("aria-roledescription", "carousel");
+    container.setAttribute("aria-label", "메인 비주얼 배너");
+
+    // Swiper 초기화
+    const swiper = new Swiper(container, {
+      loop: true,
+      speed: 700,
+      fadeEffect: { crossFade: true },
+      watchOverflow: true,
+      allowTouchMove: true,
+      autoplay: reduceMotion ? false : { delay: 3800, disableOnInteraction: false },
+      pagination: {
+        el: dotsHost,
+        clickable: true,
+        bulletElement: "button",
+        renderBullet: (i, className) =>
+          `<button type="button" class="${className} dot" role="tab"
+                  aria-controls="section1-slide-${i + 1}"
+                  aria-label="${i + 1}번째 배너로 이동"></button>`,
+      },
+      a11y: false
+    });
+
+    // ✅ 토글 상태 갱신
+    function updateToggleVisual() {
+      const running = !!swiper.autoplay?.running;
+      const paused  = !running;
+      toggleBtn.setAttribute("aria-pressed", String(paused));
+      toggleBtn.setAttribute("aria-label", paused ? "자동재생 재생" : "자동재생 일시정지");
+      controls.classList.toggle("is-paused", paused);
+      iconPause.style.display = paused ? "none" : "inline-block";
+      iconPlay.style.display  = paused ? "inline-block" : "none";
+    }
+
+    // ✅ 현재 슬라이드 안내 (스크린리더)
+    function announce() {
+      const idx   = (swiper.realIndex ?? 0) + 1;
+      const total = swiper.pagination?.bullets?.length || 0;
+      liveEl.textContent = `현재 슬라이드 ${idx} / ${total}`;
+    }
+
+    // ✅ 토글 클릭
+    toggleBtn.addEventListener("click", () => {
+      if (swiper.autoplay?.running) {
+        swiper.autoplay.stop();
+        userPaused = true;
+      } else {
+        if (!reduceMotion) swiper.autoplay.start();
+        userPaused = false;
+      }
+      updateToggleVisual();
+    });
+
+    // ✅ dots 키보드 조작
+    dotsHost.addEventListener("keydown", (e) => {
+      const isBullet = e.target?.classList?.contains("swiper-pagination-bullet");
+      if (!isBullet) return;
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        e.target.click();
+      }
+    });
+
+    // ✅ 포커스 접근성 제어
+    controls.addEventListener("focusin", () => {
+      if (swiper.autoplay?.running) swiper.autoplay.stop();
+      updateToggleVisual();
+    });
+    controls.addEventListener("focusout", () => {
+      if (!userPaused && !reduceMotion) swiper.autoplay?.start();
+      updateToggleVisual();
+    });
+
+    // ✅ 탭 전환 시 가시성 제어
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        if (swiper.autoplay?.running) swiper.autoplay.stop();
+      } else {
+        if (!userPaused && !reduceMotion) swiper.autoplay?.start();
+      }
+      updateToggleVisual();
+    });
+
+    // ✅ 초기화
+    swiper.on("init", () => {
+      if (reduceMotion && swiper.autoplay?.running) swiper.autoplay.stop();
+      announce();
+      updateToggleVisual();
+    });
+    swiper.on("slideChangeTransitionStart", announce);
+
+    if (typeof swiper.init === "function") swiper.init();
+  }
+</script>
+
+<script>
+  /* ========== 8. 초기화 ========== */
+  function initMain() {
+    initSection1Swiper();
+  }
+
+  /* ========== 9. DOM 로드 시 실행 ========== */
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMain);
+  } else {
+    initMain();
+  }
+</script>
+
+</body>
+</html>
