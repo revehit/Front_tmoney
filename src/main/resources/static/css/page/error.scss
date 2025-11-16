@@ -1,0 +1,72 @@
+@import "../../css/mixin";
+
+.error-wrap {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .img-box {
+    margin: 0 auto;
+    img {
+      display: block;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+  .text-box {
+    text-align: center;
+    margin-top: 60px;
+    h2 {
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+    p {
+      font-size: 24px;
+    }
+  }
+  .btn-wrap {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 60px;
+  }
+}
+
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  
+}
+
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .error-wrap {
+    .text-box {
+      margin-top: 50px;
+      h2 {
+        font-size: 40px;
+      }
+      p {
+        font-size: 20px;
+      }
+    }
+    .btn-wrap {
+      margin-top: 50px;
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  .error-wrap {
+    .text-box {
+      h2 {
+        font-size: 30px;
+      }
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+}

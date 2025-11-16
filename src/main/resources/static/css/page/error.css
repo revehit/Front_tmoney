@@ -1,0 +1,109 @@
+@charset "UTF-8";
+/* =========== =========== =========== */
+/* =========== Typhogragh =========== */
+/* =========== =========== =========== */
+.heading-1 {
+  color: var(--color-darken);
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.heading-2 {
+  color: var(--color-darken);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.heading-3 {
+  color: var(--color-darken);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.78px;
+}
+
+.body-1 {
+  color: var(--color-darken);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+}
+
+.body-2 {
+  color: var(--color-darken);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.72px;
+}
+
+.body-3 {
+  color: var(--color-darken);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.64px;
+}
+
+.body-4 {
+  color: var(--color-darken);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.error-wrap {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.error-wrap .img-box {
+  margin: 0 auto;
+}
+.error-wrap .img-box img {
+  display: block;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.error-wrap .text-box {
+  text-align: center;
+  margin-top: 60px;
+}
+.error-wrap .text-box h2 {
+  font-size: 64px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+.error-wrap .text-box p {
+  font-size: 24px;
+}
+.error-wrap .btn-wrap {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 60px;
+}
+
+/* ===== 세번째 분기: 1024px ===== */
+/* ===== 네번째 분기: 768px ===== */
+@media (max-width: 768px) {
+  .error-wrap .text-box {
+    margin-top: 50px;
+  }
+  .error-wrap .text-box h2 {
+    font-size: 40px;
+  }
+  .error-wrap .text-box p {
+    font-size: 20px;
+  }
+  .error-wrap .btn-wrap {
+    margin-top: 50px;
+  }
+}
+/* ===== 다섯번째 분기: 480px ===== */
+@media (max-width: 480px) {
+  .error-wrap .text-box h2 {
+    font-size: 30px;
+  }
+  .error-wrap .text-box p {
+    font-size: 18px;
+  }
+}
