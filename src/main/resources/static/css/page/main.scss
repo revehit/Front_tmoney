@@ -26,44 +26,84 @@ main {
     border-radius: 40px;
     background-color: var(--color-white);
     box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.10);
-    display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    .img-box {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin: 0 auto;
-      img {
-        width: 100%;
-        object-fit: cover;
+    // 로그인 전
+    &.check-out {
+      .img-box {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto;
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+        & + p {
+          font-size: 32px;
+          font-weight: 700;
+          color: var(--color-darken);
+          text-align: center;
+        }
       }
-      & + p {
-        font-size: 32px;
-        font-weight: 700;
-        color: var(--color-darken);
-        text-align: center;
+      .btn {
+        padding: 11px 48px;
+        color: var(--color-white);
+      }
+      .link-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 20px;
+        a {
+          font-size: 20px;
+          color: var(--gray-700);
+        }
+        .bar {
+          width: 1px;
+          height: 16px;
+          display: block;
+          background-color: var(--gray-700);;
+        }
       }
     }
-    .btn {
-      padding: 11px 48px;
-      color: var(--color-white);
-    }
-    .link-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      a {
-        font-size: 20px;
-        color: var(--gray-700);
+    // 로그인 후
+    &.check-in {
+      .top-box {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        .img-box {
+          width: 80px;
+          height: 80px;
+          margin: 0;
+        }
+        h4 {@include heading-3;}
       }
-      .bar {
-        width: 1px;
-        height: 16px;
-        display: block;
-        background-color: var(--gray-700);;
+      .join-list {
+        border-radius: 20px;
+        background-color: var(--gray-200);
+        padding: 30px;
+        height: 160px;
+        overflow-y: auto;
+        p {@include body-2;}
+      }
+      .list-itembox {
+        a {
+          display: block;
+          width: 100%;
+          @include body-3;
+          &:hover {
+            text-decoration: underline;
+            font-weight: 700;
+          }
+          & + a {margin-top: 20px;}
+        }
+      }
+      .btn {
+        min-width: 220px;
       }
     }
   }
@@ -75,13 +115,15 @@ main {
       overflow: hidden;
       height: 718px;
       display: flex;
+      .visual-pc {display: block;}
+      .visual-mobile {display: none;}
     }
-    .slide1 {
-      background-color: #fef8f0;
-    }
-    .slide2 {
-      background-color: #fef0fb;
-    }
+    // .slide1 {
+    //   background-color: #fef8f0;
+    // }
+    // .slide2 {
+    //   background-color: #fef0fb;
+    // }
     .img-box {
       width: 717px;
       padding-top: 60px;
@@ -699,9 +741,12 @@ main {
 /* ===== 첫 분기: 1430px ===== */
 @media (max-width: 1430px) {
   .section1 {
+    .container {
+      height: 100%;
+    }
     .swiper {
       .swiper-slide {
-        height: calc(100vh - 193px);
+        height: 100%;
       }
       .img-box {
         padding-top: 0;
@@ -725,10 +770,18 @@ main {
       left: 50px;
     }
     .login-box {
-      max-width: 340px;
-      margin-left: auto;
-      bottom: 50px;
-      z-index: 10;
+      display: none !important;
+      position: static;
+      width: 100%;
+      margin-top: 50px;
+      &.check-in {
+        display: flex !important;
+        .btn-wrap {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .btn {min-width: 100%;}
+      }
     }
   }
   .section3 .box {
@@ -870,7 +923,7 @@ main {
     .swiper {
       .swiper-slide {
         flex-direction: column;
-        padding: 20px 40px 100px;
+        border-radius: 24px;
       }
       .img-box {
         width: 100%;
@@ -890,37 +943,17 @@ main {
       }
     }
     .login-box {
-      right: 40px;
-      max-width: fit-content;
-      flex-direction: row;
-      margin-top: 0;
-      margin: 0 auto;
-      display: grid;
-      grid-template-areas:
-        "left btn"
-        "left links";
-      column-gap: 20px;
-      align-items: center; 
-      justify-content: flex-start;
       padding: 30px;
-      > div {
-        grid-area: left;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .img-box {
-        width: 100px;
-        height: 100px;
-      }
-      .btn {
-        height: 80px;
-        grid-area: btn;
-      }
-      .link-wrap {
-        grid-area: links;
-        flex-direction: row;
+      border-radius: 24px;
+      &.check-in {
+        .top-box {
+          h4 {@include body-2;}
+        }
+        .join-list {
+          padding: 15px;
+        }
+        .list-itembox a + a {margin-top: 10px;}
+        .btn-wrap {flex-shrink: 0;}
       }
     }
   }
@@ -980,7 +1013,11 @@ main {
     margin-top: 0;
     .swiper {
       .swiper-slide {
-        padding: 20px 20px 100px;
+        .visual-pc {display: none;}
+        .visual-mobile {
+          display: block;
+          object-fit: cover;
+        }
       }
       .img-box {
         width: 100%;
@@ -1000,29 +1037,20 @@ main {
       }
     }
     .login-box {
-      max-width: 100%;
-      margin-left: 40px;
       padding: 20px;
       gap: 0 30px;
-      bottom: 0;
-      .img-box {
-        width: 80px;
-        height: 80px;
-        & + p {
-          font-size: 24px;
-        }
-      }
-      .btn {
-        height: 56px;
-      }
-      .link-wrap a {
-        font-size: 16px;
+      &.check-in {
+        gap: 20px;
       }
     }
     .section1-controls {
-      bottom: 200px;
+      bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
+      .capsule {
+        height: auto;
+        padding: 10px 18px;
+      }
     }
   }
   .section2 {
@@ -1161,19 +1189,18 @@ main {
       }
     }
     .section1-controls {
-      bottom: 130px;
+      bottom: 10px;
     }
     .login-box {
-      width: calc(100% - 40px);
-      right: 20px;
-      margin-left: 0;
       gap: 10px;
       padding: 10px;
-      border-radius: 20px;
-      .img-box {
-        width: 60px;
-        height: 60px;
-      & + P {font-size: 16px;}
+      &.check-in {
+        .top-box {
+          .img-box {
+            width: 60px;
+            height: 60px;
+          }
+        }
       }
     }
   }
