@@ -11,6 +11,7 @@
   .dp-input {
     height: 100%;
     width: 100%;
+    padding: 0;
     background: transparent;
   }
 
@@ -25,7 +26,7 @@
     border-radius: 6px;
     background: transparent;
     cursor: pointer;
-    background-image: url('/images/icon/icon-calendar.svg');
+    background-image: url('../../static/images/icon/icon-calendar.svg');
     background-repeat: no-repeat;
     background-position: center;
     transition: background-color .15s ease, box-shadow .15s ease, opacity .15s ease;
@@ -65,10 +66,10 @@
       height: 36px;
       right: 12px;
     }
-    // .dp-input {
-    //   font-size: 24px;
-    //   font-weight: 700;
-    // }
+    .dp-input {
+      @include body-1;
+      font-weight: 600;
+    }
   }
 
   &.size-md {
@@ -78,7 +79,8 @@
       right: 10px;
     }
     .dp-input {
-      font-size: 18px;
+      @include body-1;
+      // font-size: 18px;
       font-weight: 600;
     }
   }
@@ -90,7 +92,8 @@
       right: 8px;
     }
     .dp-input {
-      font-size: 16px;
+      @include body-2;
+      // font-size: 16px;
       font-weight: 600;
     }
   }
@@ -230,20 +233,56 @@
 }
 
 /* 다크 모드 */
-[data-theme="dark"] .dp-pop {
-  background: #121212;
-  border-color: rgba(255, 255, 255, .12);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, .6);
+[data-theme="dark"] {
+  .datepicker {
+    &:hover {
+      .dp-btn {
+        background-image: url('../../static/images/icon/icon-calendar.svg');
+      }  
+    }
+    .dp-btn {
+      background-image: url('../../static/images/icon/icon-calendar-white.svg');
+    }
+  }
+  .dp-pop {
+    background: #121212;
+    border-color: rgba(255, 255, 255, .12);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .6);
+  }
+  .dp-week span {
+    color: #a9adc0;
+  }
+  .dp-day {
+    color: #e6e8f0;
+  }
+  .dp-day:hover {
+    background: rgba(255, 255, 255, .06);
+  }
+  .dp-day.in-range {
+    background: rgba(108, 124, 255, .18);
+  }
 }
-[data-theme="dark"] .dp-week span {
-  color: #a9adc0;
-}
-[data-theme="dark"] .dp-day {
-  color: #e6e8f0;
-}
-[data-theme="dark"] .dp-day:hover {
-  background: rgba(255, 255, 255, .06);
-}
-[data-theme="dark"] .dp-day.in-range {
-  background: rgba(108, 124, 255, .18);
+
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
+  .datepicker {
+    &.size-lg {
+      .dp-input {
+        @include body-3;
+        font-weight: 500;
+      }
+    }
+    &.size-md {
+      .dp-input {
+        @include body-3;
+        font-weight: 500;
+      }
+    }
+    &.size-sm {
+      .dp-input {
+        @include body-3;
+        font-weight: 500;
+      }
+    }
+  }
 }

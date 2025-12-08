@@ -4,11 +4,18 @@
   border-radius: 24px;
   padding: 64px 180px;
   margin-top: 64px;
+  &.inner-sm {
+    padding: 30px 50px;
+  }
   .form-box {
     margin-top: 0;
   }
   .list-type li {
-    @include body-3;
+    @include body-1;//body-3
+    font-weight: 400;
+    & + li {
+      margin-top: 8px;
+    }
     &.color-red {
       &:before {
         background-color: var(--color-red);
@@ -26,10 +33,17 @@
   }
   span {
     @include heading-3;
+    font-weight: 400;
+    color: var(--gray-800);
   }
   .btn-wrap {
     gap: 16px;
     margin-top: 48px;
+  }
+  .date-text {
+    @include heading-3;
+    font-weight: 600;
+    color: var(--gray-700);
   }
 }
 
@@ -51,10 +65,10 @@
         }
       }
       .btn {
-        width: 120px;
+        width: 120px;//200
         flex-shrink: 0;
-        flex-direction: column;
-        gap: 0;
+        // flex-direction: column;
+        // gap: 0;
         &.fluid {
           width: 100%;
         }
@@ -67,13 +81,15 @@
     }
   }
   .form-title {
-    @include heading-3;
+    @include heading-2;
     padding-bottom: 20px;
     border-bottom: 1px solid var(--color-darken);
     margin-top: 28px;
   }
   .field-title {
     @include body-1;
+    color: var(--gray-800);
+    font-weight: 700;
     margin-bottom: 8px;
   }
   .guide-text {
@@ -105,6 +121,77 @@
       background-image: url('/images/icon/icon-caution.svg');
       background-size: contain;
       filter: brightness(0) saturate(100%) invert(36%) sepia(81%) saturate(1677%) hue-rotate(337deg) brightness(105%) contrast(84%);
+    }
+  }
+}
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .gray-outer {
+    padding: 50px;
+    margin-top: 50px;
+  }
+  .form-box {
+    margin-top: 50px;
+  }
+}
+
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
+  .gray-outer {
+    padding: 50px 20px;
+  }
+  .form-box {
+    form {
+      gap: 10px;
+      fieldset {
+        .btn {
+          flex-direction: row;
+          gap: 10px;
+        }
+      }
+      .form-title {
+        @include body-1;
+        font-weight: 700;
+        padding-bottom: 10px;
+      }
+    }
+    .field-title {
+      @include body-2;
+      font-weight: 700;
+    }
+    .guide-text {
+      font-size: 14px;
+    }
+  }
+  .fin-box {
+    strong {
+      @include body-1;
+      font-weight: 700;
+    }
+    span {
+      @include body-2;
+    }
+    .btn-wrap {
+      margin-top: 20px;
+    }
+    .date-text {
+      @include body-2;
+      font-weight: 700;
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {
+  .form-box {
+    form {
+      fieldset {
+        .btn {
+          width: 91px;
+          height: 56px;
+        }
+      }
     }
   }
 }

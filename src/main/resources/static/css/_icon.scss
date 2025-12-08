@@ -2,151 +2,205 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   &:before {
     content: "";
     display: block;
     width: 100%;
     height: 100%;
   }
+
   &.icon-member {
     &:before {
-      background-image: url(/images/icon/icon-member.svg);
+      background-image: url(../../static/images/icon/icon-member.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-home {
     &:before {
-      background-image: url(/images/icon/icon-home.png);
+      background-image: url(../../static/images/icon/icon-home.png);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-download {
     &:before {
-      background-image: url(/images/icon/icon-download.svg);
+      background-image: url(../../static/images/icon/icon-download.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-attachment {
     &:before {
-      background-image: url(/images/icon/icon-attachment.svg);
+      background-image: url(../../static/images/icon/icon-attachment.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-view {
     &:before {
-      background-image: url(/images/icon/icon-view.svg);
+      background-image: url(../../static/images/icon/icon-view.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-plus {
     &:before {
-      background-image: url(/images/icon/icon-plus.svg);
+      background-image: url(../../static/images/icon/icon-plus.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-minus {
     &:before {
-      background-image: url(/images/icon/icon-minus.svg);
+      background-image: url(../../static/images/icon/icon-minus.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-finish {
     &:before {
-      background-image: url(/images/icon/icon-finish.svg);
+      background-image: url(../../static/images/icon/icon-finish.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-enter {
     &:before {
-      background-image: url(/images/icon/icon-enter.svg);
+      background-image: url(../../static/images/icon/icon-enter.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-refresh {
     &:before {
-      background-image: url(/images/icon/icon-refresh.svg);
+      background-image: url(../../static/images/icon/icon-refresh.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-search {
     &:before {
-      background-image: url(/images/icon/icon-search.svg);
+      background-image: url(../../static/images/icon/icon-search.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-caution {
     &:before {
-      background-image: url(/images/icon/icon-caution.svg);
+      background-image: url(../../static/images/icon/icon-caution.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-card {
     &:before {
-      background-image: url(/images/icon/icon-card.svg);
+      background-image: url(../../static/images/icon/icon-card.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-x {
     &:before {
-      background-image: url(/images/icon/icon-x.svg);
+      background-image: url(../../static/images/icon/icon-x.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-arrow-left {
     &:before {
-      background-image: url(/images/icon/icon-arrow-left.svg);
+      background-image: url(../../static/images/icon/icon-arrow-left.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-arrow-right {
     &:before {
-      background-image: url(/images/icon/icon-arrow-right.svg);
+      background-image: url(../../static/images/icon/icon-arrow-right.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+  &.icon-arrow-right2 {
+    &:before {
+      background-image: url(../../static/images/icon/icon-arrow-right2.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+  }
+
   &.icon-arrow-left-end {
     &:before {
-      background-image: url(/images/icon/icon-arrow-left-end.svg);
+      background-image: url(../../static/images/icon/icon-arrow-left-end.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
   }
+
   &.icon-arrow-right-end {
     &:before {
-      background-image: url(/images/icon/icon-arrow-right-end.svg);
+      background-image: url(../../static/images/icon/icon-arrow-right-end.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+  }
+
+  &.icon-arrow-down {
+    &:before {
+      background-image: url(../../static/images/icon/icon-arrow-down.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+  }
+
+  &.icon-close {
+    &:before {
+      background-image: url(../../static/images/icon/icon-close.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+  }
+
+  &.icon-leave {
+    &:before {
+      background-image: url(../../static/images/icon/icon-leave.svg);
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
@@ -160,30 +214,35 @@
       height: 12px;
     }
   }
+
   &.size-20 {
     &:before {
       width: 20px;
       height: 20px;
     }
   }
+
   &.size-24 {
     &:before {
       width: 24px;
       height: 24px;
     }
   }
+
   &.size-30 {
     &:before {
       width: 30px;
       height: 30px;
     }
   }
+
   &.size-50 {
     &:before {
       width: 50px;
       height: 50px;
     }
   }
+
   &.size-100 {
     &:before {
       width: 100px;

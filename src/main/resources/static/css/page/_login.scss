@@ -3,18 +3,21 @@
 .login-wrap {
   .login-header {
     padding-top: 120px;
-    // padding-bottom: 64px;
+
     .section-title {
       margin: 0 auto;
       margin-bottom: 12px;
       text-align: center;
     }
+
     p {
-      @include heading-3;
+      @include body-1;
+      font-weight: 400;
       color: var(--gray-700);
       text-align: center;
     }
   }
+
   .tabs {
     border-bottom: 0;
     max-width: 600px;
@@ -25,13 +28,17 @@
   .find {
     display: flex;
     align-items: center;
+    justify-content: center;
+
     a {
       @include body-1;
       color: var(--gray-500);
-      & + a {
+
+      &+a {
         position: relative;
         display: flex;
         align-items: center;
+
         &::before {
           content: '';
           display: inline-block;
@@ -43,30 +50,31 @@
       }
     }
   }
+
   .catpcha-box {
-    border: 1px solid var(--gray-400);
-    border-radius: 8px;
-    > .flex {
-      border-radius: 8px;
-    overflow: hidden;
-    }
-    img {
-      width: 400px;
-      object-fit: contain;
+    .img-box {
       flex-shrink: 0;
     }
+
+    img {
+      height: 80px;
+    }
+
     button {
-      width: 100%;
       border: 0;
-      border-radius: 0;
-      border-left: 1px solid var(--gray-400);
+      border: 1px solid var(--gray-400);
       color: var(--gray-500);
+      .icon {
+        flex-shrink: 0;
+      }
     }
   }
+
   .pw2-box {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px 16px;
+
     button {
       width: 100%;
       background-color: var(--color-white);
@@ -78,34 +86,120 @@
       flex-direction: column;
       gap: 8px;
       padding: 46px 10px;
+
       span {
         @include heading-3;
       }
     }
+
     .icon {
       width: 64px;
       height: 64px;
     }
+
     .phone {
       .icon {
         &::before {
-          background-image: url('/images/sub/img-phone.png');
+          background-image: url('../../../static/images/sub/img-phone.png');
           background-size: contain;
           background-repeat: no-repeat;
         }
       }
     }
+
     .ipin {
       .icon {
         &::before {
-          background-image: url('/images/sub/img-ipin.png');
+          background-image: url('../../../static/images/sub/img-ipin.png');
           background-size: contain;
           background-repeat: no-repeat;
         }
       }
     }
-    & + .btn-wrap {
+
+    &+.btn-wrap {
       margin-top: 16px;
+    }
+  }
+
+  .guide-text {
+    justify-content: center;
+    align-items: center;
+    @include body-1;
+    font-weight: 400;
+    color: var(--gray-600);
+    a {
+      @include body-2;
+      font-weight: 400;
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .login-wrap {
+    .login-header {
+      padding-top: 50px;
+    }
+
+    .tabs {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
+  .login-wrap {
+    .login-header {
+      p {
+        @include body-2;
+        color: var(--gray-700);
+      }
+    }
+
+    .find {
+      a {
+        @include body-2;
+        color: var(--gray-500);
+      }
+    }
+
+    .catpcha-box {
+      img {
+        height: 56px;
+      }
+
+      button {
+        height: 56px;
+        .icon {
+          display: none;
+        }
+      }
+    }
+    .guide-text {
+      @include body-2;
+      a {
+        @include body-2;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {
+  .login-wrap {
+    .pw2-box {
+      button {
+        span {
+          @include body-2;
+        }
+      }
     }
   }
 }

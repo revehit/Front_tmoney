@@ -65,7 +65,10 @@
               <table>
                 <caption class="sr-only">계좌관리 테이블</caption>
                 <colgroup>
-                  <col><col><col><col>
+                  <col style="width: 20%;">
+                  <col>
+                  <col style="width: 20%;">
+                  <col>
                 </colgroup>
                 <tbody>
                   <tr>
@@ -309,7 +312,7 @@
   </section>
 </main>
 
-<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
+<th:block th:replace="~{component/footer :: siteFooterJn}"></th:block>
 <th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
 
 <script th:src="@{/js/vendor/aos.js}"></script>

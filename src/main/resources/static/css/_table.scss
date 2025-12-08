@@ -6,18 +6,20 @@
    =============================== */
 .table-wrap {
   overflow-x: auto;
+
   &.visible {
     overflow: visible;
   }
+
   table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    background: #fff;
+    background: var(--color-white);
     border: 1px solid var(--gray-400);
     border-radius: 12px;
     overflow: hidden;
-    border-left: 0;
+    //border-left: 0;
 
     th,
     td {
@@ -27,6 +29,7 @@
       word-break: break-word;
       border-right: 1px solid var(--gray-400);
       border-bottom: 1px solid var(--gray-400);
+      word-break: keep-all;
     }
 
     thead th {
@@ -35,22 +38,28 @@
       font-weight: 700;
       border-bottom: 1px solid var(--gray-400);
     }
+
     tbody th {
       @include body-1;
       color: var(--color-darken);
-      font-weight: 500;
     }
+
     tbody td {
-      @include body-1;
+      @include body-2;
       color: var(--gray-700);
-      font-weight: 500;
+    }
+
+    tbody tr td:first-child {
+      border-left: 1px solid var(--gray-400);
     }
 
     /* 상단 라운드 */
     thead tr:first-child {
       th:first-child {
         border-top-left-radius: 12px;
+        border-left: 1px solid var(--gray-400);
       }
+
       th:last-child {
         border-top-right-radius: 12px;
         border-right: 0;
@@ -61,12 +70,20 @@
     tbody tr:last-child td:last-child {
       border-bottom-right-radius: 0;
     }
+
     tbody tr:last-child td:first-child {
       border-bottom-left-radius: 0;
     }
+
+    tbody tr:last-child td:last-child {
+      border-right: 0;
+      border-bottom: 0;
+    }
+
     tbody tr:last-child td {
       border-bottom: 0;
     }
+
     tbody tr td:last-child {
       border-right: 0;
     }
@@ -77,6 +94,15 @@
     font-weight: 700;
     margin-bottom: 8px;
   }
+  .last-right {
+    border-right: 1px solid var(--gray-400) !important;
+  }
+  .no-bottom {
+    border-bottom: 0 !important;
+  }
+  .fix-bg {
+    background: var(--gray-200);
+  }
 }
 
 /* ===============================
@@ -85,23 +111,26 @@
 .table-wrap.type-rowcol {
   table {
     border-radius: 12px 12px 0 0;
-    
+
     thead th,
     thead td {
       text-align: center;
     }
+
     tbody th,
     tbody td {
       text-align: center;
     }
+
     tbody td:first-child,
     tbody th:first-child {
       background: var(--gray-200);
       font-weight: 700;
       width: 160px;
-      border-left: 0; /* 왼쪽선 제거 */
+      // border-left: 0; /* 왼쪽선 제거 */
     }
-    tbody tr:last-child th:first-child{
+
+    tbody tr:last-child th:first-child {
       border-bottom: 0;
     }
   }
@@ -113,16 +142,19 @@
 .table-wrap.type-col {
   table {
     border-radius: 12px 12px 0 0;
+
     thead th,
     tbody td {
       text-align: center;
     }
+
     thead th {
       background: var(--gray-300);
     }
-    tbody tr:last-child th:first-child{
+    tbody tr:last-child th:first-child {
       border-bottom: 0;
     }
+    
   }
 }
 
@@ -132,29 +164,186 @@
 .table-wrap.type-row {
   table {
     border-radius: 12px 0 0 12px;
+
     tbody td:first-child,
     tbody th:first-child {
       background: var(--gray-300);
       font-weight: 700;
       width: 220px;
-      border-left: 0; /* 왼쪽선 제거 */
+      // border-left: 0; /* 왼쪽선 제거 */
     }
+
     tbody th {
       background: var(--gray-300);
       font-weight: 700;
     }
-    tbody tr:last-child th:first-child{
+
+    tbody tr:last-child th:first-child {
       border-bottom: 0;
     }
   }
 }
 
-/* ===============================
-   📱 Responsive
-   =============================== */
-@media (max-width: 768px) {
+
+
+/* ===== 세번째 분기: 1430px ===== */
+@media (max-width: 1430px) {
+  .table-wrap.scroll-x {
+    overflow-x: scroll;
+
+    table {
+      width: 1430px;
+    }
+  }
+
+  .table-wrap.type-row {
+    table {
+      table-layout: auto;
+
+      colgroup {
+        display: none;
+      }
+
+      tbody {
+        display: grid;
+        grid-template-columns: 20% 1fr;
+        /* 라벨 고정, 값 가변 */
+        width: 100%;
+      }
+
+      tr {
+        display: contents;
+
+        >th {
+          grid-column: 1;
+          background: var(--gray-300);
+          font-weight: 700;
+          color: var(--color-darken);
+          text-align: left;
+          height: 100%;
+          
+          display: flex;
+          align-items: center;
+        }
+
+        >td {
+          grid-column: 2;
+          color: var(--gray-700);
+          font-weight: 500;
+          text-align: left;
+          border-right: 0;
+
+          display: flex;
+          align-items: center;
+        }
+
+        td:first-child,
+        th:first-child {
+          width: 100%;
+        }
+
+        &:last-child td {
+          border-bottom: 1px solid var(--gray-400);
+        }
+      }
+
+      th,
+      td {
+        padding: 14px 16px;
+        border-right: 1px solid var(--gray-400);
+        border-bottom: 1px solid var(--gray-400);
+        width: 100%;
+        display: block;
+      }
+    }
+
+    // td .flex.align-center.gap8 {
+    //   display: flex;
+    //   align-items: center;
+    //   gap: 8px;
+    //   .text-field,
+    //   .text-field.fluid,
+    //   input[type="text"] {
+    //     flex: 1 1 auto;
+    //     min-width: 0;
+    //   }
+    //   .btn {
+    //     flex: 0 0 120px;
+    //     height: 44px;
+    //   }
+    // }
+
+    // .dropdown.fluid {
+    //   width: 100%;
+    // }
+
+    // tbody tr:first-child > th:first-of-type {
+    //   border-top-left-radius: 12px;
+    // }
+    // tbody tr:first-child > td:last-of-type {
+    //   border-top-right-radius: 12px;
+    // }
+  }
+}
+
+/* ===== 세번째 분기: 1200px ===== */
+@media (max-width: 1200px) {
+  .table-wrap.scroll-x {
+    table {
+      width: 1200px;
+    }
+  }
+}
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .table-wrap.scroll-x {
+    table {
+      width: 1024px;
+    }
+  }
+  .table-wrap.type-row {
+    table {
+      tbody {
+        display: table;
+        //grid-template-columns: 30% 1fr;
+      }
+    }
+  }
+}
+
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
+  .table-wrap.scroll-x {
+    table {
+      width: 767px;
+    }
+  }
+  .table-wrap {
+    table {
+      thead th {
+        @include body-2;
+      }
+
+      tbody th,
+      tbody td {
+        @include body-3;
+      }
+    }
+    
+  }
+
   .table-wrap table th,
   .table-wrap table td {
     padding: 12px;
+  }
+}
+
+/* ===== 네번째 분기: 500px ===== */
+@media (max-width: 500px) {
+  .table-wrap.scroll-x {
+    table {
+      width: 500px;
+    }
   }
 }

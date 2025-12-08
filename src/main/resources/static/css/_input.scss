@@ -13,6 +13,9 @@ input {
     background-color: var(--gray-200);
     color: var(--gray-600) !important;
   }
+  &::placeholder {
+    color: var(--gray-600);
+  }
 }
 
 .text-field {
@@ -22,9 +25,10 @@ input {
   padding: 0 10px;
   display: flex;
   align-items: center;
-  border: 1px solid var(--border-darken);
+  border: 1px solid var(--gray-400);
   background-color: var(--color-white);
-  color: var(--color-darken);
+  //color: var(--color-darken);
+  color: var(--gray-800);
   overflow: hidden;
 
   &:focus,
@@ -131,4 +135,49 @@ input {
 }
 .file-list li:nth-child(odd) {
   background: var(--color-white);
+}
+
+
+[data-theme="dark"] {
+  .text-field {
+    border: 1px solid var(--color-darken);
+  }
+}
+
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
+  .text-field {
+    &.size-lg {
+      height: 56px;
+      @include body-2;
+      padding: 0 10px;
+    }
+    &.size-md {
+      //height: 48px;
+      @include body-2;
+      padding: 0 10px;
+    }
+    &.size-sm {
+      //height: 36px;
+      @include body-3;
+      padding: 0 10px;
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {
+  .text-field {
+    &.size-lg {
+      //height: 48px;
+      @include body-3;
+    }
+    &.size-md {
+      //height: 36px;
+      @include body-3;
+    }
+    &.size-sm {
+      //height: 30px;
+    }
+  }
 }

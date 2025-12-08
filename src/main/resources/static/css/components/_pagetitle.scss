@@ -29,3 +29,57 @@
     }
   }
 }
+
+
+/* ===== 첫 분기: 1430px ===== */
+@media (max-width: 1430px) {}
+
+/* ===== 두번째 분기: 1200px ===== */
+@media (max-width: 1200px) {
+  .title-wrap {
+    > .flex {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .page-header {
+    padding: 50px 0;
+  }
+  .title-wrap {
+    padding: 50px 0;
+  }
+}
+
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
+  .section-title {
+    @include heading-2;
+  }
+  .section-sub-title {
+    @include heading-3;
+  }
+  .page-header {
+    .with-img {
+      gap: 20px;
+      align-items: flex-start;
+      img {
+        width: 60px;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {
+  .page-header {
+    padding: 30px 0;
+  }
+  .title-wrap {
+    padding: 36px 0;
+  }
+}

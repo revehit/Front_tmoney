@@ -34,9 +34,13 @@
 
       .file-drop-msg {
         margin: 0;
-        color: var(--gray-700);
-        font-size: clamp(14px, 2vw, 22px);
+        //font-size: clamp(14px, 2vw, 22px);
+        @include body-1;
+        color: var(--gray-600);
         line-height: 1.6;
+      }
+      .btn {
+        width: 200px;
       }
     }
 
@@ -96,7 +100,7 @@
 }
 
 /* ----- 반응형 ----- */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .file-box {
     .file-drop { padding: 24px; min-height: 180px; }
     .file-list .file-item { padding: 14px 16px; }

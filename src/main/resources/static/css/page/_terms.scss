@@ -1,0 +1,154 @@
+@import "../../css/mixin";
+
+.terms-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  @include body-2;
+  .scopy {
+    @include body-1;
+  }
+  .guide-text {
+    display: block;
+    @include body-3;
+    position: relative;
+    padding-left: 12px;
+    margin-top: 10px;
+    &::before {
+      content: '※';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0px;
+    }
+  }
+  .labeling-box {
+    .top-box {
+      background-color: var(--gray-300);
+      @include body-2;
+      text-align: center;
+      padding: 24px 0;
+    }
+    .terms-link {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .box {
+      border-radius: 10px;
+      background-color: var(--color-primary-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+    .bot-box {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--color-darken);
+      .box {
+        border: 1px solid var(--color-darken);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .img-box {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          overflow: hidden;
+          img {
+            width: 100%;
+            object-fit: contain;
+          }
+        }
+        p {
+          @include body-2;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .box {
+    p {
+      //@include heading-3;
+      //font-weight: 400;
+      @include body-2;
+    }
+    h3 {
+      @include heading-2;
+      color: var(--color-primary);
+      padding-bottom: 16px
+    }
+    h4 {
+      @include heading-3;
+      color: var(--color-point);
+    }
+    .table-wrap {
+      margin-top: 10px;
+      .btn {
+        max-width: 200px;
+      }
+    }
+    .guide-text {
+      @include body-2;
+    }
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .table-wrap {
+    table {
+      thead {
+        th, td {
+          @include body-2;
+        }
+      }
+      tbody {
+        th, td {
+          @include body-2;
+        }
+      }
+    }
+  }
+}
+
+
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {
+  .terms-wrap {
+    .box {
+      padding: 20px;
+    }
+  }
+}
+
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
+  .terms-wrap {
+    .labeling-box {
+      .terms-link {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+    .box {
+      h3 {
+        @include heading-3;
+        color: var(--color-primary);
+      }
+      p {
+        @include body-2;
+      }
+    }
+  }
+}
+
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {
+  
+}

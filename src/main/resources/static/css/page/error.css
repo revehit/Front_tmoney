@@ -1,0 +1,112 @@
+@charset "UTF-8";
+/* =========== =========== =========== */
+/* =========== Typhogragh =========== */
+/* =========== =========== =========== */
+.heading-1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.heading-2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.heading-3 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.body-1 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.body-2 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.body-3 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.body-4 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.caption-1 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.caption-1 {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* media */
+/* ===== 세번째 분기: 1024px ===== */
+/* ===== 네번째 분기: 767px ===== */
+/* ===== 다섯번째 분기: 500px ===== */
+.error-wrap {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.error-wrap .img-box {
+  margin: 0 auto;
+}
+.error-wrap .img-box img {
+  display: block;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.error-wrap .text-box {
+  text-align: center;
+  margin-top: 60px;
+}
+.error-wrap .text-box h2 {
+  font-size: 64px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+.error-wrap .text-box p {
+  font-size: 24px;
+}
+.error-wrap .btn-wrap {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 60px;
+}
+
+/* ===== 세번째 분기: 1024px ===== */
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
+  .error-wrap .text-box {
+    margin-top: 50px;
+  }
+  .error-wrap .text-box h2 {
+    font-size: 40px;
+  }
+  .error-wrap .text-box p {
+    font-size: 20px;
+  }
+  .error-wrap .btn-wrap {
+    margin-top: 50px;
+  }
+}
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {
+  .error-wrap .text-box h2 {
+    font-size: 30px;
+  }
+  .error-wrap .text-box p {
+    font-size: 18px;
+  }
+}

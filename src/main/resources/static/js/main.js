@@ -259,13 +259,124 @@ function initThemeReactivity() {
   mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 }
 
+/* ========== 7-1. 섹션1 스와이퍼(메인 비주얼) ========== */
+function initSection1Swiper() {
+  const container = document.querySelector(".section1 .swiper");
+  const controls  = document.querySelector(".section1 .section1-controls");
+  if (!container || !controls || typeof Swiper === "undefined") return;
+
+  const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+  const dotsHost   = controls.querySelector(".dots");
+  const toggleBtn  = controls.querySelector(".toggle");
+  const iconPause  = toggleBtn.querySelector(".icon-slider-pause");
+  const iconPlay   = toggleBtn.querySelector(".icon-slider-play");
+  const liveEl     = controls.querySelector("#section1-status");
+  let userPaused   = reduceMotion ? true : false;
+
+  // 캐러셀 ARIA
+  container.setAttribute("role", "region");
+  container.setAttribute("aria-roledescription", "carousel");
+  container.setAttribute("aria-label", "메인 비주얼 배너");
+
+  // Swiper 초기화
+  const swiper = new Swiper(container, {
+    loop: true,
+    speed: 700,
+    fadeEffect: { crossFade: true },
+    watchOverflow: true,
+    allowTouchMove: true,
+    autoplay: reduceMotion ? false : { delay: 3800, disableOnInteraction: false },
+    pagination: {
+      el: dotsHost,
+      clickable: true,
+      bulletElement: "button",
+      renderBullet: (i, className) =>
+        `<button type="button" class="${className} dot" role="tab"
+                 aria-controls="section1-slide-${i + 1}"
+                 aria-label="${i + 1}번째 배너로 이동"></button>`,
+    },
+    a11y: false
+  });
+
+  // ✅ 토글 상태 갱신
+  function updateToggleVisual() {
+    const running = !!swiper.autoplay?.running;
+    const paused  = !running;
+    toggleBtn.setAttribute("aria-pressed", String(paused));
+    toggleBtn.setAttribute("aria-label", paused ? "자동재생 재생" : "자동재생 일시정지");
+    controls.classList.toggle("is-paused", paused);
+    iconPause.style.display = paused ? "none" : "inline-block";
+    iconPlay.style.display  = paused ? "inline-block" : "none";
+  }
+
+  // ✅ 현재 슬라이드 안내 (스크린리더)
+  function announce() {
+    const idx   = (swiper.realIndex ?? 0) + 1;
+    const total = swiper.pagination?.bullets?.length || 0;
+    liveEl.textContent = `현재 슬라이드 ${idx} / ${total}`;
+  }
+
+  // ✅ 토글 클릭
+  toggleBtn.addEventListener("click", () => {
+    if (swiper.autoplay?.running) {
+      swiper.autoplay.stop();
+      userPaused = true;
+    } else {
+      if (!reduceMotion) swiper.autoplay.start();
+      userPaused = false;
+    }
+    updateToggleVisual();
+  });
+
+  // ✅ dots 키보드 조작
+  dotsHost.addEventListener("keydown", (e) => {
+    const isBullet = e.target?.classList?.contains("swiper-pagination-bullet");
+    if (!isBullet) return;
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      e.target.click();
+    }
+  });
+
+  // ✅ 포커스 접근성 제어
+  controls.addEventListener("focusin", () => {
+    if (swiper.autoplay?.running) swiper.autoplay.stop();
+    updateToggleVisual();
+  });
+  controls.addEventListener("focusout", () => {
+    if (!userPaused && !reduceMotion) swiper.autoplay?.start();
+    updateToggleVisual();
+  });
+
+  // ✅ 탭 전환 시 가시성 제어
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      if (swiper.autoplay?.running) swiper.autoplay.stop();
+    } else {
+      if (!userPaused && !reduceMotion) swiper.autoplay?.start();
+    }
+    updateToggleVisual();
+  });
+
+  // ✅ 초기화
+  swiper.on("init", () => {
+    if (reduceMotion && swiper.autoplay?.running) swiper.autoplay.stop();
+    announce();
+    updateToggleVisual();
+  });
+  swiper.on("slideChangeTransitionStart", announce);
+
+  if (typeof swiper.init === "function") swiper.init();
+}
+
 /* ========== 7. 섹션6 스와이퍼 ========== */
 function initSection6Swiper() {
   const container = document.querySelector(".section6 .swiper");
   if (!container || typeof Swiper === "undefined") return;
 
   const swiper = new Swiper(container, {
-    slidesPerView: 3,
+    //slidesPerView: 3,
+    slidesPerView: 'auto',
     spaceBetween: 56,
     loop: false,
     watchOverflow: true,
@@ -284,9 +395,10 @@ function initSection6Swiper() {
       `,
     },
     breakpoints: {
-      480: { slidesPerView: 1, spaceBetween: 16 },
-      768: { slidesPerView: 2, spaceBetween: 32 },
-      1024: { slidesPerView: 3, spaceBetween: 56 },
+      480: { slidesPerView: 'auto', spaceBetween: 20 },
+      768: { slidesPerView: 'auto', spaceBetween: 20 },
+      1024: { slidesPerView: 'auto', spaceBetween: 20 },
+      1430: { slidesPerView: 'auto', spaceBetween: 40 },
     },
   });
 
@@ -325,6 +437,7 @@ function initMain() {
   initDialogToggle();
   initThemeReactivity();
   initTextFillAnimation();
+  initSection1Swiper();
   initSection6Swiper();
 }
 
