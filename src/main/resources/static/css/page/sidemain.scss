@@ -78,19 +78,19 @@
         padding: 40px;
 
         &.bg1 {
-          background-image: url('../../../static/images/main/bg-sidemain-box1.png');
+          background-image: url('/images/main/bg-sidemain-box1.png');
           background-size: cover;
           background-repeat: no-repeat;
         }
 
         &.bg2 {
-          background-image: url('../../../static/images/main/bg-sidemain-box2.png');
+          background-image: url('/images/main/bg-sidemain-box2.png');
           background-size: cover;
           background-repeat: no-repeat;
         }
 
         &.bg3 {
-          background-image: url('../../../static/images/main/bg-sidemain-box3.png');
+          background-image: url('/images/main/bg-sidemain-box3.png');
           background-size: cover;
           background-repeat: no-repeat;
         }
@@ -344,7 +344,7 @@
           width: 12px;
           height: 12px;
           &:before {
-            background-image: url('../../../static/images/icon/icon-slider-play.svg');
+            background-image: url('/images/icon/icon-slider-play.svg');
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
@@ -355,7 +355,7 @@
           display: inline-block;
 
           &:before {
-            background-image: url('../../../static/images/icon/icon-slider-pause.svg');
+            background-image: url('/images/icon/icon-slider-pause.svg');
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
@@ -482,7 +482,7 @@
       height: 60px;
 
       &:before {
-        background-image: url(../../../static/images/icon/icon-click.svg);
+        background-image: url(/images/icon/icon-click.svg);
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
@@ -518,7 +518,7 @@
 
       &.right {
         &:before {
-          background-image: url('../../../static/images/icon/chevron-right.svg');
+          background-image: url('/images/icon/chevron-right.svg');
           background-repeat: no-repeat;
           background-size: contain;
           background-position: center;

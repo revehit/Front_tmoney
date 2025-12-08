@@ -100,7 +100,7 @@
     .phone {
       .icon {
         &::before {
-          background-image: url('../../../static/images/sub/img-phone.png');
+          background-image: url('/images/sub/img-phone.png');
           background-size: contain;
           background-repeat: no-repeat;
         }
@@ -110,7 +110,7 @@
     .ipin {
       .icon {
         &::before {
-          background-image: url('../../../static/images/sub/img-ipin.png');
+          background-image: url('/images/sub/img-ipin.png');
           background-size: contain;
           background-repeat: no-repeat;
         }
