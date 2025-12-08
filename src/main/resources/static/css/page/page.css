@@ -798,6 +798,7 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .mypage-nav li {
   width: 14.2857142857%;
