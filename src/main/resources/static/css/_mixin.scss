@@ -3,7 +3,7 @@
 /* =========== =========== =========== */
 @mixin heading-base {
   //font-family: "Pretendard", "Noto Sans KR", sans-serif;
-  color: var(--color-darken);
+  //color: var(--color-darken);
 }
 @mixin heading-1 {
   @include heading-base;
@@ -23,17 +23,17 @@
 
 @mixin body-base {
   //font-family: "Pretendard", "Noto Sans KR", sans-serif;
-  color: var(--color-darken);
+  //color: var(--color-darken);
 }
 @mixin body-1 {
   @include body-base;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
 }
 @mixin body-2 {
   @include body-base;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
 }
 @mixin body-3 {
   @include body-base;
@@ -46,6 +46,20 @@
   font-weight: 400;
 }
 
+@mixin caption-base {
+  //color: var(--color-darken);
+}
+@mixin caption-1 {
+  @include caption-base;
+  font-size: 14px;
+  font-weight: 400;
+}
+@mixin caption-2 {
+  @include caption-base;
+  font-size: 12px;
+  font-weight: 400;
+}
+
 .heading-1 { @include heading-1; }
 .heading-2 { @include heading-2; }
 .heading-3 { @include heading-3; }
@@ -53,3 +67,15 @@
 .body-2 { @include body-2; }
 .body-3 { @include body-3; }
 .body-4 { @include body-4; }
+.caption-1 { @include caption-1; }
+.caption-1 { @include caption-2; }
+
+/* media */
+/* ===== 세번째 분기: 1024px ===== */
+@media (max-width: 1024px) {}
+
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {}
+
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {}

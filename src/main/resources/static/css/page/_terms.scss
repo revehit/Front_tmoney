@@ -3,7 +3,11 @@
 .terms-wrap {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 48px;
+  @include body-2;
+  .scopy {
+    @include body-1;
+  }
   .guide-text {
     display: block;
     @include body-3;
@@ -24,6 +28,19 @@
       @include body-2;
       text-align: center;
       padding: 24px 0;
+    }
+    .terms-link {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .box {
+      border-radius: 10px;
+      background-color: var(--color-primary-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
     }
     .bot-box {
       display: grid;
@@ -54,13 +71,11 @@
       }
     }
   }
-  .line-box {
-    border: 1px solid var(--gray-400);
-    border-radius: 12px;
-    padding: 40px;
+  .box {
     p {
-      @include heading-3;
-      font-weight: 400;
+      //@include heading-3;
+      //font-weight: 400;
+      @include body-2;
     }
     h3 {
       @include heading-2;
@@ -77,6 +92,29 @@
         max-width: 200px;
       }
     }
+    .guide-text {
+      @include body-2;
+    }
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .table-wrap {
+    table {
+      thead {
+        th, td {
+          @include body-2;
+        }
+      }
+      tbody {
+        th, td {
+          @include body-2;
+        }
+      }
+    }
   }
 }
 
@@ -84,16 +122,21 @@
 /* ===== 세번째 분기: 1024px ===== */
 @media (max-width: 1024px) {
   .terms-wrap {
-    .line-box {
+    .box {
       padding: 20px;
     }
   }
 }
 
-/* ===== 네번째 분기: 768px ===== */
-@media (max-width: 768px) {
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
   .terms-wrap {
-    .line-box {
+    .labeling-box {
+      .terms-link {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+    .box {
       h3 {
         @include heading-3;
         color: var(--color-primary);
@@ -105,7 +148,7 @@
   }
 }
 
-/* ===== 다섯번째 분기: 480px ===== */
-@media (max-width: 480px) {
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {
   
 }

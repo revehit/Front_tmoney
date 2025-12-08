@@ -39,8 +39,8 @@
   
 }
 
-/* ===== 네번째 분기: 768px ===== */
-@media (max-width: 768px) {
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
   .error-wrap {
     .text-box {
       margin-top: 50px;
@@ -57,8 +57,8 @@
   }
 }
 
-/* ===== 다섯번째 분기: 480px ===== */
-@media (max-width: 480px) {
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {
   .error-wrap {
     .text-box {
       h2 {

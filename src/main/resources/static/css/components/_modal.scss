@@ -53,7 +53,6 @@
 
     background: var(--modal-surface);
     color: var(--modal-foreground);
-    border: 1px solid var(--modal-border);
     border-radius: var(--modal-radius);
     box-shadow: var(--modal-shadow);
     outline: none;
@@ -74,7 +73,9 @@
   /* 헤더/본문/푸터 최소 스타일 */
   .modal-header{
     display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 16px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--gray-400);
 
     .modal-title{ 
       margin: 0; 
@@ -82,8 +83,9 @@
     }
 
     .modal-close{
-      width: 32px; height: 32px; 
-      background: transparent; color: inherit; cursor: pointer; position: relative;
+      cursor: pointer; 
+      position: relative;
+      flex-shrink: 0;
       &::before,&::after{
         content:""; position:absolute; left:50%; top:50%; width:18px; height:2px; background: currentColor;
         transform-origin: 50% 50%;
@@ -132,6 +134,24 @@
   }
   .modal-footer{ 
     display: flex; gap: 8px; justify-content: flex-end; margin-top: 40px; 
+    .btn-wrap {
+      width: 100%;
+    }
+  }
+
+  .guide-text {
+    display: block;
+    @include body-3;
+    position: relative;
+    padding-left: 12px;
+
+    &::before {
+      content: '※';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0px;
+    }
   }
 }
 
@@ -149,8 +169,8 @@
 }
 
 
-/* ===== 네번째 분기: 768px ===== */
-@media (max-width: 768px) {
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
   .modal {
     .modal-container {
       padding: 20px;
@@ -161,6 +181,7 @@
       }
     }
     .modal-body {
+      max-height: 40vh;
       .modal-icon {
         margin-bottom: 30px;
       }

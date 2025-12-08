@@ -43,7 +43,7 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
-      gap: 24px;
+      //gap: 24px;
       border-radius: 48px;
       border: 1px solid var(--gray-400);
       background-color: var(--color-white);
@@ -52,10 +52,19 @@
         height: 100%;
         border: 0;
         background-color: var(--color-primary-hover);
+        img {
+          margin-top: 48px;
+          margin-left: 40px;
+        }
       }
       &.secondary {
         border: 0;
         background-color: var(--color-secondary-hover);
+        .box-title {
+          & + div {
+            width: 100%;
+          }
+        }
       }
       h3 {
         @include heading-2;
@@ -66,13 +75,22 @@
         color: var(--color-darken);
         padding-bottom: 25px;
         border-bottom: 1px solid var(--color-darken);
+        & + .dir-col {
+          margin-top: 24px;
+        }
       }
       p {
         @include heading-3;
         color: var(--gray-700);
         &.flex {
           gap: 10px;
-          flex-wrap: wrap
+          flex-wrap: wrap;
+          align-items: center;
+          .flex-bar {
+            width: 1px;
+            height: 20px;
+            background-color: var(--gray-400);
+          }
         }
       }
       strong {
@@ -86,7 +104,8 @@
         display: flex;
         align-items: center;
         gap: 32px;
-        padding: 27px 48px;
+        padding: 27px 20px;//27px 48px
+        border-radius: 8px;
         .icon {
           width: 56px;
           height: 56px;
@@ -125,7 +144,9 @@
     margin-top: 48px;
     .table-wrap {
       .form-box {
+        width: 100%;
         max-width: 100%;
+        margin: 0 auto;
         margin-top: 0;
         .dropdown,
         .text-field {
@@ -134,6 +155,9 @@
       }
       &.type-row {
         .form-box {
+          fieldset {
+            width: 100%;
+          }
           .dropdown,
           .text-field {
             & + .btn {
@@ -163,7 +187,7 @@
 }
 /* 마이페이지 상단 nav */
 .mypage-nav {
-  background-color: var(--color-darken);
+  background-color: var(--gray-200);
   ul { 
     max-width: 1430px;
     margin: 0 auto;
@@ -172,9 +196,22 @@
   }
   li {
     width: calc(100% / 7);
-    border-left: 1px solid var(--gray-400);
-    &:last-child {
-      border-right: 1px solid var(--gray-400);
+    position: relative;
+    
+    &:before {
+      content: '';
+      width: 1px;
+      height: 37px;
+      background-color: var(--gray-400);
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:first-child {
+      &::before {
+        display: none;
+      }
     }
   }
   a {
@@ -183,12 +220,35 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     @include body-2;
     color: var(--gray-500);
   }
   .active a {
-    color: var(--color-white);
+    color: var(--gray-800);
     font-weight: 700;
+  }
+}
+
+[data-theme="dark"] {
+  .mypage-nav {
+    a {
+      color: var(--color-white);
+    }
+  }
+  .mypage-wrap {
+    .dsshboard-box {
+      .box {
+        border: 1px solid var(--color-darken);
+        .link {
+          &:hover {
+            p {
+              color: var(--color-darken);
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -203,7 +263,7 @@
         border-radius: 40px;
         .link {
           gap: 20px;
-          padding: 20px 30px;
+          padding: 20px 10px;
         }
       }
     }
@@ -221,12 +281,20 @@
     > .col:nth-child(3){ grid-column: 2 / 3; }
 
     .box{
-      padding: 28px 32px 32px;
-      border-radius: 36px;
+      padding: 48px;//28px 32px 32px
+      border-radius: 48px;//36px
       &.primary {
+        position: relative;
         img {
           display: block;
           margin-left: auto;
+          position: absolute;
+          top: 142px;
+          right: 0;
+          margin-top: 0;
+        }
+        > .btn {
+          margin-top: 250px;
         }
       }
     }
@@ -252,9 +320,31 @@
       }
       .box .link{ padding:22px 28px; gap:24px; }
       .box .link .icon{ width:48px; height:48px; }
+      .btn-wrap {
+        gap: 12px;
+        .btn {
+          flex: auto;
+        }
+      }
     }
     .mng-wrap {
       margin-top: 50px;
+      .table-wrap {
+        .form-box {
+          .flex.align-center.gap8 {
+            // flex-direction: column;
+            // align-items: flex-start;
+            flex-wrap: wrap;
+            .cardbox {
+              flex-shrink: 0;
+              width: 100%;
+              .text-field {
+                width: 20%;
+              }
+            }
+          }
+        }
+      }
     }
   }
   .mypage-nav {
@@ -270,17 +360,30 @@
         &:last-child {
           border-right: 0;
         }
+        &::before {
+          display: none;
+        }
+        &:nth-child(4n) {
+          a {
+            border-right: 0;
+          }
+        }
+        &:nth-child(n + 5) {
+          a {
+            border-bottom: 0;
+          }
+        }
         a {
-          border-right: 1px solid var(--color-white);
-          border-bottom: 1px solid var(--color-white);
+          border-right: 1px solid var(--gray-400);
+          border-bottom: 1px solid var(--gray-400);
         }
       }
     }
   }
 }
 
-/* ===== 네번째 분기: 768px ===== */
-@media (max-width: 768px) {
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
   #contents .mypage-wrap {
     .dsshboard-box {
       display: grid; /* 안전망 */
@@ -316,9 +419,11 @@
         width: 100%;
         .btn {
           //flex: 0 0 49%;
-          flex: 0 0 calc(50% - 12px);
+          //flex: 0 0 calc(50% - 12px);
+          flex: auto;
+          width: calc(50% - 12px);
           max-width: 50%;
-          min-width: unset;
+          min-width: auto;
         }
         .btn-primary {
           flex: 0 0 100%;
@@ -332,6 +437,12 @@
   }
   .mypage-wrap {
     .dsshboard-box {
+      .col:first-child {
+        .box > .flex h3 {
+          @include body-2;
+          font-weight: 700;
+        }
+      }
       .box {
         gap: 16px;
         .box-title {
@@ -340,9 +451,18 @@
         }
         p {
           @include body-2;
+          font-weight: 700;
         }
+        
         strong {
-          @include body-1;
+          @include heading-3;
+          font-weight: 700;
+        }
+        &.primary {
+          img {
+            top: 104px;
+            //width: 50%;
+          }
         }
       }
     }
@@ -351,13 +471,21 @@
       .table-wrap {
         .form-box {
           .flex.align-center.gap8 {
-            flex-direction: column;
-            align-items: flex-start;
+            // flex-direction: column;
+            // align-items: flex-start;
+            
             &.cardbox {
               flex-direction: row;
               align-items: center;
               .text-field {
-                width: 100%;
+                width: calc(25% - 2px);
+              }
+              .flex-bar {
+                display: none;
+              }
+              button {
+                margin-top: 20px;
+                margin-bottom: 20px;
               }
             }
           }
@@ -365,22 +493,11 @@
       }
     }
   }
-  .mypage-nav {
-    ul {
-      li {
-        a {
-          @include body-3;
-          color: var(--color-white);
-          height: 36px;
-        }
-      }
-    }
-  }
   
 }
 
-/* ===== 다섯번째 분기: 480px ===== */
-@media (max-width: 480px) {
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {
   #contents .mypage-wrap .dsshboard-box .box {gap: 10px;}
   .mypage-wrap {
     .dsshboard-box {
@@ -390,16 +507,32 @@
         }
         .box-title {
           @include body-1;
+          font-weight: 700;
           padding-bottom: 20px;
         }
         p {
           @include body-3;
+          font-weight: 700;
+        }
+        h3 {
+          @include body-1;
+          font-weight: 700;
         }
         strong {
-          @include body-2;
+          @include heading-3;
+          font-weight: 700;
         }
         .link {
           padding: 10px;
+        }
+        &.primary {
+          img {
+            //width: 70%;
+            width: 246px;
+          }
+          > .btn {
+            margin-top: 150px;
+          }
         }
       }
     }
@@ -409,6 +542,22 @@
       li {
         a {
           font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+/* ===== 여섯번째 분기: 360px ===== */
+@media (max-width: 360px) {
+  .mypage-wrap {
+    .dsshboard-box {
+      .box.primary {
+        img {
+          width: 200px;
+        }
+        >.btn {
+          margin-top: 110px;
         }
       }
     }

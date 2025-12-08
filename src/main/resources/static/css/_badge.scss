@@ -2,15 +2,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 74px;
+  width: 110px;//74
   height: 48px;
   border-radius: 8px;
-  padding: 0 20px;
+  padding: 0 10px;//0 20px
   @include body-1;
+  font-weight: 700;
 
   &.badge-notice {
     background-color: var(--color-primary);
-    color: #fff;
+    color: var(--color-white);
   }
   &.primary {
     background-color: var(--color-primary);
@@ -20,6 +21,28 @@
     background-color: var(--color-secondary);
     color: var(--color-white);
   }
+
+  /* size */
+  &.size-sm {
+    width: 60px;
+    height: 36px;
+    padding: 0 10px;
+    @include body-2;
+  }
+}
+
+[data-theme="dark"] {
+  .badge {
+    &.badge-notice {
+      color: var(--color-darken);
+    }
+    &.primary {
+      color: var(--color-darken);
+    }
+    &.secondary {
+      color: var(--color-darken);
+    }
+  }
 }
 
 /* ===== 세번째 분기: 1024px ===== */
@@ -28,22 +51,26 @@
     width: 60px;
     height: 36px;
     @include body-2;
+    font-weight: 700;
   }
 }
 
-/* ===== 네번째 분기: 768px ===== */
-@media (max-width: 768px) {
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
   .badge {
-    width: 50px;
-    height: 30px;
-    @include body-3;
+    // width: 50px;
+    // height: 30px;
+    width: 101px;
+    height: 48px;
+    @include body-1;
+    font-weight: 700;
   }
 }
 
-/* ===== 다섯번째 분기: 480px ===== */
-@media (max-width: 480px) {
-  .badge {
-    width: 40px;
-    height: 30px;
-  }
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {
+  // .badge {
+  //   width: 40px;
+  //   height: 30px;
+  // }
 }

@@ -11,7 +11,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* 텍스트+아이콘 간격 */
+  // gap: 8px; 
   min-width: 80px;
   padding: 0 16px;
   @include body-2;
@@ -186,6 +186,26 @@
   /* =======================
   2) Outlined 타입
   ======================= */
+  &.btn-primary-line {
+    background: var(--bg-white);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+
+    &:hover:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgb(var(--gray-200-rgb));
+      border-color: rgba(var(--color-primary-rgb), .85);
+      color: rgba(var(--color-primary-rgb), .85);
+    }
+    &:active:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgb(var(--gray-300-rgb));
+      border-color: rgba(var(--color-red-rgb), .70);
+      color: rgba(var(--color-red-rgb), .70);
+    }
+    .icon {
+      filter: brightness(0) saturate(100%) invert(10%) sepia(97%) saturate(4322%) hue-rotate(298deg) brightness(93%) contrast(102%);
+    }
+  }
+
   &.btn-red-line {
     background: var(--bg-white);
     border-color: var(--color-red);
@@ -222,18 +242,37 @@
 
   &.btn-darken-line {
     background: var(--bg-white);
-    border-color: var(--color-darken);
-    color: var(--color-darken);
+    border-color: var(--gray-400);
+    color: var(--gray-700);
 
     &:hover:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
-      background: rgb(var(--gray-200-rgb));
-      border-color: rgba(var(--color-darken-rgb), .85);
-      color: rgba(var(--color-darken-rgb), .85);
+      background: var(--gray-200);
+      border-color: var(--gray-400);
     }
     &:active:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
       background: rgb(var(--gray-300-rgb));
       border-color: rgba(var(--color-darken-rgb), .70);
       color: rgba(var(--color-darken-rgb), .70);
+    }
+  }
+
+  &.btn-gray-line {
+    background: var(--bg-white);
+    border-color: var(--gray-400);
+    color: var(--gray-700);
+
+    &:hover:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgb(var(--gray-200-rgb));
+      border-color: rgba(var(--gray-400-rgb), .85);
+      color: rgba(var(--gray-700-rgb), .85);
+    }
+    &:active:not(:disabled):not(.is-disabled):not([aria-disabled="true"]) {
+      background: rgb(var(--gray-300-rgb));
+      border-color: rgba(var(--color-darken-rgb), .70);
+      color: rgba(var(--color-darken-rgb), .70);
+    }
+    .icon {
+      filter: brightness(0) saturate(100%) invert(33%) sepia(0%) saturate(0%) hue-rotate(263deg) brightness(98%) contrast(92%);
     }
   }
 
@@ -246,6 +285,7 @@
 
   &.btn-icon-right {
     flex-direction: row-reverse;
+    gap: 10px;
   }
 
   /* =======================
@@ -264,12 +304,32 @@
     }
 
     &.size-lg {
-      width: 48px;
-      height: 48px;
+      width: 80px;
+      height: 80px;
 
       svg, i {
         width: 24px;
         height: 24px;
+      }
+    }
+
+    &.size-md {
+      width: 56px;
+      height: 56px;
+
+      svg, i {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &.size-sm {
+      width: 48px;
+      height: 48px;
+
+      svg, i {
+        width: 18px;
+        height: 18px;
       }
     }
 
@@ -286,12 +346,34 @@
 .btn-wrap {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;//16
 }
 
+[data-theme="dark"] {
+  .btn {
+    &.btn-primary {
+      color: var(--color-darken);
+    }
+    &.btn-secondary {
+      color: var(--color-darken);
+    }
+    &.btn-darken {
+      color: var(--color-darken);
+    }
+    // &.btn-darkgray {
+    //   color: var(--color-darken);
+    // }
+    &.btn-red {
+      color: var(--color-darken);
+    }
+    &.btn-blue {
+      color: var(--color-darken);
+    }
+  }
+}
 
-/* ===== 네번째 분기: 768px ===== */
-@media (max-width: 768px) {
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
   .btn {
     // size
     &.size-lg {
@@ -299,11 +381,11 @@
       @include body-2;
     }
     &.size-md {
-      height: 48px;
+      //height: 48px;
       @include body-2;
     }
     &.size-sm {
-      height: 36px;
+      //height: 36px;
       @include body-3;
     }
     &.btn-primary,
@@ -321,20 +403,22 @@
   .btn-wrap {gap: 10px;}
 }
 
-/* ===== 다섯번째 분기: 480px ===== */
-@media (max-width: 480px) {
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {
   .btn {
     // size
     &.size-lg {
-      height: 48px;
+      // height: 48px;
+      height: 56px;
       @include body-3;
     }
     &.size-md {
-      height: 36px;
+      // height: 36px;
+      height: 56px;
       @include body-3;
     }
     &.size-sm {
-      height: 30px;
+      //height: 30px;
     }
     &.btn-primary,
     &.btn-secondary,

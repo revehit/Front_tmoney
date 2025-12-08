@@ -6,14 +6,14 @@
   &_button {
     width: 100%;
     height: 40px;
-    padding: 0 40px 0 12px; // 오른쪽 아이콘 공간
+    padding: 0 40px 0 20px;//0 40px 0 12px
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid var(--border-darken);
+    border: 1px solid var(--gray-400);
     background: var(--color-white);      /* light: #fff, dark: #121212 */
-    color: var(--color-darken);          /* light: #3a3a3a, dark: #f5f5f5 */
+    color: var(--gray-400);
     cursor: pointer;
     position: relative;
     transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
@@ -26,7 +26,7 @@
       top: 50%;
       width: 24px;
       height: 24px;
-      background: url("/images/icon/icon-arrow-down.svg") no-repeat center / 24px 24px;
+      background: url("../../static/images/icon/icon-arrow-down.svg") no-repeat center / 24px 24px;
       transform: translateY(-50%) rotate(0deg);
       transition: transform 0.2s ease;
       pointer-events: none;
@@ -52,7 +52,7 @@
     right: 0;
     top: calc(100% + 4px);         /* 기본은 아래로 */
     background: var(--color-white); /* 다크에서는 차콜 */
-    border: 1px solid var(--border-darken);
+    border: 1px solid var(--gray-400);
     border-radius: 8px;
     box-shadow: 0 6px 16px rgba(0,0,0,.12);
     max-height: 220px;              /* JS에서 동적으로 갱신 */
@@ -123,19 +123,20 @@
 
   /* 플레이스홀더 상태 */
   &.is-placeholder {
-    .dropdown_value { color: var(--gray-900); } /* 다크에서 중간톤 보조 텍스트 */
+    .dropdown_value { color: var(--gray-600); } /* 다크에서 중간톤 보조 텍스트 */
   }
 
   /* 선택 반영: data-selected=true 일 때 value 색상 포인트 */
-  &[data-selected="true"] {
-    .dropdown_value { color: var(--color-primary); }
-  }
+  // &[data-selected="true"] {
+  //   .dropdown_value { color: var(--color-primary); }
+  // }
 
   /* size */
   &.size-lg {
     button {
       height: 80px;
       @include body-1;
+      padding: 0 40px 0 20px;
     }
   }
   &.size-md {
@@ -149,51 +150,66 @@
       height: 48px;
       @include body-2;
     }
+    .dropdown_option {
+      @include body-2;
+    }
   }
 }
 
-/* ===== 네번째 분기: 768px ===== */
-@media (max-width: 768px) {
+
+
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
   .dropdown {
     &.size-lg {
       button {
         height: 56px;
         @include body-2;
+        padding: 0 30px 0 10px;
       }
     }
     &.size-md {
       button {
-        height: 48px;
+        //height: 48px;
         @include body-2;
+        padding: 0 30px 0 10px;
       }
     }
     &.size-sm {
       button {
-        height: 36px;
+        //height: 36px;
         @include body-3;
+        padding: 0 30px 0 10px;
       }
+    }
+  }
+  .dropdown_button {
+    &::after {
+      width: 20px;
+      height: 20px;
+      background-size: 20px 20px;
     }
   }
 }
 
-/* ===== 다섯번째 분기: 480px ===== */
-@media (max-width: 480px) {
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {
   .dropdown {
     &.size-lg {
       button {
-        height: 48px;
+        //height: 48px;
         @include body-3;
       }
     }
     &.size-md {
       button {
-        height: 36px;
+        //height: 36px;
         @include body-3;
       }
     }
     &.size-sm {
       button {
-        height: 30px;
+        //height: 30px;
       }
     }
   }

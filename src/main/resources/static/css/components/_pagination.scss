@@ -50,8 +50,8 @@
   }
 }
 
-/* ===== 네번째 분기: 768px ===== */
-@media (max-width: 768px) {
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
   .page-btn, 
   .page-num > a, 
   .page-num > span {
@@ -69,5 +69,14 @@
   }
 }
 
-/* ===== 다섯번째 분기: 480px ===== */
-@media (max-width: 480px) {}
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {
+  .pagination-list {
+    .page-ctrl {
+      &:first-child,
+      &:last-child {
+        display: none;
+      }
+    }
+  }
+}

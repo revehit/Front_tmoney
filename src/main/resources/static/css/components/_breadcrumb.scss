@@ -19,13 +19,24 @@
         width: 12px;
         height: 12px;
         display: block;
-        background-image: url('/images/icon/icon-arrow-right.svg');
+        background-image: url('../../static/images/icon/icon-arrow-right.svg');
         background-size: contain;
         margin-right: 8px;
       }
     }
     &:last-child {
       font-weight: 700;
+    }
+  }
+}
+
+[data-theme="dark"] {
+  #breadcrumb {
+    li {
+      color: var(--color-darken);
+      & + li::before {
+        background-image: url('../../static/images/icon/icon-arrow-right-white.svg');
+      }
     }
   }
 }
@@ -39,13 +50,13 @@
 /* ===== 세번째 분기: 1024px ===== */
 @media (max-width: 1024px) {}
 
-/* ===== 네번째 분기: 768px ===== */
-@media (max-width: 768px) {
+/* ===== 네번째 분기: 767px ===== */
+@media (max-width: 767px) {
   #breadcrumb {
     padding: 10px 0;
     li {font-size: 16px;}
   }
 }
 
-/* ===== 다섯번째 분기: 480px ===== */
-@media (max-width: 480px) {}
+/* ===== 다섯번째 분기: 500px ===== */
+@media (max-width: 500px) {}
