@@ -12,10 +12,10 @@
   <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
 
   <!-- 정적 리소스: /static/css/** → /css/** -->
-  <link rel="stylesheet" th:href="@{/css/vendor/aos.css}" />
-  <link rel="stylesheet" th:href="@{/css/vendor/swiper-bundle.min.css}" />
-  <link rel="stylesheet" th:href="@{/css/index.css}" />
-  <link rel="stylesheet" th:href="@{/css/page/page.css}" />
+  <link rel="stylesheet" href="../../../static/css/vendor/aos.css" />
+  <link rel="stylesheet" href="../../../static/css/vendor/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="../../../static/css/index.css" />
+  <link rel="stylesheet" href="../../../static/css/page/page.css" />
 </head>
 <body>
 
@@ -27,14 +27,144 @@
     }
   });
 </script>
+<!-- 나중에 삭제 -->
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const targets = [
+      { sel: "#footer", url: "../../component/footer.html" },
+      { sel: "#goTop", url: "../../component/topBtn.html" },
+    ];
+    for (const t of targets) {
+      const el = document.querySelector(t.sel);
+      if (!el) continue;
+      const res = await fetch(t.url, { cache: "no-cache" }); // 필요 시 캐시 방지
+      if (res.ok) el.innerHTML = await res.text();
+    }
+  });
+</script>
 
 <p id="skip-nav">
   <a href="#contents">본문으로 바로가기</a>
   <a href="#gnb1">주메뉴 바로가기</a>
 </p>
 
-<th:block th:replace="~{component/header :: siteHeader}"></th:block>
+<header id="header" role="banner" th:fragment="siteHeader">
+  <div class="container fluid">
+    <div class="accessibility-box" aria-label="접근성 및 보기 설정">
+      <div class="text-size" role="group" aria-label="화면 크기 조절">
+        <span id="txtSizeLabel">화면 크기</span>
+        <button type="button" class="btn-text-plus" aria-labelledby="txtSizeLabel" aria-controls="pageRoot" aria-describedby="txtSizeStatus">
+          <i class="icon icon-plus" aria-hidden="true"></i><span class="blind">화면 크게</span>
+        </button>
+        <button type="button" class="btn-text-minus" aria-labelledby="txtSizeLabel" aria-controls="pageRoot" aria-describedby="txtSizeStatus">
+          <i class="icon icon-minus" aria-hidden="true"></i><span class="blind">화면 작게</span>
+        </button>
+        <span id="txtSizeStatus" class="blind" aria-live="polite"></span>
+      </div>
+      <div class="theme-box" role="group" aria-label="테마 전환">
+        <span id="themeLabel">고대비</span>
+        <button type="button"
+                class="btn-contrast"
+                aria-labelledby="themeLabel"
+                aria-pressed="false"
+                aria-describedby="themeStatus">
+          OFF
+          <span class="blind">고대비 모드 토글</span>
+        </button>
+        <span id="themeStatus" class="blind" aria-live="polite"></span>
+      </div>
 
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="header-inner">
+      <h1>
+        <!-- <a th:href="@{/}" aria-label="홈으로 이동"></a> -->
+        <a href="../../page/main/index.html" aria-label="홈으로 이동"></a>
+      </h1>
+
+      <!-- GNB -->
+      <nav id="gnb1" aria-label="주요 메뉴">
+        <ul class="gnb-list" role="menubar">
+          <li role="none" class="has-sub">
+            <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="sub-plat">플랫폼소개</button>
+            <div id="sub-plat" class="depth-box" role="group">
+              <div class="depth-inner">
+                <a role="menuitem" href="">플랫폼소개1</a>
+                <a role="menuitem" href="">플랫폼소개2</a>
+                <a role="menuitem" href="">플랫폼소개3</a>
+                <a role="menuitem" href="">플랫폼소개4</a>
+              </div>
+            </div>
+          </li>
+
+          <li role="none" class="has-sub">
+            <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="sub-svc">서비스안내</button>
+            <div id="sub-svc" class="depth-box" role="group">
+              <div class="depth-inner">
+                <a role="menuitem" href="">서비스안내1</a>
+                <a role="menuitem" href="">서비스안내2</a>
+                <a role="menuitem" href="">서비스안내3</a>
+                <a role="menuitem" href="">서비스안내4</a>
+              </div>
+            </div>
+          </li>
+
+          <li role="none" class="has-sub">
+            <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="sub-guide">이용안내</button>
+            <div id="sub-guide" class="depth-box" role="group">
+              <div class="depth-inner">
+                <a role="menuitem" href="">이용안내1</a>
+              </div>
+            </div>
+          </li>
+
+          <li role="none" class="has-sub">
+            <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="sub-news">소식</button>
+            <div id="sub-news" class="depth-box" role="group">
+              <div class="depth-inner">
+                <a role="menuitem" href="">공지사항</a>
+                <a role="menuitem" href="">소식1</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="gnb">
+        <div class="util-box" aria-label="사용자 메뉴">
+          <a href="#">로그인</a>
+          <span aria-hidden="true"></span>
+          <a href="#">회원가입</a>
+        </div>
+        <!-- 사이트맵 열기 버튼 -->
+        <button type="button" class="btn-menu" aria-controls="sitemap" aria-expanded="false" aria-label="사이트맵 열기">
+          <div aria-hidden="true"></div><div aria-hidden="true"></div><div aria-hidden="true"></div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- sitemap -->
+  <div id="sitemap" class="sitemap" role="navigation" aria-label="사이트맵">
+    <div class="container">
+      <ul>
+        <li>
+          <p>Brand</p>
+          <ul class="depth2">
+            <li><a href="">Tmoney 스토리</a></li>
+            <li><a href="">인사말</a></li>
+            <li><a href="">연혁</a></li>
+            <li><a href="">비전/핵심가치</a></li>
+            <li><a href="">오시는 길</a></li>
+          </ul>
+        </li>
+        <!-- 이하 동일 -->
+      </ul>
+    </div>
+  </div>
+</header>
 <div id="breadcrumb">
   <div class="container">
     <nav>
@@ -52,203 +182,577 @@
       <div class="title-wrap">
         <h2 class="section-title">개인정보처리방침</h2>
       </div>
-
       <div class="terms-wrap">
+        <div class="scopy">교통비지원 통합포털에서 약속 드리는 회원님의 개인정보 처리방침입니다.</div>
         <div>
-          <p>
-            (주)티머니(이하 ‘회사’라고 합니다)는 정보주체의 자유와 권리 보호를 위해 「개인정보 보호법」 및 관계 법령이 정한 바를  준수하여, 적법하게 개인정보를 처리하고 안전하게 관리하고 있습니다. 이에 「개인정보 보호법」 제30조에 따라 정보주체에게 개인정보의 처리와 보호에 관한  절차 및 기준을 안내하고, 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
-          </p>
-          <p class="guide-text">
-            본 방침은 2024년 7월 8일부터 시행됩니다.
-          </p>
+            ㈜티머니(이하 ‘회사’라 합니다)는 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「개인정보보호법」 등 관련 법령에 따라 이용자의 개인정보를 보호하며 개인정보와 관련한 이용자의 고충을 신속하고 원활하게 처리할 수 있도록 다음과 같이 개인정보 처리방침을 수립하여 공개하고 있습니다.
         </div>
         <div class="labeling-box">
-          <div class="top-box">
+          <!-- <div class="top-box">
             [주요 개인정보 처리 표시(라벨링)]
-          </div>
-          <div class="bot-box">
+          </div> -->
+          <div class="terms-link">
             <a href="#terms1" class="box">
               <div class="img-box"></div>
-              <p>개인정보의 처리목적</p>
+              <p>1. 개인정보의 수집&middot;이용 목적 및 항목</p>
             </a>
             <a href="#terms2" class="box">
               <div class="img-box"></div>
-              <p>처리하는 개인정보의 항목</p>
+              <p>2. 개인정보의 수집 방법</p>
             </a>
             <a href="#terms3" class="box">
               <div class="img-box"></div>
-              <p>14세 미만 아동의 개인정보 처리에 관한 사항</p>
+              <p>3. 개인정보의 제3자 제공</p>
             </a>
             <a href="#terms4" class="box">
               <div class="img-box"></div>
-              <p>개인정보의 처리 및 보유 기간</p>
+              <p>4. 개인정보 처리의 위탁</p>
             </a>
             <a href="#terms5" class="box">
               <div class="img-box"></div>
-              <p>개인정보의 파기 절차 및 방법에 관한 사항</p>
+              <p>5. 개인정보의 보유 및 이용기간</p>
             </a>
             <a href="#terms6" class="box">
               <div class="img-box"></div>
-              <p>개인정보의 제3자 제공에 관한 사항</p>
+              <p>6. 개인정보 파기 절차 및 방법</p>
             </a>
             <a href="#terms7" class="box">
               <div class="img-box"></div>
-              <p>개인정보 처리업무의 위탁에 관한 사항</p>
+              <p>7. 이용자의 및 법정대리인의 권리와 그 행사 방법</p>
             </a>
             <a href="#terms8" class="box">
               <div class="img-box"></div>
-              <p>개인정보의 안전성 확보조치에 관한 사항</p>
+              <p>8. 8세 이하의 아동 등의 보호의무자의 권리∙의무 및 그 행사 방법</p>
             </a>
             <a href="#terms9" class="box">
               <div class="img-box"></div>
-              <p>개인정보 자동 수집 장치의 설치&middot;운영 및 그 거부에 관한 사항</p>
+              <p>9. 개인정보 자동 수집 장치의 설치 · 운영 및 거부에 관한 사항</p>
             </a>
             <a href="#terms10" class="box">
               <div class="img-box"></div>
-              <p>정보주체와 법정대리인의 권리&middot;의무 및 그 행사방법에 관한 사항</p>
+              <p>10. 개인정보의 안전성 확보조치</p>
             </a>
             <a href="#terms11" class="box">
               <div class="img-box"></div>
-              <p>개인정보 보호책임자에 관한 사항</p>
+              <p>11. 개인정보 보호 책임자 및 담당 부서의 연락처</p>
             </a>
             <a href="#terms12" class="box">
               <div class="img-box"></div>
-              <p>정보주체의 권익침해에 대한 구제방법</p>
+              <p>12. 개인정보 권익 침해 및 구제방법</p>
             </a>
             <a href="#terms13" class="box">
               <div class="img-box"></div>
-              <p>개인정보 처리방침의 변경에 관한 사항</p>
+              <p>13. 고지의 의무</p>
+            </a>
+            <a href="#terms14" class="box">
+              <div class="img-box"></div>
+              <p>14. 기타</p>
             </a>
           </div>
+          <!-- <div class="bot-box">
+            <a href="#terms1" class="box">
+              <div class="img-box"></div>
+              <p>1. 개인정보의 수집&middot;이용 목적 및 항목</p>
+            </a>
+            <a href="#terms2" class="box">
+              <div class="img-box"></div>
+              <p>2. 개인정보의 수집 방법</p>
+            </a>
+            <a href="#terms3" class="box">
+              <div class="img-box"></div>
+              <p>3. 개인정보의 제3자 제공</p>
+            </a>
+            <a href="#terms4" class="box">
+              <div class="img-box"></div>
+              <p>4. 개인정보 처리의 위탁</p>
+            </a>
+            <a href="#terms5" class="box">
+              <div class="img-box"></div>
+              <p>5. 개인정보의 보유 및 이용기간</p>
+            </a>
+            <a href="#terms6" class="box">
+              <div class="img-box"></div>
+              <p>6. 개인정보 파기 절차 및 방법</p>
+            </a>
+            <a href="#terms7" class="box">
+              <div class="img-box"></div>
+              <p>7. 이용자의 및 법정대리인의 권리와 그 행사 방법</p>
+            </a>
+            <a href="#terms8" class="box">
+              <div class="img-box"></div>
+              <p>8. 8세 이하의 아동 등의 보호의무자의 권리∙의무 및 그 행사 방법</p>
+            </a>
+            <a href="#terms9" class="box">
+              <div class="img-box"></div>
+              <p>9. 개인정보 자동 수집 장치의 설치 · 운영 및 거부에 관한 사항</p>
+            </a>
+            <a href="#terms10" class="box">
+              <div class="img-box"></div>
+              <p>10. 개인정보의 안전성 확보조치</p>
+            </a>
+            <a href="#terms11" class="box">
+              <div class="img-box"></div>
+              <p>11. 개인정보 보호 책임자 및 담당 부서의 연락처</p>
+            </a>
+            <a href="#terms12" class="box">
+              <div class="img-box"></div>
+              <p>12. 개인정보 권익 침해 및 구제방법</p>
+            </a>
+            <a href="#terms13" class="box">
+              <div class="img-box"></div>
+              <p>13. 고지의 의무</p>
+            </a>
+            <a href="#terms14" class="box">
+              <div class="img-box"></div>
+              <p>14. 기타</p>
+            </a>
+          </div> -->
         </div>
-        <div class="line-box">
-          <p>&lt;목차&gt;</p>
-          <br/>
-          <p>제1조(개인정보의 처리목적)</p>
-          <p>제2조(처리하는 개인정보의 항목)</p>
-          <p>제3조(14세 미만 아동의 개인정보 처리에 관한 사항)</p>
-          <p>제4조(개인정보의 처리 및 보유 기간)</p>
-          <p>제5조(개인정보의 파기 절차 및 방법에 관한 사항)</p>
-          <p>제6조(개인정보의 제3자 제공에 관한 사항)</p>
-          <p>제7조(개인정보 처리업무의 위탁에 관한 사항)</p>
-          <p>제8조(개인정보의 안전성 확보조치에 관한 사항)</p>
-          <p>제9조(개인정보 자동 수집 장치의 설치&middot;운영 및 그 거부에 관한 사항)</p>
-          <p>제10조(정보주체와 법정대리인의 권리&middot;의무 및 그 행사방법에 관한 사항)</p>
-          <p>제11조(개인정보 보호책임자에 관한 사항)</p>
-          <p>제12조(정보주체의 권익침해에 대한 구제방법)</p>
-          <p>제13조(개인정보 처리방침의 변경에 관한 사항)</p>
-        </div>
-        <div class="line-box" id="terms1">
-          <h3>제1조(개인정보의 처리목적)</h3>
-          <p>회사는 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며,  이용 목적이 변경되는 경우에는 개인정보 보호법 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
-          <div class="depth">
-            <ul class="list-type">
-              <li>1. 지원금 지급대상(영종 거주) 여부 확인</li>
-              <li>2. 대중교통 이용(등록 교통카드) 내역 확인</li>
-              <li>3. 지원금 지급(등록 계좌)</li>
-              <li>4. 지원금 정산 및 통계 작성, 정책 분석</li>
-            </ul>
+        
+        <div class="box" id="terms1">
+          <h3>1. 개인정보의 수집&middot;이용 목적 및 항목</h3>
+          <p>회사가 서비스의 제공을 위해 이용자로부터 수집하는 개인정보는 다음과 같습니다.</p>
+          
+          <div class="list">
+            <p>(1) 정보주체의 동의를 받지 않고 처리하는 개인정보 항목</p>
           </div>
-        </div>
-        <div class="line-box" id="terms2">
-          <h3>제4조(개인정보의 처리 및 보유 기간)</h3>
-          <p>① 회사는 법령에 따른 개인정보 보유·이용 기간 또는 정보주체로부터 개인정보를 수집 시 동의 받은 개인정보 보유·이용기간 내에서 개인정보를 처리합니다.</p>
-          <p>② 개인정보 처리 및 보유기간은 다음과 같습니다.</p>
           <div class="table-wrap type-col">
             <table>
-              <caption class="blind">개인정보에 대한 내용과 보유기간, 보유목적 테이블</caption>
+              <caption class="blind">정보주체의 동의를 받지 않고 처리하는 개인정보 항목 테이블</caption>
               <colgroup>
-                <col><col><col>
+                <col><col width="50%"><col>
               </colgroup>
               <thead>
                 <tr>
-                  <th>개인정보</th>
-                  <th>보유기간</th>
-                  <th>보유목적</th>
+                  <th>수집.이용 목적</th>
+                  <th>개인정보 항목</th>
+                  <th>법적 근거</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>행정동코드, 생년월일, 성별, 전출일</td>
-                  <td>사업기간</td>
-                  <td>지원금 지급 통계</td>
+                  <td>서비스 안전성 확보를 위한 부정접속 방지</td>
+                  <td class="text-left"><b>[필수]</b> IP 주소, 쿠키, 홈페이지 방문 일시 및 이용 기록(이용자의 서비스 이용 과정에서 자동으로 생성되어 수집되는 정보)</td>
+                  <td>「개인정보 보호법」 제15조제1항제6호 (정당한 이익 달성)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="list">
+            <p>(2) 정보주체의 동의를 받아 처리하는 개인정보 항목</p>
+          </div>
+          <div class="table-wrap type-col">
+            <table>
+              <caption class="blind">정보주체의 동의를 받지 않고 처리하는 개인정보 항목 테이블</caption>
+              <colgroup>
+                <col><col width="50%"><col>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>수집.이용 목적</th>
+                  <th>개인정보 항목</th>
+                  <th>법적 근거</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>회원가입(14세 미만) 및 회원정보관리</td>
+                  <td class="text-left">
+                    <b>[필수]</b> 성명, 주민등록번호, 주소, 생년월일, 회원 ID, 회원 유형, 비밀번호, CI(개인식별정보), 휴대전화번호, 전출일, 교통카드 번호, 은행명, 계좌번호, 예금주명
+                    법정대리인의 [CI(개인식별정보), 성명, 휴대폰인증시 휴대폰번호]<br/>
+                    <b>[선택]</b> 전화번호, 이메일
+                  </td>
+                  <td>「개인정보 보호법」 제15조제1항제6호 (정당한 이익 달성)</td>
                 </tr>
                 <tr>
-                  <td>주민등록번호, 외국인등록번호</td>
-                  <td>거주지 인증 후 즉시 파기</td>
-                  <td>-</td>
+                  <td>회원가입(14세 이상) 및 회원정보관리</td>
+                  <td class="text-left">
+                    <b>[필수]</b> 성명, 주민등록번호, 주소, 생년월일, 회원 ID, 회원 유형 비밀번호, CI(개인식별정보), 휴대전화번호, 전출일, 교통카드 번호, 은행명, 계좌번호, 예금주명
+                    <b>[선택]</b> 전화번호, 이메일
+                  </td>
+                  <td rowspan="7" class="no-bottom">「개인정보 보호법」제15조제1항제1호(정보주체 동의)</td>
                 </tr>
                 <tr>
-                  <td>아이디, 이름, 환급계좌정보</td>
-                  <td>회원 탈퇴 후 5년</td>
-                  <td>지원금 개인별 지급 내역 조회</td>
+                  <td>거주지 인증</td>
+                  <td class="text-left last-right"><b>[필수]</b> 성명, 주민등록번호</td>
                 </tr>
                 <tr>
-                  <td>주소, 휴대폰, 교통카드정보, CI값, 이메일</td>
-                  <td>회원 탈퇴 후 즉시 파기</td>
-                  <td>-</td>
+                  <td>지원금 신청관리</td>
+                  <td class="text-left last-right"><b>[필수]</b> 성명, 회원ID, 주민등록번호, 교통카드 번호, 은행명, 계좌번호, 회원 유형</td>
+                </tr>
+                <tr>
+                  <td>지원금 지급관리</td>
+                  <td class="text-left last-right"><b>[필수]</b> 성명, 회원ID, 은행명, 계좌번호, 교통 거래내역(승/하차 교통수단, 역/정류장, 노선, 운수사, 시간, 차량번호)</td>
+                </tr>
+                <tr>
+                  <td>지원금 지급 알림</td>
+                  <td class="text-left last-right"><b>[필수]</b> 성명, 회원ID, 휴대전화 번호</td>
+                </tr>
+                <tr>
+                  <td>마케팅 및 서비스, 프로모션, 이벤트 등 광고성 정보 안내</td>
+                  <td class="text-left last-right"><b>[선택]</b> 성명, 이메일 주소, 휴대폰번호</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-        <div class="line-box" id="terms3">
-          <h3>제13조(개인정보 처리방침의 변경에 관한 사항)</h3>
-          <p>이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 수시로 변경될 수 있으며, 주요내용(개인정보 처리 목적, 항목, 제3자 제공 등)의 변경이 있는 경우, 변경사항의 시행 1일 전부터 홈페이지를 통해 공지할 것입니다.</p>
+
+        <div class="box" id="terms2">
+          <h3>2. 개인정보의 수집방법</h3>
+          <p>회사는 다음과 같은 방법으로 이용자의 개인정보를 수집하고 있습니다.</p>
+          <div class="list">
+            <p>(1) 홈페이지 회원가입, 오프라인에서 서면을 통해 개인정보수집에 대해 동의를 하고 직접 정보를 입력하는 경우</p>
+            <p>(2) 업무 제휴사로부터 제공받은 경우</p>
+            <p>(3) 고객센터를 통한 상담 과정(웹페이지, 이메일, 전화 등)에서 개인정보를 수집하는 경우</p>
+            <p>(4) 이용자의 인터넷 이용 시 자동으로 생성되는 정보를 수집하는 경우</p>
+          </div>
+        </div>
+
+        <div class="box" id="terms3">
+          <h3>3. 개인정보의 제3자 제공</h3>
+          <p>① 회사는 이용자들의 개인정보를 "1. 개인정보의 수집&middot;이용 목적 및 항목"에서 고지한 범위 내에서 사용하며, 원칙적으로 이용자의 사전 동의 없이는 고지한 범위를 초과하여 이용하거나 이용자의 개인정보를 외부에 공개하지 않습니다. 다만, 아래의 경우에는 예외로 합니다.</p>
+          <div class="list">
+            <div>
+              <p>(1) 이용자가 제3자 제공에 동의한 경우</p>
+              <p>회사는 이용자의 동의가 있는 경우 이용자로부터 수집한 개인정보를 아래와 같이 제3자에게 제공합니다.</p>
+              <div class="table-wrap type-col">
+                <table>
+                  <caption class="blind">개인정보의 제3자 제공 테이블</caption>
+                  <colgroup>
+                    <col><col><col><col>
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>제공받는 자</th>
+                      <th>변경내용</th>
+                      <th>제공 항목</th>
+                      <th>제공받는 자의 보유 및 이용기간</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>행정안전부</td>
+                      <td>거주여부 검증</td>
+                      <td>이름, 주민등록번호</td>
+                      <td>회원탈퇴 시까지 또는 서비스 종료 시까지</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="list">
+            <p>(2)	다른 법률에 제3자 제공에 관한 특별 규정이 있는 경우</p>
+            <p>(3)	서비스 제공에 따른 요금 정산을 위하여 필요한 경우</p>
+            <div>
+              <p>(4)	다음의 경우에는 예외적으로 이용자의 동의가 없어도 제3자에게 개인정보를 제공할 수 있습니다.</p>
+              <div class="list-type bar">
+                <ul class="depth2">
+                  <li>법령의 규정에 의하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
+                  <li>이용자의 생명이나 안전에 급박한 위험이 확인되어 이를 해소하기 위한 경우</li>
+                </ul>
+              </div>
+            </div>
+            <div class="list">
+              <p>② 회사가 제3자에 대한 정보제공 내역을 주기적으로 모아서 통보할 경우에는 아래의 내용을 알리고 이용자의 동의를 받습니다.</p>
+              <p>(1)	정보제공내역을 모아서 통보하는 횟수 또는 기간</p>
+              <p>(2)	이용자의 요청이 있는 경우에는 모아서 통보하는 방법에서 즉시 통보 방법으로 변경할 수 있다는 사실 및 그 요청 방법</p>
+            </div>
+          </div>
+        </div>
+        <div class="box" id="terms4">
+          <h3>4. 개인정보 처리의 위탁</h3>
+          <p>회사는 서비스 제공을 위하여 필요한 업무 중 일부를 아래와 같이 외부 업체에 위탁하고 있으며, 위탁 받은 업체가 관계 법령에 따라 개인정보를 안전하게 처리 하도록 관리, 감독하고 있습니다. 수탁 업체들은 서비스 이용 종료 시 혹은 위탁계약 종료 시까지 개인정보를 보유 및 이용할 수 있습니다.</p>
           <div class="table-wrap type-col">
             <table>
-              <caption class="blind">개인정보에 대한 내용과 보유기간, 보유목적 테이블</caption>
+              <caption class="blind">개인정보 처리의 위탁 안내 테이블</caption>
               <colgroup>
-                <col><col><col>
+                <col><col width="60%">
               </colgroup>
               <thead>
                 <tr>
-                  <th>구분</th>
-                  <th>변경내용</th>
-                  <th>이전내용보기</th>
+                  <th>수탁 업체명</th>
+                  <th>위탁 업무 내용</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>2025-09-09</td>
-                  <td>제11조(개인정보 보호책임자에 관한 사항) 담당자 변경</td>
-                  <td>
-                    <a href="" class="btn btn-primary size-md">이전내용보기</a>
-                  </td>
+                  <td class="text-left">추후 기재</td>
+                  <td class="text-left">티머니 홈페이지 관리, 알림톡 발송 서비스</td>
                 </tr>
                 <tr>
-                  <td>2025-07-26</td>
-                  <td>제11조(개인정보 보호책임자에 관한 사항) 담당자 변경</td>
-                  <td>
-                    <a href="" class="btn btn-primary size-md">이전내용보기</a>
-                  </td>
+                  <td class="text-left">㈜티머니 씨에스피</td>
+                  <td class="text-left">상담, 서비스 가입 등 업무의 효율성 제고를 위한 고객센터 운영 대행</td>
                 </tr>
                 <tr>
-                  <td>2025-07-01</td>
-                  <td>영종지역 주민 대중교통비 지원 포털 Open</td>
-                  <td>
-                    <a href="" class="btn btn-primary size-md">이전내용보기</a>
-                  </td>
+                  <td class="text-left">㈜티머니 씨에스피</td>
+                  <td class="text-left">택시 교통이용 내역 조회</td>
+                </tr>
+                <tr>
+                  <td class="text-left">㈜쿠콘</td>
+                  <td class="text-left">계좌 유효성 검증</td>
+                </tr>
+                <tr>
+                  <td class="text-left">코리아크레딧뷰로㈜, <br>
+                    ㈜카카오뱅크, <br>
+                    ㈜비바리퍼블리카</td>
+                  <td class="text-left">본인확인</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
+        <div class="box" id="terms5">
+          <h3>5. 개인정보의 보유 및 이용기간</h3>
+          <p>이용자의 개인정보는 원칙적으로 개인정보의 수집 및 이용 목적이 달성되거나, 회원 탈퇴를 요청한 경우 지체 없이 파기합니다. 다만, 아래의 경우에는 일정기간 동안 예외적으로 수집한 정보의 일부 또는 전부를 보유할 수 있습니다.</p>
+          <div class="list">
+            <p>(1)	보유 기간을 미리 고지하고 별도의 동의를 받은 경우 해당 보유기간까지 보유</p>
+            <div>
+              <p>(2)	법령에 의한 정보 보유</p>
+              <div class="table-wrap type-col">
+                <table>
+                  <caption class="blind">개인정보의 보유 및 이용기간 안내 테이블</caption>
+                  <colgroup>
+                    <col width="40%"><col width="40%"><col width="20%">
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>보존 항목</th>
+                      <th>근거 법령</th>
+                      <th>보유 기간</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-left">계약 또는 청약 철회에 관한 기록</td>
+                      <td class="text-left" rowspan="4">전자상거래 등에서의 소비자 보호에 관한 법률 제6조</td>
+                      <td>5년</td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">대금 결제 및 재화 등의 공급에 관한 기록</td>
+                      <td>5년</td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">소비자 불만 또는 분쟁 처리에 관한 기록</td>
+                      <td>3년</td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">표시/광고에 관한 기록</td>
+                      <td>6개월</td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">세법이 규정하는 모든 거래에 관한 장부 및 증빙 서류</td>
+                      <td class="text-left">국세기본법 제85조의3</td>
+                      <td>5년</td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">전자금융거래에 관한 기록</td>
+                      <td class="text-left">전자금융거래법 제22조</td>
+                      <td>5년</td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">서비스 방문 기록</td>
+                      <td class="text-left">통신비밀보호법 제15조의2</td>
+                      <td>3개월</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <p>(3)	채권 추심을 위한 경우</p>
+            <div>
+              <p>(4)	「내부 방침」에 따라 이용자가 1년 동안 홈페이지 등의 이용이 없는 경우 회원정보를 별도 보관</p>
+              <div class="list-type bar">
+                <ul class="depth2">
+                  <li>분리보관 항목: CI, 주소, 이메일주소, 휴대폰번호, 생년월일, 성별 (* 14세 미만 아동의 경우, 법정대리인의 CI, 성명, 휴대전화번호 추가 분리보관)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box" id="terms6">
+          <h3>6. 개인정보 파기 절차 및 방법</h3>
+          <p>이용자의 개인정보는 원칙적으로 개인정보의 수집 및 이용 목적이 달성되면 지체 없이 파기합니다. 회사의 개인정보 파기 절차 및 방법은 다음과 같습니다.</p>
+          <div class="list">
+            <div>
+              <p>(1)	파기 절차</p>
+              <div class="list-type">
+                <ul class="depth2">
+                  <li>이용자가 회원가입 등을 위해 입력한 정보는 목적이 달성된 후 별도의 DB로 옮겨져(종이의 경우 별도의 서류함) 내부 방침 및 기타 관련 법령에 의한 정보보호 사유에 따라(“5. 개인정보의 보유 및 이용기간” 참조)일정 기간 보관된 후 파기됩니다. 별도 보관되는 개인정보는 법률에 의한 경우가 아니고서는 보관되는 목적 외 다른 목적으로 이용되지 않습니다.</li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <p>(2)	파기 방법</p>
+              <div class="list-type">
+                <ul class="depth2">
+                  <li>종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각을 통하여 파기하며 전자적 파일 형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제 합니다.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box" id="terms7">
+          <h3>7. 이용자의 및 법정대리인의 권리와 그 행사 방법</h3>
+          <p>이용자 및 법정대리인은 본인의 개인정보에 대해 회사를 상대로 다음의 권리를 행사 할 수 있습니다.</p>
+          <div class="list">
+            <div>
+              <p>(1)	개인정보 열람 · 제공 · 정정 요구</p>
+              <div class="list-type">
+                <ul class="depth2">
+                  <li>이용자 및 법정대리인은 회사에 대하여 본인에 관한 다음 어느 하나의 사항에 대한 열람이나 제공을 요구할 수 있고 오류가 있는 경우에는 그 정정을 요구 할 수 있습니다. 다만, 이용자가 직접 회사의 홈페이지를 통해 개인정보를 열람하거나 정정할 수 있는 경우에는 직접 열람, 출력, 정정할 수 있습니다.</li>
+                </ul>
+              </div>
+              <div class="list-type bar">
+                <ul class="depth3">
+                  <li>회사가 가지고 있는 이용자의 개인정보</li>
+                  <li>회사가 이용하거나 제3자에게 제공한 개인정보의 현황</li>
+                  <li>이용자가 개인정보의 수집 · 이용, 제공에 동의한 현황</li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <p>(2)	삭제 요구</p>
+              <div class="list-type">
+                <ul class="depth2">
+                  <li>이용자 및 법정대리인은 회사에게 개인정보의 삭제를 요구할 수 있습니다. 다만, 법령에서 그 개인정보가 수집대상으로 명시되어 있는 경우에는 삭제를 요구 할 수 없습니다.</li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <p>(3)	처리 정지 요구</p>
+              <div class="list-type">
+                <ul class="depth2">
+                  <li>이용자 및 법정대리인은 홈페이지 내 “회원 탈퇴” 기능을 통해 개인정보의 처리 정지를 요구할 수 있습니다. 단, 다음 어느 하나의 경우에 해당하는 경우 회사는 이용자 및 법정대리인의 처리 정지 요구를 거절 할 수 있습니다.</li>
+                </ul>
+              </div>
+              <div class="list-type bar">
+                <ul class="depth3">
+                  <li>법률에 특별한 규정이 있거나 법령상의 의무를 준수하기 위해 불가피 한 경우</li>
+                  <li>다른 사람의 생명 · 신체를 해할 우려가 있거나 다른 사람의 재산과 그 밖의 이익을 부당하게 침해할 우려가 있는 경우</li>
+                  <li>개인정보를 처리하지 않으면 서비스 제공이 불가능 한 경우로서 이용자 또는 법정대리인이 계약의 해지 의사를 명확하게 밝히지 않은 경우</li>
+                </ul>
+              </div>
+            </div>
+            <p>회사의 홈페이지를 통한 권리 행사가 불가능하거나 어려울 경우 이용자 또는 법정대리인은 전화, 이메일을 통해 회사의 개인정보 보호 담당 부서에게 개인정보의 처리에 관한 요청을 할 수 있습니다.</p>
+          </div>
+        </div>
+        <div class="box" id="terms8">
+          <h3>8. 개인정보 자동 수집 장치의 설치 · 운영 및 거부에 관한 사항</h3>
+          <div class="list">
+            <p>(1)	쿠키(cookie)</p>
+            <p>회사는 개인 맞춤형 서비스를 제공하기 위해서 이용자의 정보를 저장하고 수시로 불러오는 ‘쿠키'를 사용합니다.</p>
+            <p>쿠키는 웹사이트를 운영하는데 이용되는 서버가 이용자의 브라우저에게 보내는 아주 작은 텍스트 파일로 이용자 컴퓨터의 하드디스크에 저장됩니다. 이후 이용자가 웹 사이트에 방문할 경우 웹 사이트 서버는 이용자의 하드디스크에 저장되어 있는 쿠키의 내용을 읽어 이용자의 환경설정을 유지하고 맞춤화된 서비스를 제공하기 위해 이용됩니다.</p>
+            <p>쿠키는 개인을 식별하는 정보를 자동적 · 능동적으로 수집하지 않으며, 이용자는 언제든지 이러한 쿠키의 저장을 거부하거나 삭제할 수 있습니다.</p>
+          </div>
+          <div class="list">
+            <p>(2)	회사의 쿠키 사용 목적</p>
+            <p>이용자들의 회사 홈페이지 및 이와 관련된 웹사이트들에 대한 방문 및 이용 행태 등을 파악하여 이용자에게 광고를 포함한 최적화된 맞춤형 정보를 제공하기 위해 사용합니다.</p>
+          </div>
+          <div class="list">
+            <p>(3)	쿠키의 설치 · 운영 및 거부</p>
+            <p>이용자는 쿠키 설치에 대한 선택권을 가지고 있습니다. 따라서 이용자는 웹 브라우저에서 옵션을 설정함으로써 모든 쿠키를 허용하거나, 쿠키가 저장될 때마다 확인을 거치거나, 아니면 모든 쿠키의 저장을 거부할 수도 있습니다.</p>
+            <p>다만, 쿠키의 저장을 거부할 경우에는 회사가 제공하는 서비스 중 일부 로그인이 필요한 서비스 이용에 어려움이 있을 수 있습니다.</p>
+            <p>쿠키 설치 허용 여부를 지정하는 방법은 다음과 같습니다.</p>
+            <div>
+              <p>[웹 브라우저]</p>
+              <div class="list-type bar">
+                <ul class="depth2">
+                  <li>Chrome : 웹 브라우저 오른쪽 상단 '⋮' 표시 선택 > 새 시크릿 창 (단축키 : Ctrl+Shift+N)</li>
+                  <li>Edge : 웹 브라우저 오른쪽 상단 '…' 표시 선택 > 새 InPrivate 창 (단축키 : Ctrl+Shift+N)</li>
+                  <li>Safari : 상단 메뉴 '파일' > 새로운 개인정보 보호 윈도우 (단축키 : Command+Shift+N)</li>
+                </ul>
+              </div>
+              <p class="guide-text">이 외에도 Firefox, Opera 등 주요 인터넷 웹브라우저들도 쿠키 삭제 기능을 제공하고 있습니다.</p>
+              <p class="guide-text">웹 브라우저 버전에 따라 쿠키 수집 거부 방법이 상이할 수 있습니다.</p>
+            </div>
+            <div>
+              <p>[모바일 브라우저]</p>
+              <div class="list-type bar">
+                <ul class="depth2">
+                  <li>Chrome : 모바일 브라우저 오른쪽 하단 '…' 표시 선택 > 새 시크릿 탭</li>
+                  <li>Edge : 모바일 브라우저 오른쪽 하단 '☰' 표시 선택 > 새 InPrivate 탭</li>
+                  <li>Safari : 모바일 브라우저 오른쪽 하단 '탭' 아이콘 선택 > 개인정보 보호 탭 > 완료</li>
+                  <li>삼성 인터넷 : 모바일 브라우저 오른쪽 하단 '탭' 아이콘 선택 > 비밀 모드 켜기 > 시작</li>
+                </ul>
+              </div>
+              <p class="guide-text">모바일 브라우저 버전에 따라 쿠키 수집 거부 방법이 상이할 수 있습니다.</p>
+            </div>
+          </div>
+        </div>
+        <div class="box" id="terms9">
+          <h3>9. 개인정보의 안전성 확보조치</h3>
+          <p>회사는 이용자들의 개인정보를 처리함에 있어 개인정보가 분실, 도난, 누출, 변조 또는 훼손되지 않도록 안전성 확보를 위하여 다음과 같은 기술적 · 관리적 대책을 강구하고 있습니다.</p>
+          <div class="list">
+            <p>(1)	비밀번호 암호화</p>
+            <p>이용자의 비밀번호는 암호화되어 저장 및 관리되고 있어 본인만이 알고 있으며, 개인정보의 확인 및 변경도 비밀번호를 알고 있는 이용자 본인에 의해서만 가능합니다.</p>
+          </div>
+          <div class="list">
+            <p>(2)	해킹 등에 대비한 대책</p>
+            <p>회사는 해킹이나 컴퓨터 바이러스 등에 의해 회원의 개인정보가 유출되거나 훼손되는 것을 막기 위해 최선을 다하고 있습니다. 개인정보의 훼손에 대비해서 자료를 수시로 백업하고 있고 최신 백신프로그램을 이용하여 이용자들의 개인정보나 자료가 누출되거나 손상되지 않도록 방지하고 있으며, 암호화 통신 등을 통하여 네트워크상에서 개인정보를 안전하게 전송할 수 있도록 하고 있습니다. 그리고 침입 차단 시스템을 이용하여 외부로부터의 무단 접근을 통제하고, 기타 시스템적인 보안성을 확보하기 위한 가능한 모든 기술적 장치를 갖추려 노력하고 있습니다.</p>
+          </div>
+          <div class="list">
+            <p>(3)	처리 임직원의 최소화 및 교육</p>
+            <p>회사는 개인정보를 처리하는 임직원을 최소한으로 제한하고 있고 이를 위한 별도의 비밀번호를 부여하여 정기적으로 갱신하고 있으며, 개인정보취급자에 대한 수시 교육을 통하여 회사의 개인정보처리방침의 준수를 항상 강조하고 있습니다.</p>
+          </div>
+        </div>
+        <div class="box" id="terms10">
+          <h3>10. 개인정보 보호 책임자 및 담당 부서의 연락처</h3>
+          <p>회사는 이용자의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여 아래와 같이 개인정보 보호 책임자 및 담당 부서를 지정하고 있습니다.</p>
+          <div class="list">
+            <div class="list-type dot">
+              <ul>
+                <li>책임자(CPO) : 이충훈</li>
+                <li>담당 부서 : 품질혁신팀</li>
+                <li>전화번호 : 1644-0088</li>
+                <li>이메일 : tmoneyadmin@tmoney.co.kr</li>
+              </ul>
+            </div>
+            <p>이용자는 회사의 서비스를 이용하며 발생하는 모든 개인정보보호 관련 민원을 개인정보 보호 책임자 혹은 담당자에게 신고할 수 있습니다. 회사는 이용자의 신고 사항에 대해 신속하게 답변을 드릴 것입니다.</p>
+          </div>
+        </div>
+        <div class="box" id="terms11">
+          <h3>11. 개인정보 권익 침해 및 구제방법</h3>
+          <p>기타 개인정보 침해에 대한 신고나 상담이 필요하신 경우에는 아래 기관에 문의하시기 바랍니다.</p>
+          <div class="list">
+            <p>(1)	개인정보 분쟁 조정 위원회 (www.kopico.go.kr / 1833-6972)</p>
+            <p>(2)	개인정보 침해 신고센터 (http://privacy.kisa.or.kr / (국번없이) 118)</p>
+            <p>(3)	대검찰청 사이버수사과 (cid@spo.go.kr(www.spo.go.kr) / (국번없이) 1301)</p>
+            <p>(4)	경찰청 (ecrm.police.go.kr / (국번없이) 182)</p>
+          </div>
+        </div>
+        <div class="box" id="terms12">
+          <h3>12. 고지의 의무</h3>
+          <p>현 개인정보처리방침 내용 추가, 삭제 및 수정이 있을 시에는 회사는 시행일 최소 7일전부터 회사의 홈페이지 내 '공지사항'을 통해 고지할 것입니다.</p>
+        </div>
+        <div class="box" id="terms13">
+          <h3>13. 기타</h3>
+          <p>회사가 제공하는 서비스에 링크되어 있는 웹사이트들이 개인정보를 수집하는 행위에 대해서는 본 “개인정보 처리방침"이 적용되지 않음을 알려 드립니다.</p>
+        </div>
+        <p class="scopy">본 약관은 2026년 1월 5일부터 시행 됩니다.</p>
       </div>
     </div>
   </section>
 
 </main>
 
-<th:block th:replace="~{component/footer :: siteFooter}"></th:block>
-<th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
+<!-- <th:block th:replace="~{component/footer :: siteFooter}"></th:block> -->
+<!-- <th:block th:replace="~{component/topBtn :: siteTop}"></th:block> -->
+<footer id="footer"></footer>
+<button id="goTop"></button>
 
-<script th:src="@{/js/vendor/aos.js}"></script>
+<!-- <script th:src="@{/js/vendor/aos.js}"></script>
 <script th:src="@{/js/vendor/gsap.min.js}"></script>
 <script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
 <script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
 
-<script type="module" th:src="@{/js/common.js}"></script>
+<script type="module" th:src="@{/js/common.js}"></script> -->
+<script src="../../../static/js/vendor/aos.js"></script>
+<script src="../../../static/js/vendor/gsap.min.js"></script>
+<script src="../../../static/js/vendor/ScrollTrigger.min.js"></script>
+<script src="../../../static/js/vendor/swiper-bundle.min.js"></script>
+
+<script type="module" src="../../../static/js/common.js"></script>
 
 </body>
 </html>
