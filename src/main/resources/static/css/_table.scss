@@ -316,7 +316,7 @@
 @media (max-width: 767px) {
   .table-wrap.scroll-x {
     table {
-      width: 767px;
+      width: 800px;
     }
   }
   .table-wrap {
@@ -341,9 +341,9 @@
 
 /* ===== 네번째 분기: 500px ===== */
 @media (max-width: 500px) {
-  .table-wrap.scroll-x {
-    table {
-      width: 500px;
-    }
-  }
+  // .table-wrap.scroll-x {
+  //   table {
+  //     width: 800px;
+  //   }
+  // }
 }

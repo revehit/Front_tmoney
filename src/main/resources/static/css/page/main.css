@@ -662,6 +662,7 @@
   line-height: 1.5;
 }
 .main-wrap .section7 .list-item .badge {
+  width: 110px;
   min-width: 90px;
   flex-shrink: 0;
 }
@@ -1233,6 +1234,12 @@
   .main-wrap .section7 .list-item {
     padding: 20px;
     gap: 20px;
+  }
+  .main-wrap .section7 .list-item .badge {
+    width: 100px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 400;
   }
   .main-wrap .section7 .list-item .title {
     -webkit-line-clamp: 2;

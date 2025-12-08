@@ -4,7 +4,7 @@
   .board-head {
     display: grid;
     align-items: center;
-    grid-template-columns: 74px 1fr 190px;
+    grid-template-columns: 110px 1fr 190px;
     gap: 0;
     padding: 20px 48px;
     border-top: 1px solid var(--color-darken);
@@ -292,7 +292,7 @@
   .board-detail {
     .title-box {
       display: grid;
-      grid-template-columns: 60px 1fr;
+      grid-template-columns: 110px 1fr;
       grid-template-rows: auto auto;
       row-gap: 10px;
 
@@ -321,7 +321,7 @@
   .board-list {
     .board-head {
       padding: 15px 24px;
-      grid-template-columns: 60px 1fr 150px;
+      grid-template-columns: 110px 1fr 150px;
 
       .col {
 
@@ -340,7 +340,7 @@
 
     .board-item {
       padding: 25.5px 24px;
-      grid-template-columns: 60px 1fr 150px;
+      grid-template-columns: 90px 1fr 150px;
 
       .col {
 
@@ -435,7 +435,7 @@
   .board-list {
     .board-head {
       padding: 15px;
-      grid-template-columns: 50px 1fr 110px;
+      grid-template-columns: 90px 1fr 110px;
 
       .col {
 
@@ -453,7 +453,7 @@
 
     .board-item {
       padding: 15px;
-      grid-template-columns: 50px 1fr 110px;
+      grid-template-columns: 90px 1fr 110px;
 
       .col {
 
@@ -497,7 +497,7 @@
   .board-detail {
     .title-box {
       padding: 20px 0;
-      grid-template-columns: 50px 1fr;
+      grid-template-columns: 90px 1fr;
 
       .col-title {
         @include body-2;
