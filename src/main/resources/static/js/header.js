@@ -73,87 +73,145 @@ const ScrollLock = (() => {
 function setupHeaderHover() {
   const header = document.getElementById('header');
   const nav = header ? header.querySelector('nav') : null;
-  const items = nav ? Array.from(nav.querySelectorAll('li')) : [];
+  const items = nav ? Array.from(nav.querySelectorAll('.gnb-list > li')) : [];
   if (!header || !nav || !items.length) return;
 
-  // 초기 ARIA 정비
+  // ❗ SCSS 쪽에 이거 추가되어 있어야 함
+  // #header { --dynamic-after-height: 0px; }
+  // #header::after { height: var(--dynamic-after-height, 0); }
+
+  // 0. ::after height 동적 계산 함수
+  function updateHeaderAfterHeight() {
+    const depthBoxes = header.querySelectorAll('.depth-box');
+    if (!depthBoxes.length) {
+      header.style.setProperty('--dynamic-after-height', '0px');
+      return;
+    }
+
+    const headerRect = header.getBoundingClientRect();
+    let maxBottom = 0;
+
+    depthBoxes.forEach(box => {
+      // display:none 이면 0 나올 수 있으니, 일단 전부 포함
+      const rect = box.getBoundingClientRect();
+      maxBottom = Math.max(maxBottom, rect.bottom);
+    });
+
+    // SCSS의 #header::after { top: 143px; } 과 동일하게 맞추기
+    const AFTER_TOP = 143;
+    const EXTRA = 30; // 여유 공간
+
+    const height = Math.max(
+      0,
+      maxBottom - headerRect.top - AFTER_TOP + EXTRA
+    );
+
+    header.style.setProperty('--dynamic-after-height', `${height}px`);
+  }
+
+  // li 안의 버튼/링크 + depth-box 가져오기
   items.forEach(li => {
-    const btn = li.querySelector('a, button');
-    const sub = li.querySelector('.submenu, .depth2, ul ul');
+    const btn = li.querySelector('button[role="menuitem"], a[role="menuitem"]');
+    const sub = li.querySelector('.depth-box');
     if (btn && sub) {
       li.setAttribute('aria-haspopup', 'true');
       li.setAttribute('aria-expanded', 'false');
-      sub.setAttribute('role', 'menu');
+      sub.setAttribute('role', 'group');
       sub.setAttribute('aria-hidden', 'true');
       btn.setAttribute('aria-haspopup', 'true');
       btn.setAttribute('aria-expanded', 'false');
     }
   });
 
-  function openItem(li) {
+  function openAll(activeLi) {
+    // 1) 활성 li 하이라이트
     items.forEach(el => {
-      el.classList.remove('on');
-      el.setAttribute('aria-expanded', 'false');
-      const s = el.querySelector('.submenu, .depth2, ul ul');
-      const b = el.querySelector('a, button');
-      if (s) s.setAttribute('aria-hidden', 'true');
-      if (b) b.setAttribute('aria-expanded', 'false');
+      if (el === activeLi) el.classList.add('on');
+      else el.classList.remove('on');
     });
-    li.classList.add('on');
-    li.setAttribute('aria-expanded', 'true');
-    const s = li.querySelector('.submenu, .depth2, ul ul');
-    const b = li.querySelector('a, button');
-    if (s) s.setAttribute('aria-hidden', 'false');
-    if (b) b.setAttribute('aria-expanded', 'true');
+
+    // 2) header에 menu-on 클래스 → CSS에서 모든 depth-box 보이게 처리
     header.classList.add('menu-on');
+
+    // 3) 모든 depth-box ARIA 상태를 "열림"으로
+    items.forEach(el => {
+      const sub = el.querySelector('.depth-box');
+      const btn = el.querySelector('button[role="menuitem"], a[role="menuitem"]');
+      if (sub) sub.setAttribute('aria-hidden', 'false');
+      if (btn) {
+        btn.setAttribute('aria-expanded', 'true');
+      }
+      el.setAttribute('aria-expanded', 'true');
+    });
+
+    // 4) ::after height 동적 계산 (레이아웃 반영 후 계산되도록 약간 딜레이)
+    setTimeout(updateHeaderAfterHeight, 0);
   }
 
   function closeAll() {
     items.forEach(el => {
       el.classList.remove('on');
       el.setAttribute('aria-expanded', 'false');
-      const s = el.querySelector('.submenu, .depth2, ul ul');
-      const b = el.querySelector('a, button');
-      if (s) s.setAttribute('aria-hidden', 'true');
-      if (b) b.setAttribute('aria-expanded', 'false');
+      const sub = el.querySelector('.depth-box');
+      const btn = el.querySelector('button[role="menuitem"], a[role="menuitem"]');
+      if (sub) sub.setAttribute('aria-hidden', 'true');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
     });
     header.classList.remove('menu-on');
+
+    // 닫을 때는 after 높이 0으로
+    header.style.setProperty('--dynamic-after-height', '0px');
   }
 
-  // 마우스 접근
-  items.forEach(li => li.addEventListener('mouseenter', () => openItem(li)));
-  header.addEventListener('mouseleave', closeAll, {passive:true});
+  // 마우스 hover
+  items.forEach(li => {
+    li.addEventListener('mouseenter', () => {
+      openAll(li);  // 어떤 li든 hover하면 전체 depth-box 오픈 + 해당 li만 on
+    });
+  });
+  header.addEventListener('mouseleave', () => {
+    closeAll();
+  }, { passive: true });
 
-  // 키보드 접근(대상: 1뎁스 버튼/링크)
-  const tops = Array.from(nav.querySelectorAll('.gnb-list > li > a, .gnb-list > li > button'));
+  // 키보드 접근(1뎁스)
+  const tops = Array.from(
+    nav.querySelectorAll('.gnb-list > li > a[role="menuitem"], .gnb-list > li > button[role="menuitem"]')
+  );
+
   tops.forEach((btn, i) => {
     const li = btn.closest('li');
-    const panel = li ? li.querySelector('.submenu, .depth2, ul ul') : null;
-
     btn.addEventListener('keydown', e => {
       const key = e.key;
       if (key === 'Enter' || key === ' ') {
-        if (panel) { openItem(li); e.preventDefault(); }
+        openAll(li);
+        e.preventDefault();
       } else if (key === 'ArrowRight') {
-        const next = tops[i+1] || tops[0]; next.focus(); e.preventDefault();
+        const next = tops[i + 1] || tops[0];
+        next.focus();
+        e.preventDefault();
       } else if (key === 'ArrowLeft') {
-        const prev = tops[i-1] || tops[tops.length-1]; prev.focus(); e.preventDefault();
-      } else if (key === 'ArrowDown' && panel) {
-        const first = panel.querySelector(FOCUSABLE); first && first.focus(); e.preventDefault();
+        const prev = tops[i - 1] || tops[tops.length - 1];
+        prev.focus();
+        e.preventDefault();
+      } else if (key === 'ArrowDown') {
+        // 현재 li의 depth-box 첫 포커스 요소로
+        const sub = li.querySelector('.depth-box');
+        const first = sub ? sub.querySelector(FOCUSABLE) : null;
+        if (sub && first) {
+          openAll(li);
+          first.focus();
+          e.preventDefault();
+        }
       } else if (key === 'Escape') {
-        closeAll(); btn.focus();
+        closeAll();
+        btn.focus();
+        e.preventDefault();
       }
-    });
-
-    panel && panel.addEventListener('keydown', e => {
-      if (e.key === 'Escape') { closeAll(); btn.focus(); e.preventDefault(); }
-    });
-
-    panel && panel.addEventListener('focusout', e => {
-      if (!panel.contains(e.relatedTarget) && e.relatedTarget !== btn) closeAll();
     });
   });
 }
+
+
 
 /* ---------- 2) 테마 버튼 상태 동기화(header-theme-bind) ---------- */
 function setupThemeBind() {
