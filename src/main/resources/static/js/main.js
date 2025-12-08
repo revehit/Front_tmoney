@@ -375,16 +375,25 @@ function initSection6Swiper() {
   if (!container || typeof Swiper === "undefined") return;
 
   const swiper = new Swiper(container, {
-    //slidesPerView: 3,
-    slidesPerView: 'auto',
-    spaceBetween: 56,
+    // 기본(모바일) 설정
+    slidesPerView: 1.2,   // 한 번에 보이는 슬라이드 개수
+    spaceBetween: 16,      // 슬라이드 간 간격
+    slidesPerGroup: 1,     // ✅ 버튼/드래그 시 항상 1칸씩 이동
     loop: false,
     watchOverflow: true,
+
+    // 레이아웃 변경 감지
+    observer: true,
+    observeParents: true,
+    observeSlideChildren: true,
+
     keyboard: { enabled: true },
+
     navigation: {
       nextEl: ".section6-next",
       prevEl: ".section6-prev",
     },
+
     pagination: {
       el: ".section6-pagination",
       type: "fraction",
@@ -394,14 +403,36 @@ function initSection6Swiper() {
         <span class="${totalClass}" aria-label="전체 슬라이드 수"></span>
       `,
     },
+
+    // 해상도별로 슬라이드 개수 고정 (원하는 값으로 조정 가능)
     breakpoints: {
-      480: { slidesPerView: 'auto', spaceBetween: 20 },
-      768: { slidesPerView: 'auto', spaceBetween: 20 },
-      1024: { slidesPerView: 'auto', spaceBetween: 20 },
-      1430: { slidesPerView: 'auto', spaceBetween: 40 },
+      500: {
+        slidesPerView: 1.5,
+        spaceBetween: 20,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 24,
+      },
+      1430: {
+        slidesPerView: 4,
+        spaceBetween: 32,
+      },
+    },
+
+    // 리사이즈 시 강제 업데이트
+    on: {
+      resize(swiperInstance) {
+        swiperInstance.update();
+      },
     },
   });
 
+  // 접근성 설정
   const slides = container.querySelectorAll(".swiper-slide");
   slides.forEach((slide, i) => {
     slide.setAttribute("role", "group");
@@ -414,7 +445,10 @@ function initSection6Swiper() {
     if (!btn) return;
     btn.setAttribute("role", "button");
     btn.setAttribute("tabindex", "0");
-    btn.setAttribute("aria-label", btn.classList.contains("section6-next") ? "다음 슬라이드" : "이전 슬라이드");
+    btn.setAttribute(
+      "aria-label",
+      btn.classList.contains("section6-next") ? "다음 슬라이드" : "이전 슬라이드"
+    );
     btn.addEventListener("keydown", (e) => {
       if (["Enter", " "].includes(e.key)) {
         e.preventDefault();
@@ -429,6 +463,7 @@ function initSection6Swiper() {
     fraction.setAttribute("role", "status");
   }
 }
+
 
 /* ========== 8. 초기화 ========== */
 function initMain() {
