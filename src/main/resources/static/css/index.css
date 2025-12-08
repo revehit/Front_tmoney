@@ -1123,7 +1123,7 @@ input::placeholder {
   top: 50%;
   width: 24px;
   height: 24px;
-  background: url("../../static/images/icon/icon-arrow-down.svg") no-repeat center/24px 24px;
+  background: url("/images/icon/icon-arrow-down.svg") no-repeat center/24px 24px;
   transform: translateY(-50%) rotate(0deg);
   transition: transform 0.2s ease;
   pointer-events: none;
@@ -1335,7 +1335,7 @@ input::placeholder {
 .checkbox label::after {
   width: 32px;
   height: 32px;
-  background: url("../../static/images/icon/icon-check.svg") no-repeat center/14px 14px;
+  background: url("/images/icon/icon-check.svg") no-repeat center/14px 14px;
   opacity: 0;
   transition: opacity 0.15s;
 }
@@ -1559,133 +1559,133 @@ input::placeholder {
   height: 100%;
 }
 .icon.icon-member:before {
-  background-image: url(../../static/images/icon/icon-member.svg);
+  background-image: url(/images/icon/icon-member.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-home:before {
-  background-image: url(../../static/images/icon/icon-home.png);
+  background-image: url(/images/icon/icon-home.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-download:before {
-  background-image: url(../../static/images/icon/icon-download.svg);
+  background-image: url(/images/icon/icon-download.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-attachment:before {
-  background-image: url(../../static/images/icon/icon-attachment.svg);
+  background-image: url(/images/icon/icon-attachment.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-view:before {
-  background-image: url(../../static/images/icon/icon-view.svg);
+  background-image: url(/images/icon/icon-view.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-plus:before {
-  background-image: url(../../static/images/icon/icon-plus.svg);
+  background-image: url(/images/icon/icon-plus.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-minus:before {
-  background-image: url(../../static/images/icon/icon-minus.svg);
+  background-image: url(/images/icon/icon-minus.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-finish:before {
-  background-image: url(../../static/images/icon/icon-finish.svg);
+  background-image: url(/images/icon/icon-finish.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-enter:before {
-  background-image: url(../../static/images/icon/icon-enter.svg);
+  background-image: url(/images/icon/icon-enter.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-refresh:before {
-  background-image: url(../../static/images/icon/icon-refresh.svg);
+  background-image: url(/images/icon/icon-refresh.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-search:before {
-  background-image: url(../../static/images/icon/icon-search.svg);
+  background-image: url(/images/icon/icon-search.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-caution:before {
-  background-image: url(../../static/images/icon/icon-caution.svg);
+  background-image: url(/images/icon/icon-caution.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-card:before {
-  background-image: url(../../static/images/icon/icon-card.svg);
+  background-image: url(/images/icon/icon-card.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-x:before {
-  background-image: url(../../static/images/icon/icon-x.svg);
+  background-image: url(/images/icon/icon-x.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-arrow-left:before {
-  background-image: url(../../static/images/icon/icon-arrow-left.svg);
+  background-image: url(/images/icon/icon-arrow-left.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-arrow-right:before {
-  background-image: url(../../static/images/icon/icon-arrow-right.svg);
+  background-image: url(/images/icon/icon-arrow-right.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-arrow-right2:before {
-  background-image: url(../../static/images/icon/icon-arrow-right2.svg);
+  background-image: url(/images/icon/icon-arrow-right2.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-arrow-left-end:before {
-  background-image: url(../../static/images/icon/icon-arrow-left-end.svg);
+  background-image: url(/images/icon/icon-arrow-left-end.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-arrow-right-end:before {
-  background-image: url(../../static/images/icon/icon-arrow-right-end.svg);
+  background-image: url(/images/icon/icon-arrow-right-end.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-arrow-down:before {
-  background-image: url(../../static/images/icon/icon-arrow-down.svg);
+  background-image: url(/images/icon/icon-arrow-down.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-close:before {
-  background-image: url(../../static/images/icon/icon-close.svg);
+  background-image: url(/images/icon/icon-close.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .icon.icon-leave:before {
-  background-image: url(../../static/images/icon/icon-leave.svg);
+  background-image: url(/images/icon/icon-leave.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -2295,7 +2295,7 @@ input::placeholder {
   display: block;
   width: 250px;
   height: 75px;
-  background-image: url("../../static/images/logo.png");
+  background-image: url("/images/logo.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -2437,7 +2437,7 @@ input::placeholder {
   content: "";
   width: 40px;
   height: 31px;
-  background-image: url("../../static/images/icon-talktail.png");
+  background-image: url("/images/icon-talktail.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -2645,22 +2645,22 @@ input::placeholder {
   display: block;
 }
 #header .sitemap .collapse .collapse-item .icon.icon1:before {
-  background-image: url(../../static/images/icon/icon-sitemap-1.svg);
+  background-image: url(/images/icon/icon-sitemap-1.svg);
   background-size: contain;
   background-repeat: no-repeat;
 }
 #header .sitemap .collapse .collapse-item .icon.icon2:before {
-  background-image: url(../../static/images/icon/icon-sitemap-2.svg);
+  background-image: url(/images/icon/icon-sitemap-2.svg);
   background-size: contain;
   background-repeat: no-repeat;
 }
 #header .sitemap .collapse .collapse-item .icon.icon3:before {
-  background-image: url(../../static/images/icon/icon-sitemap-3.svg);
+  background-image: url(/images/icon/icon-sitemap-3.svg);
   background-size: contain;
   background-repeat: no-repeat;
 }
 #header .sitemap .collapse .collapse-item .icon.icon4:before {
-  background-image: url(../../static/images/icon/icon-sitemap-4.svg);
+  background-image: url(/images/icon/icon-sitemap-4.svg);
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -2916,7 +2916,7 @@ input::placeholder {
   width: 12px;
   height: 12px;
   display: block;
-  background-image: url("../../static/images/icon/icon-arrow-right.svg");
+  background-image: url("/images/icon/icon-arrow-right.svg");
   background-size: contain;
   margin-right: 8px;
 }
@@ -2928,7 +2928,7 @@ input::placeholder {
   color: var(--color-darken);
 }
 [data-theme=dark] #breadcrumb li + li::before {
-  background-image: url("../../static/images/icon/icon-arrow-right-white.svg");
+  background-image: url("/images/icon/icon-arrow-right-white.svg");
 }
 
 /* ===== 첫 분기: 1430px ===== */
@@ -4849,43 +4849,43 @@ input::placeholder {
   height: 100%;
 }
 .attachment-list .file-item .file-icon.pdf:before {
-  background-image: url(../../static/images/icon/icon-pdf.svg);
+  background-image: url(/images/icon/icon-pdf.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .attachment-list .file-item .file-icon.xls:before {
-  background-image: url(../../static/images/icon/icon-xls.svg);
+  background-image: url(/images/icon/icon-xls.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .attachment-list .file-item .file-icon.doc:before {
-  background-image: url(../../static/images/icon/icon-doc.svg);
+  background-image: url(/images/icon/icon-doc.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .attachment-list .file-item .file-icon.jpg:before {
-  background-image: url(../../static/images/icon/icon-jpg.svg);
+  background-image: url(/images/icon/icon-jpg.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .attachment-list .file-item .file-icon.png:before {
-  background-image: url(../../static/images/icon/icon-png.svg);
+  background-image: url(/images/icon/icon-png.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .attachment-list .file-item .file-icon.hwp:before {
-  background-image: url(../../static/images/icon/icon-hwp.svg);
+  background-image: url(/images/icon/icon-hwp.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .attachment-list .file-item .file-icon.zip:before {
-  background-image: url(../../static/images/icon/icon-zip.svg);
+  background-image: url(/images/icon/icon-zip.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -5006,7 +5006,7 @@ input::placeholder {
   border-radius: 6px;
   background: transparent;
   cursor: pointer;
-  background-image: url("../../static/images/icon/icon-calendar.svg");
+  background-image: url("/images/icon/icon-calendar.svg");
   background-repeat: no-repeat;
   background-position: center;
   transition: background-color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
@@ -5193,10 +5193,10 @@ input::placeholder {
 
 /* 다크 모드 */
 [data-theme=dark] .datepicker:hover .dp-btn {
-  background-image: url("../../static/images/icon/icon-calendar.svg");
+  background-image: url("/images/icon/icon-calendar.svg");
 }
 [data-theme=dark] .datepicker .dp-btn {
-  background-image: url("../../static/images/icon/icon-calendar-white.svg");
+  background-image: url("/images/icon/icon-calendar-white.svg");
 }
 [data-theme=dark] .dp-pop {
   background: #121212;
@@ -5666,7 +5666,7 @@ body.modal-open {
   display: block;
   width: 36px;
   height: 36px;
-  background-image: url("../../static/images/icon/icon-check.svg");
+  background-image: url("/images/icon/icon-check.svg");
   background-size: 24px;
   background-repeat: no-repeat;
   background-position: center center;

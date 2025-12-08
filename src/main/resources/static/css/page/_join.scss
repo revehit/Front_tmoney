@@ -146,37 +146,37 @@
           filter: brightness(0) saturate(100%) invert(10%) sepia(57%) saturate(7321%) hue-rotate(299deg) brightness(99%) contrast(101%);
           &.document {
             &::before {
-              background-image: url('../../../static/images/icon/icon-document.svg');
+              background-image: url('/images/icon/icon-document.svg');
               background-size: contain;
             }
           }
           &.lock {
             &::before {
-              background-image: url('../../../static/images/icon/icon-lock.svg');
+              background-image: url('/images/icon/icon-lock.svg');
               background-size: contain;
             }
           }
           &.write {
             &::before {
-              background-image: url('../../../static/images/icon/icon-write.svg');
+              background-image: url('/images/icon/icon-write.svg');
               background-size: contain;
             }
           }
           &.home {
             &::before {
-              background-image: url('../../../static/images/icon/icon-home.svg');
+              background-image: url('/images/icon/icon-home.svg');
               background-size: contain;
             }
           }
           &.filter {
             &::before {
-              background-image: url('../../../static/images/icon/icon-filter.svg');
+              background-image: url('/images/icon/icon-filter.svg');
               background-size: contain;
             }
           }
           &.check {
             &::before {
-              background-image: url('../../../static/images/icon/icon-check.svg');
+              background-image: url('/images/icon/icon-check.svg');
               background-size: contain;
             }
           }
@@ -257,7 +257,7 @@
     .kakao {
       .icon {
         &::before {
-          background-image: url('../../../static/images/sub/img-kakaobank.png');
+          background-image: url('/images/sub/img-kakaobank.png');
           background-size: contain;
           background-repeat: no-repeat;
         }
@@ -266,7 +266,7 @@
     .toss {
       .icon {
         &::before {
-          background-image: url('../../../static/images/sub/img-toss.png');
+          background-image: url('/images/sub/img-toss.png');
           background-size: contain;
           background-repeat: no-repeat;
         }
@@ -275,7 +275,7 @@
     .phone {
       .icon {
         &::before {
-          background-image: url('../../../static/images/sub/img-phone.png');
+          background-image: url('/images/sub/img-phone.png');
           background-size: contain;
           background-repeat: no-repeat;
         }
@@ -284,7 +284,7 @@
     .ipin {
       .icon {
         &::before {
-          background-image: url('../../../static/images/sub/img-ipin.png');
+          background-image: url('/images/sub/img-ipin.png');
           background-size: contain;
           background-repeat: no-repeat;
         }

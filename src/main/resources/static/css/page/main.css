@@ -283,7 +283,7 @@
   height: 12px;
 }
 .main-wrap .section1 .section1-controls .toggle .icon-slider-play:before {
-  background-image: url("../../../static/images/icon/icon-slider-play.svg");
+  background-image: url("/images/icon/icon-slider-play.svg");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -292,7 +292,7 @@
   display: inline-block;
 }
 .main-wrap .section1 .section1-controls .toggle .icon-slider-pause:before {
-  background-image: url("../../../static/images/icon/icon-slider-pause.svg");
+  background-image: url("/images/icon/icon-slider-pause.svg");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -469,7 +469,7 @@
   height: 12px;
 }
 .main-wrap .section5 .step-box .icon:before {
-  background-image: url("../../../static/images/icon/pol-triangle.svg");
+  background-image: url("/images/icon/pol-triangle.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -712,7 +712,7 @@
   height: 24px;
 }
 .main-wrap .btn-link .icon.right:before {
-  background-image: url("../../../static/images/icon/chevron-right.svg");
+  background-image: url("/images/icon/chevron-right.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;

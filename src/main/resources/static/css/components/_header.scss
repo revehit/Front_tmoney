@@ -132,7 +132,7 @@
       display: block;
       width: 250px;
       height: 75px;
-      background-image: url('../../static/images/logo.png');
+      background-image: url('/images/logo.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -295,7 +295,7 @@
             content: '';
             width: 40px;
             height: 31px;
-            background-image: url('../../static/images/icon-talktail.png');
+            background-image: url('/images/icon-talktail.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -559,7 +559,7 @@
 
           &.icon1 {
             &:before {
-              background-image: url(../../static/images/icon/icon-sitemap-1.svg);
+              background-image: url(/images/icon/icon-sitemap-1.svg);
               background-size: contain;
               background-repeat: no-repeat;
             }
@@ -567,7 +567,7 @@
 
           &.icon2 {
             &:before {
-              background-image: url(../../static/images/icon/icon-sitemap-2.svg);
+              background-image: url(/images/icon/icon-sitemap-2.svg);
               background-size: contain;
               background-repeat: no-repeat;
             }
@@ -575,7 +575,7 @@
 
           &.icon3 {
             &:before {
-              background-image: url(../../static/images/icon/icon-sitemap-3.svg);
+              background-image: url(/images/icon/icon-sitemap-3.svg);
               background-size: contain;
               background-repeat: no-repeat;
             }
@@ -583,7 +583,7 @@
 
           &.icon4 {
             &:before {
-              background-image: url(../../static/images/icon/icon-sitemap-4.svg);
+              background-image: url(/images/icon/icon-sitemap-4.svg);
               background-size: contain;
               background-repeat: no-repeat;
             }

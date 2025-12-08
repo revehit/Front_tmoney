@@ -163,27 +163,27 @@
   filter: brightness(0) saturate(100%) invert(10%) sepia(57%) saturate(7321%) hue-rotate(299deg) brightness(99%) contrast(101%);
 }
 .join-wrap .join-header .step-box .circle .icon.document::before {
-  background-image: url("../../../static/images/icon/icon-document.svg");
+  background-image: url("/images/icon/icon-document.svg");
   background-size: contain;
 }
 .join-wrap .join-header .step-box .circle .icon.lock::before {
-  background-image: url("../../../static/images/icon/icon-lock.svg");
+  background-image: url("/images/icon/icon-lock.svg");
   background-size: contain;
 }
 .join-wrap .join-header .step-box .circle .icon.write::before {
-  background-image: url("../../../static/images/icon/icon-write.svg");
+  background-image: url("/images/icon/icon-write.svg");
   background-size: contain;
 }
 .join-wrap .join-header .step-box .circle .icon.home::before {
-  background-image: url("../../../static/images/icon/icon-home.svg");
+  background-image: url("/images/icon/icon-home.svg");
   background-size: contain;
 }
 .join-wrap .join-header .step-box .circle .icon.filter::before {
-  background-image: url("../../../static/images/icon/icon-filter.svg");
+  background-image: url("/images/icon/icon-filter.svg");
   background-size: contain;
 }
 .join-wrap .join-header .step-box .circle .icon.check::before {
-  background-image: url("../../../static/images/icon/icon-check.svg");
+  background-image: url("/images/icon/icon-check.svg");
   background-size: contain;
 }
 .join-wrap .join-header .step-box p {
@@ -258,22 +258,22 @@
   height: 64px;
 }
 .join-wrap .step2-box .kakao .icon::before {
-  background-image: url("../../../static/images/sub/img-kakaobank.png");
+  background-image: url("/images/sub/img-kakaobank.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
 .join-wrap .step2-box .toss .icon::before {
-  background-image: url("../../../static/images/sub/img-toss.png");
+  background-image: url("/images/sub/img-toss.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
 .join-wrap .step2-box .phone .icon::before {
-  background-image: url("../../../static/images/sub/img-phone.png");
+  background-image: url("/images/sub/img-phone.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
 .join-wrap .step2-box .ipin .icon::before {
-  background-image: url("../../../static/images/sub/img-ipin.png");
+  background-image: url("/images/sub/img-ipin.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -532,12 +532,12 @@
   height: 64px;
 }
 .login-wrap .pw2-box .phone .icon::before {
-  background-image: url("../../../static/images/sub/img-phone.png");
+  background-image: url("/images/sub/img-phone.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
 .login-wrap .pw2-box .ipin .icon::before {
-  background-image: url("../../../static/images/sub/img-ipin.png");
+  background-image: url("/images/sub/img-ipin.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1276,16 +1276,16 @@
   margin: 0 30px;
 }
 .page-wrap .process-box .process .box.step1 .icon::before {
-  background-image: url("../../../static/images/sub/img-mail.png");
+  background-image: url("/images/sub/img-mail.png");
 }
 .page-wrap .process-box .process .box.step2 .icon::before {
-  background-image: url("../../../static/images/sub/img-document.png");
+  background-image: url("/images/sub/img-document.png");
 }
 .page-wrap .process-box .process .box.step3 .icon::before {
-  background-image: url("../../../static/images/sub/img-coffee.png");
+  background-image: url("/images/sub/img-coffee.png");
 }
 .page-wrap .process-box .process .box.step4 .icon::before {
-  background-image: url("../../../static/images/sub/img-setting.png");
+  background-image: url("/images/sub/img-setting.png");
 }
 .page-wrap .bg-box {
   height: 300px;

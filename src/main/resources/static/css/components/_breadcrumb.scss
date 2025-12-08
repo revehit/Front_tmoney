@@ -19,7 +19,7 @@
         width: 12px;
         height: 12px;
         display: block;
-        background-image: url('../../static/images/icon/icon-arrow-right.svg');
+        background-image: url('/images/icon/icon-arrow-right.svg');
         background-size: contain;
         margin-right: 8px;
       }
@@ -35,7 +35,7 @@
     li {
       color: var(--color-darken);
       & + li::before {
-        background-image: url('../../static/images/icon/icon-arrow-right-white.svg');
+        background-image: url('/images/icon/icon-arrow-right-white.svg');
       }
     }
   }

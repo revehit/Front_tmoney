@@ -26,7 +26,7 @@
     border-radius: 6px;
     background: transparent;
     cursor: pointer;
-    background-image: url('../../static/images/icon/icon-calendar.svg');
+    background-image: url('/images/icon/icon-calendar.svg');
     background-repeat: no-repeat;
     background-position: center;
     transition: background-color .15s ease, box-shadow .15s ease, opacity .15s ease;
@@ -237,11 +237,11 @@
   .datepicker {
     &:hover {
       .dp-btn {
-        background-image: url('../../static/images/icon/icon-calendar.svg');
+        background-image: url('/images/icon/icon-calendar.svg');
       }  
     }
     .dp-btn {
-      background-image: url('../../static/images/icon/icon-calendar-white.svg');
+      background-image: url('/images/icon/icon-calendar-white.svg');
     }
   }
   .dp-pop {

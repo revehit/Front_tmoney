@@ -178,7 +178,7 @@
         &.step1 {
           .icon {
             &::before {
-              background-image: url('../../../static/images/sub/img-mail.png');
+              background-image: url('/images/sub/img-mail.png');
             }
           }
         }
@@ -186,7 +186,7 @@
         &.step2 {
           .icon {
             &::before {
-              background-image: url('../../../static/images/sub/img-document.png');
+              background-image: url('/images/sub/img-document.png');
             }
           }
         }
@@ -194,7 +194,7 @@
         &.step3 {
           .icon {
             &::before {
-              background-image: url('../../../static/images/sub/img-coffee.png');
+              background-image: url('/images/sub/img-coffee.png');
             }
           }
         }
@@ -202,7 +202,7 @@
         &.step4 {
           .icon {
             &::before {
-              background-image: url('../../../static/images/sub/img-setting.png');
+              background-image: url('/images/sub/img-setting.png');
             }
           }
         }
