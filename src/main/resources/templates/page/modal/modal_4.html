@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tmoney 교통복지플랫폼"/>
+  <meta name="keywords" content="Tmoney 교통복지플랫폼"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tmoney 교통복지플랫폼" />
+  <meta property="og:description" content="Tmoney 교통복지플랫폼" />
+
+  <title th:text="${pageTitle} ?: 'Tmoney 교통복지플랫폼'">Tmoney 교통복지플랫폼</title>
+
+  <!-- 정적 리소스: /static/css/** → /css/** -->
+  <link rel="stylesheet" href="../../../static/css/vendor/aos.css" />
+  <link rel="stylesheet" href="../../../static/css/vendor/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="../../../static/css/index.css" />
+  <link rel="stylesheet" href="../../../static/css/page/page.css" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.AOS && !window.__aosInited) {
+      AOS.init(); /* 옵션 필요 시 { duration: 600, once: true } */
+      window.__aosInited = true;
+    }
+  });
+</script>
+<!-- 나중에 삭제 -->
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const targets = [
+      { sel: "#header", url: "../../component/header.html" },
+      { sel: "#footer", url: "../../component/footer.html" },
+      { sel: "#goTop", url: "../../component/topBtn.html" },
+    ];
+    for (const t of targets) {
+      const el = document.querySelector(t.sel);
+      if (!el) continue;
+      const res = await fetch(t.url, { cache: "no-cache" }); // 필요 시 캐시 방지
+      if (res.ok) el.innerHTML = await res.text();
+    }
+  });
+</script>
+
+<p id="skip-nav">
+  <a href="#contents">본문으로 바로가기</a>
+  <a href="#gnb1">주메뉴 바로가기</a>
+</p>
+
+<!-- <th:block th:replace="~{component/header :: siteHeader}"></th:block> -->
+<header id="header"></header>
+
+<main id="contents">
+  <section class="section">
+    <div class="container size-sm">
+      <div class="login-wrap">
+        <div class="login-header">
+          <h2 class="section-title">아이디 찾기</h2>
+          <p>가입 당시 입력된 아래의 정보를 입력해주세요.</p>
+        </div>
+        <nav class="tabs" aria-label="페이지 이동">
+          <a class="tab is-active" href="#" aria-current="page">아이디 찾기</a>
+          <a class="tab" href="#">비밀번호 찾기</a>
+        </nav>
+        <div class="gray-outer">
+          <div class="form-box">
+            <form action="" method="post" novalidate>
+              <!-- 성명 -->
+              <div>
+                <p class="field-title">성명</p>
+                <label for="fullName" class="sr-only">성명</label>
+                <input id="fullName" name="fullName" type="text" class="text-field size-lg"
+                      placeholder="성명을 입력해주세요."
+                      autocomplete="name" inputmode="text"
+                      required aria-required="true"
+                      minlength="2" maxlength="30"
+                      pattern="^[가-힣a-zA-Z·\\s]{2,30}$"
+                      aria-describedby="nameHelp nameErr">
+              </div>
+
+              <!-- 생년월일 -->
+              <div>
+                <p class="field-title">생년월일</p>
+                <label for="birth" class="sr-only">생년월일</label>
+                <input id="birth" name="birth" type="text" class="text-field size-lg"
+                      placeholder="예) 19850501"
+                      autocomplete="bday" inputmode="numeric"
+                      required aria-required="true"
+                      maxlength="10"
+                      pattern="^\\d{4}-\\d{2}-\\d{2}$"
+                      aria-describedby="birthHelp birthErr">
+              </div>
+
+              <!-- 휴대전화번호 -->
+              <div>
+                <p class="field-title">휴대전화번호</p>
+                <fieldset>
+                  <legend class="sr-only">휴대전화번호</legend>
+                  <div class="flex align-center gap8">
+                    <label for="mobile1" class="sr-only">국번</label>
+                    <input id="mobile1" name="mobile1" type="text" class="text-field size-lg"
+                          aria-readonly="true"
+                          inputmode="numeric" pattern="[0-9]*">
+                    <span class="flex-bar" aria-hidden="true">-</span>
+
+                    <label for="mobile2" class="sr-only">중간번호</label>
+                    <input id="mobile2" name="mobile2" type="text" class="text-field size-lg"
+                          aria-readonly="true"
+                          inputmode="numeric" pattern="[0-9]*">
+                    <span class="flex-bar" aria-hidden="true">-</span>
+
+                    <label for="mobile3" class="sr-only">끝번호</label>
+                    <input id="mobile3" name="mobile3" type="text" class="text-field size-lg"
+                          aria-readonly="true"
+                          inputmode="numeric" pattern="[0-9]*">
+                  </div>
+                </fieldset>
+              </div>
+  
+              <button type="submit" class="btn btn-primary btn-icon-right size-lg" data-modal-open="alert-1">
+                <i class="icon icon-search"></i>아이디 찾기
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- <th:block th:replace="~{component/footer :: siteFooter}"></th:block> -->
+<!-- <th:block th:replace="~{component/topBtn :: siteTop}"></th:block> -->
+<footer id="footer"></footer>
+<button id="goTop"></button>
+
+<!-- Modal -->
+<div class="modal" id="alert-1" role="alertdialog" aria-modal="true" aria-labelledby="alert-1-title"
+  aria-describedby="alert-1-desc" aria-hidden="true">
+  <div class="modal-overlay" data-modal-close></div>
+
+  <div class="modal-container" role="document" tabindex="-1">
+    <header class="modal-header">
+      <h2 id="alert-1-title" class="modal-title">지원사업 추가하기</h2>
+      <button type="button" class="btn btn-darken-line btn-icon-only size-sm modal-close" aria-label="닫기" data-modal-close></button>
+    </header>
+
+    <section class="modal-body">
+      <div class="gray-box scrol-y">
+        <div class="modal-search">
+          <input type="text" id="searchOrg" class="text-field size-sm" placeholder="기관명을 입력하세요" />
+        </div>
+        <div class="scroll-box">
+          <div class="link-list">
+            <a href="/svcjoin/rsdcAuth.do?orgCd=1111000&amp;tpwSvcId=1111000" class="list-item">서울 종로구 교통비지원사업</a>
+            <a href="/svcjoin/rsdcAuth.do?orgCd=1111000&amp;tpwSvcId=1111001" class="list-item">서울 종로구 교통비지원사업</a>
+            <a href="/svcjoin/rsdcAuth.do?orgCd=1114000&amp;tpwSvcId=1114000" class="list-item">서울 중구 어르신교통비지원사업</a>
+            <a href="/svcjoin/rsdcAuth.do?orgCd=1168000&amp;tpwSvcId=1168000" class="list-item">서울 강남구 청년/어르신교통비지원사업</a>
+            <a href="/svcjoin/rsdcAuth.do?orgCd=4825000&amp;tpwSvcId=4825000" class="list-item">경남 김해시 청소년교통비지원사업</a>
+            <a href="/svcjoin/rsdcAuth.do?orgCd=B554399&amp;tpwSvcId=B554399" class="list-item">경기교통공사 어린이청소년교통비지원사업</a>
+            <a href="/svcjoin/rsdcAuth.do?orgCd=B552583&amp;tpwSvcId=B552583" class="list-item">한국장애인고용공단 장애인교통비지원사업</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- <script th:src="@{/js/vendor/aos.js}"></script>
+<script th:src="@{/js/vendor/gsap.min.js}"></script>
+<script th:src="@{/js/vendor/ScrollTrigger.min.js}"></script>
+<script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
+
+<script type="module" th:src="@{/js/common.js}"></script> -->
+<script src="../../../static/js/vendor/aos.js"></script>
+<script src="../../../static/js/vendor/gsap.min.js"></script>
+<script src="../../../static/js/vendor/ScrollTrigger.min.js"></script>
+<script src="../../../static/js/vendor/swiper-bundle.min.js"></script>
+
+<script type="module" src="../../../static/js/common.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 기존 모달 open 처리 로직과 동일하게 동작시키기 위해 클릭 이벤트 재사용
+    const openBtn = document.querySelector('[data-modal-open="alert-1"]');
+
+    if (openBtn) {
+      openBtn.click();
+    } else {
+      // 만약 data-modal-open 버튼이 없다면 직접 제어
+      const modal = document.getElementById('alert-1');
+      if (!modal) return;
+
+      modal.setAttribute('aria-hidden', 'false');
+      modal.classList.add('is-open'); // open 상태가 사용하는 클래스가 있다면 추가
+
+      document.body.classList.add('body-lock');
+
+      // 접근성 포커스 이동
+      const container = modal.querySelector('.modal-container');
+      if (container) {
+        container.setAttribute('tabindex', '-1');
+        container.focus();
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
