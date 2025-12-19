@@ -419,7 +419,7 @@ function initSection6Swiper() {
         spaceBetween: 24,
       },
       1430: {
-        slidesPerView: 4,
+        slidesPerView: 3,
         spaceBetween: 32,
       },
     },
