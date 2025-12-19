@@ -28,6 +28,22 @@
       margin: 0; 
     }
   }
+  &.with-btn {
+    padding-bottom: 24px;
+    & + .link-btn {
+      width: auto;
+      height: 56px;
+      padding: 0 24px;
+      border-radius: 8px;
+      gap: 0;
+      flex-shrink: 0;
+      @include body-1;
+      .icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
 }
 
 
@@ -69,6 +85,17 @@
       img {
         width: 60px;
         object-fit: contain;
+      }
+    }
+    &.with-btn {
+      & + .link-btn {
+        height: 27px;
+        padding: 0 10px;
+        @include caption-1;
+        .icon {
+          width: 14px;
+          height: 14px;
+        }
       }
     }
   }

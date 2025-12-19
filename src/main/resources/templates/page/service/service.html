@@ -51,13 +51,28 @@
   <section class="section">
     <div class="container">
       <div class="page-wrap">
-        <div class="page-header">
+        <div class="page-header with-btn">
           <div class="with-img">
             <img src="/images/sub/img-logo-jn.png" alt="종로구 로고">
             <h2 class="section-title">종로구 교통비 지원사업 안내</h2>
           </div>
           <p>교통약자의 교통비 부담 경감과 대중교통 활성화를 위해 종로구에서 어르신&middot;어린이&middot;청년&middot;청소년을 대상으로 버스요금을 지원하는 사업입니다.</p>
         </div>
+        <a href="" class="link-btn btn btn-gray-line btn-icon-right">
+          <i class="icon icon-arrow-right2" aria-hidden="true"></i>
+          홈페이지 바로가기
+        </a>
+
+        <div class="bookmark-box" aria-label="페이지 목차">
+          <a href="#target1" class="active">지원대상</a>
+          <a href="#target2">지원내용</a>
+          <a href="#target3">지원금액</a>
+          <a href="#target4">지급시기</a>
+          <a href="#target5">지원방법</a>
+          <a href="#target6">유의사항</a>
+          <a href="#target7">문의하기</a>
+        </div>
+
         <div class="flex dir-col gap24">
           <div class="line-box" id="target1">
             <h3>지원 대상</h3>
@@ -123,7 +138,7 @@
           <div class="line-box" id="target4">
             <h3>지급 시기</h3>
             <p>분기별(3월, 6월, 9월, 12월) 지급</p>
-            <div class="table-wrap type-rowcol">
+            <div class="table-wrap type-rowcol scroll-x">
               <table>
                 <caption class="sr-only">분기별 산출기간과 지급시기</caption>
                 <colgroup>
@@ -185,19 +200,6 @@
       </div>
     </div>
   </section>
-  <aside class="bookmark-nav" aria-label="페이지 목차">
-    <ul>
-      <li><a href="#target1">지원 대상</a></li>
-      <li><a href="#target2">지원 내용</a></li>
-      <li><a href="#target3">지원 금액</a></li>
-      <li><a href="#target4">지급 시기</a></li>
-      <li><a href="#target5">지원 방법</a></li>
-      <li><a href="#target6">유의 사항</a></li>
-      <li><a href="#target7">문의하기</a></li>
-    </ul>
-  </aside>
-  <div id="bookmark-stop-sentinel"></div>
-
 </main>
 
 <th:block th:replace="~{component/footer :: siteFooter}"></th:block>
@@ -211,161 +213,86 @@
 <script type="module" th:src="@{/js/common.js}"></script>
 
 <script>
-/* =========================================================
- * bookmark-nav.js (Vanilla JS | A11y/WCAG | Cross-Browser)
- * - 항상 노출
- * - #target1 도달 시: position:fixed, top: 50px
- * - footer 겹치기 직전: position:absolute 로 정지
- * - IntersectionObserver로 li.active 이동
- * - 초기 로드 시 1번째 메뉴 활성화
- * ========================================================= */
+document.addEventListener('DOMContentLoaded', function () {
+  const bookmarkBox = document.querySelector('.bookmark-box');
+  const bookmarkLinks = bookmarkBox.querySelectorAll('a');
+  const sections = Array.from(bookmarkLinks).map(link => document.querySelector(link.getAttribute('href')));
+  
+  // 1. 상단 고정 (Fix) 핸들러
+  // 요소의 초기 위치를 계산 (페이지 새로고침 시 스크롤 위치 고려)
+  const initialTop = bookmarkBox.getBoundingClientRect().top + window.pageYOffset;
 
-/* ===== 유틸 ===== */
-function bm_getScrollTop() {
-  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-}
-function bm_getOffsetTop(el) {
-  if (!el) return 0;
-  const rect = el.getBoundingClientRect();
-  return rect.top + bm_getScrollTop();
-}
-function bm_getOffsetLeft(el) {
-  if (!el) return 0;
-  const rect = el.getBoundingClientRect();
-  return rect.left + (window.pageXOffset || document.documentElement.scrollLeft || 0);
-}
-
-/* ===== 활성 유틸 ===== */
-function bm_setActive(links, link) {
-  links.forEach(a => { a.parentElement.classList.remove('active'); a.removeAttribute('aria-current'); });
-  if (link) { link.parentElement.classList.add('active'); link.setAttribute('aria-current', 'true'); }
-}
-
-/* ===== 컨트롤러 ===== */
-function createBookmarkController({
-  navSelector = '.bookmark-nav',
-  startSelector = '#target1',
-  footerSelector = '#footer',
-  containerSelector = '.bookmark-nav',  // fixed 좌표 기준
-  fixedTop = 50,
-  baseTop = 520,
-  stopBuffer = 20,
-  headerVar = '--header-h'
-} = {}) {
-  const nav = document.querySelector(navSelector);
-  const start = document.querySelector(startSelector);
-  const footer = document.querySelector(footerSelector);
-  const container = document.querySelector(containerSelector);
-  if (!nav || !start || !footer) return;
-
-  let ticking = false;
-  let fixLeft = 0;    // fixed 시 left
-  let startY = 0;     // fixed 전환 기준
-  let stopAbsTop = 0; // stop 상태 absolute top
-
-  const links = [...nav.querySelectorAll('a')];
-  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-
-  function recalc() {
-    startY = bm_getOffsetTop(start);
-    fixLeft = bm_getOffsetLeft(container || nav);
-    const footerTop = bm_getOffsetTop(footer);
-    const navH = nav.offsetHeight || 0;
-    stopAbsTop = footerTop - navH - stopBuffer;
-  }
-
-  function setNormal() {
-    nav.classList.remove('is-fixed','is-stop');
-    nav.style.position = 'absolute';
-    nav.style.top = baseTop + 'px';
-    nav.style.left = '';
-  }
-  function setFixed() {
-    nav.classList.add('is-fixed'); nav.classList.remove('is-stop');
-    nav.style.position = 'fixed';
-    nav.style.top = fixedTop + 'px';
-    nav.style.left = fixLeft + 'px';
-  }
-  function setStop() {
-    nav.classList.add('is-stop'); nav.classList.remove('is-fixed');
-    nav.style.position = 'absolute';
-    nav.style.top = stopAbsTop + 'px';
-    nav.style.left = '';
-  }
-
-  function update() {
-    const y = bm_getScrollTop();
-
-    // 기본/고정 전환
-    if (y + fixedTop >= startY) setFixed(); else setNormal();
-
-    // footer 겹침 방지
-    if (nav.style.position === 'fixed') {
-      const navRect = nav.getBoundingClientRect();
-      const footerRect = footer.getBoundingClientRect();
-      if (navRect.bottom + stopBuffer >= footerRect.top) setStop();
+  const handleFix = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    // bookmark-box가 화면 상단에 닿으면 .fix 클래스 추가/제거
+    if (scrollTop >= initialTop) {
+      bookmarkBox.classList.add('fix');
+    } else {
+      bookmarkBox.classList.remove('fix');
     }
-    ticking = false;
-  }
-  function onScroll() {
-    if (!ticking) { ticking = true; requestAnimationFrame(update); }
-  }
+  };
 
-  // 스무스 스크롤
-  links.forEach(a => {
-    a.addEventListener('click', e => {
+  // 2. 부드러운 스크롤 이동
+  bookmarkLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
       e.preventDefault();
-      const t = document.querySelector(a.getAttribute('href'));
-      if (!t) return;
-      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      history.replaceState(null, '', a.getAttribute('href'));
-      bm_setActive(links, a); // 클릭 즉시 반영
+      const targetId = link.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      if (targetSection) {
+        // 고정 메뉴의 높이가 있다면 그만큼 여백(offset)을 설정
+        const offset = bookmarkBox.offsetHeight || 60;
+        const targetPos = targetSection.offsetTop - offset;
+
+        window.scrollTo({
+          top: targetPos,
+          behavior: 'smooth'
+        });
+        
+        // URL 주소 업데이트 (선택 사항)
+        history.pushState(null, null, targetId);
+      }
     });
   });
 
-  // 스크롤 스파이
-  const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue(headerVar)) || 80;
-  const io = new IntersectionObserver((entries) => {
+  // 3. 스크롤 스파이 및 가로 스크롤 자동 이동
+  const observerOptions = {
+    root: null,
+    // 화면 상단 15% 지점에 섹션이 들어오면 활성화 (역방향 대응)
+    rootMargin: '-15% 0px -80% 0px',
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      const id = '#' + entry.target.id;
-      const link = links.find(a => a.getAttribute('href') === id);
-      if (entry.isIntersecting && link) bm_setActive(links, link);
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        
+        bookmarkLinks.forEach(link => {
+          const isActive = link.getAttribute('href') === `#${id}`;
+          link.classList.toggle('active', isActive);
+
+          // 활성화된 메뉴가 가로 범위를 벗어나면 자동으로 중앙 스크롤
+          if (isActive) {
+            link.scrollIntoView({
+              behavior: 'smooth',
+              block: 'nearest',
+              inline: 'center'
+            });
+          }
+        });
+      }
     });
-  }, { threshold: 0.4, rootMargin: `-${headerH + 20}px 0px -40% 0px` });
-  sections.forEach(sec => io.observe(sec));
+  }, observerOptions);
 
-  // 초기 활성화(해시 우선, 없으면 첫 번째)
-  function setInitialActive() {
-    const byHash = links.find(a => a.getAttribute('href') === location.hash);
-    bm_setActive(links, byHash || links[0]);
-  }
+  // 각 섹션 관찰 시작
+  sections.forEach(sec => { if (sec) observer.observe(sec); });
 
-  function init() { recalc(); setInitialActive(); update(); }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', () => { recalc(); onScroll(); }, { passive: true });
-  window.addEventListener('load', init);
-}
-
-/* ===== 초기화 ===== */
-function initBookmarkUI() {
-  createBookmarkController({
-    navSelector: '.bookmark-nav',
-    startSelector: '#target1',
-    footerSelector: '#footer',
-    containerSelector: '.bookmark-nav',
-    fixedTop: 50,
-    baseTop: 520,
-    stopBuffer: 20
-  });
-}
-
-/* ===== DOM 로드 ===== */
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initBookmarkUI, { once: true });
-} else {
-  initBookmarkUI();
-}
+  // 이벤트 리스너 등록
+  window.addEventListener('scroll', handleFix);
+  // 초기 실행 (새로고침 시 상태 반영)
+  handleFix(); 
+});
 </script>
 
 </body>

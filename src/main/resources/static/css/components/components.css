@@ -1042,6 +1042,23 @@
 .page-header .with-img .section-title {
   margin: 0;
 }
+.page-header.with-btn {
+  padding-bottom: 24px;
+}
+.page-header.with-btn + .link-btn {
+  width: auto;
+  height: 56px;
+  padding: 0 24px;
+  border-radius: 8px;
+  gap: 0;
+  flex-shrink: 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+.page-header.with-btn + .link-btn .icon {
+  width: 24px;
+  height: 24px;
+}
 
 /* ===== 첫 분기: 1430px ===== */
 /* ===== 두번째 분기: 1200px ===== */
@@ -1078,6 +1095,16 @@
     width: 60px;
     -o-object-fit: contain;
        object-fit: contain;
+  }
+  .page-header.with-btn + .link-btn {
+    height: 27px;
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .page-header.with-btn + .link-btn .icon {
+    width: 14px;
+    height: 14px;
   }
 }
 /* ===== 다섯번째 분기: 500px ===== */
