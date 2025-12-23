@@ -3,11 +3,12 @@
 .terms-wrap {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 24px;
   @include body-2;
   .scopy {
     @include body-1;
   }
+  
   .guide-text {
     display: block;
     @include body-3;
@@ -72,6 +73,10 @@
     }
   }
   .box {
+    border: 1px solid var(--gray-400);
+    border-radius: 10px;
+    padding: 20px;
+    background-color: var(--color-white);
     p {
       //@include heading-3;
       //font-weight: 400;
@@ -80,7 +85,23 @@
     h3 {
       @include heading-2;
       color: var(--color-primary);
-      padding-bottom: 16px
+      padding-bottom: 16px;
+      & + .terms-mid-title {
+        padding-top: 0;
+      }
+    }
+    .terms-mid-title {
+      @include heading-3;
+      font-weight: 700;
+      color: var(--color-point);
+      padding-bottom: 12px;
+      padding-top: 24px;
+      & + .list {
+        margin-top: 0;
+      }
+      & + .terms-mid-title {
+        padding-top: 0;
+      }
     }
     h4 {
       @include heading-3;
@@ -94,6 +115,18 @@
     }
     .guide-text {
       @include body-2;
+    }
+    .list-type {
+      li {
+        @include body-2;
+        &:before {
+          width: 4px;
+          height: 4px;
+          inline-size: 4px;
+          block-size: 4px;
+          top: 10px;
+        }
+      }
     }
   }
   .list {
@@ -140,9 +173,25 @@
       h3 {
         @include heading-3;
         color: var(--color-primary);
+        padding-bottom: 8px;
+      }
+      .terms-mid-title {
+        @include body-2;
+        font-weight: 600;
+        padding-bottom: 6px;
+        padding-top: 12px;
       }
       p {
-        @include body-2;
+        @include body-3;
+      }
+      .list-type {
+        li {
+          @include body-3;
+          padding-inline-start: 8px;
+        }
+      }
+      .guide-text {
+        @include body-3;
       }
     }
   }

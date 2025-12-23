@@ -1310,6 +1310,14 @@
   font-size: 24px;
   font-weight: 500;
 }
+.modal .modal-body .gray-box .normal {
+  font-size: 18px;
+  font-weight: 400;
+}
+.modal .modal-body .gray-box .guide-text {
+  font-size: 14px;
+  font-weight: 400;
+}
 .modal .modal-body .gray-box .list-type {
   font-size: 18px;
   font-weight: 400;
@@ -1408,6 +1416,14 @@
     font-weight: 400;
   }
   .modal .modal-body .gray-box .list-type {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .modal .modal-body .gray-box p {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .modal .modal-body .gray-box .normal {
     font-size: 16px;
     font-weight: 400;
   }

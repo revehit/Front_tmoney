@@ -263,6 +263,96 @@
 <th:block th:replace="~{component/footer :: siteFooter}"></th:block>
 <th:block th:replace="~{component/topBtn :: siteTop}"></th:block>
 
+<!-- Modal -->
+<div class="modal" id="alert-1"
+    role="alertdialog" aria-modal="true"
+    aria-labelledby="alert-1-title" aria-describedby="alert-1-desc"
+    aria-hidden="true">
+  <div class="modal-overlay" data-modal-close></div>
+
+  <div class="modal-container" role="document" tabindex="-1">
+    <header class="modal-header">
+      <h2 id="alert-1-title" class="modal-title">마케팅 목적의 개인정보 수집 동의(선택)</h2>
+      <button type="button" class="btn btn-darken-line btn-icon-only size-sm modal-close" aria-label="닫기" data-modal-close></button>
+    </header>
+
+    <section class="modal-body">
+      <div class="gray-box">
+        <p class="normal">교통비지원통합포털에서 제공하는 모든 서비스와 향후 출시되는 신규 서비스 전체에 대한 프로모션, 이벤트 광고성 정보의 안내를 위한 개인정보 수집에 동의합니다.</p>
+        <div class="table-wrap type-col">
+          <table>
+            <caption>마케팅 목적의 개인정보 수집 동의 안내</caption>
+            <colgroup>
+              <col><col><col>
+            </colgroup>
+            <thead>
+              <tr>
+                <th>수집∙이용 목적</th>
+                <th>개인정보 항목</th>
+                <th>보유 및 이용기간</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>교통비지원통합포털에서 제공하는 서비스와 향후 출시되는 서비스에 대한 프로모션, 이벤트 안내</td>
+                <td>성명, 이메일 주소, 휴대폰번호</td>
+                <td>별도 동의 철회 및 서비스 탈퇴 시 까지</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="color-secondary guide-text">위의 개인정보 수집, 이용에 대한 동의를 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 교통비지원통합포털에서 제공하는 서비스와 향후 출시되는 신규 서비스 전체에 대한 프로모션, 이벤트 등 광고성 정보를 안내 받을 수 없습니다.</p>
+      </div>
+    </section>
+
+    <footer class="modal-footer">
+      <div class="btn-wrap">
+        <button type="button" class="btn btn-darken-line size-lg" data-modal-close data-modal-default>
+          동의 안함
+        </button>
+        <button type="button" class="btn btn-primary-line btn-icon-right size-lg" data-modal-close data-modal-default>
+          <i class="icon icon-finish"></i>
+          동의함
+        </button>
+      </div>
+    </footer>
+  </div>
+</div>
+<!-- Modal2 -->
+<div class="modal" id="alert-2"
+    role="alertdialog" aria-modal="true"
+    aria-labelledby="alert-2-title" aria-describedby="alert-2-desc"
+    aria-hidden="true">
+  <div class="modal-overlay" data-modal-close></div>
+
+  <div class="modal-container" role="document" tabindex="-1">
+    <header class="modal-header">
+      <h2 id="alert-1-title" class="modal-title">마케팅 목적의 개인정보 수집 동의(선택)</h2>
+      <button type="button" class="btn btn-darken-line btn-icon-only size-sm modal-close" aria-label="닫기" data-modal-close></button>
+    </header>
+
+    <section class="modal-body">
+      <div class="gray-box">
+        <p class="normal">교통비지원통합포털에서 제공하는 모든 서비스와 향후 출시되는 신규 서비스 전체에 대한 프로모션, 이벤트 등 광고성 정보의 안내를 받는 것에 동의합니다.</p>
+        <p class="normal">- 안내방법: 문자메시지, 알림톡, 이메일</p>
+        <p class="color-secondary guide-text">마케팅 정보 수신 동의 철회는 마이페이지 화면에서 철회가 가능합니다.</p>
+      </div>
+    </section>
+
+    <footer class="modal-footer">
+      <div class="btn-wrap">
+        <button type="button" class="btn btn-darken-line size-lg" data-modal-close data-modal-default>
+          동의 안함
+        </button>
+        <button type="button" class="btn btn-primary-line btn-icon-right size-lg" data-modal-close data-modal-default>
+          <i class="icon icon-finish"></i>
+          동의함
+        </button>
+      </div>
+    </footer>
+  </div>
+</div>
+
 
 <script th:src="@{/js/vendor/aos.js}"></script>
 <script th:src="@{/js/vendor/gsap.min.js}"></script>
@@ -270,5 +360,158 @@
 <script th:src="@{/js/vendor/swiper-bundle.min.js}"></script>
 
 <script type="module" th:src="@{/js/common.js}"></script>
+
+<!-- modal체크시 체크박스 체크 -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    /* ==================================================
+      공통: OFF → ON 시도만 모달을 띄우는 체크박스 바인더
+    ================================================== */
+    function bindConsentModal({
+      checkbox,
+      modal,
+      agreeSelector = '.btn-primary-line',
+      closeSelector = '[data-modal-close]',
+      onAgree,
+      onClose
+    }) {
+      if (!checkbox || !modal) return;
+
+      const label = document.querySelector(`label[for="${checkbox.id}"]`);
+      const modalContainer = modal.querySelector('.modal-container');
+      if (!modalContainer) return;
+
+      let wasChecked = checkbox.checked;
+
+      const open = () => {
+        modal.setAttribute('aria-hidden', 'false');
+        modal.classList.add('is-open');
+        modalContainer.focus();
+      };
+
+      const close = () => {
+        modal.setAttribute('aria-hidden', 'true');
+        modal.classList.remove('is-open');
+      };
+
+      // 🔹 클릭 직전 상태 저장
+      const snapshot = () => { wasChecked = checkbox.checked; };
+      checkbox.addEventListener('pointerdown', snapshot);
+      label?.addEventListener('pointerdown', snapshot);
+
+      // 🔹 클릭 시 분기
+      const handleClick = (e) => {
+        if (!wasChecked) {        // OFF → ON 시도
+          e.preventDefault();
+          open();
+        }
+        // ON → OFF 는 기본 동작 허용
+      };
+
+      checkbox.addEventListener('click', handleClick);
+      label?.addEventListener('click', handleClick);
+
+      // 🔹 모달 버튼 처리
+      modal.addEventListener('click', (e) => {
+        const t = e.target;
+
+        if (t.closest(agreeSelector)) {
+          onAgree ? onAgree(checkbox) : (checkbox.checked = true);
+          close();
+          checkbox.focus();
+          return;
+        }
+
+        if (t.closest(closeSelector)) {
+          onClose ? onClose(checkbox) : (checkbox.checked = false);
+          close();
+          checkbox.focus();
+        }
+      });
+    }
+
+    /* ==================================================
+      공통: chk-all ↔ chk-item 그룹 동기화
+    ================================================== */
+    function bindCheckGroup({ allBox, items, useIndeterminate = true }) {
+      if (!allBox || !items || items.length === 0) return;
+
+      const updateAll = () => {
+        const allChecked = items.every(el => el.checked);
+        const anyChecked = items.some(el => el.checked);
+
+        allBox.checked = allChecked;
+        if (useIndeterminate) {
+          allBox.indeterminate = anyChecked && !allChecked;
+        }
+      };
+
+      const setItems = (checked) => {
+        items.forEach(el => (el.checked = checked));
+        allBox.checked = checked;
+        if (useIndeterminate) allBox.indeterminate = false;
+      };
+
+      // 실제 상태 변경 후 동기화
+      allBox.addEventListener('change', () => setItems(allBox.checked));
+      items.forEach(el => el.addEventListener('change', updateAll));
+
+      updateAll();
+      return { updateAll, setItems };
+    }
+
+    /* ==================================================
+      Modal 1 : 단일 체크박스
+    ================================================== */
+    bindConsentModal({
+      checkbox: document.getElementById('check-arg-1'),
+      modal: document.getElementById('alert-1')
+    });
+
+    /* ==================================================
+      Modal 2 : chk-all + chk-item 그룹
+    ================================================== */
+    const chkAll = document.getElementById('chk-all');
+    const items = Array.from(document.querySelectorAll('.chk-item'));
+    const modal2 = document.getElementById('alert-2');
+
+    const group = bindCheckGroup({
+      allBox: chkAll,
+      items,
+      useIndeterminate: true
+    });
+
+    // 상위 체크박스
+    bindConsentModal({
+      checkbox: chkAll,
+      modal: modal2,
+      onAgree: () => {
+        group?.setItems(true);
+        group?.updateAll();
+      },
+      onClose: () => {
+        group?.setItems(false);
+        group?.updateAll();
+      }
+    });
+
+    // 하위 체크박스들
+    items.forEach(item => {
+      bindConsentModal({
+        checkbox: item,
+        modal: modal2,
+        onAgree: (cb) => {
+          cb.checked = true;
+          group?.updateAll();
+        },
+        onClose: (cb) => {
+          cb.checked = false;
+          group?.updateAll();
+        }
+      });
+    });
+  });
+</script>
+
 </body>
 </html>

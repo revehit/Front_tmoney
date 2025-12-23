@@ -137,6 +137,15 @@
         width: 24px;
         height: 24px;
       }
+      &::after {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+  .checkbox-group {
+    &.vertical {
+      gap: 8px;
     }
   }
 }

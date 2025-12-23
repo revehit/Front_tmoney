@@ -113,13 +113,25 @@ button:disabled { cursor: default; }
 select::-ms-expand { display: none; }
 
 /* 11) 자동완성 배경/텍스트 보정 (WebKit) */
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:focus,
+// input:-webkit-autofill:active {
+//   -webkit-text-fill-color: currentColor !important;
+//   -webkit-box-shadow: 0 0 0 1000px var(--autofill-bg, #fff) inset !important;
+//   transition: background-color 9999s ease-out 0s; /* 깜빡임 완화 */
+// }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-text-fill-color: currentColor !important;
-  -webkit-box-shadow: 0 0 0 1000px var(--autofill-bg, #fff) inset !important;
-  transition: background-color 9999s ease-out 0s; /* 깜빡임 완화 */
+  -webkit-text-fill-color: var(--color-white) !important;
+  caret-color: var(--color-white);
+  /* ✅ autofill 배경 덮어쓰기 (핵심) */
+  -webkit-box-shadow: 0 0 0 1000px var(--color-darken) inset !important;
+  box-shadow: 0 0 0 1000px var(--color-darken) inset !important;
+  /* Chrome autofill 깜빡임 방지 */
+  transition: background-color 9999s ease-out 0s;
 }
 
 /* 12) 포커스 가시성: 키보드 사용자는 확실히 보이게 */

@@ -123,6 +123,12 @@
       p {
         @include body-1;
       }
+      .normal {
+        @include body-2;
+      }
+      .guide-text {
+        @include body-4;
+      }
       .list-type {
         @include body-2;
         color: var(--gray-700);
@@ -214,6 +220,12 @@
           @include body-2;
         }
         .list-type {
+          @include body-3;
+        }
+        p {
+          @include body-3;
+        }
+        .normal {
           @include body-3;
         }
       }
