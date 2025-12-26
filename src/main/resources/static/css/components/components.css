@@ -184,7 +184,7 @@
 #header nav ul {
   display: flex;
   align-items: center;
-  gap: 120px;
+  gap: 10px;
 }
 #header nav .has-sub > button[aria-expanded=true] + .depth-box {
   display: block;
@@ -198,6 +198,8 @@
   position: relative;
   display: flex;
   justify-content: center;
+  width: 200px;
+  flex-shrink: 0;
 }
 #header nav li::after {
   content: "";
@@ -226,13 +228,12 @@
 #header nav a {
   display: flex;
   align-items: center;
-  justify-content: center;
   color: var(--color-darken);
   font-size: 24px;
   font-weight: 700;
 }
 #header .depth-box {
-  width: 300px;
+  width: 100%;
   position: absolute;
   z-index: 100;
   top: 0;
@@ -244,7 +245,6 @@
 #header .depth-box .depth-inner {
   width: 100%;
   display: flex;
-  align-items: center;
   flex-direction: column;
 }
 #header .depth-box a {
@@ -294,7 +294,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 120px;
   gap: 20px;
   flex-shrink: 0;
 }
@@ -615,8 +614,14 @@
   #header nav ul {
     gap: 50px;
   }
+  #header nav li {
+    width: auto;
+  }
   #header .gnb {
     margin-left: 50px;
+  }
+  #header .depth-box .depth-inner {
+    width: 300px;
   }
 }
 /* ===== 두번째 분기: 1200px ===== */
